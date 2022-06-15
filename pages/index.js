@@ -1,17 +1,22 @@
-import { Navbar } from "@components/Common"
+import {
+  BecomeMember,
+  CategorySection,
+  HomeHero,
+  Navbar,
+  MobileApp,
+  Footer,
+} from "@components/Common"
 import styled from "styled-components"
 
 export default function Home() {
   return (
     <div>
       <Navbar />
-      <Heading>Next.js</Heading>
+      <HomeHero />
+      <CategorySection />
+      <BecomeMember />
+      <MobileApp />
+      <Footer />
     </div>
   )
 }
-
-const Heading = styled.h1`
-  font-size: 32px;
-  font-weight: bold;
-  text-align: center;
-`

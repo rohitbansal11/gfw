@@ -4,7 +4,7 @@ import styled from "styled-components"
 const PrimaryHeading = ({
   text,
   color,
-  fontSize,
+  variant = "h1",
   textCenter,
   isBlock,
   lineHeight = "1.2em",
@@ -24,11 +24,12 @@ const PrimaryHeading = ({
       marginTop={marginTop}
       marginBottom={marginBottom}
       lineHeight={lineHeight}
-      fontSize={fontSize}
+      variant={variant}
       className={`${className}`}
     >
       {heading.map((item, index) => (
         <Span
+          className={className}
           uppercase={uppercase}
           primary={primary}
           secondary={secondary}
@@ -43,19 +44,16 @@ const PrimaryHeading = ({
 }
 
 const Heading = styled.h2`
-  font-size: ${({ fontSize, theme: { fontSizes } }) =>
-    fontSize ? fontSizes[fontSize] : "3.2rem"};
+  font-size: ${({ variant, theme: { fontSizes } }) =>
+    variant && fontSizes[variant]};
   font-weight: bold;
   margin: 0px;
   line-height: ${(props) => props.lineHeight};
   margin-top: ${(props) => props.marginTop};
   margin-bottom: ${(props) => props.marginBottom};
   text-align: ${(props) => (props.textCenter ? "center" : "left")};
-
-  @media only screen and (max-width: 1000px) {
-    text-align: center;
-    font-size: ${({ fontSize, theme: { fontSizes } }) =>
-      fontSize ? fontSizes[fontSize] : "3.2rem"};
+  @media only screen and (max-width: 768px) {
+    font-size: 3rem;
   }
 `
 const Span = styled.span`

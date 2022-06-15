@@ -4,6 +4,7 @@ import { ThemeProvider, createGlobalStyle } from "styled-components"
 const GlobalStyles = createGlobalStyle`
   * {
     font-family: 'Roboto', sans-serif;
+    box-sizing:border-box;
   }
 `
 
@@ -17,11 +18,11 @@ const theme = {
     white: "#fff",
   },
   fontSizes: {
-    h1: "3.2rem",
-    h2: "2.6rem",
-    h3: "2rem",
-    h4: "1.4rem",
-    h5: "1.1rem",
+    h1: "3.6rem",
+    h2: "3rem",
+    h3: "2.4rem",
+    h4: "1.48rem",
+    h5: "1.4rem",
     h6: "1rem",
     body: "1rem",
     btn: "1.1rem",

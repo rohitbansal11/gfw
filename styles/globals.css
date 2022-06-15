@@ -4,3 +4,9 @@
 @tailwind components;
 @tailwind utilities;
   
+a {
+    outline: none;
+}
+* {
+    box-sizing: border-box;
+}

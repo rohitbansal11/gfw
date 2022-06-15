@@ -13,9 +13,11 @@ const SecondaryHeading = ({
   style,
   uppercase,
   fontWeight = "w8",
+  className,
 }) => {
   return (
     <Heading
+      className={className}
       style={{ ...style }}
       textCenter={textCenter}
       marginTop={marginTop}
@@ -46,9 +48,6 @@ const Heading = styled.h3`
   color: ${({ color, theme: { colors } }) => colors[color]};
   font-weight: ${({ fontWeight, theme: { fontWeights } }) =>
     fontWeights[fontWeight]};
-  @media only screen and (max-width: 1000px) {
-    text-align: center;
-  }
 `
 
 export default SecondaryHeading

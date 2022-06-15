@@ -1,15 +1,15 @@
 import React from "react"
 import styled from "styled-components"
 import Link from "next/link"
-import { PrimaryButton } from "@components/Common"
+import { Container, PrimaryButton } from "@components/Common"
 import { RiSendPlaneLine } from "react-icons/ri"
 import { IoMdAdd } from "react-icons/io"
 import { BsCart2 } from "react-icons/bs"
 const Navbar = ({ links }) => {
   return (
     <header>
-      <div className="w-[90%] max-w-[1400px] mx-auto">
-        <div className="flex w-full justify-between py-1  px-4">
+      <Container>
+        <div className="flex w-full justify-between py-1">
           <div className="w-[15%]">
             <img className="" src="/images/gudguru-logo.png" />
           </div>
@@ -35,7 +35,7 @@ const Navbar = ({ links }) => {
             </button>
           </div>
         </div>
-      </div>
+      </Container>
       <div className="bg-red-200">
         <div className="w-[90%] max-w-[1400px] mx-auto">
           <div className="flex  py-3">
@@ -57,11 +57,11 @@ const Navbar = ({ links }) => {
             </div>
             <div className="flex flex-1">
               <div className="flex  w-full gap-3 pr-4 justify-end">
-                <PrimaryButton className="bg-indigo-700 text-white font-xl w-[140px]">
+                <PrimaryButton className="bg-indigo-700 text-white font-xl w-[150px]">
                   <BsCart2 size={20} color="white" />
                   View
                 </PrimaryButton>
-                <PrimaryButton className="bg-white text-indigo-700 font-xl w-[140px]">
+                <PrimaryButton className="bg-white text-indigo-700 font-xl w-[150px]">
                   <IoMdAdd size={24} color="black" />
                   Listing
                 </PrimaryButton>
