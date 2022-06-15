@@ -1,6 +1,12 @@
 import React from "react"
 import { ThemeProvider, createGlobalStyle } from "styled-components"
 
+const GlobalStyles = createGlobalStyle`
+  * {
+    font-family: 'Roboto', sans-serif;
+  }
+`
+
 const theme = {
   colors: {
     primary: "#003399",
@@ -33,7 +39,10 @@ const theme = {
 }
 
 const Theme = ({ children }) => (
-  <ThemeProvider theme={theme}>{children}</ThemeProvider>
+  <>
+    <GlobalStyles />
+    <ThemeProvider theme={theme}>{children}</ThemeProvider>
+  </>
 )
 
 export default Theme
