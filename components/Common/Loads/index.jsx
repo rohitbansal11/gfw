@@ -11,9 +11,11 @@ const Loads = ({ loads }) => {
         text="Emergency, Loads"
         textCenter
       />
-      {loads.map((item) => (
-        <EmergencyCard item={item} />
-      ))}
+      <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
+        {loads.map((item) => (
+          <EmergencyCard item={item} />
+        ))}
+      </div>
     </Section>
   )
 }

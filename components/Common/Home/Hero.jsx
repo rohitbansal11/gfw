@@ -28,7 +28,9 @@ const Hero = ({
               {secondaryText}
             </h3>
           </div>
-          <div className={`${reverse ? "order-1" : "order-2"} flex-1`}></div>
+          <div
+            className={`${reverse ? "order-1" : "order-2"} flex-[0] lg:flex-1`}
+          ></div>
         </div>
         <SearchBar />
       </Container>
