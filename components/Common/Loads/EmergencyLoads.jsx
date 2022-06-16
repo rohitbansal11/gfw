@@ -1,8 +1,8 @@
 import React from "react"
 import { Section, Container, PrimaryHeading } from "@components/Common"
-import EmergencyCard from "./EmergencyCard"
+import EmergencyCard from "./Cards/EmergencyCard"
 
-const Loads = ({ loads }) => {
+const EmergencyLoads = ({ loads }) => {
   return (
     <Section>
       <PrimaryHeading
@@ -20,4 +20,4 @@ const Loads = ({ loads }) => {
   )
 }
 
-export default Loads
+export default EmergencyLoads

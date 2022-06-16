@@ -1,8 +1,8 @@
-import { Loads, MobileApp } from "@components/Common"
+import { Loads } from "@components/Common"
 import Hero from "@components/Common/Home/Hero"
 import React from "react"
 
-const EmergencyLoads = ({ loads }) => {
+const LoadsPage = ({ loads }) => {
   return (
     <>
       <Hero
@@ -11,12 +11,11 @@ const EmergencyLoads = ({ loads }) => {
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
       <Loads loads={loads} />
-      <MobileApp />
     </>
   )
 }
 
-EmergencyLoads.defaultProps = {
+LoadsPage.defaultProps = {
   loads: [
     {
       from: "3375 Homested Rd. Santa Cava",
@@ -168,4 +167,4 @@ EmergencyLoads.defaultProps = {
   ],
 }
 
-export default EmergencyLoads
+export default LoadsPage

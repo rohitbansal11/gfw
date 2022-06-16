@@ -2,18 +2,9 @@ import React from "react"
 import styled from "styled-components"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import Link from "next/link"
-const EmergencyCard = ({ item }) => {
+const LoadCard = ({ item }) => {
   return (
-    <div className="flex bg-white shadow-xl rounded-lg min-w-[350px] lg:min-w-[400px] mx-2">
-      <div className="border-2 border-red-500 rounded-md text-center flex text-xl font-semibold text-indigo-700">
-        <div
-          style={{ writingMode: "vertical-lr", transform: "rotate(180deg)" }}
-          className="text-[14px] "
-        >
-          Emergency
-        </div>
-      </div>
-      {/* bottom section */}
+    <div className="flex bg-white shadow-xl rounded-lg min-w-[300px] lg:min-w-[300px] mx-6">
       <div className="flex flex-col px-4 py-4">
         <div className="flex items-center gap-2 border-b-2 border-gray-200 pb-1">
           <AnimatedDot />
@@ -24,7 +15,8 @@ const EmergencyCard = ({ item }) => {
           <div>{item.to}</div>
         </div>
         <div className="text-gray-500 text-center text-[12px]">{item.date}</div>
-        <div className="flex flex-col">
+        {/* weight & type */}
+        <div className="flex flex-col mt-2">
           <div className="flex  gap-2">
             <span className="font-medium">Weight:</span>{" "}
             <span>{item.weight}</span>
@@ -36,7 +28,7 @@ const EmergencyCard = ({ item }) => {
         </div>
         {/* button */}
         <div className="flex items-start justify-start">
-          <div className="py-1 px-6 border-2 border-indigo-700 rounded-lg text-indigo-700 mt-4">
+          <div className="py-1 px-6 border-2 border-indigo-700 rounded-lg text-indigo-700 mt-4 hover:bg-indigo-700 hover:text-white">
             <Link href="/">Book Now</Link>
           </div>
         </div>
@@ -76,4 +68,4 @@ const AnimatedDot = styled.div`
   }
 `
 
-export default EmergencyCard
+export default LoadCard

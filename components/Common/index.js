@@ -13,7 +13,10 @@ export { default as CategorySection } from "./CategorySection"
 export { default as BecomeMember } from "./BecomeMember"
 export { default as MobileApp } from "./MobileApp"
 export { default as Footer } from "./Footer"
-export { default as Loads } from "./Loads"
+export { default as EmergencyLoads } from "./Loads/EmergencyLoads"
+export { default as Loads } from "./Loads/Loads"
+export { default as TruckParts } from "./loads/TruckParts"
+
 // components
 export { default as SearchBar } from "./SearchBar"
 
