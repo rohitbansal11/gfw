@@ -2,7 +2,7 @@ import { TruckParts } from "@components/Common"
 import Hero from "@components/Common/Home/Hero"
 import React from "react"
 
-const TruckPartsPages = ({ loads }) => {
+const TruckPage = ({ loads }) => {
   return (
     <>
       <Hero
@@ -15,7 +15,7 @@ const TruckPartsPages = ({ loads }) => {
   )
 }
 
-TruckPartsPages.defaultProps = {
+TruckPage.defaultProps = {
   loads: [
     {
       name: "2011 FREIGHTLINER M2 106",
@@ -263,4 +263,4 @@ TruckPartsPages.defaultProps = {
   ],
 }
 
-export default TruckPartsPages
+export default TruckPage
