@@ -6,17 +6,16 @@ import {
   MobileApp,
   Footer,
 } from "@components/Common"
-import styled from "styled-components"
-
 export default function Home() {
   return (
     <div>
-      <Navbar />
-      <HomeHero />
+      <HomeHero
+        primaryText={"Buy or Sell, Anything"}
+        secondaryText={"Find Jobs, Loads, truck and more."}
+      />
       <CategorySection />
       <BecomeMember />
       <MobileApp />
-      <Footer />
     </div>
   )
 }

@@ -6,23 +6,29 @@ import {
   CategorySection,
 } from "@components/Common"
 import { PrimaryHeading, SecondaryHeading } from "../Typography"
-const Hero = () => {
+const Hero = ({
+  primaryText = "primary, heading",
+  secondaryText,
+  src = "/images/home-hero.jpg",
+  reverse,
+}) => {
   return (
-    <Section src="/images/home-hero.jpg">
+    <Section src={src}>
       <Container>
         <div className="flex">
-          <div>
+          <div className={`${reverse ? "order-2" : "order-1"} flex-1`}>
             <PrimaryHeading
               primary={"primary"}
               secondary={"secondary"}
-              text={"Buy or Sell, Anything"}
+              text={primaryText}
               marginBottom={"10px"}
             />
+
             <h3 className="text-2xl font-medium lg:text-3xl">
-              Find Jobs, Loads, truck and more.
+              {secondaryText}
             </h3>
           </div>
-          <div></div>
+          <div className={`${reverse ? "order-1" : "order-2"} flex-1`}></div>
         </div>
         <SearchBar />
       </Container>

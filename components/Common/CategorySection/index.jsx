@@ -2,6 +2,7 @@ import React from "react"
 import { Section, Container } from "@components/Common"
 import { Icon } from "@iconify/react"
 import { PrimaryHeading } from "../Typography"
+import Cards from "./Cards"
 
 const CategorySection = ({ items }) => {
   return (
@@ -15,23 +16,7 @@ const CategorySection = ({ items }) => {
           secondary={"secondary"}
           text="One Platform, Many Solutions"
         />
-        <div className="flex mt-10  items-center gap-8 flex-wrap">
-          {items.map((item) => (
-            <div className=" w-[30%] min-w-[300px] mx-auto rounded-md shadow-md bg-white">
-              <div
-                style={{
-                  backgroundImage: `url(${`/images/card-overlay.png`})`,
-                }}
-                className={`p-4 bg- py-10 flex justify-center items-center ${item.color} rounded-t-md`}
-              >
-                <Icon height={120} icon={item.icon} color="white" />
-              </div>
-              <p className="py-2 px-2 text-lg lg:text-xl font-semibold text-center">
-                Loads
-              </p>
-            </div>
-          ))}
-        </div>
+        <Cards items={items} />
       </Container>
     </Section>
   )

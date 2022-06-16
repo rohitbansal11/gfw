@@ -13,6 +13,7 @@ export { default as CategorySection } from "./CategorySection"
 export { default as BecomeMember } from "./BecomeMember"
 export { default as MobileApp } from "./MobileApp"
 export { default as Footer } from "./Footer"
+export { default as Loads } from "./Loads"
 // components
 export { default as SearchBar } from "./SearchBar"
 

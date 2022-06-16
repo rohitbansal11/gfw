@@ -11,7 +11,7 @@ const MobileApp = () => {
   return (
     <Section className="bg-[#F0F7FF]">
       <div className="flex flex-col md:flex-row">
-        <div className="w-[100%] max-w-[500px] mx-auto md:w-[50%] ">
+        <div className="w-[100%] max-w-[500px] mx-auto md:w-[50%]">
           <Image
             src={`/images/mobile-prototype.png`}
             height={500}
@@ -19,7 +19,7 @@ const MobileApp = () => {
           />
         </div>
         <div className="w-[100%] flex flex-col items-center justify-center md:[50%] lg:items-start">
-          <h2 className="text-4xl mb-2 font-bold  text-center text-indigo-900 md:6xl lg:8xl lg:text-left lg:ml-8 xl:ml-0 ">
+          <h2 className="text-4xl mb-2 font-bold  text-center text-indigo-900 md:6xl lg:8xl lg:text-left lg:ml-8 xl:ml-0 xl:text-[3.2rem] leading-[1em]">
             A Whole New Way{" "}
             <span className="text-red-600 lg:block">To Buy & sell</span>
           </h2>
