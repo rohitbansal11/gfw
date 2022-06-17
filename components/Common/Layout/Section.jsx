@@ -3,7 +3,7 @@ import styled from "styled-components"
 const Section = ({ children, src, overlay, className }) => {
   return (
     <Wrapper src={src} className={`py-[60px] ${className}`}>
-      <div className="z-10 relative">{children}</div>
+      <div className="">{children}</div>
       {overlay && <Overlay />}
     </Wrapper>
   )
@@ -13,7 +13,6 @@ const Wrapper = styled.section`
   background-image: url(${({ src }) => src});
   background-repeat: no-repeat;
   background-position: center;
-  position: relative;
   margin: 0px;
 `
 const Overlay = styled.div`
