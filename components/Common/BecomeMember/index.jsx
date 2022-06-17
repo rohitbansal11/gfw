@@ -10,13 +10,17 @@ const BecomeMember = () => {
       <Container>
         <div className="flex flex-col md:flex-row">
           <div className="flex-1 mr-[30px]">
-            <PrimaryHeading
-              variant="h2"
-              primary={"white"}
-              secondary={"secondary"}
-              text={`Become a, Member Now, to Avail this Feature `}
-            />
-            <Image src={`/images/gudguru-member.png`} width={300} height={80} />
+            <h2 className="text-4xl font-medium mb-4 text-white drop-shadow-md lg:text-5xl">
+              Become a <span className="text-red-600">Member Now</span>{" "}
+              <span className="inline-block">To Avail This Offer</span>
+            </h2>
+            <div className="ml-[-14px]">
+              <Image
+                src={`/images/gudguru-member.png`}
+                width={300}
+                height={80}
+              />
+            </div>
             <div className="bg-white py-4 px-2 rounded-lg shadow-lg border-2 border-red-600 max-w-[350px]">
               {["Get Full Access", "Unlimited Listings", "Unlimited Views"].map(
                 (item) => (
