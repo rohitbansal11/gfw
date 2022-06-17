@@ -18,6 +18,7 @@ export { default as Loads } from "./Loads/Loads"
 export { default as TruckParts } from "./loads/TruckParts"
 export { default as CarSale } from "./Loads/CarSale"
 export { default as Rent } from "./Loads/Rent"
+export { default as Job } from "./Loads/Job"
 // components
 export { default as SearchBar } from "./SearchBar"
 
