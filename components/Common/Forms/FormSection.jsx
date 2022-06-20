@@ -1,18 +1,11 @@
 import Image from "next/image"
 import React from "react"
 import { Parallax } from "@components/Common"
-import SellTrucksForm from "./SellTrucksForm"
+import SellTrucksForm from "./SellTruck/SellTrucksForm"
 
-const FormSection = () => {
+const FormSection = ({ img, title, form }) => {
   return (
     <div className="flex bg-white w-full relative">
-      {/* <iframe
-        className="absolute"
-        src="https://my.spline.design/lightingtoruscopy-c59cd5c704fd4ecac4dfc643bd3f2ed0/"
-        frameborder="0"
-        width="100%"
-        height="100%"
-      ></iframe> */}
       <div className="w-full flex relative">
         {/* design block */}
 
@@ -22,10 +15,10 @@ const FormSection = () => {
           <div className=" ">
             <div className="flex justify-center">
               <h5 className="text-3xl lg:text-5xl font-semibold mt-8 pb-1 border-b-2  border-indigo-900 max-w-fit">
-                Trucks
+                {title}
               </h5>
             </div>
-            <SellTrucksForm className="bg-white" />
+            {form}
           </div>
         </div>
         <div className="hidden lg:block lg:w-[40%] my-auto rounded-lg relative">
@@ -33,7 +26,7 @@ const FormSection = () => {
             <div className="absolute w-8 h-[20%] bg-red-500 left-0 shadow-md rounded-tl-lg"></div>
             <div className="h-[400px] w-[400px]">
               <img
-                src="/images/truck.jpg"
+                src={img}
                 className="h-[100%] w-[100%] bg-center object-cover rounded-lg shadow-lg"
               />
             </div>
@@ -42,6 +35,12 @@ const FormSection = () => {
       </div>
     </div>
   )
+}
+
+FormSection.defaultProps = {
+  img: "/images/truck.jpg",
+  title: "Title",
+  form: <SellTrucksForm className="bg-white" />,
 }
 
 export default FormSection
