@@ -16,8 +16,9 @@ const SellTrucksForm = ({ className }) => {
     if (e.target.name === "miles") {
       value = parseInt(value)
     }
-    setFormData(() => {
+    setFormData((prevState) => {
       return {
+        ...prevState,
         [e.target.name]: value,
       }
     })

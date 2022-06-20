@@ -1,6 +1,5 @@
 import React from "react"
-import { Section, Container } from "@components/Common"
-import { Icon } from "@iconify/react"
+import { Section, Container, FadeUpDown } from "@components/Common"
 import { PrimaryHeading } from "../Typography"
 import Cards from "./Cards"
 
@@ -8,14 +7,16 @@ const CategorySection = ({ items }) => {
   return (
     <Section className="bg-red-200">
       <Container>
-        <PrimaryHeading
-          isBlock
-          textCenter
-          lineHeight="1em"
-          primary={"primary"}
-          secondary={"secondary"}
-          text="One Platform, Many Solutions"
-        />
+        <FadeUpDown>
+          <PrimaryHeading
+            isBlock
+            textCenter
+            lineHeight="1em"
+            primary={"primary"}
+            secondary={"secondary"}
+            text="One Platform, Many Solutions"
+          />
+        </FadeUpDown>
         <Cards items={items} />
       </Container>
     </Section>
