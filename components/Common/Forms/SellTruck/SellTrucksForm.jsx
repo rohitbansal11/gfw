@@ -1,16 +1,21 @@
 import React, { useState } from "react"
-import { TextInput } from "@components/Common"
+import { TextInput,Select } from "@components/Common"
+import { Statename } from "./state"
+import States from "./statesdropdown"
+// import Cities from "./citiesdropdown"
 
-const SellTrucksForm = ({ className }) => {
+const SellTrucks = ({ className }) => {
   const [formData, setFormData] = useState({
+    state: "",
+    City:"",
     make: "",
-    year: null,
-    miles: null,
-    model: "",
+    year: "",
+    Modal: "",
+    Miles: "",
     title: "",
-    contact_no: null,
+    contact: null,
     photo: {},
-  })
+    })
   const handleChange = (e) => {
     let value = e.target.value
     if (e.target.name === "miles") {
@@ -29,32 +34,41 @@ const SellTrucksForm = ({ className }) => {
     console.log({ formData })
   }
 
-  const { make, year, miles, model, title, contact_no, photo } = formData
+  const {state,City, make,year,Modal,Miles,title ,contact, photo } = formData
 
   return (
     <form
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-      <TextInput
-        name="title"
-        id="title"
-        value={title}
-        label="Title"
-        placeholder="Title"
+      <span>States</span>
+      <States />
+            {/* <span>City</span> */}
+      {/* <Cities /> */}
+
+<TextInput
+        name="City"
+        id="city"
+        value={City}
+        label=" city"
+        placeholder=" Select City"
         required={true}
-        handleChange={handleChange}
-      />
+        type="text"
+        handleChange={handleChange}/>
+
+
+
       <TextInput
         name="make"
         id="make"
         value={make}
         label="Make"
-        placeholder="Make"
+        placeholder="Choose Make"
         required={true}
+        type="text"
         handleChange={handleChange}
       />
-      <TextInput
+            <TextInput
         name="year"
         id="year"
         value={year}
@@ -64,40 +78,43 @@ const SellTrucksForm = ({ className }) => {
         type="date"
         handleChange={handleChange}
       />
-      <TextInput
-        name="miles"
-        id="miles"
-        value={miles}
-        label="Miles"
-        placeholder="Miles"
-        required={true}
-        type="number"
-        handleChange={handleChange}
-      />
-      <TextInput
-        name="model"
-        id="model"
-        value={model}
+            <TextInput
+        name="Modal"
+        id="Modal"
+        value={Modal}
         label="Model"
         placeholder="Model"
         required={true}
+        type="text"
         handleChange={handleChange}
       />
+
       <TextInput
-        name="contact_no"
-        id="contact_no"
-        value={contact_no}
-        label="Contact Number"
-        placeholder="Contact Number"
-        type="number"
+        name="Miles"
+        id="Miles"
+        value={Miles}
+        label="Miles"
+        placeholder="Miles"
+        type="text"
         required={true}
         handleChange={handleChange}
       />
-      <TextInput
-        name="photo"
-        id="photo"
-        label="Truck Photo"
-        type="file"
+            <TextInput
+        name="title"
+        id="title"
+        value={title}
+        label="Ad title"
+        placeholder="Ad Title"
+        type="text"
+        required={true}
+        handleChange={handleChange}
+      />    <TextInput
+        name="contact"
+        id="contact"
+        value={contact}
+        label="Contact No"
+        placeholder="Contact No"
+        type="number"
         required={true}
         handleChange={handleChange}
       />
@@ -105,10 +122,10 @@ const SellTrucksForm = ({ className }) => {
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"
       >
-        Add Truck Listing
+        Continue
       </button>
     </form>
   )
 }
 
-export default SellTrucksForm
+export default SellTrucks

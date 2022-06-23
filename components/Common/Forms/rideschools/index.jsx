@@ -1,16 +1,16 @@
 import React, { useState } from "react"
 import { TextInput } from "@components/Common"
+import DropDown from "../SellTruck/statesdropdown"
 
 const RideSchools = ({ className }) => {
   const [formData, setFormData] = useState({
     state: "",
-    title:"",
     city: "",
-
     pickup: "",
+    pickup_date_time: "",
     Schoolname: "",
+    title:"",
     contact_no: null,
-    photo: {},
     })
   const handleChange = (e) => {
     let value = e.target.value
@@ -30,23 +30,14 @@ const RideSchools = ({ className }) => {
     console.log({ formData })
   }
 
-  const {  contact_no,pickup,Schoolname, state,city,title } = formData
+  const { state,city,pickup,pickup_date_time,Schoolname, title,contact_no } = formData
 
   return (
     <form
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-                    <TextInput
-        name="title"
-        id="title"
-        value={title}
-        label=" Ad Title"
-        placeholder="Title"
-        required={true}
-        type="text"
-        handleChange={handleChange}
-      />
+
         <TextInput
         name="state"
         id="State"
@@ -79,6 +70,16 @@ const RideSchools = ({ className }) => {
         type="text"
         handleChange={handleChange}
       />
+      <TextInput
+        name="pickup_date_time"
+        id="pickup_date_time"
+        value={pickup_date_time}
+        label="Pickup Date & time"
+        placeholder="Pick-up"
+        required={true}
+        type="date"
+        handleChange={handleChange}
+      />
             <TextInput
         name="Schoolname"
         id="Schoolname"
@@ -89,7 +90,16 @@ const RideSchools = ({ className }) => {
         type="text"
         handleChange={handleChange}
       />
-
+      <TextInput
+        name="title"
+        id="title"
+        value={title}
+        label=" Ad Title"
+        placeholder="Title"
+        required={true}
+        type="text"
+        handleChange={handleChange}
+      />
       <TextInput
         name="contact_no"
         id="contact_no"

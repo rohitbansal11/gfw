@@ -1,13 +1,14 @@
 import React, { useState } from "react"
 import { TextInput } from "@components/Common"
+import DropDown from "../SellTruck/statesdropdown"
 
-const forrenthouse = ({ className }) => {
+const ForRentRooms = ({ className }) => {
   const [formData, setFormData] = useState({
-    title: "",
-    city: "",
-    year: null,
-    rooms: "",
     state: "",
+    city: "",
+    rooms: "", 
+    title: "",
+    price: "",
     contact_no: null,
     photo: {},
   })
@@ -29,23 +30,14 @@ const forrenthouse = ({ className }) => {
     console.log({ formData })
   }
 
-  const {  contact_no, state,rooms,city,title } = formData
+  const { state,city,rooms, contact_no,title,price } = formData
 
   return (
     <form
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-                    <TextInput
-        name="title"
-        id="title"
-        value={title}
-        label=" Ad Title"
-        placeholder="Title"
-        required={true}
-        type="text"
-        handleChange={handleChange}
-      />
+
       <TextInput
         name="state"
         id="state"
@@ -73,9 +65,29 @@ const forrenthouse = ({ className }) => {
         label=" No Of Rooms"
         placeholder="No of Rooms"
         required={true}
+        type="number"
+        handleChange={handleChange}
+      />
+                          <TextInput
+        name="title"
+        id="title"
+        value={title}
+        label=" Ad Title"
+        placeholder="Title"
+        required={true}
         type="text"
         handleChange={handleChange}
       />
+            <TextInput
+        name="price"
+        id="price"
+       label="Price"
+        type="number"
+        placeholder="Price"
+        required={true}
+        handleChange={handleChange}
+      />
+         
 
       <TextInput
         name="contact_no"
@@ -88,22 +100,10 @@ const forrenthouse = ({ className }) => {
         handleChange={handleChange}
       />
 
-      <TextInput
-        name="price"
-        id="price"
-       label="Price"
-        type="number"
-        required={true}
-        handleChange={handleChange}
-      />
-      <TextInput
-        name="photo"
-        id="photo"
-        label="cars Photo"
-        type="file"
-        required={true}
-        handleChange={handleChange}
-      />
+
+
+      <DropDown/>
+
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"
@@ -114,4 +114,4 @@ const forrenthouse = ({ className }) => {
   )
 }
 
-export default forrenthouse
+export default ForRentRooms

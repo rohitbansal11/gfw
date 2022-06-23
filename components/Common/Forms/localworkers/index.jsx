@@ -1,13 +1,18 @@
 import React, { useState } from "react"
 import { TextInput } from "@components/Common"
+import DropDown from "../SellTruck/statesdropdown"
 
 const Localworkers = ({ className }) => {
   const [formData, setFormData] = useState({
-    name: "",
-    title: "",
+    state:"",
+    city:"",
     jobpost: "",
+    name: "",
     location: "",
     contact_no: null,
+    title: "",
+    
+
   })
   const handleChange = (e) => {
     let value = e.target.value
@@ -27,13 +32,33 @@ const Localworkers = ({ className }) => {
     console.log({ formData })
   }
 
-  const { name, contact_no,title,jobpost,location } = formData
+  const {state,city ,jobpost,name, contact_no,title,location } = formData
 
   return (
     <form
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
+              <TextInput
+        name="state"
+        id="state"
+        value={state}
+        label="State"
+        placeholder="Select State"
+        required={true}
+        type="text"
+        handleChange={handleChange}
+      />
+      <TextInput
+        name="city"
+        id="city"
+        value={city}
+        label="city"
+        placeholder="Select City"
+        required={true}
+        type="text"
+        handleChange={handleChange}
+      />
         <TextInput
         name="jobpost"
         id="jobpost"
@@ -44,18 +69,7 @@ const Localworkers = ({ className }) => {
         type="text"
         handleChange={handleChange}
       />
-      <TextInput
-        name="title"
-        id="title"
-        value={title}
-        label="title"
-        placeholder="title"
-        required={true}
-        type="text"
-        handleChange={handleChange}
-      />
-      
-       <TextInput
+             <TextInput
         name="name"
         id="name"
         value={name}
@@ -64,6 +78,9 @@ const Localworkers = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
+      
+      
+
                   
      
 
@@ -89,7 +106,16 @@ const Localworkers = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-
+      <TextInput
+        name="title"
+        id="title"
+        value={title}
+        label="Ad Title"
+        placeholder="Ad Title"
+        required={true}
+        type="text"
+        handleChange={handleChange}
+      />
 
 
       <button

@@ -1,18 +1,16 @@
 import React, { useState } from "react"
 import { TextInput } from "@components/Common"
-import DropDown from "../SellTruck/statesdropdown"
 
-const Localstore = ({ className }) => {
+
+const forSaleHouse = ({ className }) => {
   const [formData, setFormData] = useState({
-    state:"",
-    city:"",
-    jobpost: "",
-    nameofstore: "",
-    location: "",
-    contact_no: null,
     title: "",
-
-    
+    city: "",
+    year: null,
+    rooms: "",
+    state: "",
+    contact_no: null,
+    photo: {},
   })
   const handleChange = (e) => {
     let value = e.target.value
@@ -32,65 +30,73 @@ const Localstore = ({ className }) => {
     console.log({ formData })
   }
 
-  const { state,city,jobpost,nameofstore,location,contact_no,title } = formData
+  const {  contact_no, state,rooms,city,title } = formData
 
   return (
     <form
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-             <TextInput
+
+      <TextInput
         name="state"
         id="state"
         value={state}
         label="State"
-        placeholder="Select State"
+        placeholder="State"
         required={true}
-        type="text"
         handleChange={handleChange}
       />
+
       <TextInput
         name="city"
         id="city"
         value={city}
-        label="city"
-        placeholder="Select City"
+        label="City"
+        placeholder="City"
         required={true}
         type="text"
+        handleChange={handleChange}
+      />
+            <TextInput
+        name="rooms"
+        id="rooms"
+        value={rooms}
+        label=" No Of Rooms"
+        placeholder="No of Rooms"
+        required={true}
+        type="number"
+        handleChange={handleChange}
+      />
+                          <TextInput
+        name="title"
+        id="title"
+        value={title}
+        label=" Ad Title"
+        placeholder="Title"
+        required={true}
+        type="text"
+        handleChange={handleChange}
+      />
+            <TextInput
+        name="price"
+        id="price"
+       label="Price"
+        type="number"
+        placeholder="Price"
+        required={true}
+        handleChange={handleChange}
+      />
+                  <TextInput
+        name="area"
+        id="area"
+       label="area"
+        type="number"
+        placeholder="Area in square feet"
+        required={true}
         handleChange={handleChange}
       />
 
-        <TextInput
-        name="job post"
-        id="job post"
-        value={jobpost}
-        label="Job Post"
-        placeholder="Job Post"
-        required={true}
-        type="text"
-        handleChange={handleChange}
-      />
-      <TextInput
-        name="nameofstore"
-        id="nameofstore"
-        value={nameofstore}
-        label="name of store"
-        placeholder="name of store"
-        required={true}
-        handleChange={handleChange}
-      />
-
-      <TextInput
-        name="location"
-        id="location"
-        value={location}
-        label="Location"
-        placeholder="Location"
-        required={true}
-        type="text"
-        handleChange={handleChange}
-      />
-            
       <TextInput
         name="contact_no"
         id="contact_no"
@@ -101,16 +107,7 @@ const Localstore = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-        <TextInput
-        name="title"
-        id="title"
-        value={title}
-        label="Ad Title"
-        placeholder="Ad Title"
-        required={true}
-        type="text"
-        handleChange={handleChange}
-      />
+
 
       <button
         type="submit"
@@ -122,4 +119,4 @@ const Localstore = ({ className }) => {
   )
 }
 
-export default  Localstore
+export default forSaleHouse

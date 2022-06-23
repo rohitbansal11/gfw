@@ -8,7 +8,7 @@ const localstore = () => {
   return (
     <>
       <FormSection
-       title="Local Workers"
+       title="Local Store"
         img="/images/local-workers.jpg"
         form={<Localstore/>}
       />

@@ -1,13 +1,13 @@
 import React from "react"
 import { BecomeMember, MobileApp, FormSection } from "@components/Common"
 import SellCarsForm from "@components/Common/Forms/cars"
-import RentHouse from "@components/Common/Forms/ForRentHouse"
+import RentHouse from "@components/Common/Forms/ForSaleHouse"
 
-const Forrenthouse = () => {
+const ForSaleHouse = () => {
   return (
     <>
       <FormSection
-       title="For Rent-House"
+       title="For Sale-House"
         img="/images/rent-house.jpg"
       form={<RentHouse/>}
       />
@@ -17,4 +17,4 @@ const Forrenthouse = () => {
   )
 }
 
-export default Forrenthouse
+export default ForSaleHouse
