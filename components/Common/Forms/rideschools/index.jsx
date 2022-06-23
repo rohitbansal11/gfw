@@ -1,7 +1,9 @@
 import React, { useState } from "react"
 import { TextInput } from "@components/Common"
 import DropDown from "../SellTruck/statesdropdown"
-
+import StatesSelect from "../SellTruck/statesdropdown"
+import CitySelect from "../SellTruck/citiesdropdown"
+import TitleList from "./titlelistdropdown"
 const RideSchools = ({ className }) => {
   const [formData, setFormData] = useState({
     state: "",
@@ -12,6 +14,15 @@ const RideSchools = ({ className }) => {
     title:"",
     contact_no: null,
     })
+  const [currentState, setCurrentState] = useState("Texas")
+  const [currentCity, setCurrentCity] = useState("Alamo")
+    const handleCurrentState = (state) => {
+    setCurrentState(state)
+    setCurrentCity("")
+  }
+  const handleCurrentCity = (city) => {
+    setCurrentCity(city)
+  }
   const handleChange = (e) => {
     let value = e.target.value
     if (e.target.name === "miles") {
@@ -38,29 +49,19 @@ const RideSchools = ({ className }) => {
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
 
-        <TextInput
-        name="state"
-        id="State"
-        value={state}
-        label=" States"
-        placeholder="States"
-        required={true}
-        type="text"
-        handleChange={handleChange}
+        
+      <span>States</span>
+      <StatesSelect
+        handleCurrentState={handleCurrentState}
+        currentState={currentState}
+          
       />
-
-
-      <TextInput
-        name="city"
-        id="city"
-        value={city}
-        label="City"
-        placeholder="City"
-        required={true}
-        type="text"
-        handleChange={handleChange}
-      />
-            <TextInput
+      <CitySelect
+        handleCurrentCity={handleCurrentCity}
+        currentCity={currentCity}
+        currentState={currentState}
+        disabled={!!currentState?currentCity:currentState}
+      /><TextInput
         name="pickup"
         id="pickup"
         value={pickup}
@@ -90,16 +91,8 @@ const RideSchools = ({ className }) => {
         type="text"
         handleChange={handleChange}
       />
-      <TextInput
-        name="title"
-        id="title"
-        value={title}
-        label=" Ad Title"
-        placeholder="Title"
-        required={true}
-        type="text"
-        handleChange={handleChange}
-      />
+      <span>Ad Title</span>
+      <TitleList/>
       <TextInput
         name="contact_no"
         id="contact_no"

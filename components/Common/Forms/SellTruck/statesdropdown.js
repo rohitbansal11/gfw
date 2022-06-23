@@ -12,7 +12,7 @@ export default function StatesSelect({ handleCurrentState, currentState }) {
 
   return (
     <div>
-      <Select options={Statename} onChange={handleState} />
+      <Select options={Statename} onChange={handleState}  />
     </div>
   )
 }

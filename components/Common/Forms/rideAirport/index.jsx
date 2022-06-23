@@ -3,7 +3,9 @@ import { TextInput } from "@components/Common"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
 import TitleList from "../rideschools/titlelistdropdown"
-const RideOldAge = ({ className }) => {
+import TitleAirport from "./titleairportdropdown"
+
+const RideAirport = ({ className }) => {
   const [formData, setFormData] = useState({
     state: "",
     city: "",
@@ -92,8 +94,8 @@ const RideOldAge = ({ className }) => {
       />
        
              <span>Ad Title</span>
-      <TitleList/>
 
+    <TitleAirport/>
       <TextInput
         name="contact_no"
         id="contact_no"
@@ -116,4 +118,4 @@ const RideOldAge = ({ className }) => {
   )
 }
 
-export default RideOldAge
+export default RideAirport

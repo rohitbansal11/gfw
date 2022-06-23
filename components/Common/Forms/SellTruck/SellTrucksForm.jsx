@@ -1,9 +1,10 @@
 import React, { useState } from "react"
 import { TextInput, Select } from "@components/Common"
 import { Statename } from "./state"
+import { StyledDropzone } from "./Dropzone"
 import StatesSelect from "./statesdropdown"
-import cities from "./citiesdropdown"
 import CitySelect from "./citiesdropdown"
+import MakeSelect from "./makedropdown"
 
 const SellTrucks = ({ className }) => {
   const [formData, setFormData] = useState({
@@ -50,41 +51,33 @@ const SellTrucks = ({ className }) => {
     formData
 
   return (
+
     <form
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
+
       <span>States</span>
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
+          
       />
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState}
+        disabled={!!currentState?currentCity:currentState}
       />
-      <TextInput
-        name="City"
-        id="city"
-        value={City}
-        label=" city"
-        placeholder=" Select City"
-        required={true}
-        type="text"
-        handleChange={handleChange}
+      
+      <span>Make</span>
+        
+      <MakeSelect
+        handleCurrentState={handleCurrentState}
+        currentState={currentState}
+          
       />
-      <TextInput
-        name="make"
-        id="make"
-        value={make}
-        label="Make"
-        placeholder="Choose Make"
-        required={true}
-        type="text"
-        handleChange={handleChange}
-      />
+      
       <TextInput
         name="year"
         id="year"
@@ -135,6 +128,8 @@ const SellTrucks = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
+      <span>Add Images</span>
+<StyledDropzone/>
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

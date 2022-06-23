@@ -1,7 +1,10 @@
 import React, { useState } from "react"
 import { TextInput } from "@components/Common"
 import DropDown from "../SellTruck/statesdropdown"
-
+import StatesSelect from "../SellTruck/statesdropdown"
+import CitySelect from "../SellTruck/citiesdropdown"
+import MakeSelect from "../SellTruck/makedropdown"
+import { StyledDropzone } from "../SellTruck/Dropzone"
 const SellTruckPartsForm = ({ className }) => {
   const [formData, setFormData] = useState({
     part: "",
@@ -13,7 +16,15 @@ const SellTruckPartsForm = ({ className }) => {
     contact_no: null,
     photo: {},
   })
- 
+  const [currentState, setCurrentState] = useState("Texas")
+  const [currentCity, setCurrentCity] = useState("Alamo")
+    const handleCurrentState = (state) => {
+    setCurrentState(state)
+    setCurrentCity("")
+  }
+  const handleCurrentCity = (city) => {
+    setCurrentCity(city)
+  }
   const handleChange = (e) => {
     let value = e.target.value
     if (e.target.name === "miles") {
@@ -39,23 +50,17 @@ const SellTruckPartsForm = ({ className }) => {
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-      <TextInput
-        name="state"
-        id="state"
-        value={state}
-        label="State"
-        placeholder="State"
-        required={true}
-        handleChange={handleChange}
+      <span>States</span>
+      <StatesSelect
+        handleCurrentState={handleCurrentState}
+        currentState={currentState}
+          
       />
-            <TextInput
-        name="city"
-        id="city"
-        value={city}
-        label="City"
-        placeholder="City"
-        required={true}
-        handleChange={handleChange}
+      <CitySelect
+        handleCurrentCity={handleCurrentCity}
+        currentCity={currentCity}
+        currentState={currentState}
+        disabled={!!currentState?currentCity:currentState}
       />
       <TextInput
         name="part"
@@ -66,14 +71,12 @@ const SellTruckPartsForm = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-            <TextInput
-        name="make"
-        id="make"
-        value={make}
-        label="Make"
-        placeholder="choose Make"
-        required={true}
-        handleChange={handleChange}
+              <span>Make</span>
+        
+      <MakeSelect
+        handleCurrentState={handleCurrentState}
+        currentState={currentState}
+          
       />
                   <TextInput
         name="year"
@@ -126,9 +129,9 @@ const SellTruckPartsForm = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
+<span>Add Images</span>
+      <StyledDropzone/>
 
-
-      <DropDown/>
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

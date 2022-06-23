@@ -26,10 +26,11 @@ export default function CitySelect({
   return (
     <div>
       <Select
-        label="Your favorite framework/library"
+        label="City"
         placeholder="Pick one"
         data={cities}
         disabled={disabled}
+        required
       />
     </div>
   )

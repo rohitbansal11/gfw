@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import { TextInput } from "@components/Common"
 import DropDown from "../SellTruck/statesdropdown"
-
+import StatesSelect from "../SellTruck/statesdropdown"
+import CitySelect from "../SellTruck/citiesdropdown"
 const Localstore = ({ className }) => {
   const [formData, setFormData] = useState({
     state:"",
@@ -32,6 +33,16 @@ const Localstore = ({ className }) => {
     console.log({ formData })
   }
 
+  const [currentState, setCurrentState] = useState("Texas")
+  const [currentCity, setCurrentCity] = useState("Alamo")
+    const handleCurrentState = (state) => {
+    setCurrentState(state)
+    setCurrentCity("")
+  }
+  const handleCurrentCity = (city) => {
+    setCurrentCity(city)
+  }
+
   const { state,city,jobpost,nameofstore,location,contact_no,title } = formData
 
   return (
@@ -39,25 +50,17 @@ const Localstore = ({ className }) => {
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-             <TextInput
-        name="state"
-        id="state"
-        value={state}
-        label="State"
-        placeholder="Select State"
-        required={true}
-        type="text"
-        handleChange={handleChange}
+          <span>States</span>
+      <StatesSelect
+        handleCurrentState={handleCurrentState}
+        currentState={currentState}
+          
       />
-      <TextInput
-        name="city"
-        id="city"
-        value={city}
-        label="city"
-        placeholder="Select City"
-        required={true}
-        type="text"
-        handleChange={handleChange}
+      <CitySelect
+        handleCurrentCity={handleCurrentCity}
+        currentCity={currentCity}
+        currentState={currentState}
+        disabled={!!currentState?currentCity:currentState}
       />
 
         <TextInput
