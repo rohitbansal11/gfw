@@ -1,13 +1,14 @@
 import React, { useState } from "react"
-import { TextInput,Select } from "@components/Common"
+import { TextInput, Select } from "@components/Common"
 import { Statename } from "./state"
-import States from "./statesdropdown"
-// import Cities from "./citiesdropdown"
+import StatesSelect from "./statesdropdown"
+import cities from "./citiesdropdown"
+import CitySelect from "./citiesdropdown"
 
 const SellTrucks = ({ className }) => {
   const [formData, setFormData] = useState({
     state: "",
-    City:"",
+    City: "",
     make: "",
     year: "",
     Modal: "",
@@ -15,7 +16,18 @@ const SellTrucks = ({ className }) => {
     title: "",
     contact: null,
     photo: {},
-    })
+  })
+  const [currentState, setCurrentState] = useState("Texas")
+  const [currentCity, setCurrentCity] = useState("Alamo")
+
+  const handleCurrentState = (state) => {
+    setCurrentState(state)
+    setCurrentCity("")
+  }
+  const handleCurrentCity = (city) => {
+    setCurrentCity(city)
+  }
+
   const handleChange = (e) => {
     let value = e.target.value
     if (e.target.name === "miles") {
@@ -34,7 +46,8 @@ const SellTrucks = ({ className }) => {
     console.log({ formData })
   }
 
-  const {state,City, make,year,Modal,Miles,title ,contact, photo } = formData
+  const { state, City, make, year, Modal, Miles, title, contact, photo } =
+    formData
 
   return (
     <form
@@ -42,11 +55,17 @@ const SellTrucks = ({ className }) => {
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
       <span>States</span>
-      <States />
-            {/* <span>City</span> */}
-      {/* <Cities /> */}
-
-<TextInput
+      <StatesSelect
+        handleCurrentState={handleCurrentState}
+        currentState={currentState}
+      />
+      <CitySelect
+        handleCurrentCity={handleCurrentCity}
+        currentCity={currentCity}
+        currentState={currentState}
+        disabled={!!currentState}
+      />
+      <TextInput
         name="City"
         id="city"
         value={City}
@@ -54,10 +73,8 @@ const SellTrucks = ({ className }) => {
         placeholder=" Select City"
         required={true}
         type="text"
-        handleChange={handleChange}/>
-
-
-
+        handleChange={handleChange}
+      />
       <TextInput
         name="make"
         id="make"
@@ -68,7 +85,7 @@ const SellTrucks = ({ className }) => {
         type="text"
         handleChange={handleChange}
       />
-            <TextInput
+      <TextInput
         name="year"
         id="year"
         value={year}
@@ -78,7 +95,7 @@ const SellTrucks = ({ className }) => {
         type="date"
         handleChange={handleChange}
       />
-            <TextInput
+      <TextInput
         name="Modal"
         id="Modal"
         value={Modal}
@@ -88,7 +105,6 @@ const SellTrucks = ({ className }) => {
         type="text"
         handleChange={handleChange}
       />
-
       <TextInput
         name="Miles"
         id="Miles"
@@ -99,7 +115,7 @@ const SellTrucks = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-            <TextInput
+      <TextInput
         name="title"
         id="title"
         value={title}
@@ -108,7 +124,8 @@ const SellTrucks = ({ className }) => {
         type="text"
         required={true}
         handleChange={handleChange}
-      />    <TextInput
+      />{" "}
+      <TextInput
         name="contact"
         id="contact"
         value={contact}

@@ -1,35 +1,36 @@
-import React from 'react'
-import { useState } from 'react'
-import Select from 'react-select'
-import  {cities } from './city'
-import { Statename}  from './state.js'
-
-export default function Cites() {
- 
-
- const [result,ddlvalue]=useState(cities.state)
- const ddlhandler=e=>{
-  ddlvalue(e.label)
- }
+import React from "react"
+import { useState } from "react"
+import { Select } from "@mantine/core"
+// import Select from "react-select"
+import citiesData from "./city"
+export default function CitySelect({
+  handleCurrentCity,
+  currentCity,
+  currentState,
+  disabled,
+}) {
+  const cities = citiesData
+    .map((city) => {
+      if (city.state === currentState) {
+        return {
+          value: city.city,
+          label: city.city,
+        }
+      }
+    })
+    .filter((city) => city !== undefined)
+  const handleCity = (e) => {
+    handleCurrentCity(e.label)
+  }
+  console.log({ cities })
   return (
     <div>
-
-      <Select style="color:red;" options={
-  cities.map(record=>{
-    return(
-      <div>
-        {
-          record.state
-        }
-      </div>
-    )
-  })
-} onChange={ddlhandler}></Select>
-
-    <center>
-      {/* <h2>{result}</h2> */}
-    </center>
+      <Select
+        label="Your favorite framework/library"
+        placeholder="Pick one"
+        data={cities}
+        disabled={disabled}
+      />
     </div>
   )
 }
-

@@ -1,25 +1,18 @@
-import React from 'react'
-import { useState } from 'react'
-import Select from 'react-select'
-import  {cities } from './city'
-import { Statename}  from './state.js'
+import React from "react"
+import { useState } from "react"
+import Select from "react-select"
+import { Statename } from "./state.js"
 
-export default function States() {
- 
+export default function StatesSelect({ handleCurrentState, currentState }) {
+  const [result, ddlvalue] = useState(Statename[0].label)
 
- const [result,ddlvalue]=useState(Statename.label)
- const ddlhandler=e=>{
-  ddlvalue(e.label)
- }
+  const handleState = (e) => {
+    handleCurrentState(e.label)
+  }
+
   return (
     <div>
-
-      <Select style="color:red;" options={Statename} onChange={ddlhandler}></Select>
-
-    <center>
-      {/* <h2>{result}</h2> */}
-    </center>
+      <Select options={Statename} onChange={handleState} />
     </div>
   )
 }
-
