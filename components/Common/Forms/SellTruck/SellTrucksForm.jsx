@@ -1,7 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import { TextInput, Select } from "@components/Common"
 import { Statename } from "./state"
-import { StyledDropzone } from "./Dropzone"
+import { Previews, StyledDropzone } from "./Dropzone"
 import StatesSelect from "./statesdropdown"
 import CitySelect from "./citiesdropdown"
 import MakeSelect from "./makedropdown"
@@ -15,7 +15,7 @@ const SellTrucks = ({ className }) => {
     Miles: "",
     title: "",
     contact: null,
-    photo: {},
+    file: [],
   })
   const dispatch = useDispatch()
   const sellTruckState = useSelector((state) => state.sellTruck)
@@ -32,13 +32,31 @@ const SellTrucks = ({ className }) => {
     })
   }
 
-  const handleCurrentState = (state) => {
-    setCurrentState(state)
-    setCurrentCity("")
+  const handleFileChange = (state) => {
+    console.log(state)
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        file: state,
+      }
+    })
   }
-  const handleCurrentCity = (city) => {
-    setCurrentCity(city)
-  }
+
+  const handleCurrentState = useCallback(
+    (state) => {
+      setCurrentState(state)
+      setCurrentCity("")
+    },
+
+    [currentState]
+  )
+  const handleCurrentCity = useCallback(
+    (city) => {
+      console.log({ city })
+      setCurrentCity(city)
+    },
+    [currentCity]
+  )
 
   const handleChange = (e) => {
     let value = e.target.value
@@ -52,16 +70,16 @@ const SellTrucks = ({ className }) => {
       }
     })
   }
-
   const handleSubmit = (e) => {
     e.preventDefault()
     const payload = { ...formData, currentCity, currentState }
-    dispatch(addSellTruckListing(payload))
+    console.log({ payload, formData })
+    // dispatch(addSellTruckListing(payload))
   }
 
   useEffect(() => {}, [sellTruckState])
 
-  const { year, Modal, Miles, title, contact, photo } = formData
+  const { year, Modal, Miles, title, contact } = formData
 
   return (
     <form
@@ -77,7 +95,7 @@ const SellTrucks = ({ className }) => {
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState ? currentCity : currentState}
+        disabled={!!currentState ? false : true}
       />
       <span>Make</span>
       <MakeSelect
@@ -136,7 +154,7 @@ const SellTrucks = ({ className }) => {
         handleChange={handleChange}
       />
       <span>Add Images</span>
-      {/* <StyledDropzone /> */}
+      <Previews handleFileChange={handleFileChange} />
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

@@ -19,10 +19,9 @@ export default function CitySelect({
       }
     })
     .filter((city) => city !== undefined)
-  const handleCity = (e) => {
-    handleCurrentCity(e.label)
+  const handleCity = (city) => {
+    handleCurrentCity(city)
   }
-  console.log({ cities })
   return (
     <div>
       <Select
@@ -31,6 +30,7 @@ export default function CitySelect({
         data={cities}
         disabled={disabled}
         required
+        onChange={handleCity}
       />
     </div>
   )
