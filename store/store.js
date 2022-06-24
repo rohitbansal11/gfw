@@ -4,7 +4,9 @@ import { composeWithDevTools } from "redux-devtools-extension"
 import { createWrapper } from "next-redux-wrapper"
 
 import { userReducer } from "./user-store/userReducer"
+import { sellTruckReducer } from "./sell-truck-store/sell-truck-reducer"
 const reducer = combineReducers({
+  sellTruck: sellTruckReducer,
   user: userReducer,
 })
 

@@ -1,5 +1,6 @@
 import {
   SELL_TRUCK_FAILURE,
+  SELL_TRUCK_PARTS_FAILURE,
   SELL_TRUCK_PARTS_REQUEST,
   SELL_TRUCK_REQUEST,
   SELL_TRUCK_SUCCESS,
@@ -24,13 +25,18 @@ export const sellTruckReducer = (state = initialValue, action) => {
       return {
         ...state,
         loading: false,
-        listings: [...listings, ...payload],
+        listings: [...listings, payload],
       }
     case SELL_TRUCK_FAILURE:
+    case SELL_TRUCK_PARTS_FAILURE:
       return {
         ...state,
         loading: false,
         error: payload,
+      }
+    default:
+      return {
+        ...state,
       }
   }
 }

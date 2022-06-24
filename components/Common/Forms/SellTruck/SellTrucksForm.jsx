@@ -5,11 +5,10 @@ import { StyledDropzone } from "./Dropzone"
 import StatesSelect from "./statesdropdown"
 import CitySelect from "./citiesdropdown"
 import MakeSelect from "./makedropdown"
-
+import { useDispatch, useSelector } from "react-redux"
+import { addSellTruckListing } from "../../../../store/sell-truck-store/sell-truck-action"
 const SellTrucks = ({ className }) => {
   const [formData, setFormData] = useState({
-    state: "",
-    City: "",
     make: "",
     year: "",
     Modal: "",
@@ -18,8 +17,20 @@ const SellTrucks = ({ className }) => {
     contact: null,
     photo: {},
   })
+  const dispatch = useDispatch()
+  const sellTruckState = useSelector((state) => state.sellTruck)
+
   const [currentState, setCurrentState] = useState("Texas")
   const [currentCity, setCurrentCity] = useState("Alamo")
+
+  const handleMakeChange = (state) => {
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        make: state,
+      }
+    })
+  }
 
   const handleCurrentState = (state) => {
     setCurrentState(state)
@@ -44,40 +55,36 @@ const SellTrucks = ({ className }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log({ formData })
+    const payload = { ...formData, currentCity, currentState }
+    dispatch(addSellTruckListing(payload))
   }
 
-  const { state, City, make, year, Modal, Miles, title, contact, photo } =
-    formData
+  useEffect(() => {}, [sellTruckState])
+
+  const { year, Modal, Miles, title, contact, photo } = formData
 
   return (
-
     <form
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-
       <span>States</span>
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
-          
       />
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState?currentCity:currentState}
+        disabled={!!currentState ? currentCity : currentState}
       />
-      
       <span>Make</span>
-        
       <MakeSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
-          
+        handleChange={handleMakeChange}
       />
-      
       <TextInput
         name="year"
         id="year"
@@ -129,7 +136,7 @@ const SellTrucks = ({ className }) => {
         handleChange={handleChange}
       />
       <span>Add Images</span>
-<StyledDropzone/>
+      {/* <StyledDropzone /> */}
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

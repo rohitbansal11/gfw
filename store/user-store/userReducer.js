@@ -6,6 +6,7 @@ const initialState = {
   profile: {},
   loading: false,
 }
+
 export const userReducer = (state = initialState, action) => {
   const { type, payload } = action
 

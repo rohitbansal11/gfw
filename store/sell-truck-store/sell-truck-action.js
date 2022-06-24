@@ -1,4 +1,4 @@
-import axios from "../../utils/axios"
+// import axios from "../../utils/axios"
 import {
   SELL_TRUCK_FAILURE,
   SELL_TRUCK_REQUEST,
