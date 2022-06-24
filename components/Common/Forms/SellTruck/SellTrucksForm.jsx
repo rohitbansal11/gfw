@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { TextInput, Select } from "@components/Common"
 import { Statename } from "./state"
-import { StyledDropzone } from "./Dropzone"
+import { Previews, StyledDropzone } from "./Dropzone"
 import StatesSelect from "./statesdropdown"
 import CitySelect from "./citiesdropdown"
 import MakeSelect from "./makedropdown"
@@ -129,7 +129,9 @@ const SellTrucks = ({ className }) => {
         handleChange={handleChange}
       />
       <span>Add Images</span>
-<StyledDropzone/>
+      
+      <Previews/>
+
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"
