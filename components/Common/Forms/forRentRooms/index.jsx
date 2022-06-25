@@ -1,18 +1,18 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { TextInput } from "@components/Common"
 import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
 import { StyledDropzone } from "../SellTruck/Dropzone"
+import { useDispatch, useSelector } from "react-redux"
+import { rentroomsListing } from "@store/sell-or-rent-store/sell-or-rent-action"
 const ForRentRooms = ({ className }) => {
   const [formData, setFormData] = useState({
-    state: "",
-    city: "",
     rooms: "", 
     title: "",
     price: "",
     contact_no: null,
-    photo: {},
+    photo: [],
   })
   const handleChange = (e) => {
     let value = e.target.value
@@ -26,10 +26,16 @@ const ForRentRooms = ({ className }) => {
       }
     })
   }
-
+  const dispatch=useDispatch();
+  const rentrooms=useSelector((state)=>{
+    state.rentrooms
+  })
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log({ formData })
+    console.log({ formData ,currentCity,currentState})
+    let payload={...formData,currentCity,currentState}
+    dispatch(rentroomsListing(payload))
+
   }
   const [currentState, setCurrentState] = useState("Texas")
   const [currentCity, setCurrentCity] = useState("Alamo")
@@ -41,7 +47,9 @@ const ForRentRooms = ({ className }) => {
     setCurrentCity(city)
   }
 
-  const { state,city,rooms, contact_no,title,price } = formData
+useEffect(() => {}, [rentrooms])
+
+  const {rooms, contact_no,title,price ,photo} = formData
 
   return (
     <form
@@ -105,9 +113,16 @@ const ForRentRooms = ({ className }) => {
       />
 
 
-      <span>Add Images</span>
-      <StyledDropzone/>
-
+             <TextInput
+        name="photo"
+        id="photo"
+        value={photo}
+        label="Photo"
+        placeholder="Photo"
+        type="file"
+        required={true}
+        handleChange={handleChange}
+      />
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

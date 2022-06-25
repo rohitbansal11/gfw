@@ -1,16 +1,14 @@
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 import { TextInput } from "@components/Common"
 import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
-import MakeSelect from "../SellTruck/makedropdown"
-import { Basic, StyledDropzone } from "../SellTruck/Dropzone"
 import CarMakers from "./carsmakedropdown"
+import { useDispatch, useSelector } from "react-redux"
+import { carListing } from "@store/cars-store/car-action"
+
 const SellCarsForm = ({ className }) => {
-  const [formData, setFormData] = useState({
- 
-    state:"",
-    city:"",
+const [formData, setFormData] = useState({
     make:"",
     year:null,
     model:"",
@@ -18,9 +16,13 @@ const SellCarsForm = ({ className }) => {
     contact_no:null,
     price:"",
     title:"",
-    photo:{}, 
+    photo:[], 
   })
-  const handleChange = (e) => {
+    const dispatch=useDispatch();
+    const carslist =useSelector((state)=>{
+      state.carlist;
+    })
+    const handleChange = (e) => {
     let value = e.target.value
     if (e.target.name === "miles") {
       value = parseInt(value)
@@ -32,10 +34,19 @@ const SellCarsForm = ({ className }) => {
       }
     })
   }
-
+const handleMakeChange=((state)=>{
+    setFormData((prevState)=>{
+      return{
+        ...prevState,
+        make:state,
+      }
+    })
+  })
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log({ formData })
+    console.log({ formData ,currentCity,currentState})
+    const payload={ ...formData ,currentCity,currentState}
+    dispatch(carListing(payload))
   }
   const [currentState, setCurrentState] = useState("Texas")
   const [currentCity, setCurrentCity] = useState("Alamo")
@@ -43,12 +54,12 @@ const SellCarsForm = ({ className }) => {
     setCurrentState(state)
     setCurrentCity("")
   }
+
   const handleCurrentCity = (city) => {
     setCurrentCity(city)
   }
-
-  const {state,city, make, year, model, miles, contact_no,price, title,photo  } = formData
-
+  useEffect(() => {}, [carslist])
+  const { year, model, miles, contact_no,price, title,photo  } = formData
   return (
     <form
       onSubmit={handleSubmit}
@@ -58,7 +69,6 @@ const SellCarsForm = ({ className }) => {
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
-          
       />
       <CitySelect
         handleCurrentCity={handleCurrentCity}
@@ -66,13 +76,11 @@ const SellCarsForm = ({ className }) => {
         currentState={currentState}
         disabled={!!currentState?currentCity:currentState}
       />
-
             <span>Make</span>
-        
-      <CarMakers/>
-
-          
- 
+      <CarMakers
+        handleMakeChange={handleMakeChange}
+        currentState={currentState}
+      /> 
       <TextInput
         name="year"
         id="year"
@@ -83,7 +91,6 @@ const SellCarsForm = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-
       <TextInput
         name="model"
         id="model"
@@ -134,8 +141,17 @@ const SellCarsForm = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-     <span>Add Images</span>
-      <StyledDropzone/>
+
+      <TextInput
+        name="photo"
+        id="photo"
+        value={photo}
+        label="Photo"
+        placeholder="Photo"
+        type="file"
+        required={true}
+        handleChange={handleChange}
+      />
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

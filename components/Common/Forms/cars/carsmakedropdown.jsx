@@ -3,17 +3,15 @@ import { useState } from "react"
 import Select from "react-select"
 import { carmakers } from "./carsdropdownlist"
 
-
-export default function CarMakers({ handleCurrentState, currentState }) {
+export default function CarMakers({ handleMakeChange, currentmake }) {
   const [result, ddlvalue] = useState(carmakers[0].label)
-
-  const handleState = (e) => {
-    handleCurrentState(e.label)
+  const handlemake = (e) => {
+  handleMakeChange(e.label)
   }
 
   return (
     <div>
-      <Select options={carmakers} onChange={handleState} label="hello"  />
+      <Select options={carmakers} onChange={handlemake} label="hello"  />
     </div>
   )
 }

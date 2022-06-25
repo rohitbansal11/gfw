@@ -1,12 +1,14 @@
-import React, { useState } from "react"
+import React, { useState ,useEffect} from "react"
 import { TextInput } from "@components/Common"
 import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
+import { useDispatch, useSelector } from "react-redux"
+import { LocalStoreListing } from "@store/local-store/local-action"
+
 const Localstore = ({ className }) => {
   const [formData, setFormData] = useState({
-    state:"",
-    city:"",
+   
     jobpost: "",
     nameofstore: "",
     location: "",
@@ -15,6 +17,8 @@ const Localstore = ({ className }) => {
 
     
   })
+  const dispatch = useDispatch();
+  const localstore= useSelector((state)=>{state.localstore});
   const handleChange = (e) => {
     let value = e.target.value
     if (e.target.name === "miles") {
@@ -30,7 +34,9 @@ const Localstore = ({ className }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log({ formData })
+    console.log({ formData ,currentCity,currentState})
+  const payload={...formData,currentCity,currentState}
+  dispatch(LocalStoreListing(payload))
   }
 
   const [currentState, setCurrentState] = useState("Texas")
@@ -43,7 +49,11 @@ const Localstore = ({ className }) => {
     setCurrentCity(city)
   }
 
-  const { state,city,jobpost,nameofstore,location,contact_no,title } = formData
+useEffect(() => {}, [localstore])
+
+
+
+  const { jobpost,nameofstore,location,contact_no,title } = formData
 
   return (
     <form

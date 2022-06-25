@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react"
-import { TextInput, Select } from "@components/Common"
-import { Statename } from "./state"
-import { Previews, StyledDropzone } from "./Dropzone"
+import { TextInput } from "@components/Common"
+import { Previews } from "./Dropzone"
 import StatesSelect from "./statesdropdown"
 import CitySelect from "./citiesdropdown"
 import MakeSelect from "./makedropdown"
@@ -15,14 +14,15 @@ const SellTrucks = ({ className }) => {
     Miles: "",
     title: "",
     contact: null,
-    file: [],
+    photo: [],
   })
   const dispatch = useDispatch()
   const sellTruckState = useSelector((state) => state.sellTruck)
 
+  console.log({sellTruckState})
   const [currentState, setCurrentState] = useState("Texas")
   const [currentCity, setCurrentCity] = useState("Alamo")
-
+  
   const handleMakeChange = (state) => {
     setFormData((prevState) => {
       return {
@@ -32,22 +32,12 @@ const SellTrucks = ({ className }) => {
     })
   }
 
-  const handleFileChange = (state) => {
-    console.log(state)
-    setFormData((prevState) => {
-      return {
-        ...prevState,
-        file: state,
-      }
-    })
-  }
-
+  
   const handleCurrentState = useCallback(
     (state) => {
       setCurrentState(state)
       setCurrentCity("")
     },
-
     [currentState]
   )
   const handleCurrentCity = useCallback(
@@ -57,7 +47,6 @@ const SellTrucks = ({ className }) => {
     },
     [currentCity]
   )
-
   const handleChange = (e) => {
     let value = e.target.value
     if (e.target.name === "miles") {
@@ -70,16 +59,16 @@ const SellTrucks = ({ className }) => {
       }
     })
   }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     const payload = { ...formData, currentCity, currentState }
     console.log({ payload, formData })
-    // dispatch(addSellTruckListing(payload))
+    dispatch(addSellTruckListing(payload))
   }
-
   useEffect(() => {}, [sellTruckState])
 
-  const { year, Modal, Miles, title, contact } = formData
+  const { year, Modal, Miles, title, contact,photo } = formData
 
   return (
     <form
@@ -153,8 +142,16 @@ const SellTrucks = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-      <span>Add Images</span>
-      <Previews handleFileChange={handleFileChange} />
+      <TextInput
+        name="photo"
+        id="photo"
+        value={photo}
+        label="Photo"
+        placeholder="Photo"
+        type="file"
+        required={true}
+        handleChange={handleChange}
+      />
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

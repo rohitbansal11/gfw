@@ -2,13 +2,14 @@ import {
   SELL_TRUCK_FAILURE,
   SELL_TRUCK_PARTS_FAILURE,
   SELL_TRUCK_PARTS_REQUEST,
+  SELL_TRUCK_PARTS_SUCCESS,
   SELL_TRUCK_REQUEST,
   SELL_TRUCK_SUCCESS,
 } from "./sell-truck-types"
-
 const initialValue = {
   loading: false,
-  listings: [],
+  truckslistings: [],
+  truckspartslistings: [],
   error: [],
 }
 
@@ -22,10 +23,18 @@ export const sellTruckReducer = (state = initialValue, action) => {
         loading: true,
       }
     case SELL_TRUCK_SUCCESS:
+      console.log({payload})
       return {
         ...state,
         loading: false,
-        listings: [...listings, payload],
+        truckslistings: [...state.truckslistings, payload],
+      }
+          case SELL_TRUCK_PARTS_SUCCESS:
+      console.log({payload})
+      return {
+        ...state,
+        loading: false,
+        truckspartslistings: [...state.truckspartslistings, payload],
       }
     case SELL_TRUCK_FAILURE:
     case SELL_TRUCK_PARTS_FAILURE:
