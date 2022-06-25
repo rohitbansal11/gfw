@@ -7,9 +7,7 @@ import { sellTruckReducer } from "./sell-truck-store/sell-truck-reducer"
 import { rideReducer } from "./ride-store/ride-reducer"
 const reducer = combineReducers({
   sellTruck: sellTruckReducer,
-  rideSchool: rideReducer,
-  rideOldAge: rideReducer,
-  rideairport:rideReducer,
+  ride: rideReducer,
   // user: userReducer,
 })
 
