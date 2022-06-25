@@ -4,11 +4,11 @@ import Select from "react-select"
 import { titles } from "./titlelist"
 
 
-export default function TitleAirport({ handleCurrentState, currentState }) {
+export default function TitleAirport({ handleCurrentState, currentState,handleTitleChange }) {
   const [result, ddlvalue] = useState(titles.label)
-
   const handleState = (e) => {
-    handleCurrentState(e.label)
+    handleTitleChange(e.label)
+
   }
 
   return (

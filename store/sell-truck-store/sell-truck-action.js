@@ -3,13 +3,16 @@ import {
   SELL_TRUCK_FAILURE,
   SELL_TRUCK_REQUEST,
   SELL_TRUCK_SUCCESS,
+  SELL_TRUCK_PARTS_FAILURE,
+  SELL_TRUCK_PARTS_REQUEST,
+  SELL_TRUCK_PARTS_SUCCESS,
+  
 } from "./sell-truck-types"
 
 export const addSellTruckListing = (payload) => async (dispatch) => {
   dispatch({
     type: SELL_TRUCK_REQUEST,
   })
-  // @todo: add data to database
   try {
     dispatch({
       type: SELL_TRUCK_SUCCESS,
@@ -18,6 +21,23 @@ export const addSellTruckListing = (payload) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: SELL_TRUCK_FAILURE,
+      payload: { error: error.message }, // error
+    })
+  }
+}
+export const addSellTruckpartsListing = (payload) => async (dispatch) => {
+  dispatch({
+    type: SELL_TRUCK_PARTS_REQUEST,
+  })
+  // @todo: add data to database
+  try {
+    dispatch({
+      type: SELL_TRUCK_PARTS_SUCCESS,
+      payload: payload,
+    })
+  } catch (error) {
+    dispatch({
+      type: SELL_TRUCK_PARTS_FAILURE,
       payload: { error: error.message }, // error
     })
   }

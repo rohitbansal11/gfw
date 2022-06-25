@@ -1,8 +1,12 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { TextInput } from "@components/Common"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
 import TitleList from "../rideschools/titlelistdropdown"
+import { Previews } from "../SellTruck/Dropzone"
+import { useDispatch,useSelector } from "react-redux"
+import { RideOldAgeListing } from "../../../../store/ride-store/ride-action"
+
 const RideOldAge = ({ className }) => {
   const [formData, setFormData] = useState({
     state: "",
@@ -12,11 +16,12 @@ const RideOldAge = ({ className }) => {
     dropoff: "",
     title:"",
     contact_no: null,
-  
   })
   const handleChange = (e) => {
+
     let value = e.target.value
-    if (e.target.name === "miles") {
+    if (e.target.name === "miles") 
+    {
       value = parseInt(value)
     }
     setFormData((prevState) => {
@@ -26,12 +31,14 @@ const RideOldAge = ({ className }) => {
       }
     })
   }
+  const dispatch = useDispatch()
+  const rideOldAge = useSelector((state) => state.rideOldAge)
   const [currentState, setCurrentState] = useState("Texas")
   const [currentCity, setCurrentCity] = useState("Alamo")
-    const handleCurrentState = (state) => {
-    setCurrentState(state)
-    setCurrentCity("")
-  }
+  const handleCurrentState = (state) => {
+  setCurrentState(state)
+  setCurrentCity("")
+}
   const handleCurrentCity = (city) => {
     setCurrentCity(city)
   }
@@ -39,9 +46,28 @@ const RideOldAge = ({ className }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log({ formData })
+    const payload = {...formData,setCurrentCity,setCurrentState}
+    dispatch(RideOldAgeListing(payload))
+  }
+    const handleFileChange = (state)=>{
+    setFormData((prevState)=>{
+      return{
+        ...prevState,
+        files:state,
+      }
+    })
   }
 
-  const { state,city,pickup,pickup_date_time,dropoff, title, contact_no } = formData
+  const handleTitleChange=(state)=>{
+    setFormData((prevState)=>{
+    return{
+      ...prevState,
+      title:state
+    }  
+    })
+  }
+  const {pickup,pickup_date_time,dropoff, title, contact_no } = formData
+  useEffect(() => {}, [rideOldAge])
 
   return (
     <form
@@ -60,7 +86,7 @@ const RideOldAge = ({ className }) => {
         currentState={currentState}
         disabled={!!currentState?currentCity:currentState}
       />
-            <TextInput
+      <TextInput
         name="pickup"
         id="pickup"
         value={pickup}
@@ -71,6 +97,7 @@ const RideOldAge = ({ className }) => {
         handleChange={handleChange}
       />
        <TextInput
+       
         name="pickup_date_time"
         id="pickup_date_time"
         value={pickup_date_time}
@@ -80,7 +107,7 @@ const RideOldAge = ({ className }) => {
         type="date"
         handleChange={handleChange}
       />
-                  <TextInput
+      x<TextInput
         name="dropoff"
         id="dropoff"
         value={dropoff}
@@ -91,8 +118,11 @@ const RideOldAge = ({ className }) => {
         handleChange={handleChange}
       />
        
-             <span>Ad Title</span>
-      <TitleList/>
+      <span>Ad Title</span>
+      <TitleList
+      handleTitleChange={handleTitleChange}
+      currentTitle={title}
+      />
 
       <TextInput
         name="contact_no"
@@ -105,7 +135,7 @@ const RideOldAge = ({ className }) => {
         handleChange={handleChange}
       />
 
-      
+            <Previews handleFileChange={handleFileChange} />
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

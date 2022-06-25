@@ -4,7 +4,9 @@ import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
 import MakeSelect from "../SellTruck/makedropdown"
-import { StyledDropzone } from "../SellTruck/Dropzone"
+import { Previews } from "../SellTruck/Dropzone"
+import { useDispatch, useSelector } from "react-redux"
+import { addSellTruckListing } from "../../../../store/sell-truck-store/sell-truck-action"
 const SellTruckPartsForm = ({ className }) => {
   const [formData, setFormData] = useState({
     part: "",
@@ -14,11 +16,15 @@ const SellTruckPartsForm = ({ className }) => {
     model: "",
     title: "",
     contact_no: null,
-    photo: {},
+    file: {},
   })
+  const dispatch =useDispatch();
+
   const [currentState, setCurrentState] = useState("Texas")
+  
   const [currentCity, setCurrentCity] = useState("Alamo")
-    const handleCurrentState = (state) => {
+  
+  const handleCurrentState = (state) => {
     setCurrentState(state)
     setCurrentCity("")
   }
@@ -38,9 +44,31 @@ const SellTruckPartsForm = ({ className }) => {
     })
   }
 
+const handleMakeChange=(state)=>{
+  setFormData((prevState)=>{
+    return{
+      ...prevState,
+      make:state,
+    }
+  })
+}
+
+const handleFileChange=(state)=>{
+  setFormData((prevState)=>{
+    return{
+      ...prevState,
+      file:state,
+    }
+
+  })
+}
+
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log({ formData })
+    const payload = { ...formData, currentCity, currentState }
+    console.log({ payload,formData })
+
   }
 
   const { state,city,part,make,year,model,price,title,contact_no,photo } = formData
@@ -54,13 +82,13 @@ const SellTruckPartsForm = ({ className }) => {
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
-          
+      
       />
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState?currentCity:currentState}
+        disabled={!!currentState?false:true}
       />
       <TextInput
         name="part"
@@ -71,14 +99,14 @@ const SellTruckPartsForm = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-              <span>Make</span>
+    <span>Make</span>
         
       <MakeSelect
-        handleCurrentState={handleCurrentState}
-        currentState={currentState}
-          
+        handleMakeChange={handleMakeChange}
+        make={make}
+        handleChange={handleMakeChange}  
       />
-                  <TextInput
+      <TextInput
         name="year"
         id="year"
         value={year}
@@ -129,9 +157,8 @@ const SellTruckPartsForm = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-<span>Add Images</span>
-      <StyledDropzone/>
-
+      <span>Add Images</span>
+        <Previews handleFileChange={handleFileChange} />
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

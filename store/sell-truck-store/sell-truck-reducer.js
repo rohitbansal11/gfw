@@ -22,10 +22,11 @@ export const sellTruckReducer = (state = initialValue, action) => {
         loading: true,
       }
     case SELL_TRUCK_SUCCESS:
+      console.log({payload})
       return {
         ...state,
         loading: false,
-        listings: [...listings, payload],
+        listings: [...state.listings, payload],
       }
     case SELL_TRUCK_FAILURE:
     case SELL_TRUCK_PARTS_FAILURE:

@@ -4,7 +4,8 @@ import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
 import TitleList from "../rideschools/titlelistdropdown"
 import TitleAirport from "./titleairportdropdown"
-
+import { useDispatch, useSelector } from "react-redux"
+import {RideAirportListing } from "../../../../store/ride-store/ride-action"
 const RideAirport = ({ className }) => {
   const [formData, setFormData] = useState({
     state: "",
@@ -28,6 +29,11 @@ const RideAirport = ({ className }) => {
       }
     })
   }
+const dispatch = useDispatch();
+const rideAirport= useSelector((state)=>{
+  state.rideairport
+}) 
+
   const [currentState, setCurrentState] = useState("Texas")
   const [currentCity, setCurrentCity] = useState("Alamo")
     const handleCurrentState = (state) => {
@@ -41,6 +47,8 @@ const RideAirport = ({ className }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log({ formData })
+    const payload = ({...formData,currentCity,currentState})
+    dispatch(RideAirportListing(payload))
   }
 
   const { state,city,pickup,pickup_date_time,dropoff, title, contact_no } = formData
@@ -62,7 +70,7 @@ const RideAirport = ({ className }) => {
         currentState={currentState}
         disabled={!!currentState?currentCity:currentState}
       />
-            <TextInput
+      <TextInput
         name="pickup"
         id="pickup"
         value={pickup}
@@ -82,7 +90,7 @@ const RideAirport = ({ className }) => {
         type="date"
         handleChange={handleChange}
       />
-                  <TextInput
+      <TextInput
         name="dropoff"
         id="dropoff"
         value={dropoff}
@@ -92,9 +100,7 @@ const RideAirport = ({ className }) => {
         type="text"
         handleChange={handleChange}
       />
-       
-             <span>Ad Title</span>
-
+    <span>Ad Title</span>
     <TitleAirport/>
       <TextInput
         name="contact_no"
@@ -106,8 +112,6 @@ const RideAirport = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-
-      
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

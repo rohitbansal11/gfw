@@ -4,20 +4,18 @@ import Select from "react-select"
 import { makelist } from "./make.js"
 
 export default function MakeSelect({
-  handleCurrentState,
-  currentState,
+  handleMakeChange,
   handleChange,
 }) {
   const [result, ddlvalue] = useState(makelist[0].label)
 
   const handleState = (e) => {
-    handleCurrentState(e.label)
-    handleChange(e.label)
+    handleChange(e)
   }
 
   return (
     <div>
-      <Select options={makelist} onChange={handleState} label="hello" />
+      <Select options={makelist}onChange={handleState} label="hello" />
     </div>
   )
 }

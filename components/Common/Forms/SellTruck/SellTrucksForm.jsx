@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react"
-import { TextInput, Select } from "@components/Common"
-import { Statename } from "./state"
-import { Previews, StyledDropzone } from "./Dropzone"
+import { TextInput } from "@components/Common"
+import { Previews } from "./Dropzone"
 import StatesSelect from "./statesdropdown"
 import CitySelect from "./citiesdropdown"
 import MakeSelect from "./makedropdown"
@@ -20,9 +19,10 @@ const SellTrucks = ({ className }) => {
   const dispatch = useDispatch()
   const sellTruckState = useSelector((state) => state.sellTruck)
 
+  console.log({sellTruckState})
   const [currentState, setCurrentState] = useState("Texas")
   const [currentCity, setCurrentCity] = useState("Alamo")
-
+  
   const handleMakeChange = (state) => {
     setFormData((prevState) => {
       return {
@@ -41,13 +41,11 @@ const SellTrucks = ({ className }) => {
       }
     })
   }
-
   const handleCurrentState = useCallback(
     (state) => {
       setCurrentState(state)
       setCurrentCity("")
     },
-
     [currentState]
   )
   const handleCurrentCity = useCallback(
@@ -57,7 +55,6 @@ const SellTrucks = ({ className }) => {
     },
     [currentCity]
   )
-
   const handleChange = (e) => {
     let value = e.target.value
     if (e.target.name === "miles") {
@@ -70,13 +67,13 @@ const SellTrucks = ({ className }) => {
       }
     })
   }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     const payload = { ...formData, currentCity, currentState }
     console.log({ payload, formData })
-    // dispatch(addSellTruckListing(payload))
+    dispatch(addSellTruckListing(payload))
   }
-
   useEffect(() => {}, [sellTruckState])
 
   const { year, Modal, Miles, title, contact } = formData
