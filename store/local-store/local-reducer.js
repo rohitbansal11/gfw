@@ -8,10 +8,12 @@ import{
     LOCALWORKERS_FAILURE,
     
 
-} from "./ride-types"
+} from "./local-types"
 const initialValue = {
   loading: false,
-  listings: [],
+  
+  storelisting:[],
+  worklisting:[],
   error: [],
 }
 
@@ -27,13 +29,17 @@ export const LocalReducer=(state=initialValue,action)=>{
             }
 
         case LOCALSTORE_SUCCESS:
+            return{
+                ...state,
+                loading:false,
+                storelisting:[...state.storelisting,payload],
+            }
         case LOCALWORKERS_SUCCESS:
             return{
                 ...state,
                 loading:false,
-                listings:[...listings, payload],
+            worklisting:[...state.worklisting, payload],
             }
-
         case LOCALSTORE_FAILURE:
         case LOCALWORKERS_FAILURE:
             return{

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 import { TextInput } from "@components/Common"
 import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
@@ -6,7 +6,7 @@ import CitySelect from "../SellTruck/citiesdropdown"
 import MakeSelect from "../SellTruck/makedropdown"
 import { Previews } from "../SellTruck/Dropzone"
 import { useDispatch, useSelector } from "react-redux"
-import { addSellTruckListing } from "../../../../store/sell-truck-store/sell-truck-action"
+import { addSellTruckpartsListing } from "../../../../store/sell-truck-store/sell-truck-action"
 const SellTruckPartsForm = ({ className }) => {
   const [formData, setFormData] = useState({
     part: "",
@@ -16,10 +16,13 @@ const SellTruckPartsForm = ({ className }) => {
     model: "",
     title: "",
     contact_no: null,
-    file: {},
+    photo:[],
   })
-  const dispatch =useDispatch();
 
+  const dispatch =useDispatch();
+  const selltruckparts=useSelector((state)=>{
+    state.selltruckparts
+  })
   const [currentState, setCurrentState] = useState("Texas")
   
   const [currentCity, setCurrentCity] = useState("Alamo")
@@ -62,13 +65,15 @@ const handleFileChange=(state)=>{
 
   })
 }
+useEffect(() => {
+}, [selltruckparts])
 
 
   const handleSubmit = (e) => {
     e.preventDefault()
     const payload = { ...formData, currentCity, currentState }
     console.log({ payload,formData })
-
+    dispatch(addSellTruckpartsListing(payload))
   }
 
   const { state,city,part,make,year,model,price,title,contact_no,photo } = formData
@@ -157,8 +162,17 @@ const handleFileChange=(state)=>{
         required={true}
         handleChange={handleChange}
       />
-      <span>Add Images</span>
-        <Previews handleFileChange={handleFileChange} />
+            <TextInput
+        name="photo"
+        id="photo"
+        value={photo}
+        label="Photo"
+        placeholder="Photo"
+        type="file"
+        required={true}
+        handleChange={handleChange}
+      />
+      
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

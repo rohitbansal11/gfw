@@ -7,7 +7,7 @@ import{
     LOCALWORKERS_SUCCESS,
     LOCALWORKERS_FAILURE,
     
-} from "./ride-types"
+} from "./local-types"
 
 export const LocalStoreListing = (payload) => async (dispatch) => {
   dispatch({

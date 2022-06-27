@@ -1,9 +1,12 @@
-import React, { useState } from "react"
+import React, { useState ,useEffect} from "react"
 import { TextInput } from "@components/Common"
 
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
-import { StyledDropzone } from "../SellTruck/Dropzone"
+import { Previews, StyledDropzone } from "../SellTruck/Dropzone"
+import { sellhouseListing } from "@store/sell-or-rent-store/sell-or-rent-action"
+import { useDispatch,useSelector } from "react-redux"
+
 const forSaleHouse = ({ className }) => {
   const [formData, setFormData] = useState({
     title: "",
@@ -13,6 +16,10 @@ const forSaleHouse = ({ className }) => {
     state: "",
     contact_no: null,
     photo: {},
+  })
+    const dispatch=useDispatch();
+  const sellhouse=useSelector((state)=>{
+    state.sellhouse
   })
   const handleChange = (e) => {
     let value = e.target.value
@@ -26,13 +33,27 @@ const forSaleHouse = ({ className }) => {
       }
     })
   }
-
+useEffect(() => {}, [sellhouse])
+    const handleFileChange = (state) => {
+    console.log(state)
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        file: state,
+      }
+    })
+  }
   const handleSubmit = (e) => {
+
     e.preventDefault()
     console.log({ formData })
+    let payload={...formData,currentCity,currentState}
+    dispatch(sellhouseListing(payload))
   }
+
+
     const [currentState, setCurrentState] = useState("Texas")
-  const [currentCity, setCurrentCity] = useState("Alamo")
+    const [currentCity, setCurrentCity] = useState("Alamo")
     const handleCurrentState = (state) => {
     setCurrentState(state)
     setCurrentCity("")
@@ -41,7 +62,7 @@ const forSaleHouse = ({ className }) => {
     setCurrentCity(city)
   }
 
-  const {  contact_no, state,rooms,city,title } = formData
+  const {  contact_no, rooms,title } = formData
 
   return (
     <form
@@ -110,7 +131,7 @@ const forSaleHouse = ({ className }) => {
         handleChange={handleChange}
       />
 <span>Add Images</span>
-      <StyledDropzone/>
+            <Previews handleFileChange={handleFileChange} />
 
       <button
         type="submit"

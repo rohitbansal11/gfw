@@ -16,6 +16,7 @@ const RideSchool = ({ className }) => {
     Schoolname: "",
     title:"",
     contact_no: null,
+    photo:[],
     })
   const [currentState, setCurrentState] = useState("Texas")
   const [currentCity, setCurrentCity] = useState("Alamo")
@@ -66,7 +67,7 @@ const RideSchool = ({ className }) => {
   }
 
   useEffect(() => {}, [rideSchool])
-  const { pickup, pickup_date_time, Schoolname, title,contact_no } = formData
+  const { pickup, pickup_date_time, Schoolname, title,contact_no,photo } = formData
 
   return (
     <form
@@ -131,8 +132,16 @@ const RideSchool = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-
-      <Previews handleFileChange={handleFileChange} />
+         <TextInput
+        name="photo"
+        id="photo"
+        value={photo}
+        label="Photo"
+        placeholder="Photo"
+        type="file"
+        required={true}
+        handleChange={handleChange}
+      />
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

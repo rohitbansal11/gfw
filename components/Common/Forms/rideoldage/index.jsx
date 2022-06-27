@@ -16,6 +16,7 @@ const RideOldAge = ({ className }) => {
     dropoff: "",
     title:"",
     contact_no: null,
+    photo:[],
   })
   const handleChange = (e) => {
 
@@ -66,7 +67,7 @@ const RideOldAge = ({ className }) => {
     }  
     })
   }
-  const {pickup,pickup_date_time,dropoff, title, contact_no } = formData
+  const {pickup,pickup_date_time,dropoff, title, contact_no,photo } = formData
   useEffect(() => {}, [rideOldAge])
 
   return (
@@ -107,7 +108,7 @@ const RideOldAge = ({ className }) => {
         type="date"
         handleChange={handleChange}
       />
-      x<TextInput
+      <TextInput
         name="dropoff"
         id="dropoff"
         value={dropoff}
@@ -123,7 +124,6 @@ const RideOldAge = ({ className }) => {
       handleTitleChange={handleTitleChange}
       currentTitle={title}
       />
-
       <TextInput
         name="contact_no"
         id="contact_no"
@@ -134,8 +134,17 @@ const RideOldAge = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
+      <TextInput
+        name="photo"
+        id="photo"
+        value={photo}
+        label="Photo"
+        placeholder="Photo"
+        type="file"
+        required={true}
+        handleChange={handleChange}
+      />
 
-            <Previews handleFileChange={handleFileChange} />
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

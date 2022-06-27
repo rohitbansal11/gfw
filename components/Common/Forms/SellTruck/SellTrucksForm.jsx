@@ -76,7 +76,7 @@ const SellTrucks = ({ className }) => {
     dispatch(addSellTruckListing(payload))
   }
   useEffect(() => {}, [sellTruckState])
-  const { year, model, miles, title, contactno } = formData
+  const { year, model, miles, title, contactno,image } = formData
 
   return (
     <form
@@ -150,8 +150,16 @@ const SellTrucks = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-      <span>Add Images</span>
-      <Previews handleFileChange={handleFileChange} />
+      <TextInput
+        name="image"
+        id="image"
+        value={image}
+        label="Photo"
+        placeholder="Photo"
+        type="file"
+        required={true}
+        handleChange={handleChange}
+      />
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

@@ -5,9 +5,15 @@ import { createWrapper } from "next-redux-wrapper"
 import { userReducer } from "./user-store/userReducer"
 import { sellTruckReducer } from "./sell-truck-store/sell-truck-reducer"
 import { rideReducer } from "./ride-store/ride-reducer"
+import { LocalReducer } from "./local-store/local-reducer"
+import { carReducer } from "./cars-store/car.reducer"
+import { sell_or_rent_Reducer } from "./sell-or-rent-store/sell-or-rent-reducer"
 const reducer = combineReducers({
   sellTruck: sellTruckReducer,
   ride: rideReducer,
+  local: LocalReducer,
+  cars: carReducer,
+  sell_or_rent: sell_or_rent_Reducer,
   user: userReducer,
 })
 

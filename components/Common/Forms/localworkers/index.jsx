@@ -3,17 +3,22 @@ import { TextInput } from "@components/Common"
 import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { LocalWorkersListing } from "@store/local-store/local-action"
+
 const Localworkers = ({ className }) => {
+
   const [formData, setFormData] = useState({
-    state:"",
-    city:"",
     jobpost: "",
     name: "",
     location: "",
     contact_no: null,
     title: "",
-    
-
+  })
+  const dispatch= useDispatch()
+  const Localworkers= useSelector((state)=>{
+    state.localworkers
   })
   const handleChange = (e) => {
     let value = e.target.value
@@ -27,21 +32,27 @@ const Localworkers = ({ className }) => {
       }
     })
   }
-const [currentState, setCurrentState] = useState("Texas")
-  const [currentCity, setCurrentCity] = useState("Alamo")
+    const [currentState, setCurrentState] = useState("Texas")
+    const [currentCity, setCurrentCity] = useState("Alamo")
     const handleCurrentState = (state) => {
     setCurrentState(state)
     setCurrentCity("")
+
   }
   const handleCurrentCity = (city) => {
-    setCurrentCity(city)
+  setCurrentCity(city)
   }
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log({ formData })
+    const payload={...formData,currentCity,currentState}
+    dispatch(LocalWorkersListing(payload))    
   }
-
-  const {state,city ,jobpost,name, contact_no,title,location } = formData
+    useEffect(() => {
+     
+    }, [Localworkers])
+    
+  const {jobpost,name, contact_no,title,location } = formData
 
   return (
     <form
