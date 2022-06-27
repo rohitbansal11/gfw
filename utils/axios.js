@@ -1,5 +1,4 @@
 import axios from "axios"
-
 export default axios.create({
-  baseURL: "http:127.0.0.1:5050",
+  baseURL: "https://gubguru.herokuapp.com/api/v1",
 })
