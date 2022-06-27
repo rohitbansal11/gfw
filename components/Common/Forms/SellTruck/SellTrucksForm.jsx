@@ -10,19 +10,18 @@ const SellTrucks = ({ className }) => {
   const [formData, setFormData] = useState({
     make: "",
     year: "",
-    Modal: "",
-    Miles: "",
+    model: "",
+    miles: "",
     title: "",
-    contact: null,
-    photo: [],
+    contactno: null,
+    image: [],
   })
   const dispatch = useDispatch()
   const sellTruckState = useSelector((state) => state.sellTruck)
 
-  console.log({sellTruckState})
   const [currentState, setCurrentState] = useState("Texas")
   const [currentCity, setCurrentCity] = useState("Alamo")
-  
+
   const handleMakeChange = (state) => {
     setFormData((prevState) => {
       return {
@@ -32,7 +31,14 @@ const SellTrucks = ({ className }) => {
     })
   }
 
-  
+  const handleFileChange = (state) => {
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        image: state,
+      }
+    })
+  }
   const handleCurrentState = useCallback(
     (state) => {
       setCurrentState(state)
@@ -42,7 +48,6 @@ const SellTrucks = ({ className }) => {
   )
   const handleCurrentCity = useCallback(
     (city) => {
-      console.log({ city })
       setCurrentCity(city)
     },
     [currentCity]
@@ -62,13 +67,16 @@ const SellTrucks = ({ className }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const payload = { ...formData, currentCity, currentState }
-    console.log({ payload, formData })
+    const payload = {
+      ...formData,
+      city: currentCity,
+      state: currentState,
+      image: "https://image.jpg", //@todo remove it and handle image upload
+    }
     dispatch(addSellTruckListing(payload))
   }
   useEffect(() => {}, [sellTruckState])
-
-  const { year, Modal, Miles, title, contact,photo } = formData
+  const { year, model, miles, title, contactno,image } = formData
 
   return (
     <form
@@ -103,9 +111,9 @@ const SellTrucks = ({ className }) => {
         handleChange={handleChange}
       />
       <TextInput
-        name="Modal"
-        id="Modal"
-        value={Modal}
+        name="model"
+        id="model"
+        value={model}
         label="Model"
         placeholder="Model"
         required={true}
@@ -113,9 +121,9 @@ const SellTrucks = ({ className }) => {
         handleChange={handleChange}
       />
       <TextInput
-        name="Miles"
-        id="Miles"
-        value={Miles}
+        name="miles"
+        id="miles"
+        value={miles}
         label="Miles"
         placeholder="Miles"
         type="text"
@@ -133,9 +141,9 @@ const SellTrucks = ({ className }) => {
         handleChange={handleChange}
       />{" "}
       <TextInput
-        name="contact"
-        id="contact"
-        value={contact}
+        name="contactno"
+        id="contactno"
+        value={contactno}
         label="Contact No"
         placeholder="Contact No"
         type="number"
@@ -143,9 +151,9 @@ const SellTrucks = ({ className }) => {
         handleChange={handleChange}
       />
       <TextInput
-        name="photo"
-        id="photo"
-        value={photo}
+        name="image"
+        id="image"
+        value={image}
         label="Photo"
         placeholder="Photo"
         type="file"

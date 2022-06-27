@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, combineReducers } from "redux"
 import thunk from "redux-thunk"
 import { composeWithDevTools } from "redux-devtools-extension"
 import { createWrapper } from "next-redux-wrapper"
-// import { userReducer } from "./user-store/userReducer"
+import { userReducer } from "./user-store/userReducer"
 import { sellTruckReducer } from "./sell-truck-store/sell-truck-reducer"
 import { rideReducer } from "./ride-store/ride-reducer"
 import { LocalReducer } from "./local-store/local-reducer"
@@ -14,7 +14,7 @@ const reducer = combineReducers({
   local:LocalReducer,
   cars:carReducer,
   sell_or_rent:sell_or_rent_Reducer,
-  // user: userReducer,
+  user: userReducer,
 })
 
 // middleware
