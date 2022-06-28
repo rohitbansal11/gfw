@@ -36,23 +36,35 @@ export const addSellTruckListing = (payload) => async (dispatch, getState) => {
     })
   }
 }
-export const addSellTruckpartsListing = (payload) => async (dispatch) => {
-  dispatch({
-    type: SELL_TRUCK_PARTS_REQUEST,
-  })
-  // @todo: add data to database
-  try {
+export const addSellTruckpartsListing =
+  (payload) => async (dispatch, getState) => {
     dispatch({
-      type: SELL_TRUCK_PARTS_SUCCESS,
-      payload: payload,
+      type: SELL_TRUCK_PARTS_REQUEST,
     })
-  } catch (error) {
-    dispatch({
-      type: SELL_TRUCK_PARTS_FAILURE,
-      payload: { error: error.message }, // error
-    })
+    try {
+      console.log("dispached")
+      const { user } = getState((state) => state)
+      const token = user?.token
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+      const res = await axios.post("/truckpart", payload, config)
+      console.log({ data: res?.data })
+      dispatch({
+        type: SELL_TRUCK_PARTS_SUCCESS,
+        payload: payload,
+      })
+    } catch (error) {
+      console.error({ error })
+      dispatch({
+        type: SELL_TRUCK_PARTS_FAILURE,
+        payload: { error: error.message }, // error
+      })
+    }
   }
-}
 
 export const removeSellTruckListing = () => {}
 

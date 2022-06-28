@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { TextInput } from "@components/Common"
 import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
@@ -15,18 +15,18 @@ const SellTruckPartsForm = ({ className }) => {
     year: null,
     model: "",
     title: "",
-    contact_no: null,
-    photo:[],
+    contactno: null,
+    image: [],
   })
 
-  const dispatch =useDispatch();
-  const selltruckparts=useSelector((state)=>{
+  const dispatch = useDispatch()
+  const selltruckparts = useSelector((state) => {
     state.selltruckparts
   })
   const [currentState, setCurrentState] = useState("Texas")
-  
+
   const [currentCity, setCurrentCity] = useState("Alamo")
-  
+
   const handleCurrentState = (state) => {
     setCurrentState(state)
     setCurrentCity("")
@@ -47,36 +47,23 @@ const SellTruckPartsForm = ({ className }) => {
     })
   }
 
-const handleMakeChange=(state)=>{
-  setFormData((prevState)=>{
-    return{
-      ...prevState,
-      make:state,
-    }
-  })
-}
-
-const handleFileChange=(state)=>{
-  setFormData((prevState)=>{
-    return{
-      ...prevState,
-      file:state,
-    }
-
-  })
-}
-useEffect(() => {
-}, [selltruckparts])
-
+  const handleMakeChange = (state) => {
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        make: state,
+      }
+    })
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const payload = { ...formData, currentCity, currentState }
-    console.log({ payload,formData })
+    const payload = { ...formData, city: currentCity, state: currentState }
+    console.log("dispach")
     dispatch(addSellTruckpartsListing(payload))
   }
 
-  const { state,city,part,make,year,model,price,title,contact_no,photo } = formData
+  const { part, make, year, model, price, title, contactno, image } = formData
 
   return (
     <form
@@ -87,13 +74,12 @@ useEffect(() => {
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
-      
       />
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState?false:true}
+        disabled={!!currentState ? false : true}
       />
       <TextInput
         name="part"
@@ -104,12 +90,12 @@ useEffect(() => {
         required={true}
         handleChange={handleChange}
       />
-    <span>Make</span>
-        
+      <span>Make</span>
+
       <MakeSelect
         handleMakeChange={handleMakeChange}
         make={make}
-        handleChange={handleMakeChange}  
+        handleChange={handleMakeChange}
       />
       <TextInput
         name="year"
@@ -131,7 +117,7 @@ useEffect(() => {
         handleChange={handleChange}
       />
 
-            <TextInput
+      <TextInput
         name="price"
         id="price"
         value={price}
@@ -141,7 +127,7 @@ useEffect(() => {
         type="number"
         handleChange={handleChange}
       />
-            <TextInput
+      <TextInput
         name="title"
         id="title"
         value={title}
@@ -151,28 +137,28 @@ useEffect(() => {
         type="text"
         handleChange={handleChange}
       />
-      
+
       <TextInput
-        name="contact_no"
-        id="contact_no"
-        value={contact_no}
+        name="contactno"
+        id="contactno"
+        value={contactno}
         label="Contact Number"
         placeholder="Contact Number"
         type="number"
         required={true}
         handleChange={handleChange}
       />
-            <TextInput
-        name="photo"
-        id="photo"
-        value={photo}
+      <TextInput
+        name="image"
+        id="image"
+        value={image}
         label="Photo"
         placeholder="Photo"
         type="file"
         required={true}
         handleChange={handleChange}
       />
-      
+
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"
