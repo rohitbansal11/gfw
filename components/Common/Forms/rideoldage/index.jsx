@@ -3,8 +3,7 @@ import { TextInput } from "@components/Common"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
 import TitleList from "../rideschools/titlelistdropdown"
-import { Previews } from "../SellTruck/Dropzone"
-import { useDispatch,useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { RideOldAgeListing } from "../../../../store/ride-store/ride-action"
 
 const RideOldAge = ({ className }) => {
@@ -12,17 +11,14 @@ const RideOldAge = ({ className }) => {
     state: "",
     city: "",
     pickup: "",
-    pickup_date_time: "",
+    pickupdate: "",
     dropoff: "",
-    title:"",
-    contact_no: null,
-    photo:[],
+    title: "",
+    contactno: null,
   })
   const handleChange = (e) => {
-
     let value = e.target.value
-    if (e.target.name === "miles") 
-    {
+    if (e.target.name === "miles") {
       value = parseInt(value)
     }
     setFormData((prevState) => {
@@ -37,37 +33,30 @@ const RideOldAge = ({ className }) => {
   const [currentState, setCurrentState] = useState("Texas")
   const [currentCity, setCurrentCity] = useState("Alamo")
   const handleCurrentState = (state) => {
-  setCurrentState(state)
-  setCurrentCity("")
-}
+    setCurrentState(state)
+    setCurrentCity("")
+  }
   const handleCurrentCity = (city) => {
+    console.log({ city: city })
     setCurrentCity(city)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log({ formData })
-    const payload = {...formData,setCurrentCity,setCurrentState}
+    const payload = { ...formData, city: currentCity, state: currentState }
     dispatch(RideOldAgeListing(payload))
   }
-    const handleFileChange = (state)=>{
-    setFormData((prevState)=>{
-      return{
+
+  const handleTitleChange = (state) => {
+    setFormData((prevState) => {
+      return {
         ...prevState,
-        files:state,
+        title: state,
       }
     })
   }
-
-  const handleTitleChange=(state)=>{
-    setFormData((prevState)=>{
-    return{
-      ...prevState,
-      title:state
-    }  
-    })
-  }
-  const {pickup,pickup_date_time,dropoff, title, contact_no,photo } = formData
+  const { pickup, pickupdate, dropoff, title, contactno } = formData
   useEffect(() => {}, [rideOldAge])
 
   return (
@@ -75,17 +64,16 @@ const RideOldAge = ({ className }) => {
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-       <span>States</span>
+      <span>States</span>
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
-          
       />
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState?currentCity:currentState}
+        disabled={false}
       />
       <TextInput
         name="pickup"
@@ -97,11 +85,10 @@ const RideOldAge = ({ className }) => {
         type="text"
         handleChange={handleChange}
       />
-       <TextInput
-       
-        name="pickup_date_time"
-        id="pickup_date_time"
-        value={pickup_date_time}
+      <TextInput
+        name="pickupdate"
+        id="pickupdate"
+        value={pickupdate}
         label="Pickup Date & time"
         placeholder="Pick-up"
         required={true}
@@ -118,29 +105,16 @@ const RideOldAge = ({ className }) => {
         type="text"
         handleChange={handleChange}
       />
-       
+
       <span>Ad Title</span>
-      <TitleList
-      handleTitleChange={handleTitleChange}
-      currentTitle={title}
-      />
+      <TitleList handleTitleChange={handleTitleChange} currentTitle={title} />
       <TextInput
-        name="contact_no"
-        id="contact_no"
-        value={contact_no}
+        name="contactno"
+        id="contactno"
+        value={contactno}
         label="Contact Number"
         placeholder="Contact Number"
         type="number"
-        required={true}
-        handleChange={handleChange}
-      />
-      <TextInput
-        name="photo"
-        id="photo"
-        value={photo}
-        label="Photo"
-        placeholder="Photo"
-        type="file"
         required={true}
         handleChange={handleChange}
       />

@@ -5,17 +5,16 @@ import CitySelect from "../SellTruck/citiesdropdown"
 import TitleList from "../rideschools/titlelistdropdown"
 import TitleAirport from "./titleairportdropdown"
 import { useDispatch, useSelector } from "react-redux"
-import {RideAirportListing } from "../../../../store/ride-store/ride-action"
+import { RideAirportListing } from "../../../../store/ride-store/ride-action"
 const RideAirport = ({ className }) => {
   const [formData, setFormData] = useState({
     state: "",
     city: "",
     pickup: "",
-    pickup_date_time: "",
+    pickupdate: "",
     dropoff: "",
-    title:"",
-    contact_no: null,
-  
+    title: "",
+    contactno: null,
   })
   const handleChange = (e) => {
     let value = e.target.value
@@ -29,14 +28,14 @@ const RideAirport = ({ className }) => {
       }
     })
   }
-const dispatch = useDispatch();
-const rideAirport= useSelector((state)=>{
-  state.rideairport
-}) 
+  const dispatch = useDispatch()
+  const rideAirport = useSelector((state) => {
+    state.rideairport
+  })
 
   const [currentState, setCurrentState] = useState("Texas")
   const [currentCity, setCurrentCity] = useState("Alamo")
-    const handleCurrentState = (state) => {
+  const handleCurrentState = (state) => {
     setCurrentState(state)
     setCurrentCity("")
   }
@@ -44,31 +43,39 @@ const rideAirport= useSelector((state)=>{
     setCurrentCity(city)
   }
 
+  const handleTitleChange = (state) => {
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        title: state,
+      }
+    })
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log({ formData })
-    const payload = ({...formData,currentCity,currentState})
+    const payload = { ...formData, city: currentCity, state: currentState }
     dispatch(RideAirportListing(payload))
   }
 
-  const { state,city,pickup,pickup_date_time,dropoff, title, contact_no } = formData
+  const { pickup, pickupdate, dropoff, title, contactno } = formData
 
   return (
     <form
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-       <span>States</span>
+      <span>States</span>
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
-          
       />
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState?currentCity:currentState}
+        disabled={!!currentState ? currentCity : currentState}
       />
       <TextInput
         name="pickup"
@@ -80,10 +87,10 @@ const rideAirport= useSelector((state)=>{
         type="text"
         handleChange={handleChange}
       />
-       <TextInput
-        name="pickup_date_time"
-        id="pickup_date_time"
-        value={pickup_date_time}
+      <TextInput
+        name="pickupdate"
+        id="pickupdate"
+        value={pickupdate}
         label="Pickup Date & time"
         placeholder="Pick-up"
         required={true}
@@ -100,12 +107,15 @@ const rideAirport= useSelector((state)=>{
         type="text"
         handleChange={handleChange}
       />
-    <span>Ad Title</span>
-    <TitleAirport/>
+      <span>Ad Title</span>
+      <TitleAirport
+        handleTitleChange={handleTitleChange}
+        currentTitle={title}
+      />
       <TextInput
-        name="contact_no"
-        id="contact_no"
-        value={contact_no}
+        name="contactno"
+        id="contactno"
+        value={contactno}
         label="Contact Number"
         placeholder="Contact Number"
         type="number"

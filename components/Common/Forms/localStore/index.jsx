@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import { TextInput } from "@components/Common"
 import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
@@ -8,17 +8,16 @@ import { LocalStoreListing } from "@store/local-store/local-action"
 
 const Localstore = ({ className }) => {
   const [formData, setFormData] = useState({
-   
-    jobpost: "",
+    job: "",
     nameofstore: "",
     location: "",
-    contact_no: null,
+    contactno: null,
     title: "",
-
-    
   })
-  const dispatch = useDispatch();
-  const localstore= useSelector((state)=>{state.localstore});
+  const dispatch = useDispatch()
+  const localstore = useSelector((state) => {
+    state.localstore
+  })
   const handleChange = (e) => {
     let value = e.target.value
     if (e.target.name === "miles") {
@@ -34,14 +33,13 @@ const Localstore = ({ className }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log({ formData ,currentCity,currentState})
-  const payload={...formData,currentCity,currentState}
-  dispatch(LocalStoreListing(payload))
+    const payload = { ...formData, city: currentCity, state: currentState }
+    dispatch(LocalStoreListing(payload))
   }
 
   const [currentState, setCurrentState] = useState("Texas")
   const [currentCity, setCurrentCity] = useState("Alamo")
-    const handleCurrentState = (state) => {
+  const handleCurrentState = (state) => {
     setCurrentState(state)
     setCurrentCity("")
   }
@@ -49,34 +47,31 @@ const Localstore = ({ className }) => {
     setCurrentCity(city)
   }
 
-useEffect(() => {}, [localstore])
+  useEffect(() => {}, [localstore])
 
-
-
-  const { jobpost,nameofstore,location,contact_no,title } = formData
+  const { job, nameofstore, location, contactno, title } = formData
 
   return (
     <form
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-          <span>States</span>
+      <span>States</span>
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
-          
       />
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState?currentCity:currentState}
+        disabled={!!currentState ? currentCity : currentState}
       />
 
-        <TextInput
-        name="job post"
-        id="job post"
-        value={jobpost}
+      <TextInput
+        name="job"
+        id="job"
+        value={job}
         label="Job Post"
         placeholder="Job Post"
         required={true}
@@ -103,18 +98,18 @@ useEffect(() => {}, [localstore])
         type="text"
         handleChange={handleChange}
       />
-            
+
       <TextInput
-        name="contact_no"
-        id="contact_no"
-        value={contact_no}
+        name="contactno"
+        id="contactno"
+        value={contactno}
         label="Contact Number"
         placeholder="Contact Number"
         type="number"
         required={true}
         handleChange={handleChange}
       />
-        <TextInput
+      <TextInput
         name="title"
         id="title"
         value={title}
@@ -135,4 +130,4 @@ useEffect(() => {}, [localstore])
   )
 }
 
-export default  Localstore
+export default Localstore

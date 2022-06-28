@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { TextInput } from "@components/Common"
 import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
@@ -8,21 +8,21 @@ import { useDispatch, useSelector } from "react-redux"
 import { carListing } from "@store/cars-store/car-action"
 
 const SellCarsForm = ({ className }) => {
-const [formData, setFormData] = useState({
-    make:"",
-    year:null,
-    model:"",
-    miles:"",
-    contact_no:null,
-    price:"",
-    title:"",
-    photo:[], 
+  const [formData, setFormData] = useState({
+    make: "",
+    year: null,
+    model: "",
+    miles: "",
+    contactno: null,
+    price: "",
+    title: "",
+    image: [],
   })
-    const dispatch=useDispatch();
-    const carslist =useSelector((state)=>{
-      state.carlist;
-    })
-    const handleChange = (e) => {
+  const dispatch = useDispatch()
+  const carslist = useSelector((state) => {
+    state.carlist
+  })
+  const handleChange = (e) => {
     let value = e.target.value
     if (e.target.name === "miles") {
       value = parseInt(value)
@@ -34,23 +34,22 @@ const [formData, setFormData] = useState({
       }
     })
   }
-const handleMakeChange=((state)=>{
-    setFormData((prevState)=>{
-      return{
+  const handleMakeChange = (state) => {
+    setFormData((prevState) => {
+      return {
         ...prevState,
-        make:state,
+        make: state,
       }
     })
-  })
+  }
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log({ formData ,currentCity,currentState})
-    const payload={ ...formData ,currentCity,currentState}
+    const payload = { ...formData, city: currentCity, state: currentState }
     dispatch(carListing(payload))
   }
   const [currentState, setCurrentState] = useState("Texas")
   const [currentCity, setCurrentCity] = useState("Alamo")
-    const handleCurrentState = (state) => {
+  const handleCurrentState = (state) => {
     setCurrentState(state)
     setCurrentCity("")
   }
@@ -59,13 +58,13 @@ const handleMakeChange=((state)=>{
     setCurrentCity(city)
   }
   useEffect(() => {}, [carslist])
-  const { year, model, miles, contact_no,price, title,photo  } = formData
+  const { year, model, miles, contactno, price, title, image } = formData
   return (
     <form
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-          <span>States</span>
+      <span>States</span>
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
@@ -74,13 +73,13 @@ const handleMakeChange=((state)=>{
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState?currentCity:currentState}
+        disabled={!!currentState ? currentCity : currentState}
       />
-            <span>Make</span>
+      <span>Make</span>
       <CarMakers
         handleMakeChange={handleMakeChange}
         currentState={currentState}
-      /> 
+      />
       <TextInput
         name="year"
         id="year"
@@ -101,7 +100,7 @@ const handleMakeChange=((state)=>{
         type="text"
         handleChange={handleChange}
       />
-     <TextInput
+      <TextInput
         name="miles"
         id="miles"
         value={miles}
@@ -111,7 +110,7 @@ const handleMakeChange=((state)=>{
         type="number"
         handleChange={handleChange}
       />
-       <TextInput
+      <TextInput
         name="title"
         id="title"
         value={title}
@@ -122,9 +121,9 @@ const handleMakeChange=((state)=>{
         handleChange={handleChange}
       />
       <TextInput
-        name="contact_no"
-        id="contact_no"
-        value={contact_no}
+        name="contactno"
+        id="contactno"
+        value={contactno}
         label="Contact Number"
         placeholder="Contact Number"
         type="number"
@@ -136,18 +135,18 @@ const handleMakeChange=((state)=>{
         name="price"
         id="price"
         value={price}
-       label="Price"
+        label="Price"
         type="number"
         required={true}
         handleChange={handleChange}
       />
 
       <TextInput
-        name="photo"
-        id="photo"
-        value={photo}
-        label="Photo"
-        placeholder="Photo"
+        name="image"
+        id="image"
+        value={image}
+        label="image"
+        placeholder="image"
         type="file"
         required={true}
         handleChange={handleChange}

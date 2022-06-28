@@ -42,7 +42,6 @@ export const addSellTruckpartsListing =
       type: SELL_TRUCK_PARTS_REQUEST,
     })
     try {
-      console.log("dispached")
       const { user } = getState((state) => state)
       const token = user?.token
       const config = {

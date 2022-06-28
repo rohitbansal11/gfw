@@ -5,7 +5,7 @@ import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
 import TitleList from "./titlelistdropdown"
 import { Previews } from "../SellTruck/Dropzone"
-import { useDispatch,useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { RideSchoolListing } from "../../../../store/ride-store/ride-action"
 import { useEffect } from "react"
 
@@ -13,14 +13,13 @@ const RideSchool = ({ className }) => {
   const [formData, setFormData] = useState({
     pickup: "",
     pickup_date_time: "",
-    Schoolname: "",
-    title:"",
-    contact_no: null,
-    photo:[],
-    })
+    schoolname: "",
+    title: "",
+    contactno: null,
+  })
   const [currentState, setCurrentState] = useState("Texas")
   const [currentCity, setCurrentCity] = useState("Alamo")
-    const handleCurrentState = (state) => {
+  const handleCurrentState = (state) => {
     setCurrentState(state)
     setCurrentCity("")
   }
@@ -45,29 +44,23 @@ const RideSchool = ({ className }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const payload = { ...formData, currentCity, currentState }
+    const { pickup_date_time, ...rest } = { ...formData }
+    const payload = { ...rest, city: currentCity, state: currentState }
     console.log({ payload, formData })
     dispatch(RideSchoolListing(payload))
   }
-  const handleFileChange = (state)=>{
-    setFormData((prevState)=>{
-      return{
+
+  const handleTitleChange = (state) => {
+    setFormData((prevState) => {
+      return {
         ...prevState,
-        files:state,
+        title: state,
       }
-    })
-  }
-  const handleTitleChange=(state)=>{
-    setFormData((prevState)=>{
-    return{
-      ...prevState,
-      title:state
-    }  
     })
   }
 
   useEffect(() => {}, [rideSchool])
-  const { pickup, pickup_date_time, Schoolname, title,contact_no,photo } = formData
+  const { pickup, pickup_date_time, schoolname, title, contactno } = formData
 
   return (
     <form
@@ -78,7 +71,6 @@ const RideSchool = ({ className }) => {
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
-
       />
       <CitySelect
         handleCurrentCity={handleCurrentCity}
@@ -107,9 +99,9 @@ const RideSchool = ({ className }) => {
         handleChange={handleChange}
       />
       <TextInput
-        name="Schoolname"
-        id="Schoolname"
-        value={Schoolname}
+        name="schoolname"
+        id="schoolname"
+        value={schoolname}
         label="School name"
         placeholder="School name"
         required={true}
@@ -117,31 +109,18 @@ const RideSchool = ({ className }) => {
         handleChange={handleChange}
       />
       <span>Ad Title</span>
-      <TitleList
-
-        handleTitleChange={handleTitleChange}
-      currentTitle={title}
-      />
+      <TitleList handleTitleChange={handleTitleChange} currentTitle={title} />
       <TextInput
-        name="contact_no"
-        id="contact_no"
-        value={contact_no}
+        name="contactno"
+        id="contactno"
+        value={contactno}
         label="Contact Number"
         placeholder="Contact Number"
         type="number"
         required={true}
         handleChange={handleChange}
       />
-         <TextInput
-        name="photo"
-        id="photo"
-        value={photo}
-        label="Photo"
-        placeholder="Photo"
-        type="file"
-        required={true}
-        handleChange={handleChange}
-      />
+
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

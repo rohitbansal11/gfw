@@ -8,16 +8,15 @@ import { useDispatch, useSelector } from "react-redux"
 import { LocalWorkersListing } from "@store/local-store/local-action"
 
 const Localworkers = ({ className }) => {
-
   const [formData, setFormData] = useState({
-    jobpost: "",
+    job: "",
     name: "",
     location: "",
-    contact_no: null,
+    contactno: null,
     title: "",
   })
-  const dispatch= useDispatch()
-  const Localworkers= useSelector((state)=>{
+  const dispatch = useDispatch()
+  const Localworkers = useSelector((state) => {
     state.localworkers
   })
   const handleChange = (e) => {
@@ -32,56 +31,52 @@ const Localworkers = ({ className }) => {
       }
     })
   }
-    const [currentState, setCurrentState] = useState("Texas")
-    const [currentCity, setCurrentCity] = useState("Alamo")
-    const handleCurrentState = (state) => {
+  const [currentState, setCurrentState] = useState("Texas")
+  const [currentCity, setCurrentCity] = useState("Alamo")
+  const handleCurrentState = (state) => {
     setCurrentState(state)
     setCurrentCity("")
-
   }
   const handleCurrentCity = (city) => {
-  setCurrentCity(city)
+    setCurrentCity(city)
   }
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log({ formData })
-    const payload={...formData,currentCity,currentState}
-    dispatch(LocalWorkersListing(payload))    
+    const payload = { ...formData, city: currentCity, state: currentState }
+    dispatch(LocalWorkersListing(payload))
   }
-    useEffect(() => {
-     
-    }, [Localworkers])
-    
-  const {jobpost,name, contact_no,title,location } = formData
+  useEffect(() => {}, [Localworkers])
+
+  const { job, name, contactno, title, location } = formData
 
   return (
     <form
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-     <span>States</span>
+      <span>States</span>
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
-          
       />
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState?currentCity:currentState}
+        disabled={!!currentState ? currentCity : currentState}
       />
-        <TextInput
-        name="jobpost"
-        id="jobpost"
-        value={jobpost}
+      <TextInput
+        name="job"
+        id="job"
+        value={job}
         label="Job Post"
         placeholder="Job Post"
         required={true}
         type="text"
         handleChange={handleChange}
       />
-             <TextInput
+      <TextInput
         name="name"
         id="name"
         value={name}
@@ -90,11 +85,6 @@ const Localworkers = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-      
-      
-
-                  
-     
 
       <TextInput
         name="location"
@@ -107,11 +97,10 @@ const Localworkers = ({ className }) => {
         handleChange={handleChange}
       />
 
-
       <TextInput
-        name="contact_no"
-        id="contact_no"
-        value={contact_no}
+        name="contactno"
+        id="contactno"
+        value={contactno}
         label="Contact Number"
         placeholder="Contact Number"
         type="number"
@@ -129,7 +118,6 @@ const Localworkers = ({ className }) => {
         handleChange={handleChange}
       />
 
-
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"
@@ -140,4 +128,4 @@ const Localworkers = ({ className }) => {
   )
 }
 
-export default  Localworkers
+export default Localworkers

@@ -8,11 +8,11 @@ import { useDispatch, useSelector } from "react-redux"
 import { rentroomsListing } from "@store/sell-or-rent-store/sell-or-rent-action"
 const ForRentRooms = ({ className }) => {
   const [formData, setFormData] = useState({
-    rooms: "", 
+    rooms: "",
     title: "",
     price: "",
-    contact_no: null,
-    photo: [],
+    contactno: null,
+    image: [],
   })
   const handleChange = (e) => {
     let value = e.target.value
@@ -26,20 +26,18 @@ const ForRentRooms = ({ className }) => {
       }
     })
   }
-  const dispatch=useDispatch();
-  const rentrooms=useSelector((state)=>{
+  const dispatch = useDispatch()
+  const rentrooms = useSelector((state) => {
     state.rentrooms
   })
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log({ formData ,currentCity,currentState})
-    let payload={...formData,currentCity,currentState}
+    let payload = { ...formData, city: currentCity, state: currentState }
     dispatch(rentroomsListing(payload))
-
   }
   const [currentState, setCurrentState] = useState("Texas")
   const [currentCity, setCurrentCity] = useState("Alamo")
-    const handleCurrentState = (state) => {
+  const handleCurrentState = (state) => {
     setCurrentState(state)
     setCurrentCity("")
   }
@@ -47,30 +45,28 @@ const ForRentRooms = ({ className }) => {
     setCurrentCity(city)
   }
 
-useEffect(() => {}, [rentrooms])
+  useEffect(() => {}, [rentrooms])
 
-  const {rooms, contact_no,title,price ,photo} = formData
+  const { rooms, contactno, title, price, image } = formData
 
   return (
     <form
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-
-     <span>States</span>
+      <span>States</span>
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
-          
       />
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState?currentCity:currentState}
+        disabled={!!currentState ? currentCity : currentState}
       />
 
-            <TextInput
+      <TextInput
         name="rooms"
         id="rooms"
         value={rooms}
@@ -80,7 +76,7 @@ useEffect(() => {}, [rentrooms])
         type="number"
         handleChange={handleChange}
       />
-                          <TextInput
+      <TextInput
         name="title"
         id="title"
         value={title}
@@ -90,21 +86,20 @@ useEffect(() => {}, [rentrooms])
         type="text"
         handleChange={handleChange}
       />
-            <TextInput
+      <TextInput
         name="price"
         id="price"
-       label="Price"
+        label="Price"
         type="number"
         placeholder="Price"
         required={true}
         handleChange={handleChange}
       />
-         
 
       <TextInput
-        name="contact_no"
-        id="contact_no"
-        value={contact_no}
+        name="contactno"
+        id="contactno"
+        value={contactno}
         label="Contact Number"
         placeholder="Contact Number"
         type="number"
@@ -112,13 +107,12 @@ useEffect(() => {}, [rentrooms])
         handleChange={handleChange}
       />
 
-
-             <TextInput
-        name="photo"
-        id="photo"
-        value={photo}
-        label="Photo"
-        placeholder="Photo"
+      <TextInput
+        name="image"
+        id="image"
+        value={image}
+        label="image"
+        placeholder="image"
         type="file"
         required={true}
         handleChange={handleChange}

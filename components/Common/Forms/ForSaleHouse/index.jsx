@@ -1,11 +1,11 @@
-import React, { useState ,useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import { TextInput } from "@components/Common"
 
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
 import { Previews, StyledDropzone } from "../SellTruck/Dropzone"
 import { sellhouseListing } from "@store/sell-or-rent-store/sell-or-rent-action"
-import { useDispatch,useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 const forSaleHouse = ({ className }) => {
   const [formData, setFormData] = useState({
@@ -14,11 +14,12 @@ const forSaleHouse = ({ className }) => {
     year: null,
     rooms: "",
     state: "",
-    contact_no: null,
-    photo: {},
+    contactno: null,
+    image: {},
+    area: null,
   })
-    const dispatch=useDispatch();
-  const sellhouse=useSelector((state)=>{
+  const dispatch = useDispatch()
+  const sellhouse = useSelector((state) => {
     state.sellhouse
   })
   const handleChange = (e) => {
@@ -33,28 +34,30 @@ const forSaleHouse = ({ className }) => {
       }
     })
   }
-useEffect(() => {}, [sellhouse])
-    const handleFileChange = (state) => {
+  useEffect(() => {}, [sellhouse])
+  const handleFileChange = (state) => {
     console.log(state)
     setFormData((prevState) => {
       return {
         ...prevState,
-        file: state,
+        image: state,
       }
     })
   }
   const handleSubmit = (e) => {
-
     e.preventDefault()
-    console.log({ formData })
-    let payload={...formData,currentCity,currentState}
+    let payload = {
+      ...formData,
+      city: currentCity,
+      state: currentState,
+      image: "https://image.jpg", //@todo remove this and handle image upload
+    }
     dispatch(sellhouseListing(payload))
   }
 
-
-    const [currentState, setCurrentState] = useState("Texas")
-    const [currentCity, setCurrentCity] = useState("Alamo")
-    const handleCurrentState = (state) => {
+  const [currentState, setCurrentState] = useState("Texas")
+  const [currentCity, setCurrentCity] = useState("Alamo")
+  const handleCurrentState = (state) => {
     setCurrentState(state)
     setCurrentCity("")
   }
@@ -62,26 +65,25 @@ useEffect(() => {}, [sellhouse])
     setCurrentCity(city)
   }
 
-  const {  contact_no, rooms,title } = formData
+  const { contactno, rooms, title, area } = formData
 
   return (
     <form
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-<span>States</span>
+      <span>States</span>
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
-          
       />
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState?currentCity:currentState}
+        disabled={!!currentState}
       />
-            <TextInput
+      <TextInput
         name="rooms"
         id="rooms"
         value={rooms}
@@ -91,7 +93,7 @@ useEffect(() => {}, [sellhouse])
         type="number"
         handleChange={handleChange}
       />
-                          <TextInput
+      <TextInput
         name="title"
         id="title"
         value={title}
@@ -101,37 +103,38 @@ useEffect(() => {}, [sellhouse])
         type="text"
         handleChange={handleChange}
       />
-            <TextInput
+      <TextInput
         name="price"
         id="price"
-       label="Price"
+        label="Price"
         type="number"
         placeholder="Price"
         required={true}
         handleChange={handleChange}
       />
-                  <TextInput
+      <TextInput
         name="area"
         id="area"
-       label="area"
+        label="area"
         type="number"
         placeholder="Area in square feet"
         required={true}
+        value={area}
         handleChange={handleChange}
       />
 
       <TextInput
-        name="contact_no"
-        id="contact_no"
-        value={contact_no}
+        name="contactno"
+        id="contactno"
+        value={contactno}
         label="Contact Number"
         placeholder="Contact Number"
         type="number"
         required={true}
         handleChange={handleChange}
       />
-<span>Add Images</span>
-            <Previews handleFileChange={handleFileChange} />
+      <span>Add Images</span>
+      <Previews handleFileChange={handleFileChange} />
 
       <button
         type="submit"
