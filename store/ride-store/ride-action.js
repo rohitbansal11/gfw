@@ -25,8 +25,8 @@ export const RideSchoolListing = (payload) => async (dispatch, getState) => {
         Authorization: `Bearer ${token}`,
       },
     }
+    console.log({ payload: payload })
     const res = await axios.post("/schoolride", payload, config)
-    console.log({ data: res?.data })
     dispatch({
       type: RIDE_SCHOOL_SUCCESS,
       payload: payload,

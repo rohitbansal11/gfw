@@ -8,6 +8,8 @@ export default function CitySelect({
   currentCity,
   currentState,
   disabled,
+  label,
+  className,
 }) {
   const cities = citiesData
     .map((city) => {
@@ -25,12 +27,13 @@ export default function CitySelect({
   return (
     <div>
       <Select
-        label="City"
-        placeholder="Pick one"
+        label={label ? "City" : null}
+        placeholder="Select City"
         data={cities}
         disabled={disabled}
         required
         onChange={handleCity}
+        className={` ${className}`}
       />
     </div>
   )

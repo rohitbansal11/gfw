@@ -12,7 +12,7 @@ import { useEffect } from "react"
 const RideSchool = ({ className }) => {
   const [formData, setFormData] = useState({
     pickup: "",
-    pickup_date_time: "",
+    pickupdate: "",
     schoolname: "",
     title: "",
     contactno: null,
@@ -23,11 +23,11 @@ const RideSchool = ({ className }) => {
     setCurrentState(state)
     setCurrentCity("")
   }
-  const dispatch = useDispatch()
-  const rideSchool = useSelector((state) => state.rideSchool)
   const handleCurrentCity = (city) => {
     setCurrentCity(city)
   }
+  const dispatch = useDispatch()
+  const rideSchool = useSelector((state) => state.rideSchool)
 
   const handleChange = (e) => {
     let value = e.target.value
@@ -44,9 +44,7 @@ const RideSchool = ({ className }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const { pickup_date_time, ...rest } = { ...formData }
-    const payload = { ...rest, city: currentCity, state: currentState }
-    console.log({ payload, formData })
+    const payload = { ...formData, city: currentCity, state: currentState }
     dispatch(RideSchoolListing(payload))
   }
 
@@ -60,7 +58,7 @@ const RideSchool = ({ className }) => {
   }
 
   useEffect(() => {}, [rideSchool])
-  const { pickup, pickup_date_time, schoolname, title, contactno } = formData
+  const { pickup, pickupdate, schoolname, title, contactno } = formData
 
   return (
     <form
@@ -89,9 +87,9 @@ const RideSchool = ({ className }) => {
         handleChange={handleChange}
       />
       <TextInput
-        name="pickup_date_time"
-        id="pickup_date_time"
-        value={pickup_date_time}
+        name="pickupdate"
+        id="pickupdate"
+        value={pickupdate}
         label="Pickup Date & time"
         placeholder="Pick-up"
         required={true}
