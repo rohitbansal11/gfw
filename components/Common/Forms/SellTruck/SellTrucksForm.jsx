@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react"
 import { TextInput } from "@components/Common"
-import { Previews } from "./Dropzone"
+// import { Previews } from "./Dropzone"
 import StatesSelect from "./statesdropdown"
 import CitySelect from "./citiesdropdown"
 import MakeSelect from "./makedropdown"

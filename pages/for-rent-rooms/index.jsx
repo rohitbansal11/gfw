@@ -1,6 +1,6 @@
 import React from "react"
 import { BecomeMember, MobileApp, FormSection } from "@components/Common"
-import SellCarsForm from "@components/Common/Forms/cars"
+// import SellCarsForm from "@components/Common/Forms/cars"
 import ForRentRooms from "@components/Common/Forms/forRentRooms"
 
 const rentrooms = () => {

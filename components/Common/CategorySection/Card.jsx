@@ -1,9 +1,9 @@
-import React, { useState } from "react"
-import Link from "next/link"
-import { Icon } from "@iconify/react"
-import { FadeUpDown } from ".."
+import React, { useState } from "react";
+import Link from "next/link";
+import { Icon } from "@iconify/react";
+import { FadeUpDown } from "..";
 const Card = ({ item, index }) => {
-  const [active, setActive] = useState(null)
+  const [active, setActive] = useState(null);
   return (
     <div className="relative">
       <FadeUpDown delay={index * 0.2}>
@@ -35,7 +35,7 @@ const Card = ({ item, index }) => {
               </a>
             </div>
           </Link>
-          <Link
+         {item.subCategory[1] && <Link
             href={item.subCategory[1]?.href ? item.subCategory[1]?.href : "/"}
           >
             <div className="h-[40px] border-2 border-indigo-700 hover:bg-indigo-700 hover:text-white cursor-pointer flex rounded-md px-4 py-2 justify-center items-center">
@@ -43,13 +43,24 @@ const Card = ({ item, index }) => {
                 {item.subCategory[1]?.title}
               </a>
             </div>
-          </Link>
+          </Link>}
+          {item.subCategory[2] && (
+            <Link
+              href={item.subCategory[2]?.href ? item.subCategory[2]?.href : "/"}
+            >
+              <div className="h-[40px] border-2 border-indigo-700 hover:bg-indigo-700 hover:text-white cursor-pointer flex rounded-md px-4 py-2 justify-center items-center">
+                <a className="text-xl font-semibold tracking-wide">
+                  {item.subCategory[2]?.title}
+                </a>
+              </div>
+            </Link>
+          )}
         </div>
       ) : (
         <></>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;
