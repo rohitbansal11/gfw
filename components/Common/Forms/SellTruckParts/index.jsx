@@ -4,7 +4,7 @@ import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
 import MakeSelect from "../SellTruck/makedropdown"
-import { Previews } from "../SellTruck/Dropzone"
+// import { Previews } from "../SellTruck/Dropzone"
 import { useDispatch, useSelector } from "react-redux"
 import { addSellTruckpartsListing } from "../../../../store/sell-truck-store/sell-truck-action"
 const SellTruckPartsForm = ({ className }) => {

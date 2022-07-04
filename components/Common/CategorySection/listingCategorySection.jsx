@@ -3,7 +3,7 @@ import { Section, Container, FadeUpDown } from "@components/Common";
 import { PrimaryHeading } from "../Typography";
 import Cards from "./Cards";
 
-const CategorySection = ({ items }) => {
+const listingCategorySection = ({ items }) => {
   return (
     <Section className="bg-red-200">
       <Container>
@@ -22,8 +22,7 @@ const CategorySection = ({ items }) => {
     </Section>
   );
 };
-
-CategorySection.defaultProps = {
+listingCategorySection.defaultProps = {
   items: [
     {
       icon: "fa-solid:truck-loading",
@@ -48,12 +47,12 @@ CategorySection.defaultProps = {
       color: "bg-red-600",
       subCategory: [
         {
-          title: "Truck/Part Sale",
-          href: "/truck-parts",
+          title: "Truck/Part Sell",
+          href: "/sell-truck-parts",
         },
         {
-          title: "Trucks Sale",
-          href: "/trucks",
+          title: "Truck Sell",
+          href: "/sell-trucks",
         },
       ],
     },
@@ -64,12 +63,12 @@ CategorySection.defaultProps = {
       color: "bg-indigo-700",
       subCategory: [
         {
-          title: "Job local store",
-          href: "/job-local-stores",
+          title: "Local stores",
+          href: "/local-store",
         },
         {
-          title: "Job local workers",
-          href: "/job-local-worker",
+          title: "Local workers",
+          href: "/local-workers",
         },
       ],
     },
@@ -80,10 +79,9 @@ CategorySection.defaultProps = {
       color: "bg-red-600",
       subCategory: [
         {
-          title: "Cars sale",
-          href: "/car-sale",
+          title: "Cars sell",
+          href: "/cars",
         },
-       
       ],
     },
     {
@@ -94,15 +92,15 @@ CategorySection.defaultProps = {
       subCategory: [
         {
           title: "School Ride",
-          href: "/ride-school",
+          href: "/ride-schools",
         },
         {
           title: "Old Age Ride",
-          href: "/ride-oldage",
+          href: "/ride-old-age",
         },
         {
           title: "Airport Ride",
-          href: "/ride-airport",
+          href: "/ride-airport1",
         },
       ],
     },
@@ -118,11 +116,11 @@ CategorySection.defaultProps = {
         },
         {
           title: "Rent room",
-          href: "/rent-room",
+          href: "/for-rent-rooms",
         },
       ],
     },
   ],
 };
 
-export default CategorySection;
+export default listingCategorySection;

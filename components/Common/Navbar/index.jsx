@@ -99,10 +99,7 @@ const Navbar = ({ links }) => {
           <div className="lg:flex hidden py-3">
             <div className="flex flex-1 ">
               <div className=" flex w-full gap-3 pl-4">
-                <PrimaryButton className="bg-indigo-700 hover:bg-indigo-500 text-white">
-                  <RiSendPlaneLine size={24} color="white" />
-                  Set Location
-                </PrimaryButton>
+              
                 <PrimaryButton className="bg-white">
                   <img
                     src={`/images/emergency-sign.svg`}

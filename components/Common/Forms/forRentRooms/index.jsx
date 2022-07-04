@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { TextInput } from "@components/Common"
-import DropDown from "../SellTruck/statesdropdown"
+// import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
-import { StyledDropzone } from "../SellTruck/Dropzone"
+// import { StyledDropzone } from "../SellTruck/Dropzone"
 import { useDispatch, useSelector } from "react-redux"
 import { rentroomsListing } from "@store/sell-or-rent-store/sell-or-rent-action"
 const ForRentRooms = ({ className }) => {
