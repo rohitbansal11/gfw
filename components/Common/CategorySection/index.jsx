@@ -28,8 +28,18 @@ CategorySection.defaultProps = {
     {
       icon: "fa-solid:truck-loading",
       text: "Loads",
-      href: "/loads",
+      href: "#",
       color: "bg-indigo-700",
+      subCategory: [
+        {
+          title: "Loads",
+          href: "/loads",
+        },
+        {
+          title: "Emergency Loads",
+          href: "/emergency-loads",
+        },
+      ],
     },
     {
       icon: "fa6-solid:truck-arrow-right",

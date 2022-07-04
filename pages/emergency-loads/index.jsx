@@ -1,4 +1,7 @@
-import { Loads, MobileApp } from "@components/Common"
+import {
+  EmergencyLoads as EmergencyLoadsComponent,
+  MobileApp,
+} from "@components/Common"
 import Hero from "@components/Common/Home/Hero"
 import React from "react"
 
@@ -10,7 +13,7 @@ const EmergencyLoads = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <Loads loads={loads} />
+      <EmergencyLoadsComponent loads={loads} />
       <MobileApp />
     </>
   )
