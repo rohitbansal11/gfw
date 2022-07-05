@@ -2,12 +2,12 @@ import React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { FaFacebook, FaTwitter, FaYoutube, FaLinkedin } from "react-icons/fa"
-const Footer = ({ links }) => {
+const Footer = ({ links ,more }) => {
   return (
     <footer>
       <section className="flex py-10">
-        <div className="flex w-[90%] max-w-[1400px] mx-auto flex-wrap">
-          <div classname="w-[100%] md:w-[50%] lg:w-[30%]">
+        <div className="flex w-[90%] max-w-[1500px] mx-auto flex-wrap">
+          <div classname="w-[100%] md:w-[50%] lg:w-[28%]">
             <Image src="/images/gudguru-logo.png" height={90} width={160} />
             <p className="w-[40ch] mb-4">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat
@@ -47,13 +47,25 @@ const Footer = ({ links }) => {
               </Link>
             </div>
           </div>
-          <div className="w-[100%] mt-4 md:w-[50%] md:mt-0 lg:w-[20%]">
+          <div className="w-[100%] mt-4 md:w-[50%] md:mt-0 lg:w-[15%]">
             <div className="mb-2 text-xl font-semibold">Quicklinks</div>
             <ul className="flex flex-col gap-1">
               {links.map((item) => (
                 <li className="mb-1 border-b-2 border-white hover:border-black max-w-fit">
                   <Link href={item.href}>
-                    <a>{item.text}</a>
+                    <a>{item.text} </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="w-[100%] mt-4 md:w-[50%] md:mt-0 lg:w-[15%]">
+            <div className="mb-2 text-xl font-semibold">Morelinks</div>
+            <ul className="flex flex-col gap-1">
+              {more.map((item) => (
+                <li className="mb-1 border-b-2 border-white hover:border-black max-w-fit">
+                  <Link href={item.href}>
+                    <a>{item.text} </a>
                   </Link>
                 </li>
               ))}
@@ -81,7 +93,7 @@ const Footer = ({ links }) => {
               </li>
             </ul>
           </div>
-          <div className="w-[100%] mt-4 md:w-[50%] md:mt-0 lg:w-[26%] ">
+          <div className="w-[100%] mt-4 md:w-[50%] md:mt-0 lg:w-[23%] ">
             <div className="mb-2 text-xl font-semibold">Auxillary Links</div>
             <ul className="flex flex-col gap-1">
               <li className="mb-1 border-b-2 border-white hover:border-black max-w-fit">
@@ -116,29 +128,52 @@ const Footer = ({ links }) => {
 }
 Footer.defaultProps = {
   links: [
+    
     {
-      href: "/",
-      text: "Loads",
+      href: "/sell-trucks",
+      text: "Truck Sale",
     },
     {
-      href: "/truck-part-sale",
-      text: "Truck & Part Sale",
+      href: "/sell-truck-parts",
+      text: "Truck Part Sale",
     },
     {
       href: "/car-sale",
       text: "Car Sale",
     },
     {
-      href: "/jobs",
-      text: "Jobs",
+      href: "/ride-school",
+      text: "Get School Ride",
     },
     {
-      href: "/get-ride",
-      text: "Get Ride",
+      href: "/ride-oldage",
+      text: "Get Oldage Ride",
     },
     {
-      href: "/rent",
-      text: "Rent",
+      href: "/ride-airport",
+      text: "Get Airport Ride",
+    },
+  ],
+  more: [
+    {
+      href: "/loads",
+      text: "Loads",
+    },
+    {
+      href: "/rent-room",
+      text: "Rent room",
+    },
+    {
+      href: "/rent-home",
+      text: "Rent home",
+    },
+    {
+      href: "/local-store",
+      text: "Local stores",
+    },
+    {
+      href: "/local-workers",
+      text: "Local workers",
     },
   ],
 }

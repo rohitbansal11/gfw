@@ -3,6 +3,7 @@ import {
   USER_LOGIN_FAILED,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
+  NAV_HIDE,
 } from "./userTypes"
 
 const config = {
@@ -35,3 +36,8 @@ export const loginUser = (payload) => async (dispatch, getState) => {
     })
   }
 }
+
+export const Navhide = (data) => async (dispatch) => {
+  
+  dispatch({ type: NAV_HIDE, payload: data });
+};

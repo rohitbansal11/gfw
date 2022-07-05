@@ -1,4 +1,5 @@
 import {
+  NAV_HIDE,
   USER_LOGIN_FAILED,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -6,6 +7,7 @@ import {
 const initialState = {
   token: "",
   error: "",
+  Nav: "",
   loading: false,
 }
 
@@ -27,6 +29,12 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         error: [...state.error, payload],
+      }
+      case NAV_HIDE: {
+        return {
+          ...state,
+          Nav:payload
+        };
       }
     default:
       return state
