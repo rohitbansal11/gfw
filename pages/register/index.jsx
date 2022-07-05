@@ -43,7 +43,7 @@ const Register = () => {
 
   return (
     <div className=" bg-[url(/images/auth.png)] md:bg-[url()] bg-indigo-400  md:bg-white py-4 flex justify-center items-center w-full flex-col md:flex-row">
-      <div className="w-[50%]  my-[60px]">
+      <div className="w-[80%] md:w-[50%]  my-[60px]">
         <div className="w-[100%] md:w-[80%] max-w-[500px] drop-shadow-2xl mx-auto bg-white p-6">
           <h3 className="text-2xl font-bold tracking-wide mb-4">Register</h3>
           <p className="mb-2">Already have an account?</p>
