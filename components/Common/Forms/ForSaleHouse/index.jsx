@@ -3,7 +3,7 @@ import { TextInput } from "@components/Common"
 
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
-import { Previews, StyledDropzone } from "../SellTruck/Dropzone"
+import { Previews, } from "../SellTruck/dropzone"
 import { sellhouseListing } from "@store/sell-or-rent-store/sell-or-rent-action"
 import { useDispatch, useSelector } from "react-redux"
 
