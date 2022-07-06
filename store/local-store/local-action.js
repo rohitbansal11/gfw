@@ -22,6 +22,7 @@ export const LocalStoreListing = (payload) => async (dispatch, getState) => {
         Authorization: `Bearer ${token}`,
       },
     }
+    console.log({ payload})
     const res = await axios.post("/localstore", payload, config)
     console.log({ data: res?.data })
     dispatch({

@@ -32,11 +32,7 @@ listingCategorySection.defaultProps = {
       subCategory: [
         {
           title: "Loads",
-          href: "/loads",
-        },
-        {
-          title: "Emergency Loads",
-          href: "/emergency-loads",
+          href: "/load-form",
         },
       ],
     },
@@ -112,7 +108,7 @@ listingCategorySection.defaultProps = {
       subCategory: [
         {
           title: "Rent Home",
-          href: "/rent",
+          href: "/rent-house",
         },
         {
           title: "Rent room",

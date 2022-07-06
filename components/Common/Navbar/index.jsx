@@ -8,6 +8,7 @@ import { BsCart2 } from "react-icons/bs";
 import { ChevronDownIcon, ChevronUpIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { useDispatch, useSelector } from "react-redux";
 import { Navhide } from "@store/user-store/userActions";
+import Login from "@pages/login";
 
 
 const Navbar = ({ links , loginHref , registerHref , listingHref}) => {
@@ -25,6 +26,7 @@ const Navbar = ({ links , loginHref , registerHref , listingHref}) => {
     // setActive(text);   
   };
 
+  
   const handleNav = () => {
     SetNav(!Nav);
   };
@@ -90,9 +92,11 @@ const Navbar = ({ links , loginHref , registerHref , listingHref}) => {
 
       <Container>
         <div className="flex w-full justify-between py-1">
+          <Link href="/">
           <div className="w-[15%]">
-            <img className="" src="/images/gudguru-logo.png" />
+            <img className="cursor-pointer" src="/images/gudguru-logo.png" />
           </div>
+          </Link>
           <nav className="w-full lg:flex hidden mr-4 justify-end">
             <ul className="flex sm:w-[100%] md:w-[90%] lg:w-[80%] h-full items-center justify-end gap-8">
               {links.map((item) => (
@@ -104,6 +108,12 @@ const Navbar = ({ links , loginHref , registerHref , listingHref}) => {
                 //   </Link>
                 // </li>
                 <Link className="cursor-pointer" href={item.href}>
+                  <>
+                  
+                  { //click event fired over the screen for close dropdown 
+                    `${item.text}`.toLowerCase() == `${active}`.toLowerCase() && <div onClick={handleClick} className="absolute top-0 left-0 right-0 bottom-0 h-[100vh] w-[100vw] bg-transparent"></div>
+                  }
+                   
                 <li
                   className="cursor-pointer relative mt-1 p-4 text-base flex uppercase"
                   onClick={handleClick}
@@ -113,25 +123,27 @@ const Navbar = ({ links , loginHref , registerHref , listingHref}) => {
                   {item?.sublinks?.length && (
                     <span
                       className=" p-0.5 ml-1"
-                      // onClick={handleClick}
+                      onClick={handleClick}
                     >
                       {`${item.text}`.toLowerCase() ==
                       `${active}`.toLowerCase() ? (
-                        <ChevronUpIcon  className="h-5 " />
+                        <ChevronUpIcon onClick={handleClick}  className="h-5 cursor-pointer " />
                       ) : (
-                        <ChevronDownIcon className="h-5 " />
+                        <ChevronDownIcon  onClick={handleClick} className="h-5 " />
                       )}
                     </span>
                   )}
 
                   {`${item.text}`.toLowerCase() == `${active}`.toLowerCase() ? (
                     <div>
+                     
                       {/* <span className="h-5 w-5 bg-red-500 relative"></span> */}
                       {item?.sublinks?.length && (
                         <>
+                              
                           <ul
                             className={
-                              "cursor-pointer	absolute z-20 bg-indigo-400 text-white text-center border-indigo-400 border-[3px]  overflow-hidden left-[-50%] rounded-lg mt-10 w-[200px] ml-5 normal-case"
+                              "cursor-pointer	absolute z-20 bg-white text-primary-600 font-bold tracking-wide  text-center border-white border-[2px] border-blue-700  overflow-hidden left-[-50%] rounded-lg mt-10 w-[200px] ml-5 normal-case"
                             }
                           >
                             {item?.sublinks?.length &&
@@ -141,7 +153,7 @@ const Navbar = ({ links , loginHref , registerHref , listingHref}) => {
                                     className="cursor-pointer"
                                     href={subitem.href}
                                   >
-                                    <li className="justify-center p-4 text-base flex">
+                                    <li className="justify-center hover:text-blue-800 p-4 text-base flex border-b-2 border-white hover:border-gray-700 ">
                                       {subitem.text}
                                     </li>
                                   </Link>
@@ -155,6 +167,7 @@ const Navbar = ({ links , loginHref , registerHref , listingHref}) => {
                     <></>
                   )}
                 </li>
+                </>
               </Link>
               ))}
             </ul>
@@ -172,7 +185,7 @@ const Navbar = ({ links , loginHref , registerHref , listingHref}) => {
             </Link>
           </div>
           <div className="flex lg:hidden" onClick={handleClick}>
-            {!drop ? <MenuIcon className="w-5" /> : <XIcon className="w-5 z-10 fixed mt-4" />}
+            {!drop ? <MenuIcon className="w-5" /> : <XIcon  className="w-5 z-10 fixed mt-4" />}
           </div>
         </div>
       </Container>
@@ -221,8 +234,20 @@ const Navbar = ({ links , loginHref , registerHref , listingHref}) => {
 Navbar.defaultProps = {
   links: [
     {
-      href: "/loads",
+      href: "",
       text: "Loads",
+      sublinks: [
+        {
+          href: "/loads",
+          text:'Loads',
+
+        },
+        {
+          href: "/emergency-loads",
+          text:'Emergency Loads',
+          
+        }
+      ]
     },
     {
       href: "",

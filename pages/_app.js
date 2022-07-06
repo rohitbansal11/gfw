@@ -3,7 +3,11 @@ import { wrapper, store } from "../store/store"
 import { Provider } from "react-redux"
 import Theme from "../utils/theme"
 import { Navbar, Footer } from "@components/Common"
+import { useState } from "react"
+import Login from "./login"
 function MyApp({ Component, pageProps }) {
+
+  
   return (
     <>
       <Provider store={store}>

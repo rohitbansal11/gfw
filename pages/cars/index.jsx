@@ -6,7 +6,7 @@ const SellCars = () => {
   return (
     <>
       <FormSection
-       title="Cars"
+       title="Sale Car"
         img="/images/cars_forms.jpg"
       form={<SellCarsForm/>}
       />

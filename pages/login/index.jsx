@@ -2,16 +2,22 @@ import { Section } from "@components/Common"
 import React, { useState } from "react"
 import Link from "next/link"
 import { TextInput } from "@components/Common"
+import axios from "@utils/axios"
+import { useDispatch } from "react-redux"
+import { loginUser } from "@store/user-store/userActions"
 
 const Login = () => {
   const [formData, setFormData] = useState({
     password: "",
     email: "",
   })
+
+  const [token, setToken] = useState();
+  const dispatch = useDispatch()
   const [showPassword, setShowPassword] = useState(false)
 
   const handleChange = (e) => {
-    console.log(e.target.name, e.target.value)
+    // console.log(e.target.name, e.target.value) 
     setFormData((prevData) => {
       return {
         ...prevData,
@@ -19,6 +25,7 @@ const Login = () => {
       }
     })
   }
+  console.log("hhhhh" , {formData})
 
   const handleShowPassword = () => {
     console.log(showPassword)
@@ -28,6 +35,9 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log({ formData })
+    const payload = {...formData, email:email , password:password}
+    dispatch(loginUser(payload))
+    console.log({formData})
   }
 
   const { email, password } = formData

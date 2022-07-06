@@ -11,6 +11,9 @@ const TextInput = ({
   placeholder,
   errorMsg,
   required,
+  min,
+  max,
+  pattern,
   type = "text",
   inputClassName,
   showPassword,
@@ -38,6 +41,9 @@ const TextInput = ({
           value={value ? value : null}
           required={!!required}
           id={id}
+          min={min}
+          max={max}
+          pattern={pattern}
           placeholder={placeholder}
         />
         {type === "file" && (

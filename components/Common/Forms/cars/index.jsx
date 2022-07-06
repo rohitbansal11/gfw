@@ -44,9 +44,12 @@ const SellCarsForm = ({ className }) => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
+
     const payload = { ...formData, city: currentCity, state: currentState }
     dispatch(carListing(payload))
+    console.log("pp" , {formData})
   }
+
   const [currentState, setCurrentState] = useState("Texas")
   const [currentCity, setCurrentCity] = useState("Alamo")
   const handleCurrentState = (state) => {
@@ -64,16 +67,17 @@ const SellCarsForm = ({ className }) => {
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-      <span>States</span>
+      <span>State</span>
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
       />
+     <span className="my-1">City</span>
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState ? currentCity : currentState}
+        disabled={!!currentState ? false : true}
       />
       <span>Make</span>
       <CarMakers
@@ -125,8 +129,10 @@ const SellCarsForm = ({ className }) => {
         id="contactno"
         value={contactno}
         label="Contact Number"
-        placeholder="Contact Number"
+        placeholder="eg-999999"
         type="number"
+        min={"123456"}
+        max={"123456789123456"}
         required={true}
         handleChange={handleChange}
       />

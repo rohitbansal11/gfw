@@ -42,9 +42,10 @@ const Localworkers = ({ className }) => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log({ formData })
+    // console.log({ formData })
     const payload = { ...formData, city: currentCity, state: currentState }
     dispatch(LocalWorkersListing(payload))
+    console.log("hhh" , {formData})
   }
   useEffect(() => {}, [Localworkers])
 
@@ -60,11 +61,12 @@ const Localworkers = ({ className }) => {
         handleCurrentState={handleCurrentState}
         currentState={currentState}
       />
+     <span className="my-1">City</span>
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState ? currentCity : currentState}
+        disabled={!currentState ? true: false}
       />
       <TextInput
         name="job"
@@ -102,8 +104,10 @@ const Localworkers = ({ className }) => {
         id="contactno"
         value={contactno}
         label="Contact Number"
-        placeholder="Contact Number"
+        placeholder="eg-999999"
         type="number"
+        min={"123456"}
+        max={"123456789123456"}
         required={true}
         handleChange={handleChange}
       />
