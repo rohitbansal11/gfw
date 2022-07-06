@@ -33,8 +33,11 @@ const Localstore = ({ className }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const payload = { ...formData, city: currentCity, state: currentState }
+    const payload = { ...formData,
+       city: currentCity,
+      state: currentState }
     dispatch(LocalStoreListing(payload))
+    console.log("hello " , {formData})
   }
 
   const [currentState, setCurrentState] = useState("Texas")
@@ -56,16 +59,17 @@ const Localstore = ({ className }) => {
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-      <span>States</span>
+      <span>State</span>
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
       />
+      <span className="my-1">City</span>
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState ? currentCity : currentState}
+        disabled={!currentState ? true : false}
       />
 
       <TextInput
@@ -104,8 +108,10 @@ const Localstore = ({ className }) => {
         id="contactno"
         value={contactno}
         label="Contact Number"
-        placeholder="Contact Number"
+        placeholder="eg-999999"
         type="number"
+        min={"123456"}
+        max={"123456789123456"}
         required={true}
         handleChange={handleChange}
       />

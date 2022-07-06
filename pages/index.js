@@ -8,10 +8,13 @@ import {
 } from "@components/Common"
 import { useDispatch } from "react-redux"
 import { loginUser } from "@store/user-store/userActions"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
+import Login from "./login"
 export default function Home() {
   const dispatch = useDispatch()
+
+  
 
   useEffect(() => {
     dispatch(loginUser())

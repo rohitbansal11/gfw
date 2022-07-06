@@ -31,14 +31,14 @@ const SellTrucks = ({ className }) => {
     })
   }
 
-  const handleFileChange = (state) => {
-    setFormData((prevState) => {
-      return {
-        ...prevState,
-        image: state,
-      }
-    })
-  }
+  // const handleFileChange = (state) => {
+  //   setFormData((prevState) => {
+  //     return {
+  //       ...prevState,
+  //       image: state,
+  //     }
+  //   })
+  // }
   const handleCurrentState = useCallback(
     (state) => {
       setCurrentState(state)
@@ -74,6 +74,7 @@ const SellTrucks = ({ className }) => {
       image: "https://image.jpg", //@todo remove it and handle image upload
     }
     dispatch(addSellTruckListing(payload))
+    console.log("ggg" , formData)
   }
   useEffect(() => {}, [sellTruckState])
   const { year, model, miles, title, contactno,image } = formData
@@ -83,11 +84,12 @@ const SellTrucks = ({ className }) => {
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-      <span>States</span>
+      <span>State</span>
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
       />
+      <span className="my-1">City</span>
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
@@ -145,8 +147,10 @@ const SellTrucks = ({ className }) => {
         id="contactno"
         value={contactno}
         label="Contact No"
-        placeholder="Contact No"
+        placeholder="eg-999999"
         type="number"
+        min={"123456"}
+        max={"123456789123456"}
         required={true}
         handleChange={handleChange}
       />

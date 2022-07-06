@@ -23,6 +23,7 @@ const SellTruckPartsForm = ({ className }) => {
   const selltruckparts = useSelector((state) => {
     state.selltruckparts
   })
+  // console.log("sellll",{selltruckparts})
   const [currentState, setCurrentState] = useState("Texas")
 
   const [currentCity, setCurrentCity] = useState("Alamo")
@@ -58,9 +59,13 @@ const SellTruckPartsForm = ({ className }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const payload = { ...formData, city: currentCity, state: currentState }
-    console.log("dispach")
+    const payload = { 
+      ...formData,
+       city: currentCity,
+       state: currentState,
+       }
     dispatch(addSellTruckpartsListing(payload))
+    console.log("dispach" ,{formData})
   }
 
   const { part, make, year, model, price, title, contactno, image } = formData
@@ -75,6 +80,7 @@ const SellTruckPartsForm = ({ className }) => {
         handleCurrentState={handleCurrentState}
         currentState={currentState}
       />
+      <span className="my-1">City</span>
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
@@ -143,8 +149,10 @@ const SellTruckPartsForm = ({ className }) => {
         id="contactno"
         value={contactno}
         label="Contact Number"
-        placeholder="Contact Number"
+        placeholder="eg-999999"
         type="number"
+        min={"123456"}
+        max={"123456789123456"}
         required={true}
         handleChange={handleChange}
       />

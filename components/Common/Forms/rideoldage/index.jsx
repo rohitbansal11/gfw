@@ -43,9 +43,10 @@ const RideOldAge = ({ className }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log({ formData })
+    // console.log({ formData })
     const payload = { ...formData, city: currentCity, state: currentState }
     dispatch(RideOldAgeListing(payload))
+    console.log('pp',{formData})
   }
 
   const handleTitleChange = (state) => {
@@ -64,16 +65,17 @@ const RideOldAge = ({ className }) => {
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-      <span>States</span>
+      <span>State</span>
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
       />
+     <span className="my-1">City</span>
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={false}
+        disabled={!!currentState ? false : true}
       />
       <TextInput
         name="pickup"
@@ -113,8 +115,10 @@ const RideOldAge = ({ className }) => {
         id="contactno"
         value={contactno}
         label="Contact Number"
-        placeholder="Contact Number"
+        placeholder="eg-999999"
         type="number"
+        min={"123456"}
+        max={"123456789123456"}
         required={true}
         handleChange={handleChange}
       />

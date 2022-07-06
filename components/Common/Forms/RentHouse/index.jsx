@@ -7,7 +7,7 @@ import { Previews, } from "../SellTruck/dropzone"
 import { sellhouseListing } from "@store/sell-or-rent-store/sell-or-rent-action"
 import { useDispatch, useSelector } from "react-redux"
 
-const forSaleHouse = ({ className }) => {
+const RentHouse = ({ className }) => {
   const [formData, setFormData] = useState({
     title: "",
     city: "",
@@ -18,10 +18,19 @@ const forSaleHouse = ({ className }) => {
     image: {},
     area: null,
   })
+
+
+  
+  
   const dispatch = useDispatch()
   const sellhouse = useSelector((state) => {
     state.sellhouse
   })
+  
+  const [currentState, setCurrentState] = useState("Texas")
+
+  const [currentCity, setCurrentCity] = useState("Alamo")
+
   const handleChange = (e) => {
     let value = e.target.value
     if (e.target.name === "miles") {
@@ -29,12 +38,11 @@ const forSaleHouse = ({ className }) => {
     }
     setFormData((prevState) => {
       return {
-        ...prevState,
-        [e.target.name]: value,
+        ...prevState,[e.target.name]: value,
       }
     })
+    console.log(e.target.value)
   }
-  useEffect(() => {}, [sellhouse])
   const handleFileChange = (state) => {
     console.log(state)
     setFormData((prevState) => {
@@ -53,35 +61,41 @@ const forSaleHouse = ({ className }) => {
       image: "https://image.jpg", //@todo remove this and handle image upload
     }
     dispatch(sellhouseListing(payload))
+    // dispatch(sellhouse(payload))
+    console.log("ss" , { formData})
   }
-
-  const [currentState, setCurrentState] = useState("Texas")
-  const [currentCity, setCurrentCity] = useState("Alamo")
+  
+  
   const handleCurrentState = (state) => {
     setCurrentState(state)
     setCurrentCity("")
+    console.log("hhhh" , {state :state})
+
   }
   const handleCurrentCity = (city) => {
     setCurrentCity(city)
+    console.log(city  )
   }
 
-  const { contactno, rooms, title, area } = formData
-
+  const { contactno, rooms, image,title, area } = formData
+  useEffect(() => {}, [sellhouse])
+  
   return (
     <form
       onSubmit={handleSubmit}
       className={`flex mx-auto flex-col px-4 w-[100%] md:w-[80%] max-w-[500px] py-4 shadow-2xl my-8 bg-white ${className}`}
     >
-      <span>States</span>
+      <span>State</span>
       <StatesSelect
         handleCurrentState={handleCurrentState}
         currentState={currentState}
       />
+       <span>City</span>
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState}
+        disabled={!currentState ? true : false}
       />
       <TextInput
         name="rooms"
@@ -133,9 +147,15 @@ const forSaleHouse = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-      <span>Add Images</span>
-      <Previews handleFileChange={handleFileChange} />
-
+      <TextInput
+        name="image"
+        id="image"  
+        label="image"
+        placeholder="image"
+        type="file"
+        required={true}
+        handleChange={handleChange}
+      />
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"
@@ -146,4 +166,7 @@ const forSaleHouse = ({ className }) => {
   )
 }
 
-export default forSaleHouse
+export default RentHouse
+
+
+

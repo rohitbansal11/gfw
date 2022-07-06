@@ -14,6 +14,10 @@ const ForRentRooms = ({ className }) => {
     contactno: null,
     image: [],
   })
+  const [currentState, setCurrentState] = useState("Texas")
+  const [currentCity, setCurrentCity] = useState("Alamo")
+
+
   const handleChange = (e) => {
     let value = e.target.value
     if (e.target.name === "miles") {
@@ -34,14 +38,15 @@ const ForRentRooms = ({ className }) => {
     e.preventDefault()
     let payload = { ...formData, city: currentCity, state: currentState }
     dispatch(rentroomsListing(payload))
+    console.log("jj" , {formData})
   }
-  const [currentState, setCurrentState] = useState("Texas")
-  const [currentCity, setCurrentCity] = useState("Alamo")
   const handleCurrentState = (state) => {
+   
     setCurrentState(state)
     setCurrentCity("")
   }
   const handleCurrentCity = (city) => {
+    console.log({ city: city })
     setCurrentCity(city)
   }
 
@@ -59,11 +64,12 @@ const ForRentRooms = ({ className }) => {
         handleCurrentState={handleCurrentState}
         currentState={currentState}
       />
+     <span className="my-1">City</span>
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState ? currentCity : currentState}
+        disabled={!!currentState ? false : true}
       />
 
       <TextInput
