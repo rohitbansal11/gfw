@@ -3,7 +3,9 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { FadeUpDown } from "..";
 const Card = ({ item, index }) => {
+  
   const [active, setActive] = useState(null);
+
   return (
     <div className="relative">
       <FadeUpDown delay={index * 0.2}>

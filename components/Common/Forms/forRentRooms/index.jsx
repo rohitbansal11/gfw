@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { TextInput } from "@components/Common"
+import { NumberInput, TextInput } from "@components/Common"
 // import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
@@ -14,7 +14,7 @@ const ForRentRooms = ({ className }) => {
     contactno: null,
     image: [],
   })
-  const [currentState, setCurrentState] = useState("Texas")
+  const [currentState, setCurrentState] = useState(false)
   const [currentCity, setCurrentCity] = useState("Alamo")
 
 
@@ -38,7 +38,7 @@ const ForRentRooms = ({ className }) => {
     e.preventDefault()
     let payload = { ...formData, city: currentCity, state: currentState }
     dispatch(rentroomsListing(payload))
-    console.log("jj" , {formData})
+    // console.log("jj" , {formData})
   }
   const handleCurrentState = (state) => {
    
@@ -72,10 +72,11 @@ const ForRentRooms = ({ className }) => {
         disabled={!!currentState ? false : true}
       />
 
-      <TextInput
+      <NumberInput
         name="rooms"
         id="rooms"
         value={rooms}
+        maxLength='3'
         label=" No Of Rooms"
         placeholder="No of Rooms"
         required={true}
@@ -86,27 +87,31 @@ const ForRentRooms = ({ className }) => {
         name="title"
         id="title"
         value={title}
+        maxLength='40'
         label=" Ad Title"
         placeholder="Title"
         required={true}
         type="text"
         handleChange={handleChange}
       />
-      <TextInput
+      <NumberInput
         name="price"
         id="price"
         label="Price"
         type="number"
+        value={price}
+        maxLength='10'
         placeholder="Price"
         required={true}
         handleChange={handleChange}
       />
 
-      <TextInput
+      <NumberInput
         name="contactno"
         id="contactno"
         value={contactno}
         label="Contact Number"
+        maxLength='10'
         placeholder="Contact Number"
         type="number"
         required={true}

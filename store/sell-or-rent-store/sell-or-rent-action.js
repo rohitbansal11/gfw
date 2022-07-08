@@ -13,8 +13,7 @@ export const sellhouseListing = (payload) => async (dispatch, getState) => {
     type: SELL_HOUSE_REQUEST,
   })
   try {
-    const { user } = getState((state) => state)
-    const token = user?.token
+const token=localStorage.getItem("auth.token")
     const config = {
       headers: {
         "Content-Type": "application/json",

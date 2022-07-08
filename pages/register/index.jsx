@@ -1,45 +1,49 @@
-import { Section } from "@components/Common"
-import React, { useState } from "react"
-import Link from "next/link"
-import { TextInput } from "@components/Common"
+import { Section } from "@components/Common";
+import React, { useState } from "react";
+import Link from "next/link";
+import { TextInput ,NumberInput} from "@components/Common";
+import {signUpUser} from '../../store/user-store/userActions'
+import {useDispatch} from 'react-redux'
 
 const Register = () => {
+  const dispatch =useDispatch()
   const [formData, setFormData] = useState({
     email: "",
     name: "",
     phone: null,
-    image: "",
+    image: "https://loveshayariimages.in/wp-content/uploads/2022/02/Best-HD-Attitude-Girl-Dp-Pics-Images.jpg",
     password: "",
     confirmPassword: "",
-  })
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e) => {
-    console.log(e.target.name, e.target.value)
+    console.log(e.target.name, e.target.value);
     setFormData((prevData) => {
       return {
         ...prevData,
         [e.target.name]: e.target.value,
-      }
-    })
-  }
+      };
+    });
+  };
 
   const handleShowPassword = () => {
-    console.log(showPassword)
-    setShowPassword(!showPassword)
-  }
+    console.log(showPassword);
+    setShowPassword(!showPassword);
+  };
   const handleShowConfirmPassword = () => {
-    console.log(showConfirmPassword)
-    setShowConfirmPassword(!showConfirmPassword)
-  }
+    console.log(showConfirmPassword);
+    setShowConfirmPassword(!showConfirmPassword);
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log({ formData })
-  }
+    e.preventDefault();
+    dispatch(signUpUser(formData))
+   
+  };
 
-  const { email, password, name, confirmPassword, image } = formData
+  const {phone, email, password, name, confirmPassword, image } = formData;
 
   return (
     <div className=" bg-[url(/images/auth.png)] md:bg-[url()] bg-indigo-400  md:bg-white py-4 flex justify-center items-center w-full flex-col md:flex-row">
@@ -96,11 +100,22 @@ const Register = () => {
               handleChange={handleChange}
               handleShowPassword={handleShowConfirmPassword}
             />
+            <NumberInput
+              name="phone"
+              id="phone"
+              value={phone}
+              label="Contact Number"
+              placeholder="eg-999999"
+              type="number"
+              maxLength="10"
+              required={true}
+              handleChange={handleChange}
+            />
             <TextInput
               name="image"
               label="Profie Picture"
               placeholder="Profile Picture"
-              required
+              // required
               type="file"
             />
             <button
@@ -121,7 +136,7 @@ const Register = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

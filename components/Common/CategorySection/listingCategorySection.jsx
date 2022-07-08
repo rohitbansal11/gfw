@@ -87,7 +87,7 @@ listingCategorySection.defaultProps = {
       color: "bg-indigo-700",
       subCategory: [
         {
-          title: "School Ride",
+          title: "Ride",
           href: "/ride-schools",
         },
         {

@@ -25,7 +25,7 @@ const Login = () => {
       }
     })
   }
-  console.log("hhhhh" , {formData})
+  // console.log("hhhhh" , {formData})
 
   const handleShowPassword = () => {
     console.log(showPassword)
@@ -39,6 +39,7 @@ const Login = () => {
     dispatch(loginUser(payload))
     console.log({formData})
   }
+  
 
   const { email, password } = formData
 

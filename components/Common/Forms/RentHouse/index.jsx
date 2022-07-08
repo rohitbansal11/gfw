@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { TextInput } from "@components/Common"
+import { NumberInput, TextInput } from "@components/Common"
 
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
@@ -13,6 +13,7 @@ const RentHouse = ({ className }) => {
     city: "",
     year: null,
     rooms: "",
+    price: "",
     state: "",
     contactno: null,
     image: {},
@@ -27,7 +28,7 @@ const RentHouse = ({ className }) => {
     state.sellhouse
   })
   
-  const [currentState, setCurrentState] = useState("Texas")
+  const [currentState, setCurrentState] = useState(false)
 
   const [currentCity, setCurrentCity] = useState("Alamo")
 
@@ -61,15 +62,14 @@ const RentHouse = ({ className }) => {
       image: "https://image.jpg", //@todo remove this and handle image upload
     }
     dispatch(sellhouseListing(payload))
-    // dispatch(sellhouse(payload))
-    console.log("ss" , { formData})
+    // console.log("ss" , { formData})
   }
   
   
   const handleCurrentState = (state) => {
     setCurrentState(state)
     setCurrentCity("")
-    console.log("hhhh" , {state :state})
+    // console.log("hhhh" , {state :state})
 
   }
   const handleCurrentCity = (city) => {
@@ -77,7 +77,7 @@ const RentHouse = ({ className }) => {
     console.log(city  )
   }
 
-  const { contactno, rooms, image,title, area } = formData
+  const { contactno, rooms,price, image,title, area } = formData
   useEffect(() => {}, [sellhouse])
   
   return (
@@ -97,10 +97,11 @@ const RentHouse = ({ className }) => {
         currentState={currentState}
         disabled={!currentState ? true : false}
       />
-      <TextInput
+      <NumberInput
         name="rooms"
         id="rooms"
         value={rooms}
+        maxLength='3'
         label=" No Of Rooms"
         placeholder="No of Rooms"
         required={true}
@@ -111,25 +112,29 @@ const RentHouse = ({ className }) => {
         name="title"
         id="title"
         value={title}
+        maxLength='40'
         label=" Ad Title"
         placeholder="Title"
         required={true}
         type="text"
         handleChange={handleChange}
       />
-      <TextInput
+      <NumberInput
         name="price"
         id="price"
         label="Price"
+        value={price}
+        maxLength='10'
         type="number"
         placeholder="Price"
         required={true}
         handleChange={handleChange}
       />
-      <TextInput
+      <NumberInput
         name="area"
         id="area"
         label="area"
+        maxLength='10'
         type="number"
         placeholder="Area in square feet"
         required={true}
@@ -137,13 +142,14 @@ const RentHouse = ({ className }) => {
         handleChange={handleChange}
       />
 
-      <TextInput
+      <NumberInput
         name="contactno"
         id="contactno"
         value={contactno}
         label="Contact Number"
         placeholder="Contact Number"
         type="number"
+        maxLength='10'
         required={true}
         handleChange={handleChange}
       />

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { TextInput } from "@components/Common"
+import { NumberInput, TextInput } from "@components/Common"
 import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
@@ -17,7 +17,7 @@ const RideSchool = ({ className }) => {
     title: "",
     contactno: null,
   })
-  const [currentState, setCurrentState] = useState("Texas")
+  const [currentState, setCurrentState] = useState(false)
   const [currentCity, setCurrentCity] = useState("Alamo")
   const handleCurrentState = (state) => {
     setCurrentState(state)
@@ -46,7 +46,7 @@ const RideSchool = ({ className }) => {
     e.preventDefault()
     const payload = { ...formData, city: currentCity, state: currentState }
     dispatch(RideSchoolListing(payload))
-    console.log('pp',{formData})
+    // console.log('pp',{formData})
   }
 
   const handleTitleChange = (state) => {
@@ -83,6 +83,7 @@ const RideSchool = ({ className }) => {
         id="pickup"
         value={pickup}
         label="Pickup"
+        maxLength='30'
         placeholder="Pickup"
         required={true}
         type="text"
@@ -98,11 +99,13 @@ const RideSchool = ({ className }) => {
         type="date"
         handleChange={handleChange}
       />
+      
       <TextInput
         name="schoolname"
         id="schoolname"
         value={schoolname}
         label="School name"
+        maxLength='40'
         placeholder="School name"
         required={true}
         type="text"
@@ -110,13 +113,14 @@ const RideSchool = ({ className }) => {
       />
       <span>Ad Title</span>
       <TitleList handleTitleChange={handleTitleChange} currentTitle={title} />
-      <TextInput
+      <NumberInput
         name="contactno"
         id="contactno"
         value={contactno}
         label="Contact Number"
         placeholder="Contact Number"
         type="number"
+        maxLength='10'
         required={true}
         handleChange={handleChange}
       />

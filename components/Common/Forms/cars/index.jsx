@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { TextInput } from "@components/Common"
+import { NumberInput, TextInput } from "@components/Common"
 import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
@@ -47,10 +47,10 @@ const SellCarsForm = ({ className }) => {
 
     const payload = { ...formData, city: currentCity, state: currentState }
     dispatch(carListing(payload))
-    console.log("pp" , {formData})
+    // console.log("pp" , {formData})
   }
 
-  const [currentState, setCurrentState] = useState("Texas")
+  const [currentState, setCurrentState] = useState(false)
   const [currentCity, setCurrentCity] = useState("Alamo")
   const handleCurrentState = (state) => {
     setCurrentState(state)
@@ -97,6 +97,7 @@ const SellCarsForm = ({ className }) => {
       <TextInput
         name="model"
         id="model"
+        maxLength='20'
         value={model}
         label="Model"
         placeholder="Model"
@@ -104,11 +105,12 @@ const SellCarsForm = ({ className }) => {
         type="text"
         handleChange={handleChange}
       />
-      <TextInput
+      <NumberInput
         name="miles"
         id="miles"
         value={miles}
         label="Miles Driven"
+        maxLength='10'
         placeholder="Miles Driven"
         required={true}
         type="number"
@@ -119,28 +121,30 @@ const SellCarsForm = ({ className }) => {
         id="title"
         value={title}
         label="Ad Title"
+        maxLength='40'
         placeholder="Ad Title"
         required={true}
         type="text"
         handleChange={handleChange}
       />
-      <TextInput
+      <NumberInput
         name="contactno"
         id="contactno"
         value={contactno}
         label="Contact Number"
         placeholder="eg-999999"
         type="number"
-        min={"123456"}
-        max={"123456789123456"}
+        maxLength='10'
+
         required={true}
         handleChange={handleChange}
       />
 
-      <TextInput
+      <NumberInput
         name="price"
         id="price"
         value={price}
+        maxLength='10'
         label="Price"
         type="number"
         required={true}
