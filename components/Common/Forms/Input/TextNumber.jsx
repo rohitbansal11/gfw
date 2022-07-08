@@ -16,7 +16,7 @@ const TextInput = ({
   maxLength,
   minLength,
   pattern,
-  type = "text",
+  type = "number",
   inputClassName,
   showPassword,
   setShowPassword,
@@ -39,11 +39,17 @@ const TextInput = ({
           className={` w-full text-[16px] text-indigo-900 outline-none border-[2px] border-indigo-500 mb-1 py-2 px-2 rounded-md shadow-md ${inputClassName}`}
           type={showPassword ? "text" : type}
           name={name}
-          onChange={handleChange}
+          onChange={(e)=>{
+           
+            if(e.target.value.length<=Number(maxLength)){
+                handleChange(e)
+            }
+
+          }}
           value={value ? value : null}
-          required={!!required}
+          required={required ||false}
           id={id}
-          min={min}
+          min={min || '0'}
           minLength={minLength}
           maxLength={maxLength}
           max={max}

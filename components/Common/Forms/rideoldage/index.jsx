@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { TextInput } from "@components/Common"
+import { NumberInput, TextInput } from "@components/Common"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
 import TitleList from "../rideschools/titlelistdropdown"
@@ -30,14 +30,14 @@ const RideOldAge = ({ className }) => {
   }
   const dispatch = useDispatch()
   const rideOldAge = useSelector((state) => state.rideOldAge)
-  const [currentState, setCurrentState] = useState("Texas")
+  const [currentState, setCurrentState] = useState(false)
   const [currentCity, setCurrentCity] = useState("Alamo")
   const handleCurrentState = (state) => {
     setCurrentState(state)
     setCurrentCity("")
   }
   const handleCurrentCity = (city) => {
-    console.log({ city: city })
+    // console.log({ city: city })
     setCurrentCity(city)
   }
 
@@ -46,7 +46,7 @@ const RideOldAge = ({ className }) => {
     // console.log({ formData })
     const payload = { ...formData, city: currentCity, state: currentState }
     dispatch(RideOldAgeListing(payload))
-    console.log('pp',{formData})
+    // console.log('pp',{formData})
   }
 
   const handleTitleChange = (state) => {
@@ -83,6 +83,7 @@ const RideOldAge = ({ className }) => {
         value={pickup}
         label="Pickup"
         placeholder="Pick-up"
+        maxLength='40'
         required={true}
         type="text"
         handleChange={handleChange}
@@ -102,6 +103,7 @@ const RideOldAge = ({ className }) => {
         id="dropoff"
         value={dropoff}
         label="Drop-Off"
+        maxLength='40'
         placeholder="Drop-Off"
         required={true}
         type="text"
@@ -110,15 +112,14 @@ const RideOldAge = ({ className }) => {
 
       <span>Ad Title</span>
       <TitleList handleTitleChange={handleTitleChange} currentTitle={title} />
-      <TextInput
+      <NumberInput
         name="contactno"
         id="contactno"
         value={contactno}
         label="Contact Number"
         placeholder="eg-999999"
         type="number"
-        min={"123456"}
-        max={"123456789123456"}
+        maxLength='10'
         required={true}
         handleChange={handleChange}
       />

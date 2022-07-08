@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Select, TextInput } from "@components/Common"
+import { Select, TextInput ,NumberInput } from "@components/Common"
 import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
@@ -43,10 +43,10 @@ const Load = () => {
           image: "https://image.jpg", //@todo remove this and handle image upload
         }
         dispatch(LoadListing(payload))
-        console.log("hh" , {formData})
+        // console.log("hh" , {formData})
       }
     
-      const [currentState, setCurrentState] = useState("Texas")
+      const [currentState, setCurrentState] = useState(false)
       const [currentCity, setCurrentCity] = useState("Alamo")
     
       const handleCurrentState = (state) => {
@@ -93,15 +93,18 @@ const Load = () => {
       handleCurrentCity={handleCurrentCity}
       currentCity={currentCity}
       currentState={currentState}
-      disabled={!currentState ? true : false}
+      disabled={currentState ? false : true}
     />
-    <TextInput
+    <NumberInput
       name="weight"
       id="weight"
       value={weight}
       label=" Weight"
       placeholder="Weight"
-      // required={true}
+      min="0"
+      minLength='0'
+      maxLength="10"
+      required={true}
       type="number"
       handleChange={handleChange}
     />
@@ -126,6 +129,8 @@ const Load = () => {
     <TextInput
       name="detail"
       id="detail"
+      minLength={"4"}
+      maxLength={"30"}
       value={detail}
       label=" Detail Address"
       placeholder="Detail Address"
@@ -137,6 +142,8 @@ const Load = () => {
       name="title"
       id="title"
       value={title}
+      minLength="4"
+      maxLength="10"
       label=" Ad Title"
       placeholder="Title"
       required={true}
@@ -144,13 +151,14 @@ const Load = () => {
       handleChange={handleChange}
     />
 
-    <TextInput
+    <NumberInput
       name="contactno"
       id="contactno"
       value={contactno}
       label="Contact Number"
       placeholder="Contact Number"
       type="number"
+      maxLength="10"
       required={true}
       handleChange={handleChange}
     />

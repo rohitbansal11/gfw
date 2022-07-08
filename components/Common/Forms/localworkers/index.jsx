@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { TextInput } from "@components/Common"
+import { NumberInput, TextInput } from "@components/Common"
 import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
@@ -31,7 +31,7 @@ const Localworkers = ({ className }) => {
       }
     })
   }
-  const [currentState, setCurrentState] = useState("Texas")
+  const [currentState, setCurrentState] = useState(false)
   const [currentCity, setCurrentCity] = useState("Alamo")
   const handleCurrentState = (state) => {
     setCurrentState(state)
@@ -42,10 +42,10 @@ const Localworkers = ({ className }) => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    // console.log({ formData })
+  
     const payload = { ...formData, city: currentCity, state: currentState }
     dispatch(LocalWorkersListing(payload))
-    console.log("hhh" , {formData})
+    // console.log("hhh" , {formData})
   }
   useEffect(() => {}, [Localworkers])
 
@@ -73,6 +73,7 @@ const Localworkers = ({ className }) => {
         id="job"
         value={job}
         label="Job Post"
+        maxLength='30'
         placeholder="Job Post"
         required={true}
         type="text"
@@ -83,6 +84,7 @@ const Localworkers = ({ className }) => {
         id="name"
         value={name}
         label="Name"
+        maxLength='40'
         placeholder="Name"
         required={true}
         handleChange={handleChange}
@@ -93,21 +95,21 @@ const Localworkers = ({ className }) => {
         id="location"
         value={location}
         label="location"
+        maxLength='70'
         placeholder="location"
         required={true}
         type="text"
         handleChange={handleChange}
       />
 
-      <TextInput
+      <NumberInput
         name="contactno"
         id="contactno"
         value={contactno}
         label="Contact Number"
         placeholder="eg-999999"
         type="number"
-        min={"123456"}
-        max={"123456789123456"}
+        maxLength='10'
         required={true}
         handleChange={handleChange}
       />
@@ -116,6 +118,7 @@ const Localworkers = ({ className }) => {
         id="title"
         value={title}
         label="Ad Title"
+        maxLength='40'
         placeholder="Ad Title"
         required={true}
         type="text"

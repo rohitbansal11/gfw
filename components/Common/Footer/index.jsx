@@ -130,12 +130,8 @@ Footer.defaultProps = {
   links: [
     
     {
-      href: "/sell-trucks",
-      text: "Truck Sale",
-    },
-    {
-      href: "/sell-truck-parts",
-      text: "Truck Part Sale",
+      href: "/truck-parts",
+      text: "Truck/Part Sale",
     },
     {
       href: "/car-sale",

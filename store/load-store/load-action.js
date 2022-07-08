@@ -11,8 +11,7 @@ export const LoadListing = (payload) => async (dispatch, getState) => {
   })
   // @todo: add data to database
   try {
-    const { user } = getState((state) => state)
-    const token = user?.token
+    const token = JSON.parse(localStorage.getItem("token"))
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -20,7 +19,7 @@ export const LoadListing = (payload) => async (dispatch, getState) => {
       },
     }
     console.log({ payload})
-    const res = await axios.post("/load", payload, config)
+    const res = await axios.post("/loads", payload, config)
     console.log({ data: res?.data })
     dispatch({
       type: LOAD_SUCCESS,

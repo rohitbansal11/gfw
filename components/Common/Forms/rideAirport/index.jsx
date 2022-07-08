@@ -34,7 +34,7 @@ const RideAirport = ({ className }) => {
   })
   console.log({rideAirport})
 
-  const [currentState, setCurrentState] = useState("Texas")
+  const [currentState, setCurrentState] = useState(false)
   const [currentCity, setCurrentCity] = useState("Alamo")
   const handleCurrentState = (state) => {
     setCurrentState(state)
@@ -57,7 +57,7 @@ const RideAirport = ({ className }) => {
     e.preventDefault()
     const payload = { ...formData, city: currentCity, state: currentState }
     dispatch(RideAirportListing(payload))
-    console.log("hhhhh",{formData})
+    // console.log("hhhhh",{formData})
   }
 
   const { pickup, pickupdate, dropoff, title, contactno } = formData
@@ -84,6 +84,7 @@ const RideAirport = ({ className }) => {
         id="pickup"
         value={pickup}
         label="Pickup"
+        maxLength='40'
         placeholder="Pick-up"
         required={true}
         type="text"
@@ -104,6 +105,7 @@ const RideAirport = ({ className }) => {
         id="dropoff"
         value={dropoff}
         label="Drop-Off"
+        maxLength='40'
         placeholder="Drop-Off"
         required={true}
         type="text"
@@ -119,6 +121,7 @@ const RideAirport = ({ className }) => {
         id="contactno"
         value={contactno}
         label="Contact Number"
+        maxLength='10'
         placeholder="Contact Number"
         type="number"
         required={true}

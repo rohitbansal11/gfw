@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { TextInput } from "@components/Common"
+import { NumberInput, TextInput } from "@components/Common"
 import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
@@ -37,10 +37,10 @@ const Localstore = ({ className }) => {
        city: currentCity,
       state: currentState }
     dispatch(LocalStoreListing(payload))
-    console.log("hello " , {formData})
+    // console.log("hello " , {formData})
   }
 
-  const [currentState, setCurrentState] = useState("Texas")
+  const [currentState, setCurrentState] = useState(false)
   const [currentCity, setCurrentCity] = useState("Alamo")
   const handleCurrentState = (state) => {
     setCurrentState(state)
@@ -77,6 +77,7 @@ const Localstore = ({ className }) => {
         id="job"
         value={job}
         label="Job Post"
+        maxLength='20'
         placeholder="Job Post"
         required={true}
         type="text"
@@ -87,6 +88,7 @@ const Localstore = ({ className }) => {
         id="nameofstore"
         value={nameofstore}
         label="name of store"
+        maxLength='60'
         placeholder="name of store"
         required={true}
         handleChange={handleChange}
@@ -97,21 +99,21 @@ const Localstore = ({ className }) => {
         id="location"
         value={location}
         label="Location"
+        maxLength='70'
         placeholder="Location"
         required={true}
         type="text"
         handleChange={handleChange}
       />
 
-      <TextInput
+      <NumberInput
         name="contactno"
         id="contactno"
         value={contactno}
         label="Contact Number"
         placeholder="eg-999999"
         type="number"
-        min={"123456"}
-        max={"123456789123456"}
+        maxLength='10'
         required={true}
         handleChange={handleChange}
       />
@@ -120,6 +122,7 @@ const Localstore = ({ className }) => {
         id="title"
         value={title}
         label="Ad Title"
+        maxLength='40'
         placeholder="Ad Title"
         required={true}
         type="text"

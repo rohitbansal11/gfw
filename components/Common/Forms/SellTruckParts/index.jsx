@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { TextInput } from "@components/Common"
+import { NumberInput, TextInput } from "@components/Common"
 import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown"
 import CitySelect from "../SellTruck/citiesdropdown"
@@ -24,7 +24,7 @@ const SellTruckPartsForm = ({ className }) => {
     state.selltruckparts
   })
   // console.log("sellll",{selltruckparts})
-  const [currentState, setCurrentState] = useState("Texas")
+  const [currentState, setCurrentState] = useState(false)
 
   const [currentCity, setCurrentCity] = useState("Alamo")
 
@@ -65,7 +65,7 @@ const SellTruckPartsForm = ({ className }) => {
        state: currentState,
        }
     dispatch(addSellTruckpartsListing(payload))
-    console.log("dispach" ,{formData})
+    // console.log("dispach" ,{formData})
   }
 
   const { part, make, year, model, price, title, contactno, image } = formData
@@ -91,6 +91,7 @@ const SellTruckPartsForm = ({ className }) => {
         name="part"
         id="part"
         value={part}
+        maxLength='30'
         label="Part"
         placeholder="Part"
         required={true}
@@ -118,16 +119,19 @@ const SellTruckPartsForm = ({ className }) => {
         id="model"
         value={model}
         label="Model"
+        type="text"
+        maxLength='20'
         placeholder="Model"
         required={true}
         handleChange={handleChange}
       />
 
-      <TextInput
+      <NumberInput
         name="price"
         id="price"
         value={price}
         label="Price"
+        maxLength='10'
         placeholder="Price"
         required={true}
         type="number"
@@ -141,18 +145,18 @@ const SellTruckPartsForm = ({ className }) => {
         placeholder="Ad Title"
         required={true}
         type="text"
+        maxLength='30'
         handleChange={handleChange}
       />
 
-      <TextInput
+      <NumberInput
         name="contactno"
         id="contactno"
         value={contactno}
         label="Contact Number"
         placeholder="eg-999999"
         type="number"
-        min={"123456"}
-        max={"123456789123456"}
+        maxLength="10"
         required={true}
         handleChange={handleChange}
       />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react"
-import { TextInput } from "@components/Common"
+import { NumberInput, TextInput } from "@components/Common"
 // import { Previews } from "./Dropzone"
 import StatesSelect from "./statesdropdown"
 import CitySelect from "./citiesdropdown"
@@ -115,6 +115,7 @@ const SellTrucks = ({ className }) => {
       <TextInput
         name="model"
         id="model"
+        maxLength='30'
         value={model}
         label="Model"
         placeholder="Model"
@@ -122,19 +123,21 @@ const SellTrucks = ({ className }) => {
         type="text"
         handleChange={handleChange}
       />
-      <TextInput
+      <NumberInput
         name="miles"
         id="miles"
         value={miles}
         label="Miles"
         placeholder="Miles"
         type="text"
+        maxLength='10'
         required={true}
         handleChange={handleChange}
       />
       <TextInput
         name="title"
         id="title"
+        maxLength='30'
         value={title}
         label="Ad title"
         placeholder="Ad Title"
@@ -142,13 +145,14 @@ const SellTrucks = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />{" "}
-      <TextInput
+      <NumberInput
         name="contactno"
         id="contactno"
         value={contactno}
         label="Contact No"
         placeholder="eg-999999"
         type="number"
+        maxLength='10'
         min={"123456"}
         max={"123456789123456"}
         required={true}

@@ -27,6 +27,7 @@ export { default as FormSection } from "./Forms/FormSection";
 export { default as SearchBar } from "./SearchBar";
 export { default as TextInput } from "./Forms/Input/TextInput";
 export { default as Select } from "./Forms/Input/Select";
+export { default as NumberInput } from "./Forms/Input/TextNumber";
 
 // typograpy
 export { default as PrimaryHeading } from "./Typography/PrimaryHeading";
