@@ -1,8 +1,20 @@
 import { Loads } from "@components/Common"
 import Hero from "@components/Common/Home/Hero"
-import React from "react"
+import React  ,{useState, useEffect} from "react"
+import { useDispatch, useSelector } from "react-redux"
+import {Getloads} from '../../store/AllDataMain/AllDataaction'
 
 const LoadsPage = ({ loads }) => {
+const [loadsData , setLoadData] =useState([])
+const dispatch =useDispatch();
+const selector =useSelector(pre=>pre);
+
+useEffect(()=>{
+  console.log('jfhfhffhfgfg')
+dispatch(Getloads())
+},[])
+
+
   return (
     <>
       <Hero
