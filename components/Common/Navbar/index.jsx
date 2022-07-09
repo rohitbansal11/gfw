@@ -326,6 +326,6 @@ Navbar.defaultProps = {
   registerHref: "/register",
   listingHref: "/listings",
   viewHref: "/",
-  emergencyHref: "/load-form"
+  emergencyHref: "/emergency-loads"
 };
 export default Navbar;

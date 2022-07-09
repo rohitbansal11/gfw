@@ -6,17 +6,16 @@ export const carListing = (payload) => async (dispatch, getState) => {
     type: CAR_REQUEST,
   })
   try {
-    const { user } = getState((state) => state)
-    const token = user?.token
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }
+    const token = localStorage.getItem("token")
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      }
     console.log({ payload })
-    const res = await axios.post("/worker", payload, config)
-    console.log({ data: res?.data })
+    const res = await axios.post("/car", payload, config)
+    console.log({ data: res?.data.data })
     dispatch({
       type: CAR_SUCCESS,
       payload: payload,

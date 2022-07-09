@@ -91,7 +91,7 @@ const SellTruckPartsForm = ({ className }) => {
         name="part"
         id="part"
         value={part}
-        maxLength='30'
+        maxLength='50'
         label="Part"
         placeholder="Part"
         required={true}
@@ -120,7 +120,7 @@ const SellTruckPartsForm = ({ className }) => {
         value={model}
         label="Model"
         type="text"
-        maxLength='20'
+        maxLength='40'
         placeholder="Model"
         required={true}
         handleChange={handleChange}
@@ -145,7 +145,7 @@ const SellTruckPartsForm = ({ className }) => {
         placeholder="Ad Title"
         required={true}
         type="text"
-        maxLength='30'
+        maxLength='50'
         handleChange={handleChange}
       />
 

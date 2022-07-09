@@ -164,11 +164,11 @@ Footer.defaultProps = {
       text: "Rent home",
     },
     {
-      href: "/local-store",
+      href: "/job-local-stores",
       text: "Local stores",
     },
     {
-      href: "/local-workers",
+      href: "/job-local-worker",
       text: "Local workers",
     },
   ],

@@ -50,7 +50,7 @@ const SellCarsForm = ({ className }) => {
     // console.log("pp" , {formData})
   }
 
-  const [currentState, setCurrentState] = useState(false)
+  const [currentState, setCurrentState] = useState("")
   const [currentCity, setCurrentCity] = useState("Alamo")
   const handleCurrentState = (state) => {
     setCurrentState(state)
@@ -97,7 +97,7 @@ const SellCarsForm = ({ className }) => {
       <TextInput
         name="model"
         id="model"
-        maxLength='20'
+        maxLength='40'
         value={model}
         label="Model"
         placeholder="Model"
@@ -121,7 +121,7 @@ const SellCarsForm = ({ className }) => {
         id="title"
         value={title}
         label="Ad Title"
-        maxLength='40'
+        maxLength='50'
         placeholder="Ad Title"
         required={true}
         type="text"

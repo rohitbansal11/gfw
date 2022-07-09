@@ -28,7 +28,7 @@ const RentHouse = ({ className }) => {
     state.sellhouse
   })
   
-  const [currentState, setCurrentState] = useState(false)
+  const [currentState, setCurrentState] = useState("")
 
   const [currentCity, setCurrentCity] = useState("Alamo")
 
@@ -42,7 +42,7 @@ const RentHouse = ({ className }) => {
         ...prevState,[e.target.name]: value,
       }
     })
-    console.log(e.target.value)
+    // console.log(e.target.value)
   }
   const handleFileChange = (state) => {
     console.log(state)
@@ -78,7 +78,7 @@ const RentHouse = ({ className }) => {
   }
 
   const { contactno, rooms,price, image,title, area } = formData
-  useEffect(() => {}, [sellhouse])
+  useEffect(() => {}, [])
   
   return (
     <form
@@ -101,7 +101,7 @@ const RentHouse = ({ className }) => {
         name="rooms"
         id="rooms"
         value={rooms}
-        maxLength='3'
+        maxLength='4'
         label=" No Of Rooms"
         placeholder="No of Rooms"
         required={true}
@@ -112,7 +112,7 @@ const RentHouse = ({ className }) => {
         name="title"
         id="title"
         value={title}
-        maxLength='40'
+        maxLength='50'
         label=" Ad Title"
         placeholder="Title"
         required={true}

@@ -19,7 +19,7 @@ const SellTrucks = ({ className }) => {
   const dispatch = useDispatch()
   const sellTruckState = useSelector((state) => state.sellTruck)
 
-  const [currentState, setCurrentState] = useState("Texas")
+  const [currentState, setCurrentState] = useState("")
   const [currentCity, setCurrentCity] = useState("Alamo")
 
   const handleMakeChange = (state) => {
@@ -115,7 +115,7 @@ const SellTrucks = ({ className }) => {
       <TextInput
         name="model"
         id="model"
-        maxLength='30'
+        maxLength='40'
         value={model}
         label="Model"
         placeholder="Model"
@@ -129,7 +129,7 @@ const SellTrucks = ({ className }) => {
         value={miles}
         label="Miles"
         placeholder="Miles"
-        type="text"
+        type="number"
         maxLength='10'
         required={true}
         handleChange={handleChange}
@@ -137,7 +137,7 @@ const SellTrucks = ({ className }) => {
       <TextInput
         name="title"
         id="title"
-        maxLength='30'
+        maxLength='50'
         value={title}
         label="Ad title"
         placeholder="Ad Title"
@@ -153,8 +153,7 @@ const SellTrucks = ({ className }) => {
         placeholder="eg-999999"
         type="number"
         maxLength='10'
-        min={"123456"}
-        max={"123456789123456"}
+       
         required={true}
         handleChange={handleChange}
       />

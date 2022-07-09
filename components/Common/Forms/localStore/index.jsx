@@ -40,7 +40,7 @@ const Localstore = ({ className }) => {
     // console.log("hello " , {formData})
   }
 
-  const [currentState, setCurrentState] = useState(false)
+  const [currentState, setCurrentState] = useState("")
   const [currentCity, setCurrentCity] = useState("Alamo")
   const handleCurrentState = (state) => {
     setCurrentState(state)
@@ -77,7 +77,7 @@ const Localstore = ({ className }) => {
         id="job"
         value={job}
         label="Job Post"
-        maxLength='20'
+        maxLength='40'
         placeholder="Job Post"
         required={true}
         type="text"
@@ -88,7 +88,7 @@ const Localstore = ({ className }) => {
         id="nameofstore"
         value={nameofstore}
         label="name of store"
-        maxLength='60'
+        maxLength='70'
         placeholder="name of store"
         required={true}
         handleChange={handleChange}
@@ -122,7 +122,7 @@ const Localstore = ({ className }) => {
         id="title"
         value={title}
         label="Ad Title"
-        maxLength='40'
+        maxLength='50'
         placeholder="Ad Title"
         required={true}
         type="text"

@@ -17,7 +17,8 @@ const Ride = ({ loadsData, type }) => {
       <PrimaryHeading
         primary="primary"
         secondary="secondary"
-        text="Rent"
+        text="
+        Rides"
         textCenter
       />
       <div className="flex border-t-2 border-gray-400 pt-4 justify-center py-2 mb-6">

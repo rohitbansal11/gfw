@@ -32,9 +32,9 @@ const RideAirport = ({ className }) => {
   const rideAirport = useSelector((state) => {
     state.rideairport
   })
-  console.log({rideAirport})
+  // console.log({rideAirport})
 
-  const [currentState, setCurrentState] = useState(false)
+  const [currentState, setCurrentState] = useState("")
   const [currentCity, setCurrentCity] = useState("Alamo")
   const handleCurrentState = (state) => {
     setCurrentState(state)
@@ -84,7 +84,7 @@ const RideAirport = ({ className }) => {
         id="pickup"
         value={pickup}
         label="Pickup"
-        maxLength='40'
+        maxLength='70'
         placeholder="Pick-up"
         required={true}
         type="text"
@@ -105,7 +105,7 @@ const RideAirport = ({ className }) => {
         id="dropoff"
         value={dropoff}
         label="Drop-Off"
-        maxLength='40'
+        maxLength='70'
         placeholder="Drop-Off"
         required={true}
         type="text"

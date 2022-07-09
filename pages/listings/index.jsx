@@ -19,11 +19,6 @@ import {
     }, [])
     return (
       <div>
-        <Link href="/ride-schools">
-          <a className="px-6 py-2 rounded-md shadow-md bg-green-400 text-xl">
-            Shool Ride
-          </a>
-        </Link>
         <HomeHero
           primaryText={"Buy or Sell, Anything"}
           secondaryText={"Find Jobs, Loads, truck and more."}

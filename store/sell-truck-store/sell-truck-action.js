@@ -13,17 +13,16 @@ export const addSellTruckListing = (payload) => async (dispatch, getState) => {
     type: SELL_TRUCK_REQUEST,
   })
   try {
-    const { user } = getState((state) => state)
-    const token = user?.token
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }
-    console.log({ payload })
+    const token = localStorage.getItem("token")
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      }
+    // console.log({ payload })
     const res = await axios.post("/truck", payload, config)
-    console.log({ data: res?.data })
+    console.log({ data: res.data.data })
     dispatch({
       type: SELL_TRUCK_SUCCESS,
       payload: payload,
@@ -42,16 +41,16 @@ export const addSellTruckpartsListing =
       type: SELL_TRUCK_PARTS_REQUEST,
     })
     try {
-      const { user } = getState((state) => state)
-      const token = user?.token
+      // const { user } = getState((state) => state)
+      const token = localStorage.getItem("token")
       const config = {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: token,
         },
       }
       const res = await axios.post("/truckpart", payload, config)
-      console.log({ data: res?.data })
+      console.log({ data: res.data.data })
       dispatch({
         type: SELL_TRUCK_PARTS_SUCCESS,
         payload: payload,

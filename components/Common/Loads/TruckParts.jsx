@@ -16,7 +16,7 @@ const TruckParts = ({ loadsData, isParts }) => {
       <PrimaryHeading
         primary="primary"
         secondary="secondary"
-        text="Truck/Part Sale"
+        text="Truck/part Sale"
         textCenter
       />
       <div className="flex bg-indigo-200 justify-center py-2 mb-6">

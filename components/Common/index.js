@@ -22,6 +22,8 @@ export { default as CarSale } from "./Loads/CarSale";
 export { default as Rent } from "./Loads/Rent";
 export { default as Job } from "./Loads/Job";
 export { default as FormSection } from "./Forms/FormSection";
+export {default as Aside} from "./Dashboard/Aside"
+export {default as MyListingCard} from "./Dashboard/MyListingCard"
 
 // components
 export { default as SearchBar } from "./SearchBar";

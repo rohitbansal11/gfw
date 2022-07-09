@@ -13,16 +13,16 @@ export const sellhouseListing = (payload) => async (dispatch, getState) => {
     type: SELL_HOUSE_REQUEST,
   })
   try {
-const token=localStorage.getItem("auth.token")
+    const token=localStorage.getItem("token")
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: token,
       },
     }
-    console.log({ payload })
+    // console.log({ payload })
     const res = await axios.post("/homerent", payload, config)
-    console.log({ data: res?.data })
+    console.log({ data: res?.data.data })
     dispatch({
       type: SELL_HOUSE_SUCCESS,
       payload: payload,
@@ -41,16 +41,15 @@ export const rentroomsListing = (payload) => async (dispatch, getState) => {
   })
   // @todo: add data to database
   try {
-    const { user } = getState((state) => state)
-    const token = user?.token
+    const token = localStorage.getItem("token")
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: token,
       },
     }
     const res = await axios.post("/roomrent", payload, config)
-    console.log({ data: res?.data })
+    console.log({ data: res?.data.data })
     dispatch({
       type: RENT_ROOMS_SUCCESS,
       payload: payload,
