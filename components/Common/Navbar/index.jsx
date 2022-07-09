@@ -34,7 +34,7 @@ const Navbar = ({
   const selector = useSelector((pre) => pre?.alldata);
   const dispatch = useDispatch();
   const [drop, setDrop] = useState(false);
-  const [tokenData, setTokenData] = useState([]);
+  const [tokenData, setTokenData] = useState({});
   const handleClick = (text) => {
     // setDrop(!drop);
     if (active) {
@@ -49,14 +49,20 @@ const Navbar = ({
     SetNav(!Nav);
   };
   useEffect(() => {
-    dispatch(CheckTokenOne());
+    if (Object?.keys(tokenData)?.length == 0) {
+      handleApi();
+    }
   }, []);
+
+  const handleApi = () => {
+    dispatch(CheckTokenOne());
+  };
   useEffect(() => {
     setTokenData(selector?.token);
   }, [selector]);
 
   const HnadleReroute = (routeName) => {
-    if (Object.keys(tokenData).length == 0) {
+    if (Object?.keys(tokenData)?.length == 0) {
       router.push("/login");
     } else {
       router.push(routeName);
@@ -73,18 +79,37 @@ const Navbar = ({
               : "fixed lg:hidden bg-white w-full h-screen p-5 justify-between border z-10"
           }
         >
-          {/* <div className="flex md:justify-around ">
-            <Link href={loginHref}>
+          {Object?.keys(tokenData)?.length == 0 && (
+            <div className="flex md:justify-around ">
+              <Link href={loginHref}>
+                <button className="flex font-semibold text-indigo-700 hover:text-zinc-100 hover:bg-indigo-700 rounded-lg border-[3px] border-indigo-700 sm:w-[160px] justify-center h-[40px] items-center transition ease-in-out">
+                  Login
+                </button>
+              </Link>
+              <Link href={registerHref}>
+                <button className="flex font-semibold justify-center items-center text-zinc-100 bg-indigo-700 hover:bg-indigo-500 px-4 py-3 rounded-lg border-4 border-indigo-700 hover:border-indigo-500 w-[160px] h-[40px] transition ease-in-out">
+                  Register Now
+                </button>
+              </Link>
+            </div>
+          )}
+
+          {Object?.keys(tokenData)?.length > 0 && (
+            <div className="flex md:justify-around ">
               <button className="flex font-semibold text-indigo-700 hover:text-zinc-100 hover:bg-indigo-700 rounded-lg border-[3px] border-indigo-700 sm:w-[160px] justify-center h-[40px] items-center transition ease-in-out">
-                Login
+                Menu
               </button>
-            </Link>
-            <Link href={registerHref}>
-              <button className="flex font-semibold justify-center items-center text-zinc-100 bg-indigo-700 hover:bg-indigo-500 px-4 py-3 rounded-lg border-4 border-indigo-700 hover:border-indigo-500 w-[160px] h-[40px] transition ease-in-out">
-                Register Now
+
+              <button
+                onClick={() => {
+                  dispatch(LogoutAction());
+                }}
+                className="flex font-semibold justify-center items-center text-zinc-100 bg-indigo-700 hover:bg-indigo-500 px-4 py-3 rounded-lg border-4 border-indigo-700 hover:border-indigo-500 w-[160px] h-[40px] transition ease-in-out"
+              >
+                Log Out
               </button>
-            </Link>
-          </div> */}
+            </div>
+          )}
 
           <div className="flex my-5 justify-around">
             <button className="bg-indigo-700 hover:bg-indigo-500 text-white flex rounded-lg w-[160px] h-[40px] transition ease-in-out items-center text-center justify-center text-sm px-1 ">
@@ -160,11 +185,14 @@ const Navbar = ({
                         <span className=" p-0.5 ml-1" onClick={handleClick}>
                           {`${item.text}`.toLowerCase() ==
                           `${active}`.toLowerCase() ? (
-                            <ChevronUpIcon className="h-5 cursor-pointer " />
+                            <ChevronUpIcon
+                              className="h-5 cursor-pointer "
+                              onClick={handleClick}
+                            />
                           ) : (
                             <ChevronDownIcon
                               onClick={handleClick}
-                              className="h-5 "
+                              className="h-5 cursor-pointer"
                             />
                           )}
                         </span>
@@ -208,7 +236,7 @@ const Navbar = ({
             </ul>
           </nav>
 
-          {Object.keys(tokenData).length == 0 && (
+          {Object?.keys(tokenData)?.length == 0 && (
             <div className="lg:flex md:w-[23%] lg:md:[30%] hidden gap-3 items-center">
               <Link href={loginHref}>
                 <button className="flex justify-center items-center lg:font-medium text-indigo-700 hover:text-zinc-100 hover:bg-indigo-700 w-[100px] md:text-md rounded-lg border-[3px] border-indigo-700 transition ease-in-out h-[40px] ">
@@ -222,7 +250,7 @@ const Navbar = ({
               </Link>
             </div>
           )}
-          {Object.keys(tokenData).length > 0 && (
+          {Object?.keys(tokenData)?.length > 0 && (
             <div className="lg:flex md:w-[23%] lg:md:[30%] hidden gap-3 items-center">
               <Link href={loginHref}>
                 <button className="flex justify-center items-center lg:font-medium text-indigo-700 hover:text-zinc-100 hover:bg-indigo-700 w-[100px] md:text-md rounded-lg border-[3px] border-indigo-700 transition ease-in-out h-[40px] ">
@@ -263,16 +291,20 @@ const Navbar = ({
                   />
                   Emergency Loads
                 </PrimaryButton> */}
-                <Link href={emergencyHref}>
-                  <button className="bg-white flex justify-center gap-3 font-semibold  items-center   px-4 py-3 rounded-md  w-[220px] h-[50px] transition ease-in-out shadow-md ">
-                    <img
-                      src={`/images/emergency-sign.svg`}
-                      height={30}
-                      width={30}
-                    />
-                    Emergency Loads
-                  </button>
-                </Link>
+
+                <button
+                  onClick={() => {
+                    HnadleReroute(emergencyHref);
+                  }}
+                  className="bg-white flex justify-center gap-3 font-semibold  items-center   px-4 py-3 rounded-md  w-[220px] h-[50px] transition ease-in-out shadow-md "
+                >
+                  <img
+                    src={`/images/emergency-sign.svg`}
+                    height={30}
+                    width={30}
+                  />
+                  Emergency Loads
+                </button>
               </div>
             </div>
             <div className="flex flex-1">
