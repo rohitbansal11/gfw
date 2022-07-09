@@ -6,7 +6,7 @@ const Cards = ({ items }) => {
   return (
     <div className="flex mt-12  items-center gap-8 justify-evenly flex-wrap" onClick={()=> setActive(true)}>
       {items.map((item, index) => (
-        <Card item={item} index={index} />
+        <Card onClick={()=> setActive(!item)} item={item} index={index} />
       ))}
     </div>
   )

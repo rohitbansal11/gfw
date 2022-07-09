@@ -14,7 +14,7 @@ const ForRentRooms = ({ className }) => {
     contactno: null,
     image: [],
   })
-  const [currentState, setCurrentState] = useState(false)
+  const [currentState, setCurrentState] = useState("")
   const [currentCity, setCurrentCity] = useState("Alamo")
 
 
@@ -41,12 +41,11 @@ const ForRentRooms = ({ className }) => {
     // console.log("jj" , {formData})
   }
   const handleCurrentState = (state) => {
-   
     setCurrentState(state)
     setCurrentCity("")
   }
   const handleCurrentCity = (city) => {
-    console.log({ city: city })
+    // console.log({ city: city })
     setCurrentCity(city)
   }
 
@@ -76,7 +75,7 @@ const ForRentRooms = ({ className }) => {
         name="rooms"
         id="rooms"
         value={rooms}
-        maxLength='3'
+        maxLength='4'
         label=" No Of Rooms"
         placeholder="No of Rooms"
         required={true}
@@ -87,7 +86,7 @@ const ForRentRooms = ({ className }) => {
         name="title"
         id="title"
         value={title}
-        maxLength='40'
+        maxLength='50'
         label=" Ad Title"
         placeholder="Title"
         required={true}

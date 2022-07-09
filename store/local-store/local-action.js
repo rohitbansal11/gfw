@@ -14,17 +14,16 @@ export const LocalStoreListing = (payload) => async (dispatch, getState) => {
   })
   // @todo: add data to database
   try {
-    const { user } = getState((state) => state)
-    const token = user?.token
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }
+    const token = localStorage.getItem("token")
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      }
     console.log({ payload})
     const res = await axios.post("/localstore", payload, config)
-    console.log({ data: res?.data })
+    console.log({ data: res?.data.data })
     dispatch({
       type: LOCALSTORE_SUCCESS,
       payload: payload,
@@ -44,17 +43,16 @@ export const LocalWorkersListing = (payload) => async (dispatch, getState) => {
   })
   // @todo: add data to database
   try {
-    const { user } = getState((state) => state)
-    const token = user?.token
+    const token = localStorage.getItem("token")
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: token,
       },
     }
     console.log({ payload })
     const res = await axios.post("/worker", payload, config)
-    console.log({ data: res?.data })
+    console.log({ data: res?.data.data })
     dispatch({
       type: LOCALWORKERS_SUCCESS,
       payload: payload,

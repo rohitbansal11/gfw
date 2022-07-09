@@ -10,20 +10,21 @@ export const LoadListing = (payload) => async (dispatch, getState) => {
     type: LOAD_REQUEST,
   })
   // @todo: add data to database
+  const token = localStorage.getItem("token")
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  }
   try {
-    const token = JSON.parse(localStorage.getItem("token"))
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }
-    console.log({ payload})
+    console.log({payload})
     const res = await axios.post("/loads", payload, config)
-    console.log({ data: res?.data })
+    console.log({ data: res?.data.data })
     dispatch({
       type: LOAD_SUCCESS,
-      payload: payload,
+      payload: res
+      ,
     })
   } catch (error) {
     console.error({ error })

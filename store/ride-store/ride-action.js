@@ -17,16 +17,16 @@ export const RideSchoolListing = (payload) => async (dispatch, getState) => {
   })
   // @todo: add data to database
   try {
-    const { user } = getState((state) => state)
-    const token = user?.token
+    const token = localStorage.getItem("token")
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: token,
       },
     }
-    console.log({ payload: payload })
+    // console.log({ payload: payload })
     const res = await axios.post("/schoolride", payload, config)
+    console.log({data: res.data.data})
     dispatch({
       type: RIDE_SCHOOL_SUCCESS,
       payload: payload,
@@ -44,16 +44,15 @@ export const RideOldAgeListing = (payload) => async (dispatch, getState) => {
     type: RIDE_OLDAGE_REQUEST,
   })
   try {
-    const { user } = getState((state) => state)
-    const token = user?.token
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }
+    const token = localStorage.getItem("token")
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      }
     const res = await axios.post("/oldageride", payload, config)
-    console.log({ data: res?.data })
+    console.log({ data: res?.data.data })
     dispatch({
       type: RIDE_OLDAGE_SUCCESS,
       payload: payload,
@@ -72,16 +71,15 @@ export const RideAirportListing = (payload) => async (dispatch, getState) => {
   })
   // @todo: add data to database
   try {
-    const { user } = getState((state) => state)
-    const token = user?.token
+    const token = localStorage.getItem("token")
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: token,
       },
     }
     const res = await axios.post("/airportride", payload, config)
-    console.log({ data: res?.data })
+    console.log({ data: res?.data.data })
     dispatch({
       type: RIDE_AIRPORT_SUCCESS,
       payload: payload,

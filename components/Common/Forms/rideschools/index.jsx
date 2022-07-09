@@ -17,7 +17,7 @@ const RideSchool = ({ className }) => {
     title: "",
     contactno: null,
   })
-  const [currentState, setCurrentState] = useState(false)
+  const [currentState, setCurrentState] = useState("")
   const [currentCity, setCurrentCity] = useState("Alamo")
   const handleCurrentState = (state) => {
     setCurrentState(state)
@@ -83,7 +83,7 @@ const RideSchool = ({ className }) => {
         id="pickup"
         value={pickup}
         label="Pickup"
-        maxLength='30'
+        maxLength='70'
         placeholder="Pickup"
         required={true}
         type="text"
@@ -105,7 +105,7 @@ const RideSchool = ({ className }) => {
         id="schoolname"
         value={schoolname}
         label="School name"
-        maxLength='40'
+        maxLength='50'
         placeholder="School name"
         required={true}
         type="text"

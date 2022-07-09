@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useState } from "react"
 import { Select } from "@mantine/core"
 // import Select from "react-select"
@@ -11,6 +11,9 @@ export default function CitySelect({
   label,
   className,
 }) {
+
+  const [citesAll , setCitiesAll]=useState([])
+useEffect(()=>{
   const cities = citiesData
     .map((city) => {
       if (city.state === currentState) {
@@ -21,15 +24,20 @@ export default function CitySelect({
       }
     })
     .filter((city) => city !== undefined)
-  const handleCity = (city) => {
-    handleCurrentCity(city)
-  }
+    setCitiesAll(cities)
+},[currentState])
+
+    const handleCity = (city) => {
+      handleCurrentCity(city)
+    }
+    
   return (
     <div>
       <Select
         label={label ? "City" : null}
         placeholder="Select City"
-        data={cities}
+        data={citesAll}
+        value={currentCity}
         disabled={disabled}
         required
         onChange={handleCity}

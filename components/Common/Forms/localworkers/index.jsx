@@ -31,7 +31,7 @@ const Localworkers = ({ className }) => {
       }
     })
   }
-  const [currentState, setCurrentState] = useState(false)
+  const [currentState, setCurrentState] = useState("")
   const [currentCity, setCurrentCity] = useState("Alamo")
   const handleCurrentState = (state) => {
     setCurrentState(state)
@@ -73,7 +73,7 @@ const Localworkers = ({ className }) => {
         id="job"
         value={job}
         label="Job Post"
-        maxLength='30'
+        maxLength='40'
         placeholder="Job Post"
         required={true}
         type="text"
@@ -118,7 +118,7 @@ const Localworkers = ({ className }) => {
         id="title"
         value={title}
         label="Ad Title"
-        maxLength='40'
+        maxLength='50'
         placeholder="Ad Title"
         required={true}
         type="text"

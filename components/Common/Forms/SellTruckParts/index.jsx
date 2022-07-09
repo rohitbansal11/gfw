@@ -100,7 +100,7 @@ console.log({cloudImg})
         name="part"
         id="part"
         value={part}
-        maxLength='30'
+        maxLength='50'
         label="Part"
         placeholder="Part"
         required={true}
@@ -129,7 +129,7 @@ console.log({cloudImg})
         value={model}
         label="Model"
         type="text"
-        maxLength='20'
+        maxLength='40'
         placeholder="Model"
         required={true}
         handleChange={handleChange}
@@ -154,7 +154,7 @@ console.log({cloudImg})
         placeholder="Ad Title"
         required={true}
         type="text"
-        maxLength='30'
+        maxLength='50'
         handleChange={handleChange}
       />
 
