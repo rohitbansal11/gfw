@@ -1,47 +1,46 @@
-import { Section } from "@components/Common"
-import React, { useState } from "react"
-import Link from "next/link"
-import { TextInput } from "@components/Common"
-import axios from "@utils/axios"
-import { useDispatch } from "react-redux"
-import { loginUser } from "@store/user-store/userActions"
+import { Section } from "@components/Common";
+import React, { useState } from "react";
+import Link from "next/link";
+import { TextInput } from "@components/Common";
+import axios from "@utils/axios";
+import { useDispatch } from "react-redux";
+import { LogInuser } from "@store/user-store/userActions";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     password: "",
     email: "",
-  })
+  });
 
   const [token, setToken] = useState();
-  const dispatch = useDispatch()
-  const [showPassword, setShowPassword] = useState(false)
+  const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
-    // console.log(e.target.name, e.target.value) 
+    // console.log(e.target.name, e.target.value)
     setFormData((prevData) => {
       return {
         ...prevData,
         [e.target.name]: e.target.value,
-      }
-    })
-  }
+      };
+    });
+  };
   // console.log("hhhhh" , {formData})
 
   const handleShowPassword = () => {
-    console.log(showPassword)
-    setShowPassword(!showPassword)
-  }
+    console.log(showPassword);
+    setShowPassword(!showPassword);
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log({ formData })
-    const payload = {...formData, email:email , password:password}
-    dispatch(loginUser(payload))
-    console.log({formData})
-  }
-  
+    e.preventDefault();
+    console.log({ formData });
+    const payload = { ...formData, email: email, password: password };
+    dispatch(LogInuser(payload));
+    console.log({ formData });
+  };
 
-  const { email, password } = formData
+  const { email, password } = formData;
 
   return (
     <div className=" bg-[url(/images/auth.png)] md:bg-[url()] bg-indigo-400  md:bg-white py-4 flex justify-center items-center w-full flex-col md:flex-row">
@@ -95,7 +94,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

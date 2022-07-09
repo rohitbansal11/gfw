@@ -1,11 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { FadeUpDown } from "..";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  CheckTokenOne,
+  LogoutAction,
+} from "../../../store/AllDataMain/AllDataaction";
+import { useRouter } from "next/router";
 const Card = ({ item, index }) => {
-  
   const [active, setActive] = useState(null);
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const [tokenData, setTokenData] = useState({});
+  const selector = useSelector((pre) => pre?.alldata);
 
+  useEffect(() => {
+    setTokenData(selector?.token);
+  }, [selector]);
+
+  const HnadleReroute = (routeName) => {
+    if (Object?.keys(tokenData)?.length == 0) {
+      router.push("/login");
+    } else {
+      router.push(routeName);
+    }
+  };
   return (
     <div className="relative">
       <FadeUpDown delay={index * 0.2}>
@@ -28,34 +48,46 @@ const Card = ({ item, index }) => {
 
       {item?.subCategory && active === item.text ? (
         <div className="absolute top-0 left-0 right-0 bottom-0 bg-red-100 px-4 flex justify-center flex-col gap-y-4">
-          <Link
-            href={item.subCategory[0]?.href ? item.subCategory[0]?.href : "/"}
+          <div
+            onClick={() => {
+              HnadleReroute(
+                item.subCategory[0]?.href ? item.subCategory[0]?.href : "/"
+              );
+            }}
+            className="h-[40px] border-2 border-indigo-700 hover:bg-indigo-700 hover:text-white cursor-pointer flex rounded-md px-4 py-2 justify-center items-center"
           >
-            <div className="h-[40px] border-2 border-indigo-700 hover:bg-indigo-700 hover:text-white cursor-pointer flex rounded-md px-4 py-2 justify-center items-center">
-              <a className="text-xl font-semibold tracking-wide">
-                {item.subCategory[0]?.title}
-              </a>
-            </div>
-          </Link>
-         {item.subCategory[1] && <Link
-            href={item.subCategory[1]?.href ? item.subCategory[1]?.href : "/"}
-          >
-            <div className="h-[40px] border-2 border-indigo-700 hover:bg-indigo-700 hover:text-white cursor-pointer flex rounded-md px-4 py-2 justify-center items-center">
+            <a className="text-xl font-semibold tracking-wide">
+              {item.subCategory[0]?.title}
+            </a>
+          </div>
+
+          {item.subCategory[1] && (
+            <div
+              onClick={() => {
+                HnadleReroute(
+                  item.subCategory[1]?.href ? item.subCategory[1]?.href : "/"
+                );
+              }}
+              className="h-[40px] border-2 border-indigo-700 hover:bg-indigo-700 hover:text-white cursor-pointer flex rounded-md px-4 py-2 justify-center items-center"
+            >
               <a className="text-xl font-semibold tracking-wide">
                 {item.subCategory[1]?.title}
               </a>
             </div>
-          </Link>}
+          )}
           {item.subCategory[2] && (
-            <Link
-              href={item.subCategory[2]?.href ? item.subCategory[2]?.href : "/"}
+            <div
+              onClick={() => {
+                HnadleReroute(
+                  item.subCategory[2]?.href ? item.subCategory[2]?.href : "/"
+                );
+              }}
+              className="h-[40px] border-2 border-indigo-700 hover:bg-indigo-700 hover:text-white cursor-pointer flex rounded-md px-4 py-2 justify-center items-center"
             >
-              <div className="h-[40px] border-2 border-indigo-700 hover:bg-indigo-700 hover:text-white cursor-pointer flex rounded-md px-4 py-2 justify-center items-center">
-                <a className="text-xl font-semibold tracking-wide">
-                  {item.subCategory[2]?.title}
-                </a>
-              </div>
-            </Link>
+              <a className="text-xl font-semibold tracking-wide">
+                {item.subCategory[2]?.title}
+              </a>
+            </div>
           )}
         </div>
       ) : (
