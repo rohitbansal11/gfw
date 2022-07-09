@@ -34,7 +34,7 @@ const Navbar = ({
   const selector = useSelector((pre) => pre?.alldata);
   const dispatch = useDispatch();
   const [drop, setDrop] = useState(false);
-  const [tokenData, setTokenData] = useState([]);
+  const [tokenData, setTokenData] = useState({});
   const handleClick = (text) => {
     // setDrop(!drop);
     if (active) {
@@ -56,7 +56,7 @@ const Navbar = ({
   }, [selector]);
 
   const HnadleReroute = (routeName) => {
-    if (Object.keys(tokenData).length == 0) {
+    if (Object?.keys(tokenData)?.length == 0) {
       router.push("/login");
     } else {
       router.push(routeName);
@@ -208,7 +208,7 @@ const Navbar = ({
             </ul>
           </nav>
 
-          {Object.keys(tokenData).length == 0 && (
+          {Object?.keys(tokenData)?.length == 0 && (
             <div className="lg:flex md:w-[23%] lg:md:[30%] hidden gap-3 items-center">
               <Link href={loginHref}>
                 <button className="flex justify-center items-center lg:font-medium text-indigo-700 hover:text-zinc-100 hover:bg-indigo-700 w-[100px] md:text-md rounded-lg border-[3px] border-indigo-700 transition ease-in-out h-[40px] ">
@@ -222,7 +222,7 @@ const Navbar = ({
               </Link>
             </div>
           )}
-          {Object.keys(tokenData).length > 0 && (
+          {Object?.keys(tokenData)?.length > 0 && (
             <div className="lg:flex md:w-[23%] lg:md:[30%] hidden gap-3 items-center">
               <Link href={loginHref}>
                 <button className="flex justify-center items-center lg:font-medium text-indigo-700 hover:text-zinc-100 hover:bg-indigo-700 w-[100px] md:text-md rounded-lg border-[3px] border-indigo-700 transition ease-in-out h-[40px] ">

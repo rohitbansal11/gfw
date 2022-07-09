@@ -40,7 +40,7 @@ export const addSellTruckListing = (payload,image) => async (dispatch, getState)
           Authorization: token,
         },
       }
-    // console.log({ payload })
+    console.log({ payload })
     const res = await axios.post("/truck", payload, config)
     console.log({ data: res.data.data })
     dispatch({
@@ -55,6 +55,8 @@ export const addSellTruckListing = (payload,image) => async (dispatch, getState)
     })
   }
 }
+
+
 export const addSellTruckpartsListing =
   (payload) => async (dispatch, image) => {
     dispatch({
@@ -71,7 +73,7 @@ export const addSellTruckpartsListing =
         },
       }
       const res = await axios.post("/truckpart", payload, config)
-      console.log({ data: res.data.data })
+      console.log("hhhhh",{ data: res.data.data })
       dispatch({
         type: SELL_TRUCK_PARTS_SUCCESS,
         payload: payload,

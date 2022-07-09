@@ -18,8 +18,7 @@ const SellTruckPartsForm = ({ className }) => {
     contactno: null,
     image: [],
   })
-  // const [file , setFile] = useState()
-  // setFile(URL.createObjectURL(e.target.files[0]));
+
   const dispatch = useDispatch()
   const selltruckparts = useSelector((state) => {
     state.selltruckparts
@@ -60,9 +59,9 @@ const SellTruckPartsForm = ({ className }) => {
   }
   console.log({formData})
   const handleImageChange = (e) =>{
-    setCloudImg(e.target.files[0])
+    setCloudImg(e.target.files)
     // formData.image=e.target.files[0]
-    console.log(e.target.files[0])
+    console.log("gggggggggggggg",e.target.files)
 
   }
 console.log({cloudImg})
