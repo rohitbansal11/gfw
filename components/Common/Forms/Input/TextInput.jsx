@@ -4,6 +4,7 @@ import { FaCameraRetro } from "react-icons/fa"
 
 const TextInput = ({
   name,
+  handleImageChange,
   id,
   value,
   handleChange,
@@ -39,7 +40,7 @@ const TextInput = ({
           className={` w-full text-[16px] text-indigo-900 outline-none border-[2px] border-indigo-500 mb-1 py-2 px-2 rounded-md shadow-md ${inputClassName}`}
           type={showPassword ? "text" : type}
           name={name}
-          onChange={handleChange}
+          onChange={handleChange||handleImageChange}
           value={value ? value : null}
           required={!!required}
           id={id}
