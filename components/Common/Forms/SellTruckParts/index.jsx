@@ -65,7 +65,7 @@ const SellTruckPartsForm = ({ className }) => {
        state: currentState,
        }
     dispatch(addSellTruckpartsListing(payload))
-    // console.log("dispach" ,{formData})
+    console.log("dispach" ,{formData})
   }
 
   const { part, make, year, model, price, title, contactno, image } = formData

@@ -9,6 +9,7 @@ import { LocalReducer } from "./local-store/local-reducer"
 import { carReducer } from "./cars-store/car.reducer"
 import { sell_or_rent_Reducer } from "./sell-or-rent-store/sell-or-rent-reducer"
 import { loadReducer } from "./load-store/load-reducer"
+import { AllDatareducer } from "./AllDataMain/AllDatareducer"
 const reducer = combineReducers({
   sellTruck: sellTruckReducer,
   ride: rideReducer,
@@ -17,6 +18,7 @@ const reducer = combineReducers({
   sell_or_rent: sell_or_rent_Reducer,
   user: userReducer,
   load: loadReducer,
+  alldata:AllDatareducer
 })
 
 // middleware

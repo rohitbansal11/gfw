@@ -34,6 +34,24 @@ export const LoadListing = (payload) => async (dispatch, getState) => {
   }
 }
 
+export const uploadImage = async (base64) => {
+  let base64Img = `data:image/jpg;base64,${base64.base64}`
+  //Add your cloud name
+  let apiUrl = `https://api.cloudinary.com/v1_1/${"sourabhvaish"}/image/upload`
+  let data = {
+    file: base64Img,
+    upload_preset: `${chatapp}`,
+  }
+
+  try {
+    const res = await axiosApi.post(apiUrl, data, {
+      headers: { "content-type": "application/json" },
+    })
+    return res.data
+  } catch (err) {
+    console.log(err)
+  }
+}
 
 export const removeLoadListing = () => {}
 

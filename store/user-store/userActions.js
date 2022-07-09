@@ -14,11 +14,7 @@ const config = {
 }
 
 export const loginUser = (payload) => async (dispatch, getState) => {
-  console.log("login user")
-  const obj = {
-    email: "nihalsub@gmail.com",
-    password: "12345678",
-  }
+ 
   dispatch({
     type: USER_LOGIN_REQUEST,
   })
