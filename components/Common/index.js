@@ -23,13 +23,15 @@ export { default as Rent } from "./Loads/Rent";
 export { default as Job } from "./Loads/Job";
 export { default as FormSection } from "./Forms/FormSection";
 export {default as Aside} from "./Dashboard/Aside"
-export {default as MyListingCard} from "./Dashboard/MyListingCard"
+// export {default as MyListingCard} from "./Dashboard/MyListingCard"
+export {default as DashboardList } from "./Dashboard/DashboardList"
 
 // components
 export { default as SearchBar } from "./SearchBar";
 export { default as TextInput } from "./Forms/Input/TextInput";
 export { default as Select } from "./Forms/Input/Select";
 export { default as NumberInput } from "./Forms/Input/TextNumber";
+export { default as cloudImage } from "./CloudnaryUpload"
 
 // typograpy
 export { default as PrimaryHeading } from "./Typography/PrimaryHeading";

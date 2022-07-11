@@ -9,6 +9,7 @@ import {
 } from "./sell-truck-types"
 
 import axiosApi from "axios"
+
 export const uploadImage = async (base64) => {
   let base64Img = `data:image/jpg;base64,${base64.base64}`  
   //Add your cloud name
@@ -28,6 +29,7 @@ export const uploadImage = async (base64) => {
     console.log(err)
   }
 }
+
 export const addSellTruckListing = (payload,image) => async (dispatch, getState) => {
   dispatch({
     type: SELL_TRUCK_REQUEST,
@@ -57,12 +59,12 @@ export const addSellTruckListing = (payload,image) => async (dispatch, getState)
 }
 
 
-export const addSellTruckpartsListing =
-  (payload) => async (dispatch, image) => {
+export const addSellTruckpartsListing = (payload) => 
+async (dispatch, image) => {
     dispatch({
       type: SELL_TRUCK_PARTS_REQUEST,
     })
-    const img=uploadImage(image)
+    const img =uploadImage(image)
     try {
       // const { user } = getState((state) => state)
       const token = localStorage.getItem("token")

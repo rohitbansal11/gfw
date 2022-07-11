@@ -63,7 +63,7 @@ const s=(()=>{
 })
 
       const toggle = ()=>{
-  formData.emergency? formData.emergency=false:formData.emergency=true
+  formData.emergency? formData.emergency=false : formData.emergency=true
   console.log("nn",formData)
      
       }

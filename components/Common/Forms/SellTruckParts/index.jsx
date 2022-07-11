@@ -57,7 +57,9 @@ const SellTruckPartsForm = ({ className }) => {
       }
     })
   }
-  console.log({formData})
+  // console.log({formData})
+
+
   const handleImageChange = (e) =>{
     setCloudImg(e.target.files)
     // formData.image=e.target.files[0]
@@ -75,6 +77,8 @@ console.log({cloudImg})
     dispatch(addSellTruckpartsListing(payload,cloudImg))
     // console.log("dispach" ,{formData})
   }
+
+  useEffect(() => {}, [selltruckparts])
 
   const { part, make, year, model, price, title, contactno, image } = formData
 
@@ -168,7 +172,7 @@ console.log({cloudImg})
         required={true}
         handleChange={handleChange}
       />
-      <TextInput
+      <cloudImg
         name="image"
         id="image"
         // value={image}
