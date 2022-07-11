@@ -36,6 +36,7 @@ const Navbar = ({
   viewHref,
   emergencyHref,
   listingHref,
+  menuHref
 }) => {
   const router = useRouter();
   const [Nav, SetNav] = useState(false);
@@ -170,9 +171,11 @@ const Navbar = ({
 
           {Object?.keys(tokenData)?.length > 0 && (
             <div className="flex md:justify-around ">
+              <Link href={menuHref}>
               <button className="flex font-semibold text-indigo-700 hover:text-zinc-100 hover:bg-indigo-700 rounded-lg border-[3px] border-indigo-700 sm:w-[160px] justify-center h-[40px] items-center transition ease-in-out">
                 Menu
               </button>
+              </Link>
 
               <button
                 onClick={() => {
@@ -326,7 +329,7 @@ const Navbar = ({
           )}
           {Object?.keys(tokenData)?.length > 0 && (
             <div className="lg:flex md:w-[23%] lg:md:[30%] hidden gap-3 items-center">
-              <Link href={loginHref}>
+              <Link href={menuHref}>
                 <button className="flex justify-center items-center lg:font-medium text-indigo-700 hover:text-zinc-100 hover:bg-indigo-700 w-[100px] md:text-md rounded-lg border-[3px] border-indigo-700 transition ease-in-out h-[40px] ">
                   Menu
                 </button>
@@ -493,5 +496,6 @@ Navbar.defaultProps = {
   listingHref: "/listings",
   viewHref: "/",
   emergencyHref: "/emergency-loads",
+  menuHref:"/dashboard"
 };
 export default Navbar;

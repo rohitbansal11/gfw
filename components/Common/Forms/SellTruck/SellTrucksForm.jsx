@@ -153,7 +153,6 @@ const SellTrucks = ({ className }) => {
         placeholder="eg-999999"
         type="number"
         maxLength='10'
-       
         required={true}
         handleChange={handleChange}
       />

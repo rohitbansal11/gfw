@@ -25,7 +25,7 @@ const SellTruckPartsForm = ({ className }) => {
   })
   // console.log("sellll",{selltruckparts})
   const [currentState, setCurrentState] = useState(false)
-
+  const [cloudImg , setCloudImg] = useState("")
   const [currentCity, setCurrentCity] = useState("Alamo")
 
   const handleCurrentState = (state) => {
@@ -47,6 +47,7 @@ const SellTruckPartsForm = ({ className }) => {
       }
     })
   }
+  
 
   const handleMakeChange = (state) => {
     setFormData((prevState) => {
@@ -56,7 +57,16 @@ const SellTruckPartsForm = ({ className }) => {
       }
     })
   }
+  // console.log({formData})
 
+
+  const handleImageChange = (e) =>{
+    setCloudImg(e.target.files)
+    // formData.image=e.target.files[0]
+    console.log("gggggggggggggg",e.target.files)
+
+  }
+console.log({cloudImg})
   const handleSubmit = (e) => {
     e.preventDefault()
     const payload = { 
@@ -64,9 +74,11 @@ const SellTruckPartsForm = ({ className }) => {
        city: currentCity,
        state: currentState,
        }
-    dispatch(addSellTruckpartsListing(payload))
-    console.log("dispach" ,{formData})
+    dispatch(addSellTruckpartsListing(payload,cloudImg))
+    // console.log("dispach" ,{formData})
   }
+
+  useEffect(() => {}, [selltruckparts])
 
   const { part, make, year, model, price, title, contactno, image } = formData
 
@@ -160,15 +172,15 @@ const SellTruckPartsForm = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-      <TextInput
+      <cloudImg
         name="image"
         id="image"
-        value={image}
+        // value={image}
         label="Photo"
         placeholder="Photo"
         type="file"
         required={true}
-        handleChange={handleChange}
+        handleImageChange={handleImageChange}
       />
 
       <button

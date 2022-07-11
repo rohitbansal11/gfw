@@ -1,31 +1,23 @@
-import { EyeIcon, EyeOffIcon } from "@heroicons/react/outline"
 import React from "react"
 import { FaCameraRetro } from "react-icons/fa"
 
-const TextInput = ({
-  name,
-  handleImageChange,
-  id,
-  value,
-  handleChange,
-  label,
-  placeholder,
-  errorMsg,
-  required,
-  min,
-  max,
-  maxLength,
-  minLength,
-  pattern,
-  type = "text",
-  inputClassName,
-  showPassword,
-  setShowPassword,
-  handleShowPassword,
-}) => {
-  
-  return (
-    <div className="flex-1 my-[2px]">
+export const CloudnaryUpload = ({
+    name,
+    handleImageChange,
+    id,
+    value,
+    label,
+    placeholder,
+    errorMsg,
+    required,
+    type = "file",
+    inputClassName,
+    
+
+}) =>
+{
+    return(
+        <div className="flex-1 my-[2px]">
       {label && (
         <label
           htmlFor="make"
@@ -38,17 +30,12 @@ const TextInput = ({
       <div className="relative">
         <input
           className={` w-full text-[16px] text-indigo-900 outline-none border-[2px] border-indigo-500 mb-1 py-2 px-2 rounded-md shadow-md ${inputClassName}`}
-          type={showPassword ? "text" : type}
+          type={type}
           name={name}
-          onChange={handleChange||handleImageChange}
+          onChange={handleImageChange}
           value={value ? value : null}
           required={!!required}
           id={id}
-          min={min}
-          minLength={minLength}
-          maxLength={maxLength}
-          max={max}
-          pattern={pattern}
           placeholder={placeholder}
         />
         {type === "file" && (
@@ -74,9 +61,8 @@ const TextInput = ({
           <></>
         )}
       </div>
+      
       <p className="text-red-700 text-[12px] ml-2">{errorMsg}</p>
     </div>
-  )
+    )
 }
-
-export default TextInput
