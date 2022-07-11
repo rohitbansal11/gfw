@@ -1,8 +1,8 @@
-import React from "react"
-import { Section, Container } from "@components/Common"
-import { PrimaryHeading } from "../Typography"
-import { BsCheck2All } from "react-icons/bs"
-import Image from "next/image"
+import React from "react";
+import { Section, Container } from "@components/Common";
+import { PrimaryHeading } from "../Typography";
+import { BsCheck2All } from "react-icons/bs";
+import Image from "next/image";
 
 const BecomeMember = () => {
   return (
@@ -41,7 +41,7 @@ const BecomeMember = () => {
         </div>
       </Container>
     </Section>
-  )
-}
+  );
+};
 
-export default BecomeMember
+export default BecomeMember;

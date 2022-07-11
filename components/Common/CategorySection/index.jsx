@@ -17,7 +17,7 @@ const CategorySection = ({ items }) => {
             text="One Platform, Many Solutions"
           />
         </FadeUpDown>
-        <Cards items={items} />
+        <Cards items={items} type="show" />
       </Container>
     </Section>
   );
@@ -83,7 +83,6 @@ CategorySection.defaultProps = {
           title: "Cars sale",
           href: "/car-sale",
         },
-       
       ],
     },
     {

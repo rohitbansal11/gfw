@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import { Container, PrimaryButton } from "@components/Common";
+import {
+  Container,
+  PrimaryButton,
+  ModalHidden,
+  ModalSimple,
+  ModalLoadshidden,
+  ModalLoadSimple,
+  ModalPlatinum,
+} from "@components/Common";
 import { RiSendPlaneLine } from "react-icons/ri";
 import { IoMdAdd } from "react-icons/io";
 import { BsCart2 } from "react-icons/bs";
@@ -14,6 +22,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Navhide } from "@store/user-store/userActions";
 import Login from "@pages/login";
+
 import {
   CheckTokenOne,
   LogoutAction,
@@ -35,6 +44,13 @@ const Navbar = ({
   const dispatch = useDispatch();
   const [drop, setDrop] = useState(false);
   const [tokenData, setTokenData] = useState({});
+  const [showModal, setShowModal] = useState(false);
+  const [showModallodas, setShowModalloads] = useState(false);
+  const [routeSet, setRouteName] = useState("");
+  const [checkData, setCheckData] = useState({});
+  const [checkDataLoads, setCheckDataLoads] = useState({});
+  const [showPlatinum, setShowPlatinum] = useState(false);
+
   const handleClick = (text) => {
     // setDrop(!drop);
     if (active) {
@@ -48,6 +64,7 @@ const Navbar = ({
   const handleNav = () => {
     SetNav(!Nav);
   };
+
   useEffect(() => {
     if (Object?.keys(tokenData)?.length == 0) {
       handleApi();
@@ -57,20 +74,77 @@ const Navbar = ({
   const handleApi = () => {
     dispatch(CheckTokenOne());
   };
+
   useEffect(() => {
     setTokenData(selector?.token);
+    setCheckData(selector?.location);
+    setCheckDataLoads(selector?.location_loads);
   }, [selector]);
 
   const HnadleReroute = (routeName) => {
     if (Object?.keys(tokenData)?.length == 0) {
       router.push("/login");
     } else {
-      router.push(routeName);
+      if (routeName == "/emergency-loads") {
+        if (tokenData?.sub_data?.sub_role == "platinum") {
+          setShowModalloads(true);
+          setRouteName(routeName);
+        } else {
+          setShowPlatinum(true);
+        }
+      } else if (routeName == "/loads") {
+        if (
+          checkDataLoads?.stateOne !== "" &&
+          checkData?.cityOne !== "" &&
+          checkDataLoads?.stateTwo !== "" &&
+          checkData?.cityTwo !== ""
+        ) {
+          router.push(routeName);
+        } else {
+          setShowModalloads(true);
+          setRouteName(routeName);
+        }
+      } else {
+        if (checkData?.state !== "" || checkData?.city !== "") {
+          router.push(routeName);
+        } else {
+          setShowModal(true);
+          setRouteName(routeName);
+        }
+      }
     }
+  };
+
+  const HandleBackModal = (value, endhere) => {
+    setShowModal(value);
+    if (endhere == "route") {
+      router.push(routeSet);
+    }
+  };
+  const HandleBackModalLoads = (value, endhere) => {
+    setShowModalloads(value);
+    if (endhere == "route") {
+      router.push(routeSet);
+    }
+  };
+
+  const HandleBackModalPlatinum = (value) => {
+    setShowPlatinum(value);
   };
 
   return (
     <header>
+      <ModalHidden handleSet={HandleBackModal} showModal={showModal} />
+      <ModalLoadshidden
+        handleSetLodas={HandleBackModalLoads}
+        showModallodas={showModallodas}
+      />
+      <ModalPlatinum
+        handleBackplatinum={HandleBackModalPlatinum}
+        showModalPlatinum={showPlatinum}
+      />
+      {/* <ModalSimple />
+      <ModalLoadSimple /> */}
       <div className="static">
         <ul
           className={

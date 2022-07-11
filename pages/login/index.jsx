@@ -1,10 +1,11 @@
 import { Section } from "@components/Common";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { TextInput } from "@components/Common";
 import axios from "@utils/axios";
 import { useDispatch } from "react-redux";
 import { LogInuser } from "@store/user-store/userActions";
+import { CheckTokenTwo } from "@store/AllDataMain/AllDataaction";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +26,6 @@ const Login = () => {
       };
     });
   };
-  // console.log("hhhhh" , {formData})
 
   const handleShowPassword = () => {
     console.log(showPassword);
@@ -39,6 +39,14 @@ const Login = () => {
     dispatch(LogInuser(payload));
     console.log({ formData });
   };
+
+  useEffect(() => {
+    let tokenValue = localStorage.getItem("token");
+
+    if (tokenValue !== undefined) {
+      dispatch(CheckTokenTwo());
+    }
+  }, []);
 
   const { email, password } = formData;
 

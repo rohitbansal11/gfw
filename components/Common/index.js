@@ -22,8 +22,8 @@ export { default as CarSale } from "./Loads/CarSale";
 export { default as Rent } from "./Loads/Rent";
 export { default as Job } from "./Loads/Job";
 export { default as FormSection } from "./Forms/FormSection";
-export {default as Aside} from "./Dashboard/Aside"
-export {default as MyListingCard} from "./Dashboard/MyListingCard"
+export { default as Aside } from "./Dashboard/Aside";
+export { default as MyListingCard } from "./Dashboard/MyListingCard";
 
 // components
 export { default as SearchBar } from "./SearchBar";
@@ -39,3 +39,16 @@ export { default as SecondaryHeading } from "./Typography/SecondaryHeading";
 export { default as FadeUpDown } from "./Animation/FadeUpDown";
 export { default as Parallax } from "./Animation/Parallax";
 export { default as Ride } from "./Loads/Ride";
+
+/////Modal Single State and City
+export { default as ModalSimple } from "./Modal/ModalSimple";
+export { default as ModalHidden } from "./Modal/MadalHidden";
+
+////modal Double State And City
+export { default as ModalLoadshidden } from "./Modal/ModalLoadsHiden";
+export { default as ModalLoadSimple } from "./Modal/ModalLoadSimple";
+
+///Sub Modal is Here
+export { default as ModalSilver } from "./SubModals/Silver";
+export { default as ModalGold } from "./SubModals/Gold";
+export { default as ModalPlatinum } from "./SubModals/Platinum";

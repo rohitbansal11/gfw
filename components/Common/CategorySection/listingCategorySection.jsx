@@ -17,7 +17,7 @@ const listingCategorySection = ({ items }) => {
             text="One Platform, Many Solutions"
           />
         </FadeUpDown>
-        <Cards items={items} />
+        <Cards items={items} type="listing" />
       </Container>
     </Section>
   );
