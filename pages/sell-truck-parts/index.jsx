@@ -1,6 +1,6 @@
-import React from "react"
-import { BecomeMember, FormSection, MobileApp } from "@components/Common"
-import SellTruckPartsForm from "@components/Common/Forms/SellTruckParts"
+import React from "react";
+import { BecomeMember, FormSection, MobileApp } from "@components/Common";
+import SellTruckPartsForm from "@components/Common/Forms/SellTruckParts";
 
 const SellTruckParts = () => {
   return (
@@ -13,7 +13,7 @@ const SellTruckParts = () => {
       <BecomeMember />
       <MobileApp />
     </>
-  )
-}
+  );
+};
 
-export default SellTruckParts
+export default SellTruckParts;

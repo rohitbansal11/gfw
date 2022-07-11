@@ -1,8 +1,21 @@
-import { Job } from "@components/Common"
-import Hero from "@components/Common/Home/Hero"
-import React from "react"
+import { Job } from "@components/Common";
+import Hero from "@components/Common/Home/Hero";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getWorker } from "@store/AllDataMain/AllDataaction";
 
 const JobLocalWorkerPage = ({ loads }) => {
+  const [loaclWorker, setLoaclWorker] = useState([]);
+  const dispatch = useDispatch();
+  const selector = useSelector((pre) => pre?.alldata);
+
+  useEffect(() => {
+    dispatch(getWorker(selector?.location));
+  }, []);
+
+  useEffect(() => {
+    setLoaclWorker(selector?.worker);
+  }, [selector]);
   return (
     <>
       <Hero
@@ -12,8 +25,8 @@ const JobLocalWorkerPage = ({ loads }) => {
       />
       <Job isWorkers={true} loadsData={loads} />
     </>
-  )
-}
+  );
+};
 
 JobLocalWorkerPage.defaultProps = {
   loads: [
@@ -180,6 +193,6 @@ JobLocalWorkerPage.defaultProps = {
       city: "Santa Clara, CA, USA",
     },
   ],
-}
+};
 
-export default JobLocalWorkerPage
+export default JobLocalWorkerPage;

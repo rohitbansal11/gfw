@@ -1,8 +1,21 @@
-import { Rent } from "@components/Common"
-import Hero from "@components/Common/Home/Hero"
-import React from "react"
+import { Rent } from "@components/Common";
+import Hero from "@components/Common/Home/Hero";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getRoom } from "@store/AllDataMain/AllDataaction";
 
 const RentRoomPage = ({ loads }) => {
+  const [rentRoom, setRentRoom] = useState([]);
+  const dispatch = useDispatch();
+  const selector = useSelector((pre) => pre?.alldata);
+
+  useEffect(() => {
+    dispatch(getRoom(selector?.location));
+  }, []);
+
+  useEffect(() => {
+    setRentRoom(selector?.room);
+  }, [selector]);
   return (
     <>
       <Hero
@@ -12,8 +25,8 @@ const RentRoomPage = ({ loads }) => {
       />
       <Rent isRooms={true} loadsData={loads} />
     </>
-  )
-}
+  );
+};
 
 RentRoomPage.defaultProps = {
   loads: [
@@ -288,6 +301,6 @@ RentRoomPage.defaultProps = {
       img: "/images/home.jpg",
     },
   ],
-}
+};
 
-export default RentRoomPage
+export default RentRoomPage;

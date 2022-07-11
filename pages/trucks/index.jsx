@@ -1,8 +1,21 @@
-import { TruckParts } from "@components/Common"
-import Hero from "@components/Common/Home/Hero"
-import React from "react"
+import { TruckParts } from "@components/Common";
+import Hero from "@components/Common/Home/Hero";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTruck } from "@store/AllDataMain/AllDataaction";
 
 const TruckPage = ({ loads }) => {
+  const [truck, setTruck] = useState([]);
+  const dispatch = useDispatch();
+  const selector = useSelector((pre) => pre?.alldata);
+
+  useEffect(() => {
+    dispatch(getTruck(selector?.location));
+  }, []);
+
+  useEffect(() => {
+    setTruck(selector?.truck);
+  }, [selector]);
   return (
     <>
       <Hero
@@ -12,8 +25,8 @@ const TruckPage = ({ loads }) => {
       />
       <TruckParts loadsData={loads} />
     </>
-  )
-}
+  );
+};
 
 TruckPage.defaultProps = {
   loads: [
@@ -261,6 +274,6 @@ TruckPage.defaultProps = {
       img: "/images/truck.jpg",
     },
   ],
-}
+};
 
-export default TruckPage
+export default TruckPage;

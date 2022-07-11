@@ -50,7 +50,7 @@ export default function MadalHidden({ handleSetLodas, showModallodas }) {
       let DataCityAll = cityFilter?.map((e) => {
         return { value: e, label: e };
       });
-      setCityShow(DataCityAll);
+
       setCityAll(DataCityAll);
     }
   }, [currentStateOne]);

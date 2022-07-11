@@ -1,8 +1,21 @@
-import { Rent } from "@components/Common"
-import Hero from "@components/Common/Home/Hero"
-import React from "react"
+import { Rent } from "@components/Common";
+import Hero from "@components/Common/Home/Hero";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getHome } from "@store/AllDataMain/AllDataaction";
 
 const RentPage = ({ loads }) => {
+  const [rentHome, setRentHome] = useState([]);
+  const dispatch = useDispatch();
+  const selector = useSelector((pre) => pre?.alldata);
+
+  useEffect(() => {
+    dispatch(getHome(selector?.location));
+  }, []);
+
+  useEffect(() => {
+    setRentHome(selector?.home);
+  }, [selector]);
   return (
     <>
       <Hero
@@ -12,8 +25,8 @@ const RentPage = ({ loads }) => {
       />
       <Rent loadsData={loads} />
     </>
-  )
-}
+  );
+};
 
 RentPage.defaultProps = {
   loads: [
@@ -288,6 +301,6 @@ RentPage.defaultProps = {
       img: "/images/home.jpg",
     },
   ],
-}
+};
 
-export default RentPage
+export default RentPage;

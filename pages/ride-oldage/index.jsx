@@ -1,8 +1,21 @@
-import { Ride } from "@components/Common"
-import Hero from "@components/Common/Home/Hero"
-import React from "react"
+import { Ride } from "@components/Common";
+import Hero from "@components/Common/Home/Hero";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getOldage } from "@store/AllDataMain/AllDataaction";
 
 const RideOldAgePage = ({ loads }) => {
+  const [rideOldage, setRideOldAge] = useState([]);
+  const dispatch = useDispatch();
+  const selector = useSelector((pre) => pre?.alldata);
+
+  useEffect(() => {
+    dispatch(getOldage(selector?.location));
+  }, []);
+
+  useEffect(() => {
+    setRideOldAge(selector?.oldage);
+  }, [selector]);
   return (
     <>
       <Hero
@@ -12,8 +25,8 @@ const RideOldAgePage = ({ loads }) => {
       />
       <Ride type="oldage" loadsData={loads} />
     </>
-  )
-}
+  );
+};
 
 RideOldAgePage.defaultProps = {
   loads: [
@@ -180,6 +193,6 @@ RideOldAgePage.defaultProps = {
       city: "Los Angeles",
     },
   ],
-}
+};
 
-export default RideOldAgePage
+export default RideOldAgePage;

@@ -1,8 +1,21 @@
-import { Ride } from "@components/Common"
-import Hero from "@components/Common/Home/Hero"
-import React from "react"
+import { Ride } from "@components/Common";
+import Hero from "@components/Common/Home/Hero";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAirport } from "@store/AllDataMain/AllDataaction";
 
 const RideAirportPage = ({ loads }) => {
+  const [rideAirport, setRideAirport] = useState([]);
+  const dispatch = useDispatch();
+  const selector = useSelector((pre) => pre?.alldata);
+
+  useEffect(() => {
+    dispatch(getAirport(selector?.location));
+  }, []);
+
+  useEffect(() => {
+    setRideAirport(selector?.room);
+  }, [selector]);
   return (
     <>
       <Hero
@@ -12,8 +25,8 @@ const RideAirportPage = ({ loads }) => {
       />
       <Ride type="airport" loadsData={loads} />
     </>
-  )
-}
+  );
+};
 
 RideAirportPage.defaultProps = {
   loads: [
@@ -180,6 +193,6 @@ RideAirportPage.defaultProps = {
       city: "Los Angeles",
     },
   ],
-}
+};
 
-export default RideAirportPage
+export default RideAirportPage;

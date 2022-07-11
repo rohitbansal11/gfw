@@ -1,19 +1,21 @@
-import { Loads } from "@components/Common"
-import Hero from "@components/Common/Home/Hero"
-import React  ,{useState, useEffect} from "react"
-import { useDispatch, useSelector } from "react-redux"
-import {Getloads} from '../../store/AllDataMain/AllDataaction'
+import { Loads } from "@components/Common";
+import Hero from "@components/Common/Home/Hero";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Getloads } from "../../store/AllDataMain/AllDataaction";
 
 const LoadsPage = ({ loads }) => {
-const [loadsData , setLoadData] =useState([])
-const dispatch =useDispatch();
-const selector =useSelector(pre=>pre);
+  const [loadsData, setLoadData] = useState([]);
+  const dispatch = useDispatch();
+  const selector = useSelector((pre) => pre?.alldata);
 
-useEffect(()=>{
-  console.log('jfhfhffhfgfg')
-dispatch(Getloads())
-},[])
+  useEffect(() => {
+    dispatch(Getloads(selector?.location_loads));
+  }, []);
 
+  useEffect(() => {
+    setLoadData(selector?.loads);
+  }, [selector]);
 
   return (
     <>
@@ -24,8 +26,8 @@ dispatch(Getloads())
       />
       <Loads loads={loads} />
     </>
-  )
-}
+  );
+};
 
 LoadsPage.defaultProps = {
   loads: [
@@ -177,6 +179,6 @@ LoadsPage.defaultProps = {
       type: "Refrigerated",
     },
   ],
-}
+};
 
-export default LoadsPage
+export default LoadsPage;

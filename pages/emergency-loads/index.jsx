@@ -1,11 +1,24 @@
 import {
   EmergencyLoads as EmergencyLoadsComponent,
   MobileApp,
-} from "@components/Common"
-import Hero from "@components/Common/Home/Hero"
-import React from "react"
+} from "@components/Common";
+import Hero from "@components/Common/Home/Hero";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getEmergencyLoads } from "@store/AllDataMain/AllDataaction";
 
 const EmergencyLoads = ({ loads }) => {
+  const [emergencyLoads, setEmergencyLoads] = useState([]);
+  const dispatch = useDispatch();
+  const selector = useSelector((pre) => pre?.alldata);
+
+  useEffect(() => {
+    dispatch(getEmergencyLoads());
+  }, []);
+
+  useEffect(() => {
+    setEmergencyLoads(selector?.emergency);
+  }, [selector]);
   return (
     <>
       <Hero
@@ -16,8 +29,8 @@ const EmergencyLoads = ({ loads }) => {
       <EmergencyLoadsComponent loads={loads} />
       <MobileApp />
     </>
-  )
-}
+  );
+};
 
 EmergencyLoads.defaultProps = {
   loads: [
@@ -169,6 +182,6 @@ EmergencyLoads.defaultProps = {
       type: "Refrigerated",
     },
   ],
-}
+};
 
-export default EmergencyLoads
+export default EmergencyLoads;

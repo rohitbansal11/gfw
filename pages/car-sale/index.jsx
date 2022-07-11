@@ -1,8 +1,21 @@
-import { CarSale } from "@components/Common"
-import Hero from "@components/Common/Home/Hero"
-import React from "react"
+import { CarSale } from "@components/Common";
+import Hero from "@components/Common/Home/Hero";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCarSale } from "@store/AllDataMain/AllDataaction";
 
 const CarSalePage = ({ loads }) => {
+  const [carSale, setCarSale] = useState([]);
+  const dispatch = useDispatch();
+  const selector = useSelector((pre) => pre?.alldata);
+
+  useEffect(() => {
+    dispatch(getCarSale(selector?.location));
+  }, []);
+
+  useEffect(() => {
+    setCarSale(selector?.carsale);
+  }, [selector]);
   return (
     <>
       <Hero
@@ -12,8 +25,8 @@ const CarSalePage = ({ loads }) => {
       />
       <CarSale loadsData={loads} />
     </>
-  )
-}
+  );
+};
 
 CarSalePage.defaultProps = {
   loads: [
@@ -288,6 +301,6 @@ CarSalePage.defaultProps = {
       img: "/images/car.jpg",
     },
   ],
-}
+};
 
-export default CarSalePage
+export default CarSalePage;
