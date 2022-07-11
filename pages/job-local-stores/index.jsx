@@ -2,6 +2,7 @@ import { Job } from "@components/Common"
 import Hero from "@components/Common/Home/Hero"
 import React from "react"
 
+
 const JobLocalStoresPage = ({ loads }) => {
   return (
     <>

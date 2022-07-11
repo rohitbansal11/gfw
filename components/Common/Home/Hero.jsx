@@ -15,9 +15,10 @@ const Hero = ({
   return (
     <Section src={src}>
       <Container>
-        <div className="flex">
-          <div className={`${reverse ? "order-2" : "order-1"} flex-1`}>
+        <div className="w-[full]">
+          <div className={`${reverse ? "order-2" : "order-1"} mx-auto w-[50%] my-[100px] flex-1`}>
             <PrimaryHeading
+              className={""}
               primary={"primary"}
               secondary={"secondary"}
               text={primaryText}
@@ -32,7 +33,7 @@ const Hero = ({
             className={`${reverse ? "order-1" : "order-2"} flex-[0] lg:flex-1`}
           ></div>
         </div>
-        <SearchBar />
+        {/* <SearchBar /> */}
       </Container>
     </Section>
   )

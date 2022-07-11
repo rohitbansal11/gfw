@@ -5,6 +5,7 @@ import { useState } from "react"
 import Link from "next/link"
 import RentCard from "./Cards/RentCard"
 import RideCard from "./Cards/RideCard"
+import {ModalSimple} from "@components/Common"
 
 const Ride = ({ loadsData, type }) => {
   const [loads, setLoads] = useState([])
@@ -21,6 +22,7 @@ const Ride = ({ loadsData, type }) => {
         Rides"
         textCenter
       />
+      <ModalSimple/>
       <div className="flex border-t-2 border-gray-400 pt-4 justify-center py-2 mb-6">
         <div className="flex justify-center gap-4">
           <div className="border-r-2 border-indigo-700 pr-4">

@@ -2,6 +2,7 @@ import { Loads } from "@components/Common"
 import Hero from "@components/Common/Home/Hero"
 import React  ,{useState, useEffect} from "react"
 import { useDispatch, useSelector } from "react-redux"
+
 import {Getloads} from '../../store/AllDataMain/AllDataaction'
 
 const LoadsPage = ({ loads }) => {
@@ -22,6 +23,7 @@ dispatch(Getloads())
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
+      
       <Loads loads={loads} />
     </>
   )

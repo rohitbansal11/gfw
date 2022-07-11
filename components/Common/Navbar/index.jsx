@@ -144,8 +144,7 @@ const Navbar = ({
         handleBackplatinum={HandleBackModalPlatinum}
         showModalPlatinum={showPlatinum}
       />
-      {/* <ModalSimple />
-      <ModalLoadSimple /> */}
+      
       <div className="static">
         <ul
           className={

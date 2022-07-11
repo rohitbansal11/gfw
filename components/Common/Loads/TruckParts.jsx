@@ -4,6 +4,7 @@ import LoadImgCard from "./Cards/LoadImgCard"
 import { useState } from "react"
 import Link from "next/link"
 import LoadImgPartCard from "./Cards/LoadImgPartCard"
+import {ModalSimple} from "@components/Common"
 
 const TruckParts = ({ loadsData, isParts }) => {
   const [loads, setLoads] = useState([])
@@ -19,6 +20,7 @@ const TruckParts = ({ loadsData, isParts }) => {
         text="Truck/part Sale"
         textCenter
       />
+       <ModalSimple />
       <div className="flex bg-indigo-200 justify-center py-2 mb-6">
         <div className="flex justify-center gap-4">
           <div className="border-r-2 border-indigo-400 pr-4">

@@ -2,6 +2,7 @@ import { TruckParts } from "@components/Common"
 import Hero from "@components/Common/Home/Hero"
 import React from "react"
 
+
 const TruckPage = ({ loads }) => {
   return (
     <>

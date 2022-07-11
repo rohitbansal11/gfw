@@ -13,6 +13,7 @@ const Wrapper = styled.section`
   background-image: url(${({ src }) => src});
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
   margin: 0px;
 `
 const Overlay = styled.div`
