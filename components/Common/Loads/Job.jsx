@@ -3,6 +3,8 @@ import { Section, PrimaryHeading } from "@components/Common"
 import { useState } from "react"
 import Link from "next/link"
 import JobCard from "./Cards/JobCard"
+import {ModalSimple} from "@components/Common"
+
 
 const Job = ({ loadsData, isWorkers }) => {
   const [loads, setLoads] = useState([])
@@ -19,6 +21,7 @@ const Job = ({ loadsData, isWorkers }) => {
         text="Jobs"
         textCenter
       />
+      <ModalSimple/>
       <div className="flex border-t-2 border-gray-400 pt-4 justify-center py-2 mb-6">
         <div className="flex justify-center gap-4">
           <div className="border-r-2 border-indigo-700 pr-4">

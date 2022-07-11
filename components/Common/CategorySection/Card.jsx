@@ -147,7 +147,7 @@ const Card = ({ item, index, type }) => {
                 );
               }
             }}
-            className="h-[40px] border-2 border-indigo-700 hover:bg-indigo-700 hover:text-white cursor-pointer flex rounded-md px-4 py-2 justify-center items-center"
+            className="h-[40px] border-2  border-indigo-700 hover:bg-indigo-700 hover:text-white cursor-pointer flex rounded-md px-4 py-2 justify-center items-center"
           >
             <a className="text-xl font-semibold tracking-wide">
               {item.subCategory[0]?.title}

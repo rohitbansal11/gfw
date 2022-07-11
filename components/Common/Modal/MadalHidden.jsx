@@ -68,6 +68,7 @@ export default function MadalHidden({ handleSet, showModal }) {
   // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 
   const handleState = (e) => {
+    setCurrentState(e?.value);
     setData({
       ...data,
       state: e?.value,

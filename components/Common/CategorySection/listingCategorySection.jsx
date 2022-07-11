@@ -28,7 +28,7 @@ listingCategorySection.defaultProps = {
       icon: "fa-solid:truck-loading",
       text: "Loads",
       href: "#",
-      color: "bg-indigo-700",
+      color: "bg-gray-700",
       subCategory: [
         {
           title: "Loads",
@@ -40,7 +40,7 @@ listingCategorySection.defaultProps = {
       icon: "fa6-solid:truck-arrow-right",
       text: "Truck & part sale",
       href: "#",
-      color: "bg-red-600",
+      color: "bg-gray-700",
       subCategory: [
         {
           title: "Truck/Part Sell",
@@ -56,7 +56,7 @@ listingCategorySection.defaultProps = {
       icon: "fa-solid:suitcase",
       text: "Jobs",
       href: "#",
-      color: "bg-indigo-700",
+      color: "bg-gray-700",
       subCategory: [
         {
           title: "Local stores",
@@ -72,7 +72,7 @@ listingCategorySection.defaultProps = {
       icon: "bxs:car",
       text: "Car Sale",
       href: "#",
-      color: "bg-red-600",
+      color: "bg-gray-700",
       subCategory: [
         {
           title: "Cars sell",
@@ -84,7 +84,7 @@ listingCategorySection.defaultProps = {
       icon: "bxs:car",
       text: "Get Ride",
       href: "#",
-      color: "bg-indigo-700",
+      color: "bg-gray-700",
       subCategory: [
         {
           title: "Ride",
@@ -104,7 +104,7 @@ listingCategorySection.defaultProps = {
       icon: "ri:hotel-line",
       text: "Rent Room & Homes",
       href: "#",
-      color: "bg-red-600",
+      color: "bg-gray-700",
       subCategory: [
         {
           title: "Rent Home",
