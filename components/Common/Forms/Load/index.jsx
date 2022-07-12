@@ -19,7 +19,8 @@ const Load = () => {
         contactno: null,
         emergency: false,
         weight:"",
-        detail:"" , 
+        toDetail:"",
+        fromDetail:"",
         weights:"" ,
         type: "" ,
         weights:"",
@@ -94,7 +95,7 @@ const s=(()=>{
       }
     
     
-      const { contactno, detail,weight , weights ,year,emergency ,title,type } = formData
+      const { contactno,toDetail, fromDetail,weight , weights ,year,emergency ,title,type } = formData
 
 useEffect(() => {
 
@@ -122,9 +123,8 @@ useEffect(() => {
       value={weight}
       label=" Weight"
       placeholder="Weight"
-      min="0"
-      minLength='0'
-      maxLength="10"
+      maxLength='10'
+      minLength='0' 
       required={true}
       type="number"
       handleChange={handleChange}
@@ -162,11 +162,11 @@ useEffect(() => {
       />
     
     <TextInput
-      name="detail"
-      id="detail"
-      minLength="0"
-      maxLength={"30"}
-      value={detail}
+      name="fromDetail"
+      id="fromDetail"
+      maxLength='50'
+      minLength='0'
+      value={fromDetail}
       label=" Detail Address"
       placeholder="Detail Address"
       required={true}
@@ -188,11 +188,11 @@ useEffect(() => {
       disabled={currentState ? false : true}
     />
      <TextInput
-      name="detail"
-      id="detail"
-      minLength="0"
-      maxLength={"30"}
-      value={detail}
+      name="toDetail"
+      id="toDetail"
+      maxLength='50'
+      minLength='0'
+      value={toDetail}
       label=" Detail Address"
       placeholder="Detail Address"
       required={true}
@@ -203,8 +203,8 @@ useEffect(() => {
       name="title"
       id="title"
       value={title}
-      minLength="0"
-      maxLength="40"
+      maxLength='70'
+      minLength='0'
       label=" Ad Title"
       placeholder="Title"
       required={true}
@@ -219,7 +219,8 @@ useEffect(() => {
       label="Contact Number"
       placeholder="Contact Number"
       type="number"
-      maxLength="10"
+      maxLength='10'
+      minLength='0'
       required={true}
       handleChange={handleChange}
     />

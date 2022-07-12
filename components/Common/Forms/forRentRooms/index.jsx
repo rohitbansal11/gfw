@@ -75,7 +75,8 @@ const ForRentRooms = ({ className }) => {
         name="rooms"
         id="rooms"
         value={rooms}
-        maxLength='4'
+        maxLength='10'
+        minLength='0'
         label=" No Of Rooms"
         placeholder="No of Rooms"
         required={true}
@@ -86,7 +87,8 @@ const ForRentRooms = ({ className }) => {
         name="title"
         id="title"
         value={title}
-        maxLength='50'
+        maxLength='70'
+        minLength='0'
         label=" Ad Title"
         placeholder="Title"
         required={true}
@@ -100,6 +102,7 @@ const ForRentRooms = ({ className }) => {
         type="number"
         value={price}
         maxLength='10'
+        minLength='0'
         placeholder="Price"
         required={true}
         handleChange={handleChange}
@@ -111,6 +114,7 @@ const ForRentRooms = ({ className }) => {
         value={contactno}
         label="Contact Number"
         maxLength='10'
+        minLength='0'  
         placeholder="Contact Number"
         type="number"
         required={true}

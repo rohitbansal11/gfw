@@ -103,7 +103,8 @@ console.log({cloudImg})
         name="part"
         id="part"
         value={part}
-        maxLength='50'
+        maxLength='10'
+        minLength='0'
         label="Part"
         placeholder="Part"
         required={true}
@@ -132,7 +133,8 @@ console.log({cloudImg})
         value={model}
         label="Model"
         type="text"
-        maxLength='40'
+        maxLength='10'
+        minLength='0'
         placeholder="Model"
         required={true}
         handleChange={handleChange}
@@ -144,6 +146,7 @@ console.log({cloudImg})
         value={price}
         label="Price"
         maxLength='10'
+        minLength='0'
         placeholder="Price"
         required={true}
         type="number"
@@ -153,11 +156,12 @@ console.log({cloudImg})
         name="title"
         id="title"
         value={title}
+        maxLength='70'
+        minLength='0'
         label="Ad Title"
         placeholder="Ad Title"
         required={true}
         type="text"
-        maxLength='50'
         handleChange={handleChange}
       />
 
@@ -168,7 +172,8 @@ console.log({cloudImg})
         label="Contact Number"
         placeholder="eg-999999"
         type="number"
-        maxLength="10"
+        maxLength='10'
+        minLength='0'
         required={true}
         handleChange={handleChange}
       />

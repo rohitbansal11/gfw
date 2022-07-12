@@ -115,7 +115,8 @@ const SellTrucks = ({ className }) => {
       <TextInput
         name="model"
         id="model"
-        maxLength='40'
+        maxLength='10'
+        minLength="0"
         value={model}
         label="Model"
         placeholder="Model"
@@ -130,14 +131,16 @@ const SellTrucks = ({ className }) => {
         label="Miles"
         placeholder="Miles"
         type="number"
-        maxLength='10'
+        maxLength='6'
+        minLength='0'
         required={true}
         handleChange={handleChange}
       />
       <TextInput
         name="title"
         id="title"
-        maxLength='50'
+        maxLength='70'
+        minLength='0'
         value={title}
         label="Ad title"
         placeholder="Ad Title"
@@ -153,6 +156,7 @@ const SellTrucks = ({ className }) => {
         placeholder="eg-999999"
         type="number"
         maxLength='10'
+        minLength='0'
         required={true}
         handleChange={handleChange}
       />

@@ -97,7 +97,8 @@ const SellCarsForm = ({ className }) => {
       <TextInput
         name="model"
         id="model"
-        maxLength='40'
+        maxLength='10'
+        minLength='0'
         value={model}
         label="Model"
         placeholder="Model"
@@ -110,7 +111,8 @@ const SellCarsForm = ({ className }) => {
         id="miles"
         value={miles}
         label="Miles Driven"
-        maxLength='10'
+        maxLength='6'
+        minLength='0'
         placeholder="Miles Driven"
         required={true}
         type="number"
@@ -121,7 +123,8 @@ const SellCarsForm = ({ className }) => {
         id="title"
         value={title}
         label="Ad Title"
-        maxLength='50'
+        maxLength='70'
+        minLength='0'
         placeholder="Ad Title"
         required={true}
         type="text"
@@ -135,7 +138,7 @@ const SellCarsForm = ({ className }) => {
         placeholder="eg-999999"
         type="number"
         maxLength='10'
-
+        minLength='0'
         required={true}
         handleChange={handleChange}
       />
@@ -145,6 +148,7 @@ const SellCarsForm = ({ className }) => {
         id="price"
         value={price}
         maxLength='10'
+        minLength='0'
         label="Price"
         type="number"
         required={true}
