@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NumberInput, TextInput } from "@components/Common";
+import { NumberInput, TextInput, SingleImge } from "@components/Common";
 import DropDown from "../SellTruck/statesdropdown";
 import StatesSelect from "../SellTruck/statesdropdown";
 import CitySelect from "../SellTruck/citiesdropdown";
@@ -16,8 +16,7 @@ const SellCarsForm = ({ className }) => {
     contactno: null,
     price: "",
     title: "",
-    image:
-      "https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?s=612x612",
+    image: "",
   });
   const dispatch = useDispatch();
   const carslist = useSelector((state) => {
@@ -62,7 +61,14 @@ const SellCarsForm = ({ className }) => {
   const handleCurrentCity = (city) => {
     setCurrentCity(city);
   };
-  useEffect(() => {}, [carslist]);
+
+  const handleImgeSet = (value) => {
+    setFormData({
+      ...formData,
+      image: value,
+    });
+  };
+
   const { year, model, miles, contactno, price, title, image } = formData;
   return (
     <form
@@ -157,15 +163,7 @@ const SellCarsForm = ({ className }) => {
         handleChange={handleChange}
       />
 
-      <TextInput
-        name="image"
-        id="image"
-        label="image"
-        placeholder="image"
-        type="file"
-        required={true}
-        handleChange={handleChange}
-      />
+      <SingleImge handleImge={handleImgeSet} />
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

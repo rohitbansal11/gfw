@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NumberInput, TextInput } from "@components/Common";
+import { NumberInput, TextInput, SingleImge } from "@components/Common";
 import DropDown from "../SellTruck/statesdropdown";
 import StatesSelect from "../SellTruck/statesdropdown";
 import CitySelect from "../SellTruck/citiesdropdown";
@@ -16,8 +16,7 @@ const SellTruckPartsForm = ({ className }) => {
     model: "",
     title: "",
     contactno: null,
-    image:
-      "https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?s=612x612",
+    image: "",
   });
 
   const dispatch = useDispatch();
@@ -64,7 +63,7 @@ const SellTruckPartsForm = ({ className }) => {
     // formData.image=e.target.files[0]
     console.log("gggggggggggggg", e.target.files);
   };
-  console.log({ cloudImg });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const payload = {
@@ -72,11 +71,16 @@ const SellTruckPartsForm = ({ className }) => {
       city: currentCity,
       state: currentState,
     };
-    dispatch(addSellTruckpartsListing(payload, cloudImg));
+    dispatch(addSellTruckpartsListing(payload));
     // console.log("dispach" ,{formData})
   };
 
-  useEffect(() => {}, [selltruckparts]);
+  const handleImgeSet = (value) => {
+    setFormData({
+      ...formData,
+      image: value,
+    });
+  };
 
   const { part, make, year, model, price, title, contactno, image } = formData;
 
@@ -175,16 +179,7 @@ const SellTruckPartsForm = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-      <cloudImg
-        name="image"
-        id="image"
-        // value={image}
-        label="Photo"
-        placeholder="Photo"
-        type="file"
-        required={true}
-        handleImageChange={handleImageChange}
-      />
+      <SingleImge handleImge={handleImgeSet} />
 
       <button
         type="submit"

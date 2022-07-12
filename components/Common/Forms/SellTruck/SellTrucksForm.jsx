@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { NumberInput, TextInput } from "@components/Common";
+import { NumberInput, TextInput, SingleImge } from "@components/Common";
 // import { Previews } from "./Dropzone"
 import StatesSelect from "./statesdropdown";
 import CitySelect from "./citiesdropdown";
@@ -14,8 +14,7 @@ const SellTrucks = ({ className }) => {
     miles: "",
     title: "",
     contactno: null,
-    image:
-      "https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?s=612x612",
+    image: "",
   });
   const dispatch = useDispatch();
   const sellTruckState = useSelector((state) => state.sellTruck);
@@ -72,12 +71,16 @@ const SellTrucks = ({ className }) => {
       ...formData,
       city: currentCity,
       state: currentState,
-      image: "https://image.jpg", //@todo remove it and handle image upload
     };
     dispatch(addSellTruckListing(payload));
     console.log("ggg", formData);
   };
-  useEffect(() => {}, [sellTruckState]);
+  const handleImgeSet = (value) => {
+    setFormData({
+      ...formData,
+      image: value,
+    });
+  };
   const { year, model, miles, title, contactno, image } = formData;
 
   return (
@@ -161,15 +164,7 @@ const SellTrucks = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-      <TextInput
-        name="image"
-        id="image"
-        label="Photo"
-        placeholder="Photo"
-        type="file"
-        required={true}
-        handleChange={handleChange}
-      />
+      <SingleImge handleImge={handleImgeSet} />
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

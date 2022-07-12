@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NumberInput, TextInput } from "@components/Common";
+import { NumberInput, TextInput, SingleImge } from "@components/Common";
 // import DropDown from "../SellTruck/statesdropdown"
 import StatesSelect from "../SellTruck/statesdropdown";
 import CitySelect from "../SellTruck/citiesdropdown";
@@ -12,8 +12,7 @@ const ForRentRooms = ({ className }) => {
     title: "",
     price: "",
     contactno: null,
-    image:
-      "https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?s=612x612",
+    image: "",
   });
   const [currentState, setCurrentState] = useState("");
   const [currentCity, setCurrentCity] = useState("");
@@ -49,8 +48,12 @@ const ForRentRooms = ({ className }) => {
     setCurrentCity(city);
   };
 
-  useEffect(() => {}, [rentrooms]);
-
+  const handleImgeSet = (value) => {
+    setFormData({
+      ...formData,
+      image: value,
+    });
+  };
   const { rooms, contactno, title, price, image } = formData;
 
   return (
@@ -121,15 +124,7 @@ const ForRentRooms = ({ className }) => {
         handleChange={handleChange}
       />
 
-      <TextInput
-        name="image"
-        id="image"
-        label="image"
-        placeholder="image"
-        type="file"
-        required={true}
-        handleChange={handleChange}
-      />
+      <SingleImge handleImge={handleImgeSet} />
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"

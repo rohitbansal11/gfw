@@ -25,7 +25,7 @@ export { default as FormSection } from "./Forms/FormSection";
 export { default as Aside } from "./Dashboard/Aside";
 // export {default as MyListingCard} from "./Dashboard/MyListingCard"
 export { default as DashboardList } from "./Dashboard/DashboardList";
-export {default as BecomeMemberCard } from "./BecomeMember/BecomeMemberCard"
+export { default as BecomeMemberCard } from "./BecomeMember/BecomeMemberCard";
 
 // components
 export { default as SearchBar } from "./SearchBar";
@@ -59,3 +59,7 @@ export { default as ModalPlatinum } from "./SubModals/Platinum";
 ////Card Loding And No Data Found
 export { default as NoDataFound } from "./CardEtra/CradNodata";
 export { default as CardLoading } from "./CardEtra/CardSkelton";
+
+/// Cloudmary Image
+export { default as SingleImge } from "./Cloudnary/SingleCloudnary";
+export { default as MultipleImge } from "./Cloudnary/MultipleCloudnary";

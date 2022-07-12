@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NumberInput, TextInput } from "@components/Common";
+import { NumberInput, TextInput, MultipleImge } from "@components/Common";
 
 import StatesSelect from "../SellTruck/statesdropdown";
 import CitySelect from "../SellTruck/citiesdropdown";
@@ -16,10 +16,7 @@ const RentHouse = ({ className }) => {
     price: "",
     state: "",
     contactno: null,
-    image: [
-      "https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?s=612x612",
-      "https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?s=612x612",
-    ],
+    image: [],
     area: null,
   });
 
@@ -55,14 +52,11 @@ const RentHouse = ({ className }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    let payload = {
-      ...formData,
-      city: currentCity,
-      state: currentState,
-      image: "https://image.jpg", //@todo remove this and handle image upload
-    };
-    dispatch(sellhouseListing(payload));
-    // console.log("ss" , { formData})
+    formData.city = currentCity;
+    formData.state = currentState;
+
+    dispatch(sellhouseListing(formData));
+    //console.log("ss", { formData });
   };
 
   const handleCurrentState = (state) => {
@@ -74,9 +68,13 @@ const RentHouse = ({ className }) => {
     setCurrentCity(city);
     console.log(city);
   };
-
+  const handleImgeSet = (value) => {
+    setFormData({
+      ...formData,
+      image: value,
+    });
+  };
   const { contactno, rooms, price, image, title, area } = formData;
-  useEffect(() => {}, []);
 
   return (
     <form
@@ -155,15 +153,7 @@ const RentHouse = ({ className }) => {
         required={true}
         handleChange={handleChange}
       />
-      <TextInput
-        name="image"
-        id="image"
-        label="image"
-        placeholder="image"
-        type="file"
-        required={true}
-        handleChange={handleChange}
-      />
+      <MultipleImge handleImge={handleImgeSet} />
       <button
         type="submit"
         className="text-xl font-medium py-2 mt-4 border-2 border-indigo-700 text-white bg-indigo-700 rounded-md drop-shadow-sm hover:bg-indigo-900"
