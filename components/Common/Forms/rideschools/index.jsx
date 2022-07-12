@@ -18,7 +18,7 @@ const RideSchool = ({ className }) => {
     contactno: null,
   });
   const [currentState, setCurrentState] = useState("");
-  const [currentCity, setCurrentCity] = useState("Alamo");
+  const [currentCity, setCurrentCity] = useState("");
   const handleCurrentState = (state) => {
     setCurrentState(state);
     setCurrentCity("");
@@ -83,7 +83,8 @@ const RideSchool = ({ className }) => {
         id="pickup"
         value={pickup}
         label="Pickup"
-        maxLength="70"
+        maxLength="10"
+        minLength="0"
         placeholder="Pickup"
         required={true}
         type="text"
@@ -105,7 +106,8 @@ const RideSchool = ({ className }) => {
         id="schoolname"
         value={schoolname}
         label="School name"
-        maxLength="50"
+        maxLength="6"
+        minLength="0"
         placeholder="School name"
         required={true}
         type="text"
@@ -121,6 +123,7 @@ const RideSchool = ({ className }) => {
         placeholder="Contact Number"
         type="number"
         maxLength="10"
+        minLength="0"
         required={true}
         handleChange={handleChange}
       />

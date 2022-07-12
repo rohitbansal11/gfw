@@ -16,7 +16,8 @@ const SellTruckPartsForm = ({ className }) => {
     model: "",
     title: "",
     contactno: null,
-    image: [],
+    image:
+      "https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?s=612x612",
   });
 
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const SellTruckPartsForm = ({ className }) => {
   // console.log("sellll",{selltruckparts})
   const [currentState, setCurrentState] = useState(false);
   const [cloudImg, setCloudImg] = useState("");
-  const [currentCity, setCurrentCity] = useState("Alamo");
+  const [currentCity, setCurrentCity] = useState("");
 
   const handleCurrentState = (state) => {
     setCurrentState(state);
@@ -100,7 +101,8 @@ const SellTruckPartsForm = ({ className }) => {
         name="part"
         id="part"
         value={part}
-        maxLength="50"
+        maxLength="10"
+        minLength="0"
         label="Part"
         placeholder="Part"
         required={true}
@@ -129,7 +131,8 @@ const SellTruckPartsForm = ({ className }) => {
         value={model}
         label="Model"
         type="text"
-        maxLength="40"
+        maxLength="10"
+        minLength="0"
         placeholder="Model"
         required={true}
         handleChange={handleChange}
@@ -141,6 +144,7 @@ const SellTruckPartsForm = ({ className }) => {
         value={price}
         label="Price"
         maxLength="10"
+        minLength="0"
         placeholder="Price"
         required={true}
         type="number"
@@ -150,11 +154,12 @@ const SellTruckPartsForm = ({ className }) => {
         name="title"
         id="title"
         value={title}
+        maxLength="70"
+        minLength="0"
         label="Ad Title"
         placeholder="Ad Title"
         required={true}
         type="text"
-        maxLength="50"
         handleChange={handleChange}
       />
 
@@ -166,6 +171,7 @@ const SellTruckPartsForm = ({ className }) => {
         placeholder="eg-999999"
         type="number"
         maxLength="10"
+        minLength="0"
         required={true}
         handleChange={handleChange}
       />

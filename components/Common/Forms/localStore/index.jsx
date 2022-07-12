@@ -39,7 +39,7 @@ const Localstore = ({ className }) => {
   };
 
   const [currentState, setCurrentState] = useState("");
-  const [currentCity, setCurrentCity] = useState("Alamo");
+  const [currentCity, setCurrentCity] = useState("");
   const handleCurrentState = (state) => {
     setCurrentState(state);
     setCurrentCity("");
@@ -75,7 +75,8 @@ const Localstore = ({ className }) => {
         id="job"
         value={job}
         label="Job Post"
-        maxLength="40"
+        maxLength="10"
+        minLength="0"
         placeholder="Job Post"
         required={true}
         type="text"
@@ -86,7 +87,8 @@ const Localstore = ({ className }) => {
         id="nameofstore"
         value={nameofstore}
         label="name of store"
-        maxLength="70"
+        maxLength="20"
+        minLength="0"
         placeholder="name of store"
         required={true}
         handleChange={handleChange}
@@ -97,7 +99,8 @@ const Localstore = ({ className }) => {
         id="location"
         value={location}
         label="Location"
-        maxLength="70"
+        maxLength="20"
+        minLength="0"
         placeholder="Location"
         required={true}
         type="text"
@@ -112,6 +115,7 @@ const Localstore = ({ className }) => {
         placeholder="eg-999999"
         type="number"
         maxLength="10"
+        minLength="0"
         required={true}
         handleChange={handleChange}
       />
@@ -120,7 +124,8 @@ const Localstore = ({ className }) => {
         id="title"
         value={title}
         label="Ad Title"
-        maxLength="50"
+        maxLength="70"
+        minLength="0"
         placeholder="Ad Title"
         required={true}
         type="text"

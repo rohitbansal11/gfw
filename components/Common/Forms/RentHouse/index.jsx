@@ -16,7 +16,10 @@ const RentHouse = ({ className }) => {
     price: "",
     state: "",
     contactno: null,
-    image: {},
+    image: [
+      "https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?s=612x612",
+      "https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?s=612x612",
+    ],
     area: null,
   });
 
@@ -26,8 +29,7 @@ const RentHouse = ({ className }) => {
   });
 
   const [currentState, setCurrentState] = useState("");
-
-  const [currentCity, setCurrentCity] = useState("Alamo");
+  const [currentCity, setCurrentCity] = useState("");
 
   const handleChange = (e) => {
     let value = e.target.value;
@@ -97,7 +99,8 @@ const RentHouse = ({ className }) => {
         name="rooms"
         id="rooms"
         value={rooms}
-        maxLength="4"
+        maxLength="10"
+        minLength="0"
         label=" No Of Rooms"
         placeholder="No of Rooms"
         required={true}
@@ -108,7 +111,7 @@ const RentHouse = ({ className }) => {
         name="title"
         id="title"
         value={title}
-        maxLength="50"
+        maxLength="70"
         label=" Ad Title"
         placeholder="Title"
         required={true}
@@ -121,6 +124,7 @@ const RentHouse = ({ className }) => {
         label="Price"
         value={price}
         maxLength="10"
+        minLength="0"
         type="number"
         placeholder="Price"
         required={true}
@@ -130,7 +134,8 @@ const RentHouse = ({ className }) => {
         name="area"
         id="area"
         label="area"
-        maxLength="10"
+        maxLength="6"
+        minLength="0"
         type="number"
         placeholder="Area in square feet"
         required={true}
@@ -146,6 +151,7 @@ const RentHouse = ({ className }) => {
         placeholder="Contact Number"
         type="number"
         maxLength="10"
+        minLength="0"
         required={true}
         handleChange={handleChange}
       />

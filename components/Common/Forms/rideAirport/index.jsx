@@ -35,7 +35,7 @@ const RideAirport = ({ className }) => {
   // console.log({rideAirport})
 
   const [currentState, setCurrentState] = useState("");
-  const [currentCity, setCurrentCity] = useState("Alamo");
+  const [currentCity, setCurrentCity] = useState("");
   const handleCurrentState = (state) => {
     setCurrentState(state);
     // setCurrentCity("")
@@ -84,7 +84,8 @@ const RideAirport = ({ className }) => {
         id="pickup"
         value={pickup}
         label="Pickup"
-        maxLength="70"
+        maxLength="10"
+        minLength="0"
         placeholder="Pick-up"
         required={true}
         type="text"
@@ -105,7 +106,8 @@ const RideAirport = ({ className }) => {
         id="dropoff"
         value={dropoff}
         label="Drop-Off"
-        maxLength="70"
+        maxLength="6"
+        minLength="0"
         placeholder="Drop-Off"
         required={true}
         type="text"
@@ -122,6 +124,7 @@ const RideAirport = ({ className }) => {
         value={contactno}
         label="Contact Number"
         maxLength="10"
+        minLength="0"
         placeholder="Contact Number"
         type="number"
         required={true}

@@ -31,7 +31,7 @@ const RideOldAge = ({ className }) => {
   const dispatch = useDispatch();
   const rideOldAge = useSelector((state) => state.rideOldAge);
   const [currentState, setCurrentState] = useState("");
-  const [currentCity, setCurrentCity] = useState("Alamo");
+  const [currentCity, setCurrentCity] = useState("");
   const handleCurrentState = (state) => {
     setCurrentState(state);
     setCurrentCity("");
@@ -83,7 +83,8 @@ const RideOldAge = ({ className }) => {
         value={pickup}
         label="Pickup"
         placeholder="Pick-up"
-        maxLength="70"
+        maxLength="10"
+        minLength="0"
         required={true}
         type="text"
         handleChange={handleChange}
@@ -103,7 +104,8 @@ const RideOldAge = ({ className }) => {
         id="dropoff"
         value={dropoff}
         label="Drop-Off"
-        maxLength="70"
+        maxLength="6"
+        minLength="0"
         placeholder="Drop-Off"
         required={true}
         type="text"
@@ -120,6 +122,7 @@ const RideOldAge = ({ className }) => {
         placeholder="eg-999999"
         type="number"
         maxLength="10"
+        minLength="0"
         required={true}
         handleChange={handleChange}
       />

@@ -14,13 +14,14 @@ const SellTrucks = ({ className }) => {
     miles: "",
     title: "",
     contactno: null,
-    image: [],
+    image:
+      "https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?s=612x612",
   });
   const dispatch = useDispatch();
   const sellTruckState = useSelector((state) => state.sellTruck);
 
   const [currentState, setCurrentState] = useState("");
-  const [currentCity, setCurrentCity] = useState("Alamo");
+  const [currentCity, setCurrentCity] = useState("");
 
   const handleMakeChange = (state) => {
     setFormData((prevState) => {
@@ -115,7 +116,8 @@ const SellTrucks = ({ className }) => {
       <TextInput
         name="model"
         id="model"
-        maxLength="40"
+        maxLength="10"
+        minLength="0"
         value={model}
         label="Model"
         placeholder="Model"
@@ -130,21 +132,23 @@ const SellTrucks = ({ className }) => {
         label="Miles"
         placeholder="Miles"
         type="number"
-        maxLength="10"
+        maxLength="6"
+        minLength="0"
         required={true}
         handleChange={handleChange}
       />
       <TextInput
         name="title"
         id="title"
-        maxLength="50"
+        maxLength="70"
+        minLength="0"
         value={title}
         label="Ad title"
         placeholder="Ad Title"
         type="text"
         required={true}
         handleChange={handleChange}
-      />{" "}
+      />
       <NumberInput
         name="contactno"
         id="contactno"
@@ -153,13 +157,13 @@ const SellTrucks = ({ className }) => {
         placeholder="eg-999999"
         type="number"
         maxLength="10"
+        minLength="0"
         required={true}
         handleChange={handleChange}
       />
       <TextInput
         name="image"
         id="image"
-        value={image}
         label="Photo"
         placeholder="Photo"
         type="file"

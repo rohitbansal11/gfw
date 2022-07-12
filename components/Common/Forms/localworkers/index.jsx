@@ -32,7 +32,7 @@ const Localworkers = ({ className }) => {
     });
   };
   const [currentState, setCurrentState] = useState("");
-  const [currentCity, setCurrentCity] = useState("Alamo");
+  const [currentCity, setCurrentCity] = useState("");
   const handleCurrentState = (state) => {
     setCurrentState(state);
     setCurrentCity("");
@@ -73,7 +73,8 @@ const Localworkers = ({ className }) => {
         id="job"
         value={job}
         label="Job Post"
-        maxLength="40"
+        maxLength="10"
+        minLength="0"
         placeholder="Job Post"
         required={true}
         type="text"
@@ -84,7 +85,8 @@ const Localworkers = ({ className }) => {
         id="name"
         value={name}
         label="Name"
-        maxLength="40"
+        maxLength="20"
+        minLength="0"
         placeholder="Name"
         required={true}
         handleChange={handleChange}
@@ -95,7 +97,8 @@ const Localworkers = ({ className }) => {
         id="location"
         value={location}
         label="location"
-        maxLength="70"
+        maxLength="20"
+        minLength="0"
         placeholder="location"
         required={true}
         type="text"
@@ -110,6 +113,7 @@ const Localworkers = ({ className }) => {
         placeholder="eg-999999"
         type="number"
         maxLength="10"
+        minLength="0"
         required={true}
         handleChange={handleChange}
       />
@@ -118,7 +122,8 @@ const Localworkers = ({ className }) => {
         id="title"
         value={title}
         label="Ad Title"
-        maxLength="50"
+        maxLength="70"
+        minLength="0"
         placeholder="Ad Title"
         required={true}
         type="text"

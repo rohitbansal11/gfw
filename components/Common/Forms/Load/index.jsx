@@ -18,12 +18,15 @@ const Load = () => {
     contactno: null,
     emergency: false,
     weight: "",
-    detail: "",
+    toDetail: "",
+    fromDetail: "",
     weights: "",
     type: "",
     weights: "",
   });
-
+  const [currentState, setCurrentState] = useState(false);
+  const [currentCity, setCurrentCity] = useState("");
+  const [mode, setMode] = useState(false);
   const dispatch = useDispatch();
   const load = useSelector((state) => {
     state.load;
@@ -53,9 +56,6 @@ const Load = () => {
     console.log("hh", { formData });
   };
 
-  const [currentState, setCurrentState] = useState(false);
-  const [currentCity, setCurrentCity] = useState("Alamo");
-  const [mode, setMode] = useState(false);
   const s = () => {
     formData.emergency = !mode;
   };
@@ -92,8 +92,17 @@ const Load = () => {
     });
   };
 
-  const { contactno, detail, weight, weights, year, emergency, title, type } =
-    formData;
+  const {
+    contactno,
+    toDetail,
+    fromDetail,
+    weight,
+    weights,
+    year,
+    emergency,
+    title,
+    type,
+  } = formData;
 
   useEffect(() => {
     return () => {};
@@ -131,9 +140,8 @@ const Load = () => {
         value={weight}
         label=" Weight"
         placeholder="Weight"
-        min="0"
-        minLength="0"
         maxLength="10"
+        minLength="0"
         required={true}
         type="number"
         handleChange={handleChange}
@@ -179,11 +187,11 @@ const Load = () => {
       />
 
       <TextInput
-        name="detail"
-        id="detail"
+        name="fromDetail"
+        id="fromDetail"
+        maxLength="50"
         minLength="0"
-        maxLength={"30"}
-        value={detail}
+        value={fromDetail}
         label=" Detail Address"
         placeholder="Detail Address"
         required={true}
@@ -205,11 +213,11 @@ const Load = () => {
         disabled={currentState ? false : true}
       />
       <TextInput
-        name="detail"
-        id="detail"
+        name="toDetail"
+        id="toDetail"
+        maxLength="50"
         minLength="0"
-        maxLength={"30"}
-        value={detail}
+        value={toDetail}
         label=" Detail Address"
         placeholder="Detail Address"
         required={true}
@@ -220,12 +228,25 @@ const Load = () => {
         name="title"
         id="title"
         value={title}
+        maxLength="70"
         minLength="0"
-        maxLength="40"
         label=" Ad Title"
         placeholder="Title"
         required={true}
         type="text"
+        handleChange={handleChange}
+      />
+
+      <NumberInput
+        name="contactno"
+        id="contactno"
+        value={contactno}
+        label="Contact Number"
+        placeholder="Contact Number"
+        type="number"
+        maxLength="10"
+        minLength="0"
+        required={true}
         handleChange={handleChange}
       />
 
