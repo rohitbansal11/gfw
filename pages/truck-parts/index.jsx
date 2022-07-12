@@ -17,6 +17,7 @@ const TruckPartsPage = ({ loads }) => {
   useEffect(() => {
     setTruckPart(selector?.truckpart);
     setLoading(selector?.loading);
+    // console.log("vv",selector?.truckpart)
   }, [selector]);
   return (
     <>

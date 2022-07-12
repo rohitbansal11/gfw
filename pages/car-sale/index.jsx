@@ -25,7 +25,7 @@ const CarSalePage = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <CarSale loadsData={loads} loadingData={loading} />
+      <CarSale loadsData={carSale} loadingData={loading} />
     </>
   );
 };

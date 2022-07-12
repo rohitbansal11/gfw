@@ -25,7 +25,7 @@ const SchoolRidePage = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <Ride type="school" loadsData={loads} loadingData={loading} />
+      <Ride type="school" loadsData={rideSchool} loadingData={loading} />
     </>
   );
 };

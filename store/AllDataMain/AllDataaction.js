@@ -168,7 +168,7 @@ export const getTruckPart = (location) => async (dispatch) => {
       res = await axios.get(
         `/truckpart?isblock=false&state=${location.state}`,
         config
-      );
+        );     
     } else {
       res = await axios.get(
         `/truckpart?isblock=false&state=${location.state}&city=${location.city}`,

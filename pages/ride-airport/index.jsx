@@ -25,7 +25,7 @@ const RideAirportPage = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <Ride type="airport" loadsData={loads} loadingData={loading} />
+      <Ride type="airport" loadsData={rideAirport} loadingData={loading} />
     </>
   );
 };
