@@ -1,13 +1,13 @@
-import React, { useState } from "react"
-import { NumberInput, TextInput } from "@components/Common"
-import DropDown from "../SellTruck/statesdropdown"
-import StatesSelect from "../SellTruck/statesdropdown"
-import CitySelect from "../SellTruck/citiesdropdown"
-import TitleList from "./titlelistdropdown"
+import React, { useState } from "react";
+import { NumberInput, TextInput } from "@components/Common";
+import DropDown from "../SellTruck/statesdropdown";
+import StatesSelect from "../SellTruck/statesdropdown";
+import CitySelect from "../SellTruck/citiesdropdown";
+import TitleList from "./titlelistdropdown";
 // import { Previews } from "../SellTruck/Dropzone"
-import { useDispatch, useSelector } from "react-redux"
-import { RideSchoolListing } from "../../../../store/ride-store/ride-action"
-import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux";
+import { RideSchoolListing } from "../../../../store/ride-store/ride-action";
+import { useEffect } from "react";
 
 const RideSchool = ({ className }) => {
   const [formData, setFormData] = useState({
@@ -16,50 +16,50 @@ const RideSchool = ({ className }) => {
     schoolname: "",
     title: "",
     contactno: null,
-  })
-  const [currentState, setCurrentState] = useState("")
-  const [currentCity, setCurrentCity] = useState("Alamo")
+  });
+  const [currentState, setCurrentState] = useState("");
+  const [currentCity, setCurrentCity] = useState("Alamo");
   const handleCurrentState = (state) => {
-    setCurrentState(state)
-    setCurrentCity("")
-  }
+    setCurrentState(state);
+    setCurrentCity("");
+  };
   const handleCurrentCity = (city) => {
-    setCurrentCity(city)
-  }
-  const dispatch = useDispatch()
-  const rideSchool = useSelector((state) => state.rideSchool)
+    setCurrentCity(city);
+  };
+  const dispatch = useDispatch();
+  const rideSchool = useSelector((state) => state.rideSchool);
 
   const handleChange = (e) => {
-    let value = e.target.value
+    let value = e.target.value;
     if (e.target.name === "miles") {
-      value = parseInt(value)
+      value = parseInt(value);
     }
     setFormData((prevState) => {
       return {
         ...prevState,
         [e.target.name]: value,
-      }
-    })
-  }
+      };
+    });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const payload = { ...formData, city: currentCity, state: currentState }
-    dispatch(RideSchoolListing(payload))
+    e.preventDefault();
+    const payload = { ...formData, city: currentCity, state: currentState };
+    dispatch(RideSchoolListing(payload));
     // console.log('pp',{formData})
-  }
+  };
 
   const handleTitleChange = (state) => {
     setFormData((prevState) => {
       return {
         ...prevState,
         title: state,
-      }
-    })
-  }
+      };
+    });
+  };
 
-  useEffect(() => {}, [rideSchool])
-  const { pickup, pickupdate, schoolname, title, contactno } = formData
+  useEffect(() => {}, [rideSchool]);
+  const { pickup, pickupdate, schoolname, title, contactno } = formData;
 
   return (
     <form
@@ -76,14 +76,14 @@ const RideSchool = ({ className }) => {
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState ? false : true}
+        disabled={currentState !== "" ? false : true}
       />
       <TextInput
         name="pickup"
         id="pickup"
         value={pickup}
         label="Pickup"
-        maxLength='70'
+        maxLength="70"
         placeholder="Pickup"
         required={true}
         type="text"
@@ -99,13 +99,13 @@ const RideSchool = ({ className }) => {
         type="date"
         handleChange={handleChange}
       />
-      
+
       <TextInput
         name="schoolname"
         id="schoolname"
         value={schoolname}
         label="School name"
-        maxLength='50'
+        maxLength="50"
         placeholder="School name"
         required={true}
         type="text"
@@ -120,7 +120,7 @@ const RideSchool = ({ className }) => {
         label="Contact Number"
         placeholder="Contact Number"
         type="number"
-        maxLength='10'
+        maxLength="10"
         required={true}
         handleChange={handleChange}
       />
@@ -132,7 +132,7 @@ const RideSchool = ({ className }) => {
         Continue
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default RideSchool
+export default RideSchool;

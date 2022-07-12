@@ -4,11 +4,11 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTruck } from "@store/AllDataMain/AllDataaction";
 
-
 const TruckPage = ({ loads }) => {
   const [truck, setTruck] = useState([]);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.alldata);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getTruck(selector?.location));
@@ -16,6 +16,7 @@ const TruckPage = ({ loads }) => {
 
   useEffect(() => {
     setTruck(selector?.truck);
+    setLoading(selector?.loading);
   }, [selector]);
   return (
     <>
@@ -24,7 +25,7 @@ const TruckPage = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <TruckParts loadsData={loads} />
+      <TruckParts loadsData={truck} loadingData={loading} isParts={false} />
     </>
   );
 };

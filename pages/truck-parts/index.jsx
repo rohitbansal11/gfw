@@ -8,6 +8,7 @@ const TruckPartsPage = ({ loads }) => {
   const [truckPart, setTruckPart] = useState([]);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.alldata);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getTruckPart(selector?.location));
@@ -15,6 +16,7 @@ const TruckPartsPage = ({ loads }) => {
 
   useEffect(() => {
     setTruckPart(selector?.truckpart);
+    setLoading(selector?.loading);
   }, [selector]);
   return (
     <>
@@ -23,7 +25,7 @@ const TruckPartsPage = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <TruckParts isParts={true} loadsData={loads} />
+      <TruckParts isParts={true} loadsData={truckPart} loadingData={loading} />
     </>
   );
 };

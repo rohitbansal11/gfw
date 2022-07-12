@@ -4,11 +4,11 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStore } from "@store/AllDataMain/AllDataaction";
 
-
 const JobLocalStoresPage = ({ loads }) => {
   const [loaclStore, setLoaclStore] = useState([]);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.alldata);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getStore(selector?.location));
@@ -16,6 +16,7 @@ const JobLocalStoresPage = ({ loads }) => {
 
   useEffect(() => {
     setLoaclStore(selector?.store);
+    setLoading(selector?.loading);
   }, [selector]);
   return (
     <>
@@ -24,7 +25,7 @@ const JobLocalStoresPage = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <Job isWorkers={false} loadsData={loads} />
+      <Job isWorkers={false} loadsData={loads} loadingData={loading} />
     </>
   );
 };

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react"
-import { NumberInput, TextInput } from "@components/Common"
+import React, { useState, useEffect } from "react";
+import { NumberInput, TextInput } from "@components/Common";
 
-import StatesSelect from "../SellTruck/statesdropdown"
-import CitySelect from "../SellTruck/citiesdropdown"
-import { Previews, } from "../SellTruck/dropzone"
-import { sellhouseListing } from "@store/sell-or-rent-store/sell-or-rent-action"
-import { useDispatch, useSelector } from "react-redux"
+import StatesSelect from "../SellTruck/statesdropdown";
+import CitySelect from "../SellTruck/citiesdropdown";
+import { Previews } from "../SellTruck/dropzone";
+import { sellhouseListing } from "@store/sell-or-rent-store/sell-or-rent-action";
+import { useDispatch, useSelector } from "react-redux";
 
 const RentHouse = ({ className }) => {
   const [formData, setFormData] = useState({
@@ -18,68 +18,64 @@ const RentHouse = ({ className }) => {
     contactno: null,
     image: {},
     area: null,
-  })
+  });
 
-
-  
-  
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const sellhouse = useSelector((state) => {
-    state.sellhouse
-  })
-  
-  const [currentState, setCurrentState] = useState("")
+    state.sellhouse;
+  });
 
-  const [currentCity, setCurrentCity] = useState("Alamo")
+  const [currentState, setCurrentState] = useState("");
+
+  const [currentCity, setCurrentCity] = useState("Alamo");
 
   const handleChange = (e) => {
-    let value = e.target.value
+    let value = e.target.value;
     if (e.target.name === "miles") {
-      value = parseInt(value)
+      value = parseInt(value);
     }
     setFormData((prevState) => {
       return {
-        ...prevState,[e.target.name]: value,
-      }
-    })
+        ...prevState,
+        [e.target.name]: value,
+      };
+    });
     // console.log(e.target.value)
-  }
+  };
   const handleFileChange = (state) => {
-    console.log(state)
+    console.log(state);
     setFormData((prevState) => {
       return {
         ...prevState,
         image: state,
-      }
-    })
-  }
+      };
+    });
+  };
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let payload = {
       ...formData,
       city: currentCity,
       state: currentState,
       image: "https://image.jpg", //@todo remove this and handle image upload
-    }
-    dispatch(sellhouseListing(payload))
+    };
+    dispatch(sellhouseListing(payload));
     // console.log("ss" , { formData})
-  }
-  
-  
+  };
+
   const handleCurrentState = (state) => {
-    setCurrentState(state)
-    setCurrentCity("")
+    setCurrentState(state);
+    setCurrentCity("");
     // console.log("hhhh" , {state :state})
-
-  }
+  };
   const handleCurrentCity = (city) => {
-    setCurrentCity(city)
-    console.log(city  )
-  }
+    setCurrentCity(city);
+    console.log(city);
+  };
 
-  const { contactno, rooms,price, image,title, area } = formData
-  useEffect(() => {}, [])
-  
+  const { contactno, rooms, price, image, title, area } = formData;
+  useEffect(() => {}, []);
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -90,18 +86,18 @@ const RentHouse = ({ className }) => {
         handleCurrentState={handleCurrentState}
         currentState={currentState}
       />
-       <span>City</span>
+      <span>City</span>
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!currentState ? true : false}
+        disabled={currentState == "" ? true : false}
       />
       <NumberInput
         name="rooms"
         id="rooms"
         value={rooms}
-        maxLength='4'
+        maxLength="4"
         label=" No Of Rooms"
         placeholder="No of Rooms"
         required={true}
@@ -112,7 +108,7 @@ const RentHouse = ({ className }) => {
         name="title"
         id="title"
         value={title}
-        maxLength='50'
+        maxLength="50"
         label=" Ad Title"
         placeholder="Title"
         required={true}
@@ -124,7 +120,7 @@ const RentHouse = ({ className }) => {
         id="price"
         label="Price"
         value={price}
-        maxLength='10'
+        maxLength="10"
         type="number"
         placeholder="Price"
         required={true}
@@ -134,7 +130,7 @@ const RentHouse = ({ className }) => {
         name="area"
         id="area"
         label="area"
-        maxLength='10'
+        maxLength="10"
         type="number"
         placeholder="Area in square feet"
         required={true}
@@ -149,13 +145,13 @@ const RentHouse = ({ className }) => {
         label="Contact Number"
         placeholder="Contact Number"
         type="number"
-        maxLength='10'
+        maxLength="10"
         required={true}
         handleChange={handleChange}
       />
       <TextInput
         name="image"
-        id="image"  
+        id="image"
         label="image"
         placeholder="image"
         type="file"
@@ -169,10 +165,7 @@ const RentHouse = ({ className }) => {
         Continue
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default RentHouse
-
-
-
+export default RentHouse;

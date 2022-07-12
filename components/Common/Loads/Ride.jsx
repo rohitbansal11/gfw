@@ -1,18 +1,19 @@
-import React, { useEffect } from "react"
-import { Section, PrimaryHeading } from "@components/Common"
-import LoadImgCard from "./Cards/LoadImgCard"
-import { useState } from "react"
-import Link from "next/link"
-import RentCard from "./Cards/RentCard"
-import RideCard from "./Cards/RideCard"
-import {ModalSimple} from "@components/Common"
+import React, { useEffect } from "react";
+import { Section, PrimaryHeading } from "@components/Common";
+import LoadImgCard from "./Cards/LoadImgCard";
+import { useState } from "react";
+import Link from "next/link";
+import RentCard from "./Cards/RentCard";
+import RideCard from "./Cards/RideCard";
+import { ModalSimple } from "@components/Common";
+import { NoDataFound, CardLoading } from "@components/Common/index";
 
-const Ride = ({ loadsData, type }) => {
-  const [loads, setLoads] = useState([])
+const Ride = ({ loadsData, type, loadingData }) => {
+  const [loads, setLoads] = useState([]);
 
   useEffect(() => {
-    setLoads(loadsData)
-  }, [loadsData])
+    setLoads(loadsData);
+  }, [loadsData]);
   return (
     <Section>
       <PrimaryHeading
@@ -22,7 +23,7 @@ const Ride = ({ loadsData, type }) => {
         Rides"
         textCenter
       />
-      <ModalSimple/>
+      <ModalSimple />
       <div className="flex border-t-2 border-gray-400 pt-4 justify-center py-2 mb-6">
         <div className="flex justify-center gap-4">
           <div className="border-r-2 border-indigo-700 pr-4">
@@ -84,14 +85,19 @@ const Ride = ({ loadsData, type }) => {
           </div>
         </div>
       </div>
+      {loadingData && <CardLoading />}
 
-      <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
-        {loads.map((item) => (
-          <RideCard type={type} item={item} />
-        ))}
-      </div>
+      {loadsData?.length == 0 && !loadingData && <NoDataFound />}
+
+      {loadsData?.length > 0 && !loadingData && (
+        <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
+          {loads.map((item) => (
+            <RideCard type={type} item={item} />
+          ))}
+        </div>
+      )}
     </Section>
-  )
-}
+  );
+};
 
-export default Ride
+export default Ride;

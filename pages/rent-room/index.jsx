@@ -8,6 +8,7 @@ const RentRoomPage = ({ loads }) => {
   const [rentRoom, setRentRoom] = useState([]);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.alldata);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getRoom(selector?.location));
@@ -15,6 +16,7 @@ const RentRoomPage = ({ loads }) => {
 
   useEffect(() => {
     setRentRoom(selector?.room);
+    setLoading(selector?.loading);
   }, [selector]);
   return (
     <>
@@ -23,7 +25,7 @@ const RentRoomPage = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <Rent isRooms={true} loadsData={loads} />
+      <Rent isRooms={true} loadsData={loads} loadingData={loading} />
     </>
   );
 };

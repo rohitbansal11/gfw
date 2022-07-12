@@ -1,11 +1,11 @@
-import React, { useState } from "react"
-import { TextInput } from "@components/Common"
-import StatesSelect from "../SellTruck/statesdropdown"
-import CitySelect from "../SellTruck/citiesdropdown"
-import TitleList from "../rideschools/titlelistdropdown"
-import TitleAirport from "./titleairportdropdown"
-import { useDispatch, useSelector } from "react-redux"
-import { RideAirportListing } from "../../../../store/ride-store/ride-action"
+import React, { useState } from "react";
+import { TextInput } from "@components/Common";
+import StatesSelect from "../SellTruck/statesdropdown";
+import CitySelect from "../SellTruck/citiesdropdown";
+import TitleList from "../rideschools/titlelistdropdown";
+import TitleAirport from "./titleairportdropdown";
+import { useDispatch, useSelector } from "react-redux";
+import { RideAirportListing } from "../../../../store/ride-store/ride-action";
 const RideAirport = ({ className }) => {
   const [formData, setFormData] = useState({
     state: "",
@@ -15,52 +15,52 @@ const RideAirport = ({ className }) => {
     dropoff: "",
     title: "",
     contactno: null,
-  })
+  });
   const handleChange = (e) => {
-    let value = e.target.value
+    let value = e.target.value;
     if (e.target.name === "miles") {
-      value = parseInt(value)
+      value = parseInt(value);
     }
     setFormData((prevState) => {
       return {
         ...prevState,
         [e.target.name]: value,
-      }
-    })
-  }
-  const dispatch = useDispatch()
+      };
+    });
+  };
+  const dispatch = useDispatch();
   const rideAirport = useSelector((state) => {
-    state.rideairport
-  })
+    state.rideairport;
+  });
   // console.log({rideAirport})
 
-  const [currentState, setCurrentState] = useState("")
-  const [currentCity, setCurrentCity] = useState("Alamo")
+  const [currentState, setCurrentState] = useState("");
+  const [currentCity, setCurrentCity] = useState("Alamo");
   const handleCurrentState = (state) => {
-    setCurrentState(state)
+    setCurrentState(state);
     // setCurrentCity("")
-  }
+  };
   const handleCurrentCity = (city) => {
-    setCurrentCity(city)
-  }
+    setCurrentCity(city);
+  };
 
   const handleTitleChange = (state) => {
     setFormData((prevState) => {
       return {
         ...prevState,
         title: state,
-      }
-    })
-  }
+      };
+    });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const payload = { ...formData, city: currentCity, state: currentState }
-    dispatch(RideAirportListing(payload))
+    e.preventDefault();
+    const payload = { ...formData, city: currentCity, state: currentState };
+    dispatch(RideAirportListing(payload));
     // console.log("hhhhh",{formData})
-  }
+  };
 
-  const { pickup, pickupdate, dropoff, title, contactno } = formData
+  const { pickup, pickupdate, dropoff, title, contactno } = formData;
 
   return (
     <form
@@ -77,14 +77,14 @@ const RideAirport = ({ className }) => {
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!currentState ? true : false}
+        disabled={currentState == "" ? true : false}
       />
       <TextInput
         name="pickup"
         id="pickup"
         value={pickup}
         label="Pickup"
-        maxLength='70'
+        maxLength="70"
         placeholder="Pick-up"
         required={true}
         type="text"
@@ -105,7 +105,7 @@ const RideAirport = ({ className }) => {
         id="dropoff"
         value={dropoff}
         label="Drop-Off"
-        maxLength='70'
+        maxLength="70"
         placeholder="Drop-Off"
         required={true}
         type="text"
@@ -121,7 +121,7 @@ const RideAirport = ({ className }) => {
         id="contactno"
         value={contactno}
         label="Contact Number"
-        maxLength='10'
+        maxLength="10"
         placeholder="Contact Number"
         type="number"
         required={true}
@@ -134,7 +134,7 @@ const RideAirport = ({ className }) => {
         Continue
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default RideAirport
+export default RideAirport;

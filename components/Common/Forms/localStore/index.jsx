@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react"
-import { NumberInput, TextInput } from "@components/Common"
-import DropDown from "../SellTruck/statesdropdown"
-import StatesSelect from "../SellTruck/statesdropdown"
-import CitySelect from "../SellTruck/citiesdropdown"
-import { useDispatch, useSelector } from "react-redux"
-import { LocalStoreListing } from "@store/local-store/local-action"
+import React, { useState, useEffect } from "react";
+import { NumberInput, TextInput } from "@components/Common";
+import DropDown from "../SellTruck/statesdropdown";
+import StatesSelect from "../SellTruck/statesdropdown";
+import CitySelect from "../SellTruck/citiesdropdown";
+import { useDispatch, useSelector } from "react-redux";
+import { LocalStoreListing } from "@store/local-store/local-action";
 
 const Localstore = ({ className }) => {
   const [formData, setFormData] = useState({
@@ -13,46 +13,44 @@ const Localstore = ({ className }) => {
     location: "",
     contactno: null,
     title: "",
-  })
-  const dispatch = useDispatch()
+  });
+  const dispatch = useDispatch();
   const localstore = useSelector((state) => {
-    state.localstore
-  })
+    state.localstore;
+  });
   const handleChange = (e) => {
-    let value = e.target.value
+    let value = e.target.value;
     if (e.target.name === "miles") {
-      value = parseInt(value)
+      value = parseInt(value);
     }
     setFormData((prevState) => {
       return {
         ...prevState,
         [e.target.name]: value,
-      }
-    })
-  }
+      };
+    });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const payload = { ...formData,
-       city: currentCity,
-      state: currentState }
-    dispatch(LocalStoreListing(payload))
+    e.preventDefault();
+    const payload = { ...formData, city: currentCity, state: currentState };
+    dispatch(LocalStoreListing(payload));
     // console.log("hello " , {formData})
-  }
+  };
 
-  const [currentState, setCurrentState] = useState("")
-  const [currentCity, setCurrentCity] = useState("Alamo")
+  const [currentState, setCurrentState] = useState("");
+  const [currentCity, setCurrentCity] = useState("Alamo");
   const handleCurrentState = (state) => {
-    setCurrentState(state)
-    setCurrentCity("")
-  }
+    setCurrentState(state);
+    setCurrentCity("");
+  };
   const handleCurrentCity = (city) => {
-    setCurrentCity(city)
-  }
+    setCurrentCity(city);
+  };
 
-  useEffect(() => {}, [localstore])
+  useEffect(() => {}, [localstore]);
 
-  const { job, nameofstore, location, contactno, title } = formData
+  const { job, nameofstore, location, contactno, title } = formData;
 
   return (
     <form
@@ -69,7 +67,7 @@ const Localstore = ({ className }) => {
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!currentState ? true : false}
+        disabled={currentState == "" ? true : false}
       />
 
       <TextInput
@@ -77,7 +75,7 @@ const Localstore = ({ className }) => {
         id="job"
         value={job}
         label="Job Post"
-        maxLength='40'
+        maxLength="40"
         placeholder="Job Post"
         required={true}
         type="text"
@@ -88,7 +86,7 @@ const Localstore = ({ className }) => {
         id="nameofstore"
         value={nameofstore}
         label="name of store"
-        maxLength='70'
+        maxLength="70"
         placeholder="name of store"
         required={true}
         handleChange={handleChange}
@@ -99,7 +97,7 @@ const Localstore = ({ className }) => {
         id="location"
         value={location}
         label="Location"
-        maxLength='70'
+        maxLength="70"
         placeholder="Location"
         required={true}
         type="text"
@@ -113,7 +111,7 @@ const Localstore = ({ className }) => {
         label="Contact Number"
         placeholder="eg-999999"
         type="number"
-        maxLength='10'
+        maxLength="10"
         required={true}
         handleChange={handleChange}
       />
@@ -122,7 +120,7 @@ const Localstore = ({ className }) => {
         id="title"
         value={title}
         label="Ad Title"
-        maxLength='50'
+        maxLength="50"
         placeholder="Ad Title"
         required={true}
         type="text"
@@ -136,7 +134,7 @@ const Localstore = ({ className }) => {
         Continue
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default Localstore
+export default Localstore;

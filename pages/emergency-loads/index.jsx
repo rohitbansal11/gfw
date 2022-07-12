@@ -11,6 +11,7 @@ const EmergencyLoads = ({ loads }) => {
   const [emergencyLoads, setEmergencyLoads] = useState([]);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.alldata);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getEmergencyLoads());
@@ -18,6 +19,7 @@ const EmergencyLoads = ({ loads }) => {
 
   useEffect(() => {
     setEmergencyLoads(selector?.emergency);
+    setLoading(selector?.loading);
   }, [selector]);
   return (
     <>
@@ -26,7 +28,7 @@ const EmergencyLoads = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <EmergencyLoadsComponent loads={loads} />
+      <EmergencyLoadsComponent loadsData={loads} loadingData={loading} />
       <MobileApp />
     </>
   );

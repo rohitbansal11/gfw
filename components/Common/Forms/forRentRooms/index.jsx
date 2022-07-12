@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react"
-import { NumberInput, TextInput } from "@components/Common"
+import React, { useEffect, useState } from "react";
+import { NumberInput, TextInput } from "@components/Common";
 // import DropDown from "../SellTruck/statesdropdown"
-import StatesSelect from "../SellTruck/statesdropdown"
-import CitySelect from "../SellTruck/citiesdropdown"
+import StatesSelect from "../SellTruck/statesdropdown";
+import CitySelect from "../SellTruck/citiesdropdown";
 // import { StyledDropzone } from "../SellTruck/Dropzone"
-import { useDispatch, useSelector } from "react-redux"
-import { rentroomsListing } from "@store/sell-or-rent-store/sell-or-rent-action"
+import { useDispatch, useSelector } from "react-redux";
+import { rentroomsListing } from "@store/sell-or-rent-store/sell-or-rent-action";
 const ForRentRooms = ({ className }) => {
   const [formData, setFormData] = useState({
     rooms: "",
@@ -13,45 +13,44 @@ const ForRentRooms = ({ className }) => {
     price: "",
     contactno: null,
     image: [],
-  })
-  const [currentState, setCurrentState] = useState("")
-  const [currentCity, setCurrentCity] = useState("Alamo")
-
+  });
+  const [currentState, setCurrentState] = useState("");
+  const [currentCity, setCurrentCity] = useState("");
 
   const handleChange = (e) => {
-    let value = e.target.value
+    let value = e.target.value;
     if (e.target.name === "miles") {
-      value = parseInt(value)
+      value = parseInt(value);
     }
     setFormData((prevState) => {
       return {
         ...prevState,
         [e.target.name]: value,
-      }
-    })
-  }
-  const dispatch = useDispatch()
+      };
+    });
+  };
+  const dispatch = useDispatch();
   const rentrooms = useSelector((state) => {
-    state.rentrooms
-  })
+    state.rentrooms;
+  });
   const handleSubmit = (e) => {
-    e.preventDefault()
-    let payload = { ...formData, city: currentCity, state: currentState }
-    dispatch(rentroomsListing(payload))
+    e.preventDefault();
+    let payload = { ...formData, city: currentCity, state: currentState };
+    dispatch(rentroomsListing(payload));
     // console.log("jj" , {formData})
-  }
+  };
   const handleCurrentState = (state) => {
-    setCurrentState(state)
-    setCurrentCity("")
-  }
+    setCurrentState(state);
+    setCurrentCity("");
+  };
   const handleCurrentCity = (city) => {
     // console.log({ city: city })
-    setCurrentCity(city)
-  }
+    setCurrentCity(city);
+  };
 
-  useEffect(() => {}, [rentrooms])
+  useEffect(() => {}, [rentrooms]);
 
-  const { rooms, contactno, title, price, image } = formData
+  const { rooms, contactno, title, price, image } = formData;
 
   return (
     <form
@@ -63,19 +62,19 @@ const ForRentRooms = ({ className }) => {
         handleCurrentState={handleCurrentState}
         currentState={currentState}
       />
-     <span className="my-1">City</span>
+      <span className="my-1">City</span>
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState ? false : true}
+        disabled={currentState !== "" ? false : true}
       />
 
       <NumberInput
         name="rooms"
         id="rooms"
         value={rooms}
-        maxLength='4'
+        maxLength="4"
         label=" No Of Rooms"
         placeholder="No of Rooms"
         required={true}
@@ -86,7 +85,7 @@ const ForRentRooms = ({ className }) => {
         name="title"
         id="title"
         value={title}
-        maxLength='50'
+        maxLength="50"
         label=" Ad Title"
         placeholder="Title"
         required={true}
@@ -99,7 +98,7 @@ const ForRentRooms = ({ className }) => {
         label="Price"
         type="number"
         value={price}
-        maxLength='10'
+        maxLength="10"
         placeholder="Price"
         required={true}
         handleChange={handleChange}
@@ -110,7 +109,7 @@ const ForRentRooms = ({ className }) => {
         id="contactno"
         value={contactno}
         label="Contact Number"
-        maxLength='10'
+        maxLength="10"
         placeholder="Contact Number"
         type="number"
         required={true}
@@ -134,7 +133,7 @@ const ForRentRooms = ({ className }) => {
         Continue
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default ForRentRooms
+export default ForRentRooms;

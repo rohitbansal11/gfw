@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react"
-import { NumberInput, TextInput } from "@components/Common"
-import DropDown from "../SellTruck/statesdropdown"
-import StatesSelect from "../SellTruck/statesdropdown"
-import CitySelect from "../SellTruck/citiesdropdown"
-import CarMakers from "./carsmakedropdown"
-import { useDispatch, useSelector } from "react-redux"
-import { carListing } from "@store/cars-store/car-action"
+import React, { useState, useEffect } from "react";
+import { NumberInput, TextInput } from "@components/Common";
+import DropDown from "../SellTruck/statesdropdown";
+import StatesSelect from "../SellTruck/statesdropdown";
+import CitySelect from "../SellTruck/citiesdropdown";
+import CarMakers from "./carsmakedropdown";
+import { useDispatch, useSelector } from "react-redux";
+import { carListing } from "@store/cars-store/car-action";
 
 const SellCarsForm = ({ className }) => {
   const [formData, setFormData] = useState({
@@ -17,51 +17,52 @@ const SellCarsForm = ({ className }) => {
     price: "",
     title: "",
     image: [],
-  })
-  const dispatch = useDispatch()
+  });
+  const dispatch = useDispatch();
   const carslist = useSelector((state) => {
-    state.carlist
-  })
+    state.carlist;
+  });
   const handleChange = (e) => {
-    let value = e.target.value
+    let value = e.target.value;
     if (e.target.name === "miles") {
-      value = parseInt(value)
+      value = parseInt(value);
     }
     setFormData((prevState) => {
       return {
         ...prevState,
         [e.target.name]: value,
-      }
-    })
-  }
+      };
+    });
+  };
   const handleMakeChange = (state) => {
     setFormData((prevState) => {
       return {
         ...prevState,
         make: state,
-      }
-    })
-  }
+      };
+    });
+  };
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const payload = { ...formData, city: currentCity, state: currentState }
-    dispatch(carListing(payload))
+    const payload = { ...formData, city: currentCity, state: currentState };
+    dispatch(carListing(payload));
     // console.log("pp" , {formData})
-  }
+  };
 
-  const [currentState, setCurrentState] = useState("")
-  const [currentCity, setCurrentCity] = useState("Alamo")
+  const [currentState, setCurrentState] = useState("");
+  const [currentCity, setCurrentCity] = useState("");
   const handleCurrentState = (state) => {
-    setCurrentState(state)
-    setCurrentCity("")
-  }
+    console.log(state);
+    setCurrentState(state);
+    setCurrentCity("");
+  };
 
   const handleCurrentCity = (city) => {
-    setCurrentCity(city)
-  }
-  useEffect(() => {}, [carslist])
-  const { year, model, miles, contactno, price, title, image } = formData
+    setCurrentCity(city);
+  };
+  useEffect(() => {}, [carslist]);
+  const { year, model, miles, contactno, price, title, image } = formData;
   return (
     <form
       onSubmit={handleSubmit}
@@ -72,12 +73,12 @@ const SellCarsForm = ({ className }) => {
         handleCurrentState={handleCurrentState}
         currentState={currentState}
       />
-     <span className="my-1">City</span>
+      <span className="my-1">City</span>
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState ? false : true}
+        disabled={currentState !== "" ? false : true}
       />
       <span>Make</span>
       <CarMakers
@@ -97,7 +98,7 @@ const SellCarsForm = ({ className }) => {
       <TextInput
         name="model"
         id="model"
-        maxLength='40'
+        maxLength="40"
         value={model}
         label="Model"
         placeholder="Model"
@@ -110,7 +111,7 @@ const SellCarsForm = ({ className }) => {
         id="miles"
         value={miles}
         label="Miles Driven"
-        maxLength='10'
+        maxLength="10"
         placeholder="Miles Driven"
         required={true}
         type="number"
@@ -121,7 +122,7 @@ const SellCarsForm = ({ className }) => {
         id="title"
         value={title}
         label="Ad Title"
-        maxLength='50'
+        maxLength="50"
         placeholder="Ad Title"
         required={true}
         type="text"
@@ -134,8 +135,7 @@ const SellCarsForm = ({ className }) => {
         label="Contact Number"
         placeholder="eg-999999"
         type="number"
-        maxLength='10'
-
+        maxLength="10"
         required={true}
         handleChange={handleChange}
       />
@@ -144,7 +144,7 @@ const SellCarsForm = ({ className }) => {
         name="price"
         id="price"
         value={price}
-        maxLength='10'
+        maxLength="10"
         label="Price"
         type="number"
         required={true}
@@ -168,7 +168,7 @@ const SellCarsForm = ({ className }) => {
         Continue
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default SellCarsForm
+export default SellCarsForm;

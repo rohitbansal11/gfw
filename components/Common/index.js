@@ -54,3 +54,7 @@ export { default as ModalLoadSimple } from "./Modal/ModalLoadSimple";
 export { default as ModalSilver } from "./SubModals/Silver";
 export { default as ModalGold } from "./SubModals/Gold";
 export { default as ModalPlatinum } from "./SubModals/Platinum";
+
+////Card Loding And No Data Found
+export { default as NoDataFound } from "./CardEtra/CradNodata";
+export { default as CardLoading } from "./CardEtra/CardSkelton";

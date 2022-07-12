@@ -1,17 +1,18 @@
-import React, { useEffect } from "react"
-import { Section, Container, PrimaryHeading } from "@components/Common"
-import LoadImgCard from "./Cards/LoadImgCard"
-import { useState } from "react"
-import Link from "next/link"
-import LoadImgPartCard from "./Cards/LoadImgPartCard"
-import {ModalSimple} from "@components/Common"
+import React, { useEffect } from "react";
+import { Section, Container, PrimaryHeading } from "@components/Common";
+import LoadImgCard from "./Cards/LoadImgCard";
+import { useState } from "react";
+import Link from "next/link";
+import LoadImgPartCard from "./Cards/LoadImgPartCard";
+import { ModalSimple } from "@components/Common";
+import { NoDataFound, CardLoading } from "@components/Common/index";
 
-const TruckParts = ({ loadsData, isParts }) => {
-  const [loads, setLoads] = useState([])
+const TruckParts = ({ loadsData, isParts, loadingData }) => {
+  const [loads, setLoads] = useState([]);
 
   useEffect(() => {
-    setLoads(loadsData)
-  }, [loadsData])
+    setLoads(loadsData);
+  }, [loadsData]);
   return (
     <Section>
       <PrimaryHeading
@@ -20,7 +21,7 @@ const TruckParts = ({ loadsData, isParts }) => {
         text="Truck/part Sale"
         textCenter
       />
-       <ModalSimple />
+      <ModalSimple />
       <div className="flex bg-indigo-200 justify-center py-2 mb-6">
         <div className="flex justify-center gap-4">
           <div className="border-r-2 border-indigo-400 pr-4">
@@ -63,21 +64,29 @@ const TruckParts = ({ loadsData, isParts }) => {
           </div>
         </div>
       </div>
-      {isParts ? (
-        <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
-          {loads.map((item) => (
-            <LoadImgPartCard isParts={isParts} item={item} />
-          ))}
-        </div>
-      ) : (
-        <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
-          {loads.map((item) => (
-            <LoadImgCard isParts={isParts} item={item} />
-          ))}
-        </div>
+      {loadingData && <CardLoading />}
+
+      {loadsData?.length == 0 && !loadingData && <NoDataFound />}
+
+      {loadsData?.length > 0 && !loadingData && (
+        <>
+          {isParts ? (
+            <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
+              {loads.map((item) => (
+                <LoadImgPartCard isParts={isParts} item={item} />
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
+              {loads.map((item) => (
+                <LoadImgCard isParts={isParts} item={item} />
+              ))}
+            </div>
+          )}
+        </>
       )}
     </Section>
-  )
-}
+  );
+};
 
-export default TruckParts
+export default TruckParts;

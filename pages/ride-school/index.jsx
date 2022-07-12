@@ -8,6 +8,7 @@ const SchoolRidePage = ({ loads }) => {
   const [rideSchool, setRideSchool] = useState([]);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.alldata);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getSchool(selector?.location));
@@ -15,6 +16,7 @@ const SchoolRidePage = ({ loads }) => {
 
   useEffect(() => {
     setRideSchool(selector?.school);
+    setLoading(selector?.loading);
   }, [selector]);
   return (
     <>
@@ -23,7 +25,7 @@ const SchoolRidePage = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <Ride type="school" loadsData={loads} />
+      <Ride type="school" loadsData={loads} loadingData={loading} />
     </>
   );
 };

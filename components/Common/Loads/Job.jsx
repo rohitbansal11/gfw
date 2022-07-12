@@ -1,17 +1,17 @@
-import React, { useEffect } from "react"
-import { Section, PrimaryHeading } from "@components/Common"
-import { useState } from "react"
-import Link from "next/link"
-import JobCard from "./Cards/JobCard"
-import {ModalSimple} from "@components/Common"
+import React, { useEffect } from "react";
+import { Section, PrimaryHeading } from "@components/Common";
+import { useState } from "react";
+import Link from "next/link";
+import JobCard from "./Cards/JobCard";
+import { ModalSimple } from "@components/Common";
+import { NoDataFound, CardLoading } from "@components/Common/index";
 
-
-const Job = ({ loadsData, isWorkers }) => {
-  const [loads, setLoads] = useState([])
+const Job = ({ loadsData, isWorkers, loadingData }) => {
+  const [loads, setLoads] = useState([]);
 
   useEffect(() => {
-    setLoads(loadsData)
-  }, [loadsData])
+    setLoads(loadsData);
+  }, [loadsData]);
 
   return (
     <Section>
@@ -21,7 +21,7 @@ const Job = ({ loadsData, isWorkers }) => {
         text="Jobs"
         textCenter
       />
-      <ModalSimple/>
+      <ModalSimple />
       <div className="flex border-t-2 border-gray-400 pt-4 justify-center py-2 mb-6">
         <div className="flex justify-center gap-4">
           <div className="border-r-2 border-indigo-700 pr-4">
@@ -64,13 +64,20 @@ const Job = ({ loadsData, isWorkers }) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
-        {loads.map((item) => (
-          <JobCard isWorkers={isWorkers} item={item} />
-        ))}
-      </div>
-    </Section>
-  )
-}
 
-export default Job
+      {loadingData && <CardLoading />}
+
+      {loadsData?.length == 0 && !loadingData && <NoDataFound />}
+
+      {loadsData?.length > 0 && !loadingData && (
+        <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
+          {loads.map((item) => (
+            <JobCard isWorkers={isWorkers} item={item} />
+          ))}
+        </div>
+      )}
+    </Section>
+  );
+};
+
+export default Job;

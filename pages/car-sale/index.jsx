@@ -6,6 +6,7 @@ import { getCarSale } from "@store/AllDataMain/AllDataaction";
 
 const CarSalePage = ({ loads }) => {
   const [carSale, setCarSale] = useState([]);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.alldata);
 
@@ -15,6 +16,7 @@ const CarSalePage = ({ loads }) => {
 
   useEffect(() => {
     setCarSale(selector?.carsale);
+    setLoading(selector?.loading);
   }, [selector]);
   return (
     <>
@@ -23,7 +25,7 @@ const CarSalePage = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <CarSale loadsData={loads} />
+      <CarSale loadsData={loads} loadingData={loading} />
     </>
   );
 };

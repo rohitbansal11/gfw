@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react"
-import { NumberInput, TextInput } from "@components/Common"
-import DropDown from "../SellTruck/statesdropdown"
-import StatesSelect from "../SellTruck/statesdropdown"
-import CitySelect from "../SellTruck/citiesdropdown"
-import MakeSelect from "../SellTruck/makedropdown"
+import React, { useState, useEffect } from "react";
+import { NumberInput, TextInput } from "@components/Common";
+import DropDown from "../SellTruck/statesdropdown";
+import StatesSelect from "../SellTruck/statesdropdown";
+import CitySelect from "../SellTruck/citiesdropdown";
+import MakeSelect from "../SellTruck/makedropdown";
 // import { Previews } from "../SellTruck/Dropzone"
-import { useDispatch, useSelector } from "react-redux"
-import { addSellTruckpartsListing } from "../../../../store/sell-truck-store/sell-truck-action"
+import { useDispatch, useSelector } from "react-redux";
+import { addSellTruckpartsListing } from "../../../../store/sell-truck-store/sell-truck-action";
 const SellTruckPartsForm = ({ className }) => {
   const [formData, setFormData] = useState({
     part: "",
@@ -17,70 +17,67 @@ const SellTruckPartsForm = ({ className }) => {
     title: "",
     contactno: null,
     image: [],
-  })
+  });
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const selltruckparts = useSelector((state) => {
-    state.selltruckparts
-  })
+    state.selltruckparts;
+  });
   // console.log("sellll",{selltruckparts})
-  const [currentState, setCurrentState] = useState(false)
-  const [cloudImg , setCloudImg] = useState("")
-  const [currentCity, setCurrentCity] = useState("Alamo")
+  const [currentState, setCurrentState] = useState(false);
+  const [cloudImg, setCloudImg] = useState("");
+  const [currentCity, setCurrentCity] = useState("Alamo");
 
   const handleCurrentState = (state) => {
-    setCurrentState(state)
-    setCurrentCity("")
-  }
+    setCurrentState(state);
+    setCurrentCity("");
+  };
   const handleCurrentCity = (city) => {
-    setCurrentCity(city)
-  }
+    setCurrentCity(city);
+  };
   const handleChange = (e) => {
-    let value = e.target.value
+    let value = e.target.value;
     if (e.target.name === "miles") {
-      value = parseInt(value)
+      value = parseInt(value);
     }
     setFormData((prevState) => {
       return {
         ...prevState,
         [e.target.name]: value,
-      }
-    })
-  }
-  
+      };
+    });
+  };
 
   const handleMakeChange = (state) => {
     setFormData((prevState) => {
       return {
         ...prevState,
         make: state,
-      }
-    })
-  }
+      };
+    });
+  };
   // console.log({formData})
 
-
-  const handleImageChange = (e) =>{
-    setCloudImg(e.target.files)
+  const handleImageChange = (e) => {
+    setCloudImg(e.target.files);
     // formData.image=e.target.files[0]
-    console.log("gggggggggggggg",e.target.files)
-
-  }
-console.log({cloudImg})
+    console.log("gggggggggggggg", e.target.files);
+  };
+  console.log({ cloudImg });
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const payload = { 
+    e.preventDefault();
+    const payload = {
       ...formData,
-       city: currentCity,
-       state: currentState,
-       }
-    dispatch(addSellTruckpartsListing(payload,cloudImg))
+      city: currentCity,
+      state: currentState,
+    };
+    dispatch(addSellTruckpartsListing(payload, cloudImg));
     // console.log("dispach" ,{formData})
-  }
+  };
 
-  useEffect(() => {}, [selltruckparts])
+  useEffect(() => {}, [selltruckparts]);
 
-  const { part, make, year, model, price, title, contactno, image } = formData
+  const { part, make, year, model, price, title, contactno, image } = formData;
 
   return (
     <form
@@ -97,13 +94,13 @@ console.log({cloudImg})
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState ? false : true}
+        disabled={currentState !== "" ? false : true}
       />
       <TextInput
         name="part"
         id="part"
         value={part}
-        maxLength='50'
+        maxLength="50"
         label="Part"
         placeholder="Part"
         required={true}
@@ -132,7 +129,7 @@ console.log({cloudImg})
         value={model}
         label="Model"
         type="text"
-        maxLength='40'
+        maxLength="40"
         placeholder="Model"
         required={true}
         handleChange={handleChange}
@@ -143,7 +140,7 @@ console.log({cloudImg})
         id="price"
         value={price}
         label="Price"
-        maxLength='10'
+        maxLength="10"
         placeholder="Price"
         required={true}
         type="number"
@@ -157,7 +154,7 @@ console.log({cloudImg})
         placeholder="Ad Title"
         required={true}
         type="text"
-        maxLength='50'
+        maxLength="50"
         handleChange={handleChange}
       />
 
@@ -190,7 +187,7 @@ console.log({cloudImg})
         Continue
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default SellTruckPartsForm
+export default SellTruckPartsForm;

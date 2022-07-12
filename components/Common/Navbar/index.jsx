@@ -36,7 +36,7 @@ const Navbar = ({
   viewHref,
   emergencyHref,
   listingHref,
-  menuHref
+  menuHref,
 }) => {
   const router = useRouter();
   const [Nav, SetNav] = useState(false);
@@ -88,8 +88,7 @@ const Navbar = ({
     } else {
       if (routeName == "/emergency-loads") {
         if (tokenData?.sub_data?.sub_role == "platinum") {
-          setShowModalloads(true);
-          setRouteName(routeName);
+          router.push(routeName);
         } else {
           setShowPlatinum(true);
         }
@@ -144,7 +143,7 @@ const Navbar = ({
         handleBackplatinum={HandleBackModalPlatinum}
         showModalPlatinum={showPlatinum}
       />
-      
+
       <div className="static">
         <ul
           className={
@@ -171,9 +170,9 @@ const Navbar = ({
           {Object?.keys(tokenData)?.length > 0 && (
             <div className="flex md:justify-around ">
               <Link href={menuHref}>
-              <button className="flex font-semibold text-indigo-700 hover:text-zinc-100 hover:bg-indigo-700 rounded-lg border-[3px] border-indigo-700 sm:w-[160px] justify-center h-[40px] items-center transition ease-in-out">
-                Menu
-              </button>
+                <button className="flex font-semibold text-indigo-700 hover:text-zinc-100 hover:bg-indigo-700 rounded-lg border-[3px] border-indigo-700 sm:w-[160px] justify-center h-[40px] items-center transition ease-in-out">
+                  Menu
+                </button>
               </Link>
 
               <button
@@ -495,6 +494,6 @@ Navbar.defaultProps = {
   listingHref: "/listings",
   viewHref: "/",
   emergencyHref: "/emergency-loads",
-  menuHref:"/dashboard"
+  menuHref: "/dashboard",
 };
 export default Navbar;

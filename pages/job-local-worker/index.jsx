@@ -8,6 +8,7 @@ const JobLocalWorkerPage = ({ loads }) => {
   const [loaclWorker, setLoaclWorker] = useState([]);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.alldata);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getWorker(selector?.location));
@@ -15,6 +16,7 @@ const JobLocalWorkerPage = ({ loads }) => {
 
   useEffect(() => {
     setLoaclWorker(selector?.worker);
+    setLoading(selector?.loading);
   }, [selector]);
   return (
     <>
@@ -23,7 +25,7 @@ const JobLocalWorkerPage = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <Job isWorkers={true} loadsData={loads} />
+      <Job isWorkers={true} loadsData={loads} loadingData={loading} />
     </>
   );
 };

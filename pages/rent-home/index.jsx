@@ -6,6 +6,7 @@ import { getHome } from "@store/AllDataMain/AllDataaction";
 
 const RentPage = ({ loads }) => {
   const [rentHome, setRentHome] = useState([]);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.alldata);
 
@@ -15,6 +16,7 @@ const RentPage = ({ loads }) => {
 
   useEffect(() => {
     setRentHome(selector?.home);
+    setLoading(selector?.loading);
   }, [selector]);
   return (
     <>
@@ -23,7 +25,7 @@ const RentPage = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <Rent loadsData={loads} />
+      <Rent loadsData={loads} loadingData={loading} isRooms={false} />
     </>
   );
 };

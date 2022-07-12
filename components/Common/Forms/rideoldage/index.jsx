@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react"
-import { NumberInput, TextInput } from "@components/Common"
-import StatesSelect from "../SellTruck/statesdropdown"
-import CitySelect from "../SellTruck/citiesdropdown"
-import TitleList from "../rideschools/titlelistdropdown"
-import { useDispatch, useSelector } from "react-redux"
-import { RideOldAgeListing } from "../../../../store/ride-store/ride-action"
+import React, { useEffect, useState } from "react";
+import { NumberInput, TextInput } from "@components/Common";
+import StatesSelect from "../SellTruck/statesdropdown";
+import CitySelect from "../SellTruck/citiesdropdown";
+import TitleList from "../rideschools/titlelistdropdown";
+import { useDispatch, useSelector } from "react-redux";
+import { RideOldAgeListing } from "../../../../store/ride-store/ride-action";
 
 const RideOldAge = ({ className }) => {
   const [formData, setFormData] = useState({
@@ -15,50 +15,50 @@ const RideOldAge = ({ className }) => {
     dropoff: "",
     title: "",
     contactno: null,
-  })
+  });
   const handleChange = (e) => {
-    let value = e.target.value
+    let value = e.target.value;
     if (e.target.name === "miles") {
-      value = parseInt(value)
+      value = parseInt(value);
     }
     setFormData((prevState) => {
       return {
         ...prevState,
         [e.target.name]: value,
-      }
-    })
-  }
-  const dispatch = useDispatch()
-  const rideOldAge = useSelector((state) => state.rideOldAge)
-  const [currentState, setCurrentState] = useState("")
-  const [currentCity, setCurrentCity] = useState("Alamo")
+      };
+    });
+  };
+  const dispatch = useDispatch();
+  const rideOldAge = useSelector((state) => state.rideOldAge);
+  const [currentState, setCurrentState] = useState("");
+  const [currentCity, setCurrentCity] = useState("Alamo");
   const handleCurrentState = (state) => {
-    setCurrentState(state)
-    setCurrentCity("")
-  }
+    setCurrentState(state);
+    setCurrentCity("");
+  };
   const handleCurrentCity = (city) => {
     // console.log({ city: city })
-    setCurrentCity(city)
-  }
+    setCurrentCity(city);
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     // console.log({ formData })
-    const payload = { ...formData, city: currentCity, state: currentState }
-    dispatch(RideOldAgeListing(payload))
+    const payload = { ...formData, city: currentCity, state: currentState };
+    dispatch(RideOldAgeListing(payload));
     // console.log('pp',{formData})
-  }
+  };
 
   const handleTitleChange = (state) => {
     setFormData((prevState) => {
       return {
         ...prevState,
         title: state,
-      }
-    })
-  }
-  const { pickup, pickupdate, dropoff, title, contactno } = formData
-  useEffect(() => {}, [rideOldAge])
+      };
+    });
+  };
+  const { pickup, pickupdate, dropoff, title, contactno } = formData;
+  useEffect(() => {}, [rideOldAge]);
 
   return (
     <form
@@ -70,12 +70,12 @@ const RideOldAge = ({ className }) => {
         handleCurrentState={handleCurrentState}
         currentState={currentState}
       />
-     <span className="my-1">City</span>
+      <span className="my-1">City</span>
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState ? false : true}
+        disabled={currentState !== "" ? false : true}
       />
       <TextInput
         name="pickup"
@@ -83,7 +83,7 @@ const RideOldAge = ({ className }) => {
         value={pickup}
         label="Pickup"
         placeholder="Pick-up"
-        maxLength='70'
+        maxLength="70"
         required={true}
         type="text"
         handleChange={handleChange}
@@ -103,7 +103,7 @@ const RideOldAge = ({ className }) => {
         id="dropoff"
         value={dropoff}
         label="Drop-Off"
-        maxLength='70'
+        maxLength="70"
         placeholder="Drop-Off"
         required={true}
         type="text"
@@ -119,7 +119,7 @@ const RideOldAge = ({ className }) => {
         label="Contact Number"
         placeholder="eg-999999"
         type="number"
-        maxLength='10'
+        maxLength="10"
         required={true}
         handleChange={handleChange}
       />
@@ -131,7 +131,7 @@ const RideOldAge = ({ className }) => {
         Continue
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default RideOldAge
+export default RideOldAge;

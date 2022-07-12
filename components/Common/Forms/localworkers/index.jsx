@@ -1,11 +1,11 @@
-import React, { useState } from "react"
-import { NumberInput, TextInput } from "@components/Common"
-import DropDown from "../SellTruck/statesdropdown"
-import StatesSelect from "../SellTruck/statesdropdown"
-import CitySelect from "../SellTruck/citiesdropdown"
-import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { LocalWorkersListing } from "@store/local-store/local-action"
+import React, { useState } from "react";
+import { NumberInput, TextInput } from "@components/Common";
+import DropDown from "../SellTruck/statesdropdown";
+import StatesSelect from "../SellTruck/statesdropdown";
+import CitySelect from "../SellTruck/citiesdropdown";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { LocalWorkersListing } from "@store/local-store/local-action";
 
 const Localworkers = ({ className }) => {
   const [formData, setFormData] = useState({
@@ -14,42 +14,42 @@ const Localworkers = ({ className }) => {
     location: "",
     contactno: null,
     title: "",
-  })
-  const dispatch = useDispatch()
+  });
+  const dispatch = useDispatch();
   const Localworkers = useSelector((state) => {
-    state.localworkers
-  })
+    state.localworkers;
+  });
   const handleChange = (e) => {
-    let value = e.target.value
+    let value = e.target.value;
     if (e.target.name === "miles") {
-      value = parseInt(value)
+      value = parseInt(value);
     }
     setFormData((prevState) => {
       return {
         ...prevState,
         [e.target.name]: value,
-      }
-    })
-  }
-  const [currentState, setCurrentState] = useState("")
-  const [currentCity, setCurrentCity] = useState("Alamo")
+      };
+    });
+  };
+  const [currentState, setCurrentState] = useState("");
+  const [currentCity, setCurrentCity] = useState("Alamo");
   const handleCurrentState = (state) => {
-    setCurrentState(state)
-    setCurrentCity("")
-  }
+    setCurrentState(state);
+    setCurrentCity("");
+  };
   const handleCurrentCity = (city) => {
-    setCurrentCity(city)
-  }
+    setCurrentCity(city);
+  };
   const handleSubmit = (e) => {
-    e.preventDefault()
-  
-    const payload = { ...formData, city: currentCity, state: currentState }
-    dispatch(LocalWorkersListing(payload))
-    // console.log("hhh" , {formData})
-  }
-  useEffect(() => {}, [Localworkers])
+    e.preventDefault();
 
-  const { job, name, contactno, title, location } = formData
+    const payload = { ...formData, city: currentCity, state: currentState };
+    dispatch(LocalWorkersListing(payload));
+    // console.log("hhh" , {formData})
+  };
+  useEffect(() => {}, [Localworkers]);
+
+  const { job, name, contactno, title, location } = formData;
 
   return (
     <form
@@ -61,19 +61,19 @@ const Localworkers = ({ className }) => {
         handleCurrentState={handleCurrentState}
         currentState={currentState}
       />
-     <span className="my-1">City</span>
+      <span className="my-1">City</span>
       <CitySelect
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!currentState ? true: false}
+        disabled={currentState == "" ? true : false}
       />
       <TextInput
         name="job"
         id="job"
         value={job}
         label="Job Post"
-        maxLength='40'
+        maxLength="40"
         placeholder="Job Post"
         required={true}
         type="text"
@@ -84,7 +84,7 @@ const Localworkers = ({ className }) => {
         id="name"
         value={name}
         label="Name"
-        maxLength='40'
+        maxLength="40"
         placeholder="Name"
         required={true}
         handleChange={handleChange}
@@ -95,7 +95,7 @@ const Localworkers = ({ className }) => {
         id="location"
         value={location}
         label="location"
-        maxLength='70'
+        maxLength="70"
         placeholder="location"
         required={true}
         type="text"
@@ -109,7 +109,7 @@ const Localworkers = ({ className }) => {
         label="Contact Number"
         placeholder="eg-999999"
         type="number"
-        maxLength='10'
+        maxLength="10"
         required={true}
         handleChange={handleChange}
       />
@@ -118,7 +118,7 @@ const Localworkers = ({ className }) => {
         id="title"
         value={title}
         label="Ad Title"
-        maxLength='50'
+        maxLength="50"
         placeholder="Ad Title"
         required={true}
         type="text"
@@ -132,7 +132,7 @@ const Localworkers = ({ className }) => {
         Continue
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default Localworkers
+export default Localworkers;

@@ -8,6 +8,7 @@ const RideAirportPage = ({ loads }) => {
   const [rideAirport, setRideAirport] = useState([]);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.alldata);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getAirport(selector?.location));
@@ -15,6 +16,7 @@ const RideAirportPage = ({ loads }) => {
 
   useEffect(() => {
     setRideAirport(selector?.room);
+    setLoading(selector?.loading);
   }, [selector]);
   return (
     <>
@@ -23,7 +25,7 @@ const RideAirportPage = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <Ride type="airport" loadsData={loads} />
+      <Ride type="airport" loadsData={loads} loadingData={loading} />
     </>
   );
 };

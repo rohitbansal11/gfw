@@ -1,16 +1,17 @@
-import React, { useEffect } from "react"
-import { Section, PrimaryHeading } from "@components/Common"
-import { useState } from "react"
-import Link from "next/link"
-import CarSaleCard from "./Cards/CarSaleCard"
-import {ModalSimple} from "@components/Common"
+import React, { useEffect } from "react";
+import { Section, PrimaryHeading } from "@components/Common";
+import { useState } from "react";
+import Link from "next/link";
+import CarSaleCard from "./Cards/CarSaleCard";
+import { NoDataFound, CardLoading } from "@components/Common/index";
+import { ModalSimple } from "@components/Common";
 
-const TruckParts = ({ loadsData, isParts }) => {
-  const [loads, setLoads] = useState([])
+const TruckParts = ({ loadsData, loadingData }) => {
+  const [loads, setLoads] = useState([]);
 
   useEffect(() => {
-    setLoads(loadsData)
-  }, [loadsData])
+    setLoads(loadsData);
+  }, [loadsData]);
   return (
     <Section>
       <PrimaryHeading
@@ -19,15 +20,21 @@ const TruckParts = ({ loadsData, isParts }) => {
         text="Car Sale"
         textCenter
       />
-       <ModalSimple/>
+      <ModalSimple />
 
-      <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
-        {loads.map((item) => (
-          <CarSaleCard isParts={isParts} item={item} />
-        ))}
-      </div>
+      {loadingData && <CardLoading />}
+
+      {loadsData?.length == 0 && !loadingData && <NoDataFound />}
+
+      {loadsData?.length > 0 && !loadingData && (
+        <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
+          {loads.map((item) => (
+            <CarSaleCard item={item} />
+          ))}
+        </div>
+      )}
     </Section>
-  )
-}
+  );
+};
 
-export default TruckParts
+export default TruckParts;

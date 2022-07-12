@@ -7,6 +7,7 @@ import { Getloads } from "../../store/AllDataMain/AllDataaction";
 
 const LoadsPage = ({ loads }) => {
   const [loadsData, setLoadData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.alldata);
 
@@ -16,6 +17,7 @@ const LoadsPage = ({ loads }) => {
 
   useEffect(() => {
     setLoadData(selector?.loads);
+    setLoading(selector?.loading);
   }, [selector]);
 
   return (
@@ -26,7 +28,7 @@ const LoadsPage = ({ loads }) => {
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
 
-      <Loads loads={loads} />
+      <Loads loads={loads} loadingData={loading} />
     </>
   );
 };

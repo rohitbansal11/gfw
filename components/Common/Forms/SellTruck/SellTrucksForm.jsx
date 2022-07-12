@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useCallback } from "react"
-import { NumberInput, TextInput } from "@components/Common"
+import React, { useState, useEffect, useCallback } from "react";
+import { NumberInput, TextInput } from "@components/Common";
 // import { Previews } from "./Dropzone"
-import StatesSelect from "./statesdropdown"
-import CitySelect from "./citiesdropdown"
-import MakeSelect from "./makedropdown"
-import { useDispatch, useSelector } from "react-redux"
-import { addSellTruckListing } from "../../../../store/sell-truck-store/sell-truck-action"
+import StatesSelect from "./statesdropdown";
+import CitySelect from "./citiesdropdown";
+import MakeSelect from "./makedropdown";
+import { useDispatch, useSelector } from "react-redux";
+import { addSellTruckListing } from "../../../../store/sell-truck-store/sell-truck-action";
 const SellTrucks = ({ className }) => {
   const [formData, setFormData] = useState({
     make: "",
@@ -15,21 +15,21 @@ const SellTrucks = ({ className }) => {
     title: "",
     contactno: null,
     image: [],
-  })
-  const dispatch = useDispatch()
-  const sellTruckState = useSelector((state) => state.sellTruck)
+  });
+  const dispatch = useDispatch();
+  const sellTruckState = useSelector((state) => state.sellTruck);
 
-  const [currentState, setCurrentState] = useState("")
-  const [currentCity, setCurrentCity] = useState("Alamo")
+  const [currentState, setCurrentState] = useState("");
+  const [currentCity, setCurrentCity] = useState("Alamo");
 
   const handleMakeChange = (state) => {
     setFormData((prevState) => {
       return {
         ...prevState,
         make: state,
-      }
-    })
-  }
+      };
+    });
+  };
 
   // const handleFileChange = (state) => {
   //   setFormData((prevState) => {
@@ -41,43 +41,43 @@ const SellTrucks = ({ className }) => {
   // }
   const handleCurrentState = useCallback(
     (state) => {
-      setCurrentState(state)
-      setCurrentCity("")
+      setCurrentState(state);
+      setCurrentCity("");
     },
     [currentState]
-  )
+  );
   const handleCurrentCity = useCallback(
     (city) => {
-      setCurrentCity(city)
+      setCurrentCity(city);
     },
     [currentCity]
-  )
+  );
   const handleChange = (e) => {
-    let value = e.target.value
+    let value = e.target.value;
     if (e.target.name === "miles") {
-      value = parseInt(value)
+      value = parseInt(value);
     }
     setFormData((prevState) => {
       return {
         ...prevState,
         [e.target.name]: value,
-      }
-    })
-  }
+      };
+    });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const payload = {
       ...formData,
       city: currentCity,
       state: currentState,
       image: "https://image.jpg", //@todo remove it and handle image upload
-    }
-    dispatch(addSellTruckListing(payload))
-    console.log("ggg" , formData)
-  }
-  useEffect(() => {}, [sellTruckState])
-  const { year, model, miles, title, contactno,image } = formData
+    };
+    dispatch(addSellTruckListing(payload));
+    console.log("ggg", formData);
+  };
+  useEffect(() => {}, [sellTruckState]);
+  const { year, model, miles, title, contactno, image } = formData;
 
   return (
     <form
@@ -94,7 +94,7 @@ const SellTrucks = ({ className }) => {
         handleCurrentCity={handleCurrentCity}
         currentCity={currentCity}
         currentState={currentState}
-        disabled={!!currentState ? false : true}
+        disabled={currentState !== "" ? false : true}
       />
       <span>Make</span>
       <MakeSelect
@@ -115,7 +115,7 @@ const SellTrucks = ({ className }) => {
       <TextInput
         name="model"
         id="model"
-        maxLength='40'
+        maxLength="40"
         value={model}
         label="Model"
         placeholder="Model"
@@ -130,14 +130,14 @@ const SellTrucks = ({ className }) => {
         label="Miles"
         placeholder="Miles"
         type="number"
-        maxLength='10'
+        maxLength="10"
         required={true}
         handleChange={handleChange}
       />
       <TextInput
         name="title"
         id="title"
-        maxLength='50'
+        maxLength="50"
         value={title}
         label="Ad title"
         placeholder="Ad Title"
@@ -152,7 +152,7 @@ const SellTrucks = ({ className }) => {
         label="Contact No"
         placeholder="eg-999999"
         type="number"
-        maxLength='10'
+        maxLength="10"
         required={true}
         handleChange={handleChange}
       />
@@ -173,7 +173,7 @@ const SellTrucks = ({ className }) => {
         Continue
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default SellTrucks
+export default SellTrucks;

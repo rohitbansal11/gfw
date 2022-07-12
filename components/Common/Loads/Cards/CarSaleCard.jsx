@@ -1,7 +1,7 @@
-import React from "react"
-import styled from "styled-components"
-import { FaDollarSign, FaPhoneAlt } from "react-icons/fa"
-import Link from "next/link"
+import React from "react";
+import styled from "styled-components";
+import { FaDollarSign, FaPhoneAlt } from "react-icons/fa";
+import Link from "next/link";
 const CarSaleCard = ({ item }) => {
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[350px] lg:min-w-[400px] max-w-[420px] mx-2 hover:translate-y-[-4px] transition ease-in-out">
@@ -40,31 +40,28 @@ const CarSaleCard = ({ item }) => {
         {/* button */}
         <div className="flex items-start justify-end mt-4">
           <div className="flex w-full items-center justify-between">
-            <Link className="w-[40%]" href="/">
-              <div className=" flex">
-                <div className="py-1 px-1 text-[14px] border-2 border-indigo-700 rounded-lg text-indigo-700 flex gap-2 items-center cursor-pointer hover:bg-indigo-700 hover:text-white transition ease-in-out">
-                  <span>
-                    <FaDollarSign />
-                  </span>{" "}
-                  <span>${item.price}</span>
-                </div>
+            <div className=" flex">
+              <div className="py-1 px-1 text-[14px] border-2 border-indigo-700 rounded-lg text-indigo-700 flex gap-2 items-center cursor-pointer hover:bg-indigo-700 hover:text-white transition ease-in-out">
+                <span>
+                  <FaDollarSign />
+                </span>{" "}
+                <span>${item.price}</span>
               </div>
-            </Link>
-            <Link className="w-[50%]" href="/">
-              <div className=" flex">
-                <div className="py-1 text-[14px] px-2 border-2 border-indigo-700 rounded-lg text-indigo-700 flex gap-2 items-center cursor-pointer hover:bg-indigo-700 hover:text-white transition ease-in-out">
-                  <span>
-                    <FaPhoneAlt />
-                  </span>{" "}
-                  <span>Call Now</span>
-                </div>
+            </div>
+
+            <div className=" flex">
+              <div className="py-1 text-[14px] px-2 border-2 border-indigo-700 rounded-lg text-indigo-700 flex gap-2 items-center cursor-pointer hover:bg-indigo-700 hover:text-white transition ease-in-out">
+                <span>
+                  <FaPhoneAlt />
+                </span>{" "}
+                <span>Call Now</span>
               </div>
-            </Link>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CarSaleCard
+export default CarSaleCard;

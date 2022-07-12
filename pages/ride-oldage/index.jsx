@@ -8,6 +8,7 @@ const RideOldAgePage = ({ loads }) => {
   const [rideOldage, setRideOldAge] = useState([]);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.alldata);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getOldage(selector?.location));
@@ -15,6 +16,7 @@ const RideOldAgePage = ({ loads }) => {
 
   useEffect(() => {
     setRideOldAge(selector?.oldage);
+    setLoading(selector?.loading);
   }, [selector]);
   return (
     <>
@@ -23,7 +25,7 @@ const RideOldAgePage = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <Ride type="oldage" loadsData={loads} />
+      <Ride type="oldage" loadsData={loads} loadingData={loading} />
     </>
   );
 };
