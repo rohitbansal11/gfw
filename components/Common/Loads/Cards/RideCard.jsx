@@ -2,19 +2,22 @@ import React from "react"
 import styled from "styled-components"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import Link from "next/link"
+import moment from "moment";
+
 const RideCard = ({ item }) => {
+  console.log("fgghd" ,item)
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[300px] lg:min-w-[300px] mx-6">
       <div className="flex flex-col px-4 py-4">
         <div className="flex items-center gap-2 border-b-2 border-gray-200 pb-1">
           <AnimatedDot />
-          <div className="ml-1">{item.from}</div>
+          <div className="ml-1">{item.pickup}</div>
         </div>
         <div className="flex items-center gap-2 pb-1 mt-2">
           <FaMapMarkerAlt size={20} className="text-red-600" />
-          <div>{item.to}</div>
+          <div>{item.dropoff}</div>
         </div>
-        <div className="text-gray-500 text-center text-[12px]">{item.date}</div>
+        <div className="text-gray-500 text-center text-[12px]">{moment(new Date(item.createdAt)).format("MMMM Do YYYY, h:mm:ss a")}</div>
         {/* weight & type */}
         <div className="flex flex-col mt-2">
           <div className="flex  gap-2">

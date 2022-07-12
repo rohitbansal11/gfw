@@ -4,6 +4,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import Link from "next/link";
 import moment from "moment";
 const LoadImgCard = ({ item }) => {
+  console.log(item)
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[350px] lg:min-w-[400px] max-w-[420px] mx-2 hover:translate-y-[-4px] transition ease-in-out">
       <div className="rounded-md text-center w-[40%] text-xl font-semibold text-indigo-700 bg-green-100">
@@ -44,16 +45,16 @@ const LoadImgCard = ({ item }) => {
         <div className="flex items-start justify-end mt-4">
           <div className="flex w-full items-center">
             <div className="h-[2px] bg-gray-300 w-[30%] mx-2"></div>
-            <Link className="w-[70%]" href="/">
+          
               <div className=" flex">
                 <div className="py-1 px-4 border-2 border-indigo-700 rounded-lg text-indigo-700 flex gap-2 items-center cursor-pointer hover:bg-indigo-700 hover:text-white transition ease-in-out">
                   <span>
                     <FaPhoneAlt />
-                  </span>{" "}
+                  </span>
                   <span>Call Now</span>
                 </div>
               </div>
-            </Link>
+            
           </div>
         </div>
       </div>

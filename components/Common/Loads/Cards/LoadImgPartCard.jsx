@@ -4,7 +4,7 @@ import { FaDollarSign, FaPhoneAlt } from "react-icons/fa";
 import Link from "next/link";
 import moment from "moment";
 const LoadImgPartCard = ({ item }) => {
-  console.log(item);
+  // console.log(item);
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[350px] lg:min-w-[400px] max-w-[420px] mx-2 hover:translate-y-[-4px] transition ease-in-out">
       <div className="rounded-md text-center w-[40%] text-xl font-semibold text-indigo-700 bg-green-100">

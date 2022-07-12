@@ -25,7 +25,7 @@ const RideOldAgePage = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <Ride type="oldage" loadsData={loads} loadingData={loading} />
+      <Ride type="oldage" loadsData={rideOldage} loadingData={loading} />
     </>
   );
 };

@@ -28,7 +28,7 @@ const LoadsPage = ({ loads }) => {
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
 
-      <Loads loads={loads} loadingData={loading} />
+      <Loads loads={loadsData} loadingData={loading} />
     </>
   );
 };

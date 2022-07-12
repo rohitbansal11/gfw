@@ -25,7 +25,7 @@ const RentPage = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <Rent loadsData={loads} loadingData={loading} isRooms={false} />
+      <Rent loadsData={rentHome} loadingData={loading} isRooms={false} />
     </>
   );
 };
