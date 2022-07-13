@@ -3,15 +3,24 @@ import styled from "styled-components";
 import { FaDollarSign, FaPhoneAlt } from "react-icons/fa";
 import moment from "moment";
 import Link from "next/link";
-const RentCard = ({ item }) => {
+import { Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
+const HomeRent = ({ item }) => {
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[350px] lg:min-w-[400px] max-w-[420px] mx-2 hover:translate-y-[-4px] transition ease-in-out">
       <div className="rounded-md text-center w-[40%] text-xl font-semibold text-indigo-700 bg-green-100">
-        <img
-          className="bg-center rounded-tl-md rounded-bl-md w-[100%] h-full object-cover"
-          src={item.image}
-          alt={item.title.slice(0, 5)}
-        />
+        <Slide>
+          {item?.image?.map((w) => {
+            return (
+              <div className="w-full h-full">
+                <img
+                  className="bg-center rounded-tl-md rounded-bl-md w-[100%] h-56 "
+                  src={w}
+                />
+              </div>
+            );
+          })}
+        </Slide>
       </div>
       {/* bottom section */}
       <div className="flex flex-col px-4 py-2 pr-2 w-[60%]">
@@ -33,10 +42,10 @@ const RentCard = ({ item }) => {
               {`${item.city}`.toUpperCase()}
             </span>
           </div>
-          {/* <div className="flex  gap-2">
-            <span className="font-medium mr-[6px]">Type:</span>{" "}
-            <span className="text-gray-600 text-[14px]">{item.type}</span>
-          </div> */}
+          <div className="flex  gap-2">
+            <span className="font-medium mr-[6px]">Area:</span>{" "}
+            <span className="text-gray-600 text-[14px]">{item.area}</span>
+          </div>
           <div className="flex  gap-2">
             <span className="font-medium  mr-[1px]">Rooms:</span>{" "}
             <span className="text-gray-600 text-[14px]">
@@ -72,4 +81,4 @@ const RentCard = ({ item }) => {
   );
 };
 
-export default RentCard;
+export default HomeRent;

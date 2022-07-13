@@ -12,8 +12,10 @@ const LoadsPage = ({ loads }) => {
   const selector = useSelector((pre) => pre?.alldata);
 
   useEffect(() => {
-    dispatch(Getloads(selector?.location_loads));
-  }, []);
+    if (!selector?.loading) {
+      dispatch(Getloads(selector?.location_loads));
+    }
+  }, [selector?.location_loads]);
 
   useEffect(() => {
     setLoadData(selector?.loads);

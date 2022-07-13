@@ -11,8 +11,10 @@ const TruckPage = ({ loads }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    dispatch(getTruck(selector?.location));
-  }, []);
+    if (!selector?.loading) {
+      dispatch(getTruck(selector?.location));
+    }
+  }, [selector?.location]);
 
   useEffect(() => {
     setTruck(selector?.truck);

@@ -4,6 +4,7 @@ import LoadImgCard from "./Cards/LoadImgCard";
 import { useState } from "react";
 import Link from "next/link";
 import RentCard from "./Cards/RentCard";
+import HomeRent from "./Cards/HomeRent";
 import { ModalSimple } from "@components/Common";
 import { NoDataFound, CardLoading } from "@components/Common/index";
 
@@ -79,7 +80,7 @@ const TruckParts = ({ loadsData, loadingData, isRooms }) => {
           ) : (
             <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
               {loads.map((item) => (
-                <RentCard isRooms={isRooms} item={item} />
+                <HomeRent isRooms={isRooms} item={item} />
               ))}
             </div>
           )}

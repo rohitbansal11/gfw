@@ -11,8 +11,10 @@ const JobLocalWorkerPage = ({ loads }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    dispatch(getWorker(selector?.location));
-  }, []);
+    if (!selector?.loading) {
+      dispatch(getWorker(selector?.location));
+    }
+  }, [selector?.location]);
 
   useEffect(() => {
     setLoaclWorker(selector?.worker);

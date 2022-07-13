@@ -11,8 +11,10 @@ const CarSalePage = ({ loads }) => {
   const selector = useSelector((pre) => pre?.alldata);
 
   useEffect(() => {
-    dispatch(getCarSale(selector?.location));
-  }, []);
+    if (!selector?.loading) {
+      dispatch(getCarSale(selector?.location));
+    }
+  }, [selector?.location]);
 
   useEffect(() => {
     setCarSale(selector?.carsale);

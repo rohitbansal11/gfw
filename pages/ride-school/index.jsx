@@ -11,8 +11,10 @@ const SchoolRidePage = ({ loads }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    dispatch(getSchool(selector?.location));
-  }, []);
+    if (!selector?.loading) {
+      dispatch(getSchool(selector?.location));
+    }
+  }, [selector?.location]);
 
   useEffect(() => {
     setRideSchool(selector?.school);

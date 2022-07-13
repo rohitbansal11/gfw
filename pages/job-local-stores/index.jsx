@@ -11,8 +11,10 @@ const JobLocalStoresPage = ({ loads }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    dispatch(getStore(selector?.location));
-  }, []);
+    if (!selector?.loading) {
+      dispatch(getStore(selector?.location));
+    }
+  }, [selector?.location]);
 
   useEffect(() => {
     setLoaclStore(selector?.store);
@@ -20,6 +22,7 @@ const JobLocalStoresPage = ({ loads }) => {
   }, [selector]);
   return (
     <>
+      {console.log(loaclStore?.length)}
       <Hero
         reverse
         primaryText={"Buy or Sell, Anything"}

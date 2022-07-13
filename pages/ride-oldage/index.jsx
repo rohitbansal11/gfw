@@ -11,8 +11,10 @@ const RideOldAgePage = ({ loads }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    dispatch(getOldage(selector?.location));
-  }, []);
+    if (!selector?.loading) {
+      dispatch(getOldage(selector?.location));
+    }
+  }, [selector?.location]);
 
   useEffect(() => {
     setRideOldAge(selector?.oldage);

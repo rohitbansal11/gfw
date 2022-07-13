@@ -11,8 +11,10 @@ const RentPage = ({ loads }) => {
   const selector = useSelector((pre) => pre?.alldata);
 
   useEffect(() => {
-    dispatch(getHome(selector?.location));
-  }, []);
+    if (!selector?.loading) {
+      dispatch(getHome(selector?.location));
+    }
+  }, [selector?.location]);
 
   useEffect(() => {
     setRentHome(selector?.home);

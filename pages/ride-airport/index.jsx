@@ -11,11 +11,13 @@ const RideAirportPage = ({ loads }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    dispatch(getAirport(selector?.location));
-  }, []);
+    if (!selector?.loading) {
+      dispatch(getAirport(selector?.location));
+    }
+  }, [selector?.location]);
 
   useEffect(() => {
-    setRideAirport(selector?.room);
+    setRideAirport(selector?.airport);
     setLoading(selector?.loading);
   }, [selector]);
   return (

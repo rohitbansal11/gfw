@@ -11,8 +11,10 @@ const RentRoomPage = ({ loads }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    dispatch(getRoom(selector?.location));
-  }, []);
+    if (!selector?.loading) {
+      dispatch(getRoom(selector?.location));
+    }
+  }, [selector?.location]);
 
   useEffect(() => {
     setRentRoom(selector?.room);
