@@ -73,10 +73,10 @@ export default function MadalHidden({ handleSetLodas, showModallodas }) {
 
   const customStyles = {
     content: {
-      top: "150px",
-      bottom: "150px",
-      left: "350px",
-      right: "350px",
+      top: "50px",
+      bottom: "50px",
+      left: "150px",
+      right: "150px",
     },
   };
 

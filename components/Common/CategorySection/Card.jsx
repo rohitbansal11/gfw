@@ -18,6 +18,9 @@ import {
   ModalPlatinum,
   ModalSilver,
 } from "@components/Common";
+import Swal from "sweetalert2";
+
+import { GetListing } from "@store/AllDataMain/AllDataaction";
 const Card = ({ item, index, type }) => {
   const [active, setActive] = useState(null);
   const router = useRouter();
@@ -31,23 +34,39 @@ const Card = ({ item, index, type }) => {
   const [checkDataLoads, setCheckDataLoads] = useState({});
   const [showPlatinum, setShowPlatinum] = useState(false);
   const [showSilver, setShowSilver] = useState(false);
+  const [userType, setUserType] = useState("");
+  const [listingNo, setListingNo] = useState(100);
 
   useEffect(() => {
+    if (Object.keys(selector?.listing).length == 0 && !selector?.listing) {
+      dispatch(GetListing());
+    }
+  }, []);
+
+  useEffect(() => {
+    setListingNo(selector?.listing?.totel);
+    setUserType(selector?.listing?.role);
     setTokenData(selector?.token);
     setCheckData(selector?.location);
     setCheckDataLoads(selector?.location_loads);
   }, [selector]);
 
   const HnadleReroute = (routeName) => {
+    console.log(listingNo);
     if (Object?.keys(tokenData)?.length == 0) {
       router.push("/login");
     } else {
       if (routeName == "/emergency-loads") {
         if (tokenData?.sub_data?.sub_role == "platinum") {
-          setShowModalloads(true);
-          setRouteName(routeName);
+          router.push(routeName);
         } else {
-          setShowPlatinum(true);
+          Swal.fire({
+            title: "Error",
+            icon: "error",
+            text: "This Feature is Only Available For  Platinum user ",
+          }).then((val) => {
+            setShowPlatinum(true);
+          });
         }
       } else if (routeName == "/loads") {
         if (
@@ -94,7 +113,29 @@ const Card = ({ item, index, type }) => {
 
   const HandleListingType = (value) => {
     if (tokenData?.role !== "subscribe") {
-      setShowSilver(true);
+      Swal.fire({
+        title: "Error",
+        icon: "error",
+        text: "Only Subscriber Can add Listing ",
+      }).then((val) => {
+        setShowSilver(true);
+      });
+    } else if (userType == "silver" && Number(listingNo) > 3) {
+      Swal.fire({
+        title: "Error",
+        icon: "error",
+        text: "Your Add Listing Limit is Completed Please Buy Upgraded Subscription",
+      }).then((val) => {
+        setShowPlatinum(true);
+      });
+    } else if (userType == "golds" && Number(listingNo) > 7) {
+      Swal.fire({
+        title: "Error",
+        icon: "error",
+        text: "Your Add Listing Limit is Completed Please By Upgraded Subscription",
+      }).then((val) => {
+        setShowPlatinum(true);
+      });
     } else {
       router.push(value);
     }

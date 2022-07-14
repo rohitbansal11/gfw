@@ -6,6 +6,7 @@ import CitySelect from "./citiesdropdown";
 import MakeSelect from "./makedropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { addSellTruckListing } from "../../../../store/sell-truck-store/sell-truck-action";
+import moment from "moment";
 const SellTrucks = ({ className }) => {
   const [formData, setFormData] = useState({
     make: "",
@@ -114,6 +115,7 @@ const SellTrucks = ({ className }) => {
         placeholder="Year"
         required={true}
         type="date"
+        min={moment(new Date()).format("YYYY-MM-DD")}
         handleChange={handleChange}
       />
       <TextInput

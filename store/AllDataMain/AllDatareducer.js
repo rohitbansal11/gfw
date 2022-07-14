@@ -16,6 +16,10 @@ import {
   AIRPORT,
   WORKER,
   STORE,
+  Listing,
+  NOTIFICATIONCOUNT,
+  NOTIFICATION,
+  LOADINGFALSE,
 } from "./AllDatatypes";
 
 const initialValue = {
@@ -43,6 +47,9 @@ const initialValue = {
   airport: [],
   worker: [],
   store: [],
+  listing: {},
+  notificationcout: 0,
+  notification: [],
 };
 
 export const AllDatareducer = (state = initialValue, action) => {
@@ -52,6 +59,11 @@ export const AllDatareducer = (state = initialValue, action) => {
       return {
         ...state,
         loading: true,
+      };
+    case LOADINGFALSE:
+      return {
+        ...state,
+        loading: false,
       };
     case LOGOUT:
       return {
@@ -72,6 +84,24 @@ export const AllDatareducer = (state = initialValue, action) => {
       return {
         ...state,
         location: payload,
+      };
+    case NOTIFICATIONCOUNT:
+      return {
+        ...state,
+        loading: false,
+        notificationcout: payload,
+      };
+    case NOTIFICATION:
+      return {
+        ...state,
+        loading: false,
+        notification: payload,
+      };
+    case Listing:
+      return {
+        ...state,
+        loading: false,
+        listing: payload,
       };
     case SAVELOCATIONLOADS:
       return {

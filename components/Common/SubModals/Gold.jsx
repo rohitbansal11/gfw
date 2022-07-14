@@ -9,10 +9,10 @@ import Image from "next/image";
 export default function Gold({ handleBackgold, showModalGold }) {
   const customStyles = {
     content: {
-      top: "150px",
-      bottom: "150px",
-      left: "350px",
-      right: "350px",
+      top: "50px",
+      bottom: "50px",
+      left: "150px",
+      right: "150px",
     },
   };
   function closeModal() {
@@ -76,7 +76,7 @@ export default function Gold({ handleBackgold, showModalGold }) {
                 </div>
               </div>
               <div className="flex-1 my-[-30px] mt-4 md:mt-0 max-w-[500px]">
-                <img src={`/images/become-member.svg`} />
+                <img src={`/images/gold.jpeg`} />
               </div>
             </div>
           </Container>

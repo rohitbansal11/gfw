@@ -17,7 +17,151 @@ import {
   AIRPORT,
   WORKER,
   STORE,
+  Listing,
+  NOTIFICATIONCOUNT,
+  NOTIFICATION,
+  LOADINGFALSE,
 } from "./AllDatatypes";
+
+export const UpdateNotificationStatusAll = () => async (dispatch) => {
+  dispatch({
+    type: LOADING,
+  });
+
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    };
+    await axios.post(`/notification/allstatus`, { name: "" }, config);
+    let res = await axios.get("/notification", config);
+
+    dispatch({
+      type: NOTIFICATION,
+      payload: res?.data?.data,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: LOADINGFALSE,
+    });
+  }
+};
+
+export const UpdateNotificationStatus = (id) => async (dispatch) => {
+  dispatch({
+    type: LOADING,
+  });
+
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    };
+    await axios.get(`/notification/${id}`, config);
+    let res = await axios.get("/notification", config);
+
+    dispatch({
+      type: NOTIFICATION,
+      payload: res?.data?.data,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: LOADINGFALSE,
+    });
+  }
+};
+
+export const GetNotification = () => async (dispatch) => {
+  dispatch({
+    type: LOADING,
+  });
+
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    };
+    let res = await axios.get("/notification", config);
+
+    dispatch({
+      type: NOTIFICATION,
+      payload: res?.data?.data,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: NOTIFICATION,
+      payload: [],
+    });
+  }
+};
+
+export const GetNotificationCount = () => async (dispatch) => {
+  dispatch({
+    type: LOADING,
+  });
+
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    };
+    let res = await axios.get("/notification/count", config);
+    console.log(res?.data?.data);
+    dispatch({
+      type: NOTIFICATIONCOUNT,
+      payload: res?.data?.data,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: NOTIFICATIONCOUNT,
+      payload: 0,
+    });
+  }
+};
+
+export const GetListing = () => async (dispatch) => {
+  dispatch({
+    type: LOADING,
+  });
+
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    };
+    let res = await axios.get("/listing", config);
+
+    dispatch({
+      type: Listing,
+      payload: res?.data?.data,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: Listing,
+      payload: [],
+    });
+  }
+};
 
 export const Getloads = (location) => async (dispatch) => {
   dispatch({

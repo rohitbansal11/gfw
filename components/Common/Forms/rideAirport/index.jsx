@@ -6,6 +6,7 @@ import TitleList from "../rideschools/titlelistdropdown";
 import TitleAirport from "./titleairportdropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { RideAirportListing } from "../../../../store/ride-store/ride-action";
+import moment from "moment";
 const RideAirport = ({ className }) => {
   const [formData, setFormData] = useState({
     state: "",
@@ -95,9 +96,10 @@ const RideAirport = ({ className }) => {
         name="pickupdate"
         id="pickupdate"
         value={pickupdate}
-        label="Pickup Date & time"
+        label="Pickup Date "
         placeholder="Pick-up"
         required={true}
+        min={moment(new Date()).format("YYYY-MM-DD")}
         type="date"
         handleChange={handleChange}
       />

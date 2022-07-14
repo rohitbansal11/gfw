@@ -22,12 +22,14 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Navhide } from "@store/user-store/userActions";
 import Login from "@pages/login";
+import { GetNotificationCount } from "@store/AllDataMain/AllDataaction";
 
 import {
   CheckTokenOne,
   LogoutAction,
 } from "../../../store/AllDataMain/AllDataaction";
 import { useRouter } from "next/router";
+import Noty from "./NotificationIcon";
 
 const Navbar = ({
   links,
@@ -51,6 +53,7 @@ const Navbar = ({
   const [checkData, setCheckData] = useState({});
   const [checkDataLoads, setCheckDataLoads] = useState({});
   const [showPlatinum, setShowPlatinum] = useState(false);
+  const [notificationCount, setNotificationCount] = useState(0);
 
   const handleClick = (text) => {
     // setDrop(!drop);
@@ -70,6 +73,7 @@ const Navbar = ({
     if (Object?.keys(tokenData)?.length == 0) {
       handleApi();
     }
+    dispatch(GetNotificationCount());
   }, []);
 
   const handleApi = () => {
@@ -80,6 +84,7 @@ const Navbar = ({
     setTokenData(selector?.token);
     setCheckData(selector?.location);
     setCheckDataLoads(selector?.location_loads);
+    setNotificationCount(selector?.notificationcout);
   }, [selector]);
 
   const HnadleReroute = (routeName) => {
@@ -183,6 +188,15 @@ const Navbar = ({
               >
                 Log Out
               </button>
+              <Link href="/notification">
+                <button className="flex font-medium justify-center items-center ease-in-out">
+                  <Noty
+                    width={"40px"}
+                    color={"red"}
+                    count={notificationCount}
+                  />
+                </button>
+              </Link>
             </div>
           )}
 
@@ -341,6 +355,15 @@ const Navbar = ({
               >
                 Log Out
               </button>
+              <Link href="/notification">
+                <button className="flex font-medium justify-center items-center ease-in-out">
+                  <Noty
+                    width={"40px"}
+                    color={"red"}
+                    count={notificationCount}
+                  />
+                </button>
+              </Link>
             </div>
           )}
 

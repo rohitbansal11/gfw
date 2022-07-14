@@ -5,6 +5,7 @@ import CitySelect from "../SellTruck/citiesdropdown";
 import TitleList from "../rideschools/titlelistdropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { RideOldAgeListing } from "../../../../store/ride-store/ride-action";
+import moment from "moment";
 
 const RideOldAge = ({ className }) => {
   const [formData, setFormData] = useState({
@@ -97,6 +98,7 @@ const RideOldAge = ({ className }) => {
         placeholder="Pick-up"
         required={true}
         type="date"
+        min={moment(new Date()).format("YYYY-MM-DD")}
         handleChange={handleChange}
       />
       <TextInput

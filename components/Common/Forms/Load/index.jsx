@@ -8,26 +8,39 @@ import { LoadListing } from "@store/load-store/load-action";
 import Types from "./typedropdown";
 import WeightTypes from "./weightdropdown";
 import ForSaleHouse from "@pages/rent-house";
-
+import moment from "moment";
+import Swal from "sweetalert2";
 const Load = () => {
   const [formData, setFormData] = useState({
-    title: "",
-    state: "",
-    city: "",
-    year: "",
-    contactno: null,
     emergency: false,
     weight: "",
-    toDetail: "",
-    fromDetail: "",
-    weights: "",
+    weight_type: "",
     type: "",
-    weights: "",
+    from: {
+      state: "",
+      city: "",
+      address: "",
+      pickupdate: "",
+    },
+    to: {
+      state: "",
+      city: "",
+      address: "",
+    },
+    contactno: "",
+    title: "",
+    location: {
+      lat: "",
+      long: "",
+    },
   });
-  const [currentState, setCurrentState] = useState(false);
+  const [currentState, setCurrentState] = useState("");
   const [currentCity, setCurrentCity] = useState("");
+  const [currentStateTo, setCurrentStateTo] = useState("");
+  const [currentCityTo, setCurrentCityTo] = useState("");
   const [mode, setMode] = useState(false);
   const dispatch = useDispatch();
+
   const load = useSelector((state) => {
     state.load;
   });
@@ -43,28 +56,105 @@ const Load = () => {
       };
     });
   };
-  useEffect(() => {}, [load]);
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0,
+  };
+
+  const handleData = (pos) => {
+    var crd = pos.coords;
+    setFormData({
+      ...formData,
+      emergency: true,
+      location: {
+        ...formData.location,
+        lat: crd.latitude,
+        long: crd.longitude,
+      },
+    });
+  };
+
+  const handleGeoError = (err) => {
+    setFormData({
+      ...formData,
+      emergency: false,
+      location: {
+        ...formData.location,
+        lat: "",
+        long: "",
+      },
+    });
+    Swal.fire({
+      title: "Error",
+      icon: "error",
+      text: "There is a Error to getting Your Loaction",
+    });
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    let payload = {
-      ...formData,
-      city: currentCity,
-      state: currentState,
-      image: "https://image.jpg", //@todo remove this and handle image upload
-    };
-    dispatch(LoadListing(payload));
-    console.log("hh", { formData });
+    formData.from.state = currentState;
+    formData.from.city = currentCity;
+    formData.to.state = currentStateTo;
+    formData.to.city = currentCityTo;
+    dispatch(LoadListing(formData));
   };
 
-  const s = () => {
-    formData.emergency = !mode;
-  };
-
-  const toggle = () => {
-    formData.emergency
-      ? (formData.emergency = false)
-      : (formData.emergency = true);
-    console.log("nn", formData);
+  const handleEmrgenyLoadInput = (value) => {
+    if (value) {
+      if (navigator.geolocation) {
+        navigator.permissions
+          .query({ name: "geolocation" })
+          .then(function (result) {
+            if (result.state === "granted") {
+              //If granted then you can directly call your function here
+              navigator.geolocation.getCurrentPosition(handleData);
+            } else if (result.state === "prompt") {
+              navigator.geolocation.getCurrentPosition(
+                handleData,
+                handleGeoError,
+                options
+              );
+            } else if (result.state === "denied") {
+              //If denied then you have to show instructions to enable location
+              Swal.fire({
+                title: "Error",
+                icon: "error",
+                text: "Can Not Enter Emergency Loads WithOut Location",
+              });
+              setFormData({
+                ...formData,
+                emergency: false,
+              });
+            }
+            result.onchange = function () {
+              console.log(result.state);
+            };
+          });
+      } else {
+        setFormData({
+          ...formData,
+          emergency: false,
+        });
+        Swal.fire({
+          title: "Error",
+          icon: "error",
+          text: "Can Not Enter Emergency Loads WithOut Location Please Enable Location",
+        });
+      }
+    } else {
+      setFormData({
+        ...formData,
+        emergency: false,
+        location: {
+          ...formData.location,
+          lat: "",
+          long: "",
+        },
+      });
+    }
   };
 
   const handleCurrentState = (state) => {
@@ -74,12 +164,19 @@ const Load = () => {
   const handleCurrentCity = (city) => {
     setCurrentCity(city);
   };
+  const handleCurrentStateTo = (state) => {
+    setCurrentStateTo(state);
+    setCurrentCityTo("");
+  };
+  const handleCurrentCityTo = (city) => {
+    setCurrentCityTo(city);
+  };
 
   const handleWeightChange = (state) => {
     setFormData((prevState) => {
       return {
         ...prevState,
-        weights: state,
+        weight_type: state,
       };
     });
   };
@@ -92,21 +189,50 @@ const Load = () => {
     });
   };
 
+  const handlePickUpDatefrom = (value) => {
+    console.log(value);
+    setFormData({
+      ...formData,
+      from: {
+        ...formData.from,
+        pickupdate: value,
+      },
+    });
+  };
+
+  const handleaddressfrom = (value) => {
+    setFormData({
+      ...formData,
+      from: {
+        ...formData.from,
+        address: value,
+      },
+    });
+  };
+
+  const handletoaddress = (value) => {
+    setFormData({
+      ...formData,
+      to: {
+        ...formData.to,
+        address: value,
+      },
+    });
+  };
+
   const {
     contactno,
     toDetail,
     fromDetail,
     weight,
-    weights,
+    weight_type,
     year,
     emergency,
     title,
     type,
+    from,
+    to,
   } = formData;
-
-  useEffect(() => {
-    return () => {};
-  }, []);
 
   return (
     <form
@@ -122,12 +248,13 @@ const Load = () => {
           class="inline-flex relative items-center cursor-pointer"
         >
           <input
-            onClick={() => {
-              toggle();
+            onChange={(e) => {
+              handleEmrgenyLoadInput(e.target.checked);
             }}
             type="checkbox"
             name="emergency"
             value={emergency}
+            checked={emergency}
             id="default-toggle"
             className="sr-only peer"
           />
@@ -152,7 +279,7 @@ const Load = () => {
       <WeightTypes
         handleWeightChange={handleWeightChange}
         required={true}
-        currentWeight={weights}
+        currentWeight={weight_type}
       />
 
       <span className="font-medium cursor-pointer text-indigo-900">Type</span>
@@ -178,12 +305,15 @@ const Load = () => {
       <TextInput
         name="year"
         id="year"
-        value={year}
+        value={from.pickupdate}
         label="Pick-up Date & Time"
         placeholder="Date"
         required={true}
         type="date"
-        handleChange={handleChange}
+        min={moment(new Date()).format("YYYY-MM-DD")}
+        handleChange={(e) => {
+          handlePickUpDatefrom(e.target.value);
+        }}
       />
 
       <TextInput
@@ -196,21 +326,23 @@ const Load = () => {
         placeholder="Detail Address"
         required={true}
         type="text"
-        handleChange={handleChange}
+        handleChange={(e) => {
+          handleaddressfrom(e.target.value);
+        }}
       />
 
       <h1 className="text-lg my-4">To :-</h1>
       <span>State</span>
       <StatesSelect
-        handleCurrentState={handleCurrentState}
-        currentState={currentState}
+        handleCurrentState={handleCurrentStateTo}
+        currentState={currentStateTo}
       />
       <span>City</span>
       <CitySelect
-        handleCurrentCity={handleCurrentCity}
-        currentCity={currentCity}
-        currentState={currentState}
-        disabled={currentState ? false : true}
+        handleCurrentCity={handleCurrentCityTo}
+        currentCity={currentCityTo}
+        currentState={currentStateTo}
+        disabled={currentStateTo !== "" ? false : true}
       />
       <TextInput
         name="toDetail"
@@ -222,7 +354,9 @@ const Load = () => {
         placeholder="Detail Address"
         required={true}
         type="text"
-        handleChange={handleChange}
+        handleChange={(e) => {
+          handletoaddress(e.target.value);
+        }}
       />
       <TextInput
         name="title"
@@ -246,18 +380,6 @@ const Load = () => {
         type="number"
         maxLength="10"
         minLength="0"
-        required={true}
-        handleChange={handleChange}
-      />
-
-      <NumberInput
-        name="contactno"
-        id="contactno"
-        value={contactno}
-        label="Contact Number"
-        placeholder="Contact Number"
-        type="number"
-        maxLength="10"
         required={true}
         handleChange={handleChange}
       />

@@ -52,10 +52,10 @@ export default function MadalHidden() {
   }, [currentState]);
   const customStyles = {
     content: {
-      top: "250px",
-      bottom: "250px",
-      left: "350px",
-      right: "350px",
+      top: "50px",
+      bottom: "50px",
+      left: "150px",
+      right: "150px",
     },
   };
 

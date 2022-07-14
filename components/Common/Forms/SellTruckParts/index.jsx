@@ -7,6 +7,7 @@ import MakeSelect from "../SellTruck/makedropdown";
 // import { Previews } from "../SellTruck/Dropzone"
 import { useDispatch, useSelector } from "react-redux";
 import { addSellTruckpartsListing } from "../../../../store/sell-truck-store/sell-truck-action";
+import moment from "moment";
 const SellTruckPartsForm = ({ className }) => {
   const [formData, setFormData] = useState({
     part: "",
@@ -127,6 +128,7 @@ const SellTruckPartsForm = ({ className }) => {
         label="Year"
         placeholder="Year"
         required={true}
+        min={moment(new Date()).format("YYYY-MM-DD")}
         handleChange={handleChange}
       />
       <TextInput

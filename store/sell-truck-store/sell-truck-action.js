@@ -50,6 +50,7 @@ export const addSellTruckListing =
         type: SELL_TRUCK_SUCCESS,
         payload: payload,
       });
+      window.location.href = "/";
     } catch (error) {
       console.log(error);
       dispatch({
@@ -75,6 +76,7 @@ export const addSellTruckpartsListing = (payload) => async (dispatch) => {
       type: SELL_TRUCK_PARTS_SUCCESS,
       payload: payload,
     });
+    window.location.href = "/";
   } catch (error) {
     console.error({ error });
     dispatch({

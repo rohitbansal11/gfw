@@ -9,10 +9,10 @@ import Image from "next/image";
 export default function Silver({ handleBacksilver, showModalSilver }) {
   const customStyles = {
     content: {
-      top: "150px",
-      bottom: "150px",
-      left: "350px",
-      right: "350px",
+      top: "50px",
+      bottom: "50px",
+      left: "150px",
+      right: "150px",
     },
   };
   function closeModal() {
@@ -48,7 +48,7 @@ export default function Silver({ handleBacksilver, showModalSilver }) {
             <div className="flex flex-col md:flex-row">
               <div className="flex-1 mr-[30px]">
                 <h2 className="text-xl font-medium mb-4 text-white drop-shadow-md lg:text-1xl">
-                  Become a{" "}
+                  Become a
                   <span className="text-red-600"> Silver Member Now</span>
                   <span className="inline-block">To Avail This Offer</span>
                 </h2>
@@ -76,7 +76,7 @@ export default function Silver({ handleBacksilver, showModalSilver }) {
                 </div>
               </div>
               <div className="flex-1 my-[-30px] mt-4 md:mt-0 max-w-[500px]">
-                <img src={`/images/become-member.svg`} />
+                <img src={`/images/silver.jpeg`} />
               </div>
             </div>
           </Container>

@@ -1,5 +1,6 @@
 export const LOADS_DATA = "LOADS_DATA";
 export const LOADING = "LOADING";
+export const LOADINGFALSE = "LOADINGFALSE";
 export const LOGOUT = "LOGOUT";
 export const CHECKTOKEN = "CHECKTOKEN";
 export const SAVELOCATION = "SAVELOCATION";
@@ -15,3 +16,6 @@ export const OLDAGE = "OLDAGE";
 export const AIRPORT = "AIRPORT";
 export const WORKER = "WORKER";
 export const STORE = "STORE";
+export const Listing = "Listing";
+export const NOTIFICATIONCOUNT = "NOTIFICATIONCOUNT";
+export const NOTIFICATION = "NOTIFICATION";

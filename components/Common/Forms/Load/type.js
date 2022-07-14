@@ -1,5 +1,5 @@
 export const type = [
-    { label:"Refeer"},
-    { label:"Dry Van"},
-    { label:"Others"},
-  ];
+  { label: "refeer" },
+  { label: "dry van" },
+  { label: "other" },
+];

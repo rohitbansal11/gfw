@@ -8,7 +8,7 @@ import TitleList from "./titlelistdropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { RideSchoolListing } from "../../../../store/ride-store/ride-action";
 import { useEffect } from "react";
-
+import moment from "moment";
 const RideSchool = ({ className }) => {
   const [formData, setFormData] = useState({
     pickup: "",
@@ -98,6 +98,7 @@ const RideSchool = ({ className }) => {
         placeholder="Pick-up"
         required={true}
         type="date"
+        min={moment(new Date()).format("YYYY-MM-DD")}
         handleChange={handleChange}
       />
 
