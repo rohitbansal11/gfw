@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import Link from "next/link"
 const LoadCard = ({ item }) => {
+  console.log("ddd" , item)
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[300px] lg:min-w-[300px] mx-6">
       <div className="flex flex-col px-4 py-4">

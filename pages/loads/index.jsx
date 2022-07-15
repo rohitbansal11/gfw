@@ -16,7 +16,7 @@ const LoadsPage = ({ loads }) => {
       dispatch(Getloads(selector?.location_loads));
     }
   }, [selector?.location_loads]);
-
+  
   useEffect(() => {
     setLoadData(selector?.loads);
     setLoading(selector?.loading);

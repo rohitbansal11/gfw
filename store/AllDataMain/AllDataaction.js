@@ -474,6 +474,7 @@ export const getSchool = (location) => async (dispatch) => {
       type: SCHOOL,
       payload: res?.data?.data,
     });
+    console.log("gg" ,res?.data?.data)
   } catch (error) {
     console.log(error);
     dispatch({
@@ -511,6 +512,7 @@ export const getOldage = (location) => async (dispatch) => {
       type: OLDAGE,
       payload: res?.data?.data,
     });
+    // console.log("hh",res?.data?.data)
   } catch (error) {
     console.log(error);
     dispatch({

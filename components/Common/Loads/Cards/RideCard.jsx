@@ -5,6 +5,7 @@ import Link from "next/link";
 import moment from "moment";
 
 const RideCard = ({ item }) => {
+  // console.log("vvvvv" , item)
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[300px] lg:min-w-[300px] mx-6">
       <div className="flex flex-col px-4 py-4">

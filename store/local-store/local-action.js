@@ -28,6 +28,7 @@ export const LocalStoreListing = (payload) => async (dispatch, getState) => {
       type: LOCALSTORE_SUCCESS,
       payload: payload,
     });
+
     window.location.href = "/";
   } catch (error) {
     console.error({ error });
@@ -58,6 +59,7 @@ export const LocalWorkersListing = (payload) => async (dispatch, getState) => {
       type: LOCALWORKERS_SUCCESS,
       payload: payload,
     });
+    window.location.href = "/";
   } catch (error) {
     console.error({ error });
     dispatch({

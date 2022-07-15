@@ -10,7 +10,7 @@ import WeightTypes from "./weightdropdown";
 import ForSaleHouse from "@pages/rent-house";
 import moment from "moment";
 import Swal from "sweetalert2";
-const Load = () => {
+const  Load = () => {
   const [formData, setFormData] = useState({
     emergency: false,
     weight: "",
@@ -230,7 +230,7 @@ const Load = () => {
     emergency,
     title,
     type,
-    from,
+    from, 
     to,
   } = formData;
 
@@ -292,12 +292,14 @@ const Load = () => {
       <h1 className="text-lg my-4">From :-</h1>
       <span>State</span>
       <StatesSelect
+        // value={from.state}
         handleCurrentState={handleCurrentState}
         currentState={currentState}
       />
       <span>City</span>
       <CitySelect
         handleCurrentCity={handleCurrentCity}
+        // value={from.city}
         currentCity={currentCity}
         currentState={currentState}
         disabled={currentState !== "" ? false : true}
@@ -321,7 +323,7 @@ const Load = () => {
         id="fromDetail"
         maxLength="50"
         minLength="0"
-        value={fromDetail}
+        value={from.address}
         label=" Detail Address"
         placeholder="Detail Address"
         required={true}
@@ -349,7 +351,7 @@ const Load = () => {
         id="toDetail"
         maxLength="50"
         minLength="0"
-        value={toDetail}
+        value={to.address}
         label=" Detail Address"
         placeholder="Detail Address"
         required={true}

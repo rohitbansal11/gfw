@@ -59,7 +59,7 @@ const Aside = () => {
                 href="/notification"
                 className="flex items-center group p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-700 hover:text-gray-50 "
               >
-                <div className="flex hover:text-blue-600 cursor-pointer">
+                <div className="flex hover:text-blue-600 mt-4 cursor-pointer">
                   <UserCircleIcon className="w-6 h-6 text-gray-500 transition duration-75  group-hover:text-gray-50 " />
                   <span className="hidden sm:flex flex-1 ml-3 whitespace-nowrap">
                     Notification

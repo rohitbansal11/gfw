@@ -20,6 +20,8 @@ const RideOldAgePage = ({ loads }) => {
     setRideOldAge(selector?.oldage);
     setLoading(selector?.loading);
   }, [selector]);
+  
+  
   return (
     <>
       <Hero
