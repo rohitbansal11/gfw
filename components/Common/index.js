@@ -26,6 +26,7 @@ export { default as Aside } from "./Dashboard/Aside";
 // export {default as MyListingCard} from "./Dashboard/MyListingCard"
 export { default as DashboardList } from "./Dashboard/DashboardList";
 export { default as BecomeMemberCard } from "./BecomeMember/BecomeMemberCard";
+export { default as Heading} from "./BecomeMember/Heading" 
 
 // components
 export { default as SearchBar } from "./SearchBar";
