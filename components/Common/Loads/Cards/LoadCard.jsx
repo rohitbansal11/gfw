@@ -1,42 +1,49 @@
-import React from "react"
-import styled from "styled-components"
-import { FaMapMarkerAlt } from "react-icons/fa"
-import Link from "next/link"
+import React from "react";
+import styled from "styled-components";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import Link from "next/link";
 const LoadCard = ({ item }) => {
-  console.log("ddd" , item)
+  console.log(item);
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[300px] lg:min-w-[300px] mx-6">
       <div className="flex flex-col px-4 py-4">
         <div className="flex items-center gap-2 border-b-2 border-gray-200 pb-1">
           <AnimatedDot />
-          <div>{item.from}</div>
+          <div>{item?.title}</div>
         </div>
         <div className="flex items-center gap-2 pb-1 mt-2">
           <FaMapMarkerAlt size={20} className="text-red-600" />
-          <div>{item.to}</div>
+          <div>
+            {item?.from.state},{item?.from.city} - {item?.to.state},
+            {item?.to.city}
+          </div>
         </div>
-        <div className="text-gray-500 text-center text-[12px]">{item.date}</div>
+        <div className="text-gray-500 text-center text-[12px]">
+          {/* {item?.date} */}
+        </div>
         {/* weight & type */}
         <div className="flex flex-col mt-2">
           <div className="flex  gap-2">
-            <span className="font-medium">Weight:</span>{" "}
-            <span>{item.weight}</span>
+            <span className="font-medium">Weight:</span>
+            <span>
+              {item?.weight}/{item?.weight_type}
+            </span>
           </div>
           <div className="flex  gap-2">
-            <span className="font-medium mr-4">Type:</span>{" "}
-            <div>{item.type}</div>
+            <span className="font-medium mr-4">Type:</span>
+            <div>{item?.type}</div>
           </div>
         </div>
         {/* button */}
         <div className="flex items-start justify-start">
           <div className="py-1 px-6 border-2 border-indigo-700 rounded-lg text-indigo-700 mt-4 hover:bg-indigo-700 hover:text-white">
-            <Link href="/">Book Now</Link>
+            Book Now
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const AnimatedDot = styled.div`
   height: 15px;
@@ -67,6 +74,6 @@ const AnimatedDot = styled.div`
       transform: scale(2);
     }
   }
-`
+`;
 
-export default LoadCard
+export default LoadCard;

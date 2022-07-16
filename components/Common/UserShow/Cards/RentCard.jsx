@@ -55,15 +55,6 @@ const RentCard = ({ item }) => {
                 <span>{item.price}</span>
               </div>
             </div>
-
-            <div className=" flex">
-              <div className="py-1 text-[14px] px-2 border-2 border-indigo-700 rounded-lg text-indigo-700 flex gap-2 items-center cursor-pointer hover:bg-indigo-700 hover:text-white transition ease-in-out">
-                <span>
-                  <FaPhoneAlt />
-                </span>
-                <span>Call Now</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>

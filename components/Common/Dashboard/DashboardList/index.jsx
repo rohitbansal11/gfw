@@ -52,14 +52,13 @@ const DashboardList = ({ items }) => {
 
           {!loading && Object.keys(data).length > 0 && (
             <>
-              {console.log(data)}
               {/* ///////////  Loads*/}
 
               {data?.loads > 0 && (
                 <div
                   class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
                   onClick={() => {
-                    ///router.push('/)
+                    router.push("/my-listing/user-loads");
                   }}
                 >
                   <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
@@ -84,7 +83,7 @@ const DashboardList = ({ items }) => {
                 <div
                   class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
                   onClick={() => {
-                    ///router.push('/)
+                    router.push("/my-listing/user-emergency");
                   }}
                 >
                   <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
@@ -109,7 +108,7 @@ const DashboardList = ({ items }) => {
                 <div
                   class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
                   onClick={() => {
-                    ///router.push('/)
+                    router.push("/my-listing/user-truck");
                   }}
                 >
                   <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
@@ -134,7 +133,7 @@ const DashboardList = ({ items }) => {
                 <div
                   class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
                   onClick={() => {
-                    ///router.push('/)
+                    router.push("/my-listing/user-truckpart");
                   }}
                 >
                   <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
@@ -159,7 +158,7 @@ const DashboardList = ({ items }) => {
                 <div
                   class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
                   onClick={() => {
-                    ///router.push('/)
+                    router.push("/my-listing/user-car");
                   }}
                 >
                   <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
@@ -180,7 +179,7 @@ const DashboardList = ({ items }) => {
                 <div
                   class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
                   onClick={() => {
-                    ///router.push('/)
+                    router.push("/my-listing/user-school");
                   }}
                 >
                   <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
@@ -200,7 +199,7 @@ const DashboardList = ({ items }) => {
                 <div
                   class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
                   onClick={() => {
-                    ///router.push('/)
+                    router.push("/my-listing/user-oldage");
                   }}
                 >
                   <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
@@ -221,7 +220,7 @@ const DashboardList = ({ items }) => {
                 <div
                   class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
                   onClick={() => {
-                    ///router.push('/)
+                    router.push("/my-listing/user-airport");
                   }}
                 >
                   <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
@@ -242,7 +241,7 @@ const DashboardList = ({ items }) => {
                 <div
                   class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
                   onClick={() => {
-                    ///router.push('/)
+                    router.push("/my-listing/user-localstore");
                   }}
                 >
                   <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
@@ -262,7 +261,7 @@ const DashboardList = ({ items }) => {
                 <div
                   class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
                   onClick={() => {
-                    ///router.push('/)
+                    router.push("/my-listing/user-localworker");
                   }}
                 >
                   <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
@@ -282,7 +281,7 @@ const DashboardList = ({ items }) => {
                 <div
                   class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
                   onClick={() => {
-                    ///router.push('/)
+                    router.push("/my-listing/user-home");
                   }}
                 >
                   <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
@@ -303,7 +302,7 @@ const DashboardList = ({ items }) => {
                 <div
                   class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
                   onClick={() => {
-                    ///router.push('/)
+                    router.push("/my-listing/user-room");
                   }}
                 >
                   <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
@@ -325,75 +324,6 @@ const DashboardList = ({ items }) => {
   );
 };
 
-DashboardList.defaultProps = {
-  items: [
-    {
-      name: "Loads",
-      icon: "fa-solid:truck-loading",
-      href: "/my-listing",
-      number: "4",
-    },
-    {
-      name: "Emergency Loads",
-      icon: "fa-solid:truck-loading",
-      href: "/my-listing",
-      number: "4",
-    },
-    {
-      name: "Truck Sale",
-      icon: "fa6-solid:truck-arrow-right",
-      href: "/my-listing",
-      number: "5",
-    },
-    {
-      name: "Truck Parts Sale",
-      icon: "fa6-solid:truck-arrow-right",
-      href: "/my-listing",
-      number: "5",
-    },
-    {
-      name: "School Ride",
-      icon: "bxs:car",
-      href: "/my-listing",
-      number: "6",
-    },
-    {
-      name: "Oldage Ride",
-      icon: "bxs:car",
-      href: "/my-listing",
-      number: "6",
-    },
-    {
-      name: "Airport Ride",
-      icon: "bxs:car",
-      href: "/my-listing",
-      number: "6",
-    },
-    {
-      name: "local Stores",
-      icon: "fa-solid:suitcase",
-      href: "/my-listing",
-      number: "7",
-    },
-    {
-      name: "local Workers",
-      icon: "fa-solid:suitcase",
-      href: "/my-listing",
-      number: "7",
-    },
-    {
-      name: "Home Rent",
-      icon: "ri:hotel-line",
-      href: "/my-listing",
-      number: "8",
-    },
-    {
-      name: "Room Rent",
-      icon: "ri:hotel-line",
-      href: "/my-listing",
-      number: "8",
-    },
-  ],
-};
+DashboardList.defaultProps = {};
 
 export default DashboardList;

@@ -10,6 +10,7 @@ import { carReducer } from "./cars-store/car.reducer";
 import { sell_or_rent_Reducer } from "./sell-or-rent-store/sell-or-rent-reducer";
 import { loadReducer } from "./load-store/load-reducer";
 import { AllDatareducer } from "./AllDataMain/AllDatareducer";
+import { UserListingReducer } from "./UserListing/UserListingreducer";
 const reducer = combineReducers({
   sellTruck: sellTruckReducer,
   ride: rideReducer,
@@ -19,6 +20,7 @@ const reducer = combineReducers({
   user: userReducer,
   load: loadReducer,
   alldata: AllDatareducer,
+  listing: UserListingReducer,
 });
 // convert object to string and store in localStorage
 function saveToLocalStorage(state) {

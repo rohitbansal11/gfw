@@ -36,7 +36,7 @@ const RideCard = ({ item }) => {
         {/* button */}
         <div className="flex items-start justify-start">
           <div className="py-1 px-6 border-2 border-indigo-700 rounded-lg text-indigo-700 mt-4 hover:bg-indigo-700 hover:text-white">
-            <Link href="/">Book Now</Link>
+            Book Now
           </div>
         </div>
       </div>

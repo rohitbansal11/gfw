@@ -180,7 +180,12 @@ export const Getloads = (location) => async (dispatch) => {
     let FinalData = [];
     if (cityTwo == "All" && cityOne == "All") {
       FinalData = res.data.data?.filter((w) => {
-        return !w.isblock && w.from.state == stateOne && w.to.state == stateTwo;
+        return (
+          !w.isblock &&
+          !w.emergency &&
+          w.from.state == stateOne &&
+          w.to.state == stateTwo
+        );
       });
     } else if (cityTwo !== "All" && cityOne == "All") {
       FinalData = await res.data.data?.filter((w) => {
@@ -474,7 +479,7 @@ export const getSchool = (location) => async (dispatch) => {
       type: SCHOOL,
       payload: res?.data?.data,
     });
-    console.log("gg" ,res?.data?.data)
+    console.log("gg", res?.data?.data);
   } catch (error) {
     console.log(error);
     dispatch({

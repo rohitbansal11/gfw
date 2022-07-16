@@ -56,16 +56,15 @@ const HomeRent = ({ item }) => {
         {/* button */}
         <div className="flex items-start justify-end mt-4">
           <div className="flex w-full items-center justify-between">
-            <Link className="w-[40%]" href="/">
-              <div className=" flex">
-                <div className="py-1 px-2 text-[14px] border-2 border-indigo-700 rounded-lg text-indigo-700 flex gap-2 items-center cursor-pointer hover:bg-indigo-700 hover:text-white transition ease-in-out">
-                  <span>
-                    <FaDollarSign />
-                  </span>{" "}
-                  <span>{item.price}</span>
-                </div>
+            <div className=" flex">
+              <div className="py-1 px-2 text-[14px] border-2 border-indigo-700 rounded-lg text-indigo-700 flex gap-2 items-center cursor-pointer hover:bg-indigo-700 hover:text-white transition ease-in-out">
+                <span>
+                  <FaDollarSign />
+                </span>{" "}
+                <span>{item.price}</span>
               </div>
-            </Link>
+            </div>
+
             <div className=" flex">
               <div className="py-1 text-[14px] px-2 border-2 border-indigo-700 rounded-lg text-indigo-700 flex gap-2 items-center cursor-pointer hover:bg-indigo-700 hover:text-white transition ease-in-out">
                 <span>

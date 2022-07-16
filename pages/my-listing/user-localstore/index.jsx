@@ -1,27 +1,23 @@
-import { Loads } from "@components/Common";
+import { UserJob } from "@components/Common";
 import Hero from "@components/Common/Home/Hero";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { UserStore } from "@store/UserListing/UserListingAction";
 
-import { Getloads } from "../../store/AllDataMain/AllDataaction";
-
-const LoadsPage = ({ loads }) => {
-  const [loadsData, setLoadData] = useState([]);
-  const [loading, setLoading] = useState(false);
+const JobLocalStoresPage = () => {
+  const [loaclStore, setLoaclStore] = useState([]);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.alldata);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!selector?.loading) {
-      dispatch(Getloads(selector?.location_loads));
-    }
-  }, [selector?.location_loads]);
+    dispatch(UserStore());
+  }, []);
 
   useEffect(() => {
-    setLoadData(selector?.loads);
+    setLoaclStore(selector?.store);
     setLoading(selector?.loading);
   }, [selector]);
-
   return (
     <>
       <Hero
@@ -29,12 +25,11 @@ const LoadsPage = ({ loads }) => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-
-      <Loads loads={loadsData} loadingData={loading} />
+      <UserJob isWorkers={false} loadsData={loaclStore} loadingData={loading} />
     </>
   );
 };
 
-LoadsPage.defaultProps = {};
+JobLocalStoresPage.defaultProps = {};
 
-export default LoadsPage;
+export default JobLocalStoresPage;

@@ -1,21 +1,19 @@
-import { Loads } from "@components/Common";
+import { UserLoads as UseLoadsCard } from "@components/Common";
 import Hero from "@components/Common/Home/Hero";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Getloads } from "../../store/AllDataMain/AllDataaction";
+import { UserLoads } from "@store/UserListing/UserListingAction";
 
-const LoadsPage = ({ loads }) => {
+const LoadsPage = () => {
   const [loadsData, setLoadData] = useState([]);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const selector = useSelector((pre) => pre?.alldata);
+  const selector = useSelector((pre) => pre?.listing);
 
   useEffect(() => {
-    if (!selector?.loading) {
-      dispatch(Getloads(selector?.location_loads));
-    }
-  }, [selector?.location_loads]);
+    dispatch(UserLoads());
+  }, []);
 
   useEffect(() => {
     setLoadData(selector?.loads);
@@ -30,7 +28,7 @@ const LoadsPage = ({ loads }) => {
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
 
-      <Loads loads={loadsData} loadingData={loading} />
+      <UseLoadsCard loads={loadsData} loadingData={loading} />
     </>
   );
 };
