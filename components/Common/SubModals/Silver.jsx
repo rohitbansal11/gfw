@@ -56,7 +56,7 @@ export default function Silver({ handleBacksilver, showModalSilver }) {
                   <Image
                     src={`/images/gudguru-member.png`}
                     width={300}
-                    height={80}
+                    height={110}
                   />
                 </div>
                 <div className="bg-white py-4 px-2 rounded-lg shadow-lg border-2 border-red-600 max-w-[350px]">
