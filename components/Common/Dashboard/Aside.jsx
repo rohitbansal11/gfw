@@ -2,8 +2,10 @@ import React from "react";
 import {
   ClipboardListIcon,
   InboxInIcon,
+  GrNotification,
   UserCircleIcon,
 } from "@heroicons/react/outline";
+import {FaBell} from "react-icons/fa";
 import Link from "next/link";
 
 const Aside = () => {
@@ -18,26 +20,14 @@ const Aside = () => {
                 href="/dashboard"
                 className="flex items-center group p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-700 hover:text-gray-50"
               >
-                <div className="flex hover:text-blue-600 cursor-pointer">
+                <div className="flex hover:text-blue-600 mb-4 cursor-pointer">
                   {" "}
                   <ClipboardListIcon className="w-6 h-6 text-gray-500 transition duration-75  group-hover:text-gray-50 " />
                   <span className="hidden sm:inline ml-3">Dashboard</span>
                 </div>
               </Link>
             </>
-
             <>
-              <Link
-                href="/"
-                className="flex items-center group p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-700 hover:text-gray-50"
-              >
-                <div className="flex my-4 hover:text-blue-600 cursor-pointer">
-                  <UserCircleIcon className="w-6 h-6 text-gray-500 transition duration-75  group-hover:text-gray-50 " />
-                  <span className="hidden sm:flex flex-1 ml-3 whitespace-nowrap">
-                    Update Profile
-                  </span>
-                </div>
-              </Link>
             </>
 
             <>
@@ -60,7 +50,7 @@ const Aside = () => {
                 className="flex items-center group p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-700 hover:text-gray-50 "
               >
                 <div className="flex hover:text-blue-600 mt-4 cursor-pointer">
-                  <UserCircleIcon className="w-6 h-6 text-gray-500 transition duration-75  group-hover:text-gray-50 " />
+                  <FaBell className="w-6 h-5 text-gray-500 transition duration-75  group-hover:text-gray-50 " />
                   <span className="hidden sm:flex flex-1 ml-3 whitespace-nowrap">
                     Notification
                   </span>

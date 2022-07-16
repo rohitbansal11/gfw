@@ -60,36 +60,37 @@ const BecomeMemberCard = ({ items }) => {
         handleBacksilver={HandleBackModalSilver}
         showModalSilver={silverShow}
       />
-      <div className="container px-5 py-24">
-        <div className="flex flex-col items-center">
+      <div className="container py-10">
+        <div className="flex flex-col mx-5 items-center">
           <div
-            className={`xl:w-[700px] my-4 md:w-[600px] py-4 sm:ml-10 md:ml-10 sm:w-[500px] bg-orange-500  rounded-2xl hover:bg-green-400`}
+            className={`xl:w-[600px] py-4 rounded-lg shadow-lg my-8 md:w-[550px] py-4 sm:ml-10 md:ml-10 sm:w-[500px] bg-gray-600`}
             onClick={() => HandleClickCheck("silver")}
+
           >
             <div className="flex flex-col">
-              <div className="flex flex-row justify-between sm:mx-2 lg:mx-4 mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
+              <div className="flex flex-col sm:mx-2 lg:mx-4 mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
                 <Icon
                   color="white "
-                  height={100}
+                  height={70}
                   icon="file-icons:silverstripe"
                 />
-                <h2 className="text-5xl sm:mx-4 md:text-5xl lg:text-6xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
+                <h2 className="text-5xl sm:mx-4 text-white md:text-5xl lg:text-6xl pt-3 mb-6 font-extrabold title-font mb-4">
                   Silver
                 </h2>
               </div>
-              <div className="lg:w-[60%] sm:w-[80%] my-3 mx-10  md:mx-auto ">
+              <div className="lg:w-[58%] md:w-[60%] w-[90%] mx-6 my-0 md:mx-auto ">
                 <ol
                   style={{ listStyleType: "upper-roman" }}
-                  className="font-bold text-base text-white"
+                  className="font-bold text-[12px] md:text-base text-white"
                 >
-                  <li className="my-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <li className="my-1">
+                    Lorem ipsum dolor sit amet consectetur elit.
                   </li>
-                  <li className="my-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <li className="my-1">
+                    Lorem ipsum dolor sit amet consectetur elit.
                   </li>
-                  <li className="my-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <li className="my-1">
+                    Lorem ipsum dolor sit amet consectetur elit.
                   </li>
                 </ol>
               </div>
@@ -98,28 +99,32 @@ const BecomeMemberCard = ({ items }) => {
 
           <div
             onClick={() => HandleClickCheck("gold")}
-            className={`xl:w-[700px] my-4 md:w-[600px] py-4 sm:ml-10 md:ml-10 sm:w-[500px] bg-orange-500  rounded-2xl hover:bg-green-400`}
-          >
+            className={`xl:w-[600px] py-4 rounded-lg shadow-lg my-0 md:w-[550px] py-4 sm:ml-10 md:ml-10 sm:w-[500px] bg-[url('/images/gold.jpg')] bg-cover`}
+            >
             <div className="flex flex-col">
-              <div className="flex flex-row justify-between sm:mx-2 lg:mx-4 mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
-                <Icon color="white " height={100} icon="cryptocurrency:gold" />
-                <h2 className="text-5xl sm:mx-4 md:text-5xl lg:text-6xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
+              <div className="flex flex-col sm:mx-2 lg:mx-4 mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
+                <Icon
+                  color="white "
+                  height={70}
+                  icon="cryptocurrency:gold"
+                />
+                <h2 className="text-5xl sm:mx-4 text-white md:text-5xl lg:text-6xl pt-3 mb-6 font-extrabold title-font mb-4">
                   Gold
                 </h2>
               </div>
-              <div className="lg:w-[60%] sm:w-[80%] my-3 mx-10  md:mx-auto ">
+              <div className="lg:w-[58%] md:w-[60%] w-[90%] mx-6 my-0 md:mx-auto ">
                 <ol
                   style={{ listStyleType: "upper-roman" }}
-                  className="font-bold text-base text-white"
+                  className="font-bold text-[12px] md:text-base text-white"
                 >
-                  <li className="my-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <li className="my-1">
+                    Lorem ipsum dolor sit amet consectetur elit.
                   </li>
-                  <li className="my-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <li className="my-1">
+                    Lorem ipsum dolor sit amet consectetur elit.
                   </li>
-                  <li className="my-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <li className="my-1">
+                    Lorem ipsum dolor sit amet consectetur elit.
                   </li>
                 </ol>
               </div>
@@ -128,32 +133,32 @@ const BecomeMemberCard = ({ items }) => {
 
           <div
             onClick={() => HandleClickCheck("platinum")}
-            className={`xl:w-[700px] my-4 md:w-[600px] py-4 sm:ml-10 md:ml-10 sm:w-[500px] bg-orange-500  rounded-2xl hover:bg-green-400`}
+            className={`xl:w-[600px] py-4 rounded-lg shadow-lg my-8 md:w-[550px]  sm:ml-10 md:ml-10 sm:w-[500px] bg-[url('/images/platinumm.jpeg')] bg-cover`}
           >
             <div className="flex flex-col">
-              <div className="flex flex-row justify-between sm:mx-2 lg:mx-4 mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
+              <div className="flex flex-col sm:mx-2 lg:mx-4 mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
                 <Icon
                   color="white "
-                  height={100}
+                  height={70}
                   icon="fluent:diamond-24-filled"
                 />
-                <h2 className="text-5xl sm:mx-4 md:text-5xl lg:text-6xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
+                <h2 className="text-5xl sm:mx-4 text-white md:text-5xl lg:text-6xl pt-3 mb-6 font-extrabold title-font mb-4">
                   Platinum
                 </h2>
               </div>
-              <div className="lg:w-[60%] sm:w-[80%] my-3 mx-10  md:mx-auto ">
+              <div className="lg:w-[58%] md:w-[60%] w-[90%] mx-6 my-0 md:mx-auto ">
                 <ol
                   style={{ listStyleType: "upper-roman" }}
-                  className="font-bold text-base text-white"
+                  className="font-bold text-[12px] md:text-base text-white"
                 >
-                  <li className="my-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <li className="my-1">
+                    Lorem ipsum dolor sit amet consectetur elit.
                   </li>
-                  <li className="my-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <li className="my-1">
+                    Lorem ipsum dolor sit amet consectetur elit.
                   </li>
-                  <li className="my-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <li className="my-1">
+                    Lorem ipsum dolor sit amet consectetur elit.
                   </li>
                 </ol>
               </div>
