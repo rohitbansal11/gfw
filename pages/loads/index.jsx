@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Getloads } from "../../store/AllDataMain/AllDataaction";
 
-const LoadsPage = ({ loads }) => {
+const LoadsPage = () => {
   const [loadsData, setLoadData] = useState([]);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -34,7 +34,5 @@ const LoadsPage = ({ loads }) => {
     </>
   );
 };
-
-LoadsPage.defaultProps = {};
 
 export default LoadsPage;

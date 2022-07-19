@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Usertruckpart } from "@store/UserListing/UserListingAction";
 
-const TruckPage = ({ loads }) => {
+const TruckPage = () => {
   const [truck, setTruck] = useState([]);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.listing);

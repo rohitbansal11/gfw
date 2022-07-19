@@ -1,13 +1,13 @@
-import React from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { FaFacebook, FaTwitter, FaYoutube, FaLinkedin } from "react-icons/fa"
-const Footer = ({ links ,more }) => {
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { FaFacebook, FaTwitter, FaYoutube, FaLinkedin } from "react-icons/fa";
+const Footer = ({ links, more }) => {
   return (
     <footer>
       <section className="flex py-10">
         <div className="flex w-[90%] max-w-[1500px] mx-auto flex-wrap">
-          <div classname="w-[100%] md:w-[50%] lg:w-[28%]">
+          <div className="w-[100%] md:w-[50%] lg:w-[28%]">
             <Image src="/images/gudguru-logo.png" height={90} width={160} />
             <p className="w-[40ch] mb-4">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat
@@ -124,11 +124,10 @@ const Footer = ({ links ,more }) => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 Footer.defaultProps = {
   links: [
-    
     {
       href: "/truck-parts",
       text: "Truck/Part Sale",
@@ -172,5 +171,5 @@ Footer.defaultProps = {
       text: "Local workers",
     },
   ],
-}
-export default Footer
+};
+export default Footer;

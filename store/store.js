@@ -22,11 +22,17 @@ const reducer = combineReducers({
   alldata: AllDatareducer,
   listing: UserListingReducer,
 });
+
 // convert object to string and store in localStorage
 function saveToLocalStorage(state) {
   try {
-    const serialisedState = JSON.stringify(state);
-    localStorage.setItem("persistantState", serialisedState);
+    if (typeof window !== "undefined") {
+      const serialisedState = JSON.stringify(state);
+      localStorage?.setItem("persistantState", serialisedState) || [];
+    } else {
+      console.log("You are on the server");
+      // 👉️ can't use localStorage
+    }
   } catch (e) {
     console.warn(e);
   }
@@ -36,9 +42,14 @@ function saveToLocalStorage(state) {
 // invalid output must be undefined
 function loadFromLocalStorage() {
   try {
-    const serialisedState = localStorage.getItem("persistantState");
-    if (serialisedState === null) return undefined;
-    return JSON.parse(serialisedState);
+    if (typeof window !== "undefined") {
+      const serialisedState = localStorage?.getItem("persistantState") || [];
+      if (serialisedState === null) return undefined;
+      return JSON.parse(serialisedState);
+    } else {
+      console.log("You are on the server");
+      return [];
+    }
   } catch (e) {
     console.warn(e);
     return undefined;

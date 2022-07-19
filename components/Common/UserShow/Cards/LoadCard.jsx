@@ -2,8 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Link from "next/link";
+import { UserLoadsDelete } from "@store/UserListing/UserListingAction";
+import { useDispatch } from "react-redux";
 import { CardButton } from "@components/Common";
 const LoadCard = ({ item }) => {
+  const dispatch = useDispatch();
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[300px] lg:min-w-[300px] mx-6">
       <div className="flex flex-col px-4 py-4">
@@ -35,7 +38,18 @@ const LoadCard = ({ item }) => {
           </div>
         </div>
         {/* button */}
-        <CardButton />
+        <div
+          className={`flex my-4   justify-end`}
+          onClick={() => {
+            dispatch(UserLoadsDelete(item._id));
+          }}
+        >
+          <button
+            className={`text-white bg-red-600 px-4  rounded-2xl shadow-lg  font-bold py-2 hover:text-blue-600`}
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   );

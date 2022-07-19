@@ -30,6 +30,4 @@ const RideAirportPage = () => {
   );
 };
 
-RideAirportPage.defaultProps = {};
-
 export default RideAirportPage;

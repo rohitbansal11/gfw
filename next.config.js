@@ -9,10 +9,6 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-  extends: "next",
-  rules: {
-    "@next/next/no-img-element": "off",
-  },
 };
 
 module.exports = nextConfig;

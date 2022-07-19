@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Userhome } from "@store/UserListing/UserListingAction";
 
-const RentPage = ({ loads }) => {
+const RentPage = () => {
   const [rentHome, setRentHome] = useState([]);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();

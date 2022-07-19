@@ -4,9 +4,20 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import Link from "next/link";
 import moment from "moment";
 import { CardButton } from "@components/Common";
+import {
+  UserAirportDelete,
+  UserOldageDelete,
+  UserSchoolDelete,
+} from "@store/UserListing/UserListingAction";
+import { useDispatch } from "react-redux";
 
-const RideCard = ({ item }) => {
-  // console.log("vvvvv" , item)
+const RideCard = ({ item, type }) => {
+  const dispatch = useDispatch();
+  const handleDelete = (id, ride) => {
+    if (ride == "school") {
+      dispatch(UserSchoolDelete(id));
+    }
+  };
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[300px] lg:min-w-[220px] mx-6">
       <div className="flex flex-col px-10 py-4">
@@ -35,7 +46,20 @@ const RideCard = ({ item }) => {
           </div>
         </div>
         {/* button */}
-        <div><CardButton/></div>
+        <div>
+          <div
+            className={`flex my-4  justify-end`}
+            onClick={() => {
+              handleDelete(item._id, type);
+            }}
+          >
+            <button
+              className={`text-white bg-red-600 px-4  rounded-2xl shadow-lg  font-bold py-2 hover:text-blue-600`}
+            >
+              Delete
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

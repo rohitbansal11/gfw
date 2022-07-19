@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOldage } from "@store/AllDataMain/AllDataaction";
 
-const RideOldAgePage = ({ loads }) => {
+const RideOldAgePage = () => {
   const [rideOldage, setRideOldAge] = useState([]);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.alldata);
@@ -20,8 +20,7 @@ const RideOldAgePage = ({ loads }) => {
     setRideOldAge(selector?.oldage);
     setLoading(selector?.loading);
   }, [selector]);
-  
-  
+
   return (
     <>
       <Hero
@@ -34,171 +33,6 @@ const RideOldAgePage = ({ loads }) => {
   );
 };
 
-RideOldAgePage.defaultProps = {
-  loads: [
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-    {
-      from: "South Pasadena",
-      to: "Village Green Apartments, Los Angeles",
-      state: "California V",
-      city: "Los Angeles",
-    },
-  ],
-};
+RideOldAgePage.defaultProps = {};
 
 export default RideOldAgePage;

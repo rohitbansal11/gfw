@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UserOldage } from "@store/UserListing/UserListingAction";
 
-const RideOldAgePage = ({ loads }) => {
+const RideOldAgePage = () => {
   const [rideOldage, setRideOldAge] = useState([]);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.listing);

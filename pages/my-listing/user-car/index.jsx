@@ -30,6 +30,4 @@ const CarSalePage = () => {
   );
 };
 
-CarSalePage.defaultProps = {};
-
 export default CarSalePage;

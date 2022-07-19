@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UserWorker } from "@store/UserListing/UserListingAction";
 
-const JobLocalWorkerPage = ({ loads }) => {
+const JobLocalWorkerPage = () => {
   const [loaclWorker, setLoaclWorker] = useState([]);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.listing);

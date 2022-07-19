@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStore } from "@store/AllDataMain/AllDataaction";
 
-const JobLocalStoresPage = ({ loads }) => {
+const JobLocalStoresPage = () => {
   const [loaclStore, setLoaclStore] = useState([]);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.alldata);
@@ -32,7 +32,5 @@ const JobLocalStoresPage = ({ loads }) => {
     </>
   );
 };
-
-JobLocalStoresPage.defaultProps = {};
 
 export default JobLocalStoresPage;

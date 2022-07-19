@@ -43,6 +43,34 @@ export const UserLoads = () => async (dispatch) => {
   }
 };
 
+export const UserLoadsDelete = (id) => async (dispatch) => {
+  dispatch({
+    type: LOADING,
+  });
+
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    };
+    await axios.delete(`/loads/${id}`, config);
+    let res = await axios.post(`/loads/user-loads`, { name: "" }, config);
+
+    dispatch({
+      type: LOADS,
+      payload: res?.data?.data,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: LOADINGFALSE,
+    });
+  }
+};
+
 export const UserEmergencyLoads = () => async (dispatch) => {
   dispatch({
     type: LOADING,
@@ -240,6 +268,38 @@ export const UserSchool = () => async (dispatch) => {
   }
 };
 
+export const UserSchoolDelete = (id) => async (dispatch) => {
+  dispatch({
+    type: LOADING,
+  });
+
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    };
+    await axios.delete(`/schoolride/${id}`, config);
+    let res = await axios.post(
+      `/schoolride/user-schoolride`,
+      { name: "" },
+      config
+    );
+
+    dispatch({
+      type: SCHOOL,
+      payload: res?.data?.data,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: LOADINGFALSE,
+    });
+  }
+};
+
 export const UserOldage = () => async (dispatch) => {
   dispatch({
     type: LOADING,
@@ -270,7 +330,38 @@ export const UserOldage = () => async (dispatch) => {
     });
   }
 };
+export const UserOldageDelete = (id) => async (dispatch) => {
+  dispatch({
+    type: LOADING,
+  });
 
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    };
+
+    await axios.delete(`/oldageride/${id}`, config);
+    let res = await axios.post(
+      `/oldageride/user-oldageride`,
+      { name: "" },
+      config
+    );
+
+    dispatch({
+      type: OLDAGE,
+      payload: res?.data?.data,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: LOADINGFALSE,
+    });
+  }
+};
 export const UserAirport = () => async (dispatch) => {
   dispatch({
     type: LOADING,
@@ -284,6 +375,38 @@ export const UserAirport = () => async (dispatch) => {
         Authorization: token,
       },
     };
+    let res = await axios.post(
+      `/airportride/user-airportride`,
+      { name: "" },
+      config
+    );
+
+    dispatch({
+      type: AIRPORT,
+      payload: res?.data?.data,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: LOADINGFALSE,
+    });
+  }
+};
+
+export const UserAirportDelete = (id) => async (dispatch) => {
+  dispatch({
+    type: LOADING,
+  });
+
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    };
+    await axios.delete(`/airportride/${id}`, config);
     let res = await axios.post(
       `/airportride/user-airportride`,
       { name: "" },

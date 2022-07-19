@@ -251,8 +251,8 @@ const Navbar = ({
           </Link>
           <nav className="w-full md:justify-center lg:flex hidden mr-4 lg:justify-end">
             <ul className="flex sm:w-[100%] md:w-[95%] lg:w-[80%] h-full items-center justify-end gap-8">
-              {links.map((item) => (
-                <Link className="cursor-pointer" href={item.href}>
+              {links.map((item, i) => (
+                <Link className="cursor-pointer" href={item.href} key={i}>
                   <>
                     {
                       //click event fired over the screen for close dropdown

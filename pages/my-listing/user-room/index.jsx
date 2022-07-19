@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UserRoom } from "@store/UserListing/UserListingAction";
 
-const RentRoomPage = ({ loads }) => {
+const RentRoomPage = () => {
   const [rentRoom, setRentRoom] = useState([]);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.listing);

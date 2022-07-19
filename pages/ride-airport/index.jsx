@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAirport } from "@store/AllDataMain/AllDataaction";
 
-const RideAirportPage = ({ loads }) => {
+const RideAirportPage = () => {
   const [rideAirport, setRideAirport] = useState([]);
   const dispatch = useDispatch();
   const selector = useSelector((pre) => pre?.alldata);
