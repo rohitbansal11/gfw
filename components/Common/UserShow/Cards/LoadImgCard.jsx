@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FaPhoneAlt } from "react-icons/fa";
 import Link from "next/link";
 import moment from "moment";
+import { CardButton } from "@components/Common";
 const LoadImgCard = ({ item }) => {
   console.log(item);
   return (
@@ -42,6 +43,10 @@ const LoadImgCard = ({ item }) => {
           </div>
         </div>
         {/* button */}
+        <div className="flex justify-center">
+
+        <CardButton />
+        </div>
       </div>
     </div>
   );

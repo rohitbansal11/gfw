@@ -5,6 +5,7 @@ import moment from "moment";
 import Link from "next/link";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
+import { CardButton } from "@components/Common";
 const HomeRent = ({ item }) => {
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[350px] lg:min-w-[400px] max-w-[420px] mx-2 hover:translate-y-[-4px] transition ease-in-out">
@@ -64,6 +65,7 @@ const HomeRent = ({ item }) => {
                 <span>{item.price}</span>
               </div>
             </div>
+            <CardButton />
           </div>
         </div>
       </div>

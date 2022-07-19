@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Link from "next/link";
+import { CardButton } from "@components/Common";
 const LoadCard = ({ item }) => {
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[300px] lg:min-w-[300px] mx-6">
@@ -34,6 +35,7 @@ const LoadCard = ({ item }) => {
           </div>
         </div>
         {/* button */}
+        <CardButton />
       </div>
     </div>
   );

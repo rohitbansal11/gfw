@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FaDollarSign, FaPhoneAlt } from "react-icons/fa";
 import Link from "next/link";
 import moment from "moment";
+import { CardButton } from "@components/Common";
 const LoadImgPartCard = ({ item }) => {
   // console.log(item);
   return (
@@ -44,7 +45,7 @@ const LoadImgPartCard = ({ item }) => {
         {/* button */}
         <div className="flex items-start justify-end mt-4">
           <div className="flex w-full items-center justify-between">
-            <div className=" flex">
+            <div className="flex">
               <div className="py-1 px-1 text-[14px] border-2 border-indigo-700 rounded-lg text-indigo-700 flex gap-2 items-center cursor-pointer hover:bg-indigo-700 hover:text-white transition ease-in-out">
                 <span>
                   <FaDollarSign />
@@ -52,6 +53,7 @@ const LoadImgPartCard = ({ item }) => {
                 <span>${item.price}</span>
               </div>
             </div>
+            <CardButton />
           </div>
         </div>
       </div>

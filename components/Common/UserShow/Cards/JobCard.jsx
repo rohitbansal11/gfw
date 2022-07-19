@@ -3,10 +3,11 @@ import styled from "styled-components";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Link from "next/link";
 import moment from "moment";
+import { CardButton } from "@components/Common";
 
 const JobCard = ({ isWorkers, item }) => {
   return (
-    <div className="flex bg-white shadow-xl rounded-lg min-w-[300px] lg:min-w-[300px] mx-4 max-w-[350px]">
+    <div className="flex bg-white shadow-xl rounded-lg min-w-[300px] lg:min-w-[240px] mx-4 max-w-[350px]">
       <div className="flex flex-col px-4 py-4">
         <div className="flex items-center gap-2 text-[18px] font-semibold">
           <h5>{item.title}</h5>
@@ -39,6 +40,7 @@ const JobCard = ({ isWorkers, item }) => {
           </div>
         </div>
         {/* button */}
+       <div> <CardButton /></div>
       </div>
     </div>
   );

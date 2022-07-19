@@ -3,12 +3,13 @@ import styled from "styled-components";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Link from "next/link";
 import moment from "moment";
+import { CardButton } from "@components/Common";
 
 const RideCard = ({ item }) => {
   // console.log("vvvvv" , item)
   return (
-    <div className="flex bg-white shadow-xl rounded-lg min-w-[300px] lg:min-w-[300px] mx-6">
-      <div className="flex flex-col px-4 py-4">
+    <div className="flex bg-white shadow-xl rounded-lg min-w-[300px] lg:min-w-[220px] mx-6">
+      <div className="flex flex-col px-10 py-4">
         <div className="flex items-center gap-2 border-b-2 border-gray-200 pb-1">
           <AnimatedDot />
           <div className="ml-1">{item.title}</div>
@@ -34,6 +35,7 @@ const RideCard = ({ item }) => {
           </div>
         </div>
         {/* button */}
+        <div><CardButton/></div>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FaDollarSign, FaPhoneAlt } from "react-icons/fa";
 import moment from "moment";
 import Link from "next/link";
+import { CardButton } from "@components/Common";
 const CarSaleCard = ({ item }) => {
   console.log("ffff", item);
   return (
@@ -52,6 +53,7 @@ const CarSaleCard = ({ item }) => {
                 <span>${item.price}</span>
               </div>
             </div>
+            <CardButton />
           </div>
         </div>
       </div>

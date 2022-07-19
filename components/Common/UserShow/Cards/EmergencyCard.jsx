@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Link from "next/link";
+import { CardButton } from "@components/Common";
 const EmergencyCard = ({ item }) => {
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[350px] lg:min-w-[400px] mx-2">
@@ -41,6 +42,7 @@ const EmergencyCard = ({ item }) => {
           </div>
         </div>
         {/* button */}
+        <CardButton />
       </div>
     </div>
   );

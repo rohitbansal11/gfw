@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FaDollarSign, FaPhoneAlt } from "react-icons/fa";
 import moment from "moment";
 import Link from "next/link";
+import { CardButton } from "@components/Common";
 const RentCard = ({ item }) => {
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[350px] lg:min-w-[400px] max-w-[420px] mx-2 hover:translate-y-[-4px] transition ease-in-out">
@@ -55,6 +56,7 @@ const RentCard = ({ item }) => {
                 <span>{item.price}</span>
               </div>
             </div>
+            <CardButton />
           </div>
         </div>
       </div>
