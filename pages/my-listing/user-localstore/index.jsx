@@ -25,7 +25,7 @@ const JobLocalStoresPage = () => {
         primaryText={"Buy or Sell, Anything"}
         secondaryText={"Find Jobs, Loads, truck and more."}
       />
-      <UserJob isWorkers={false} loadsData={loaclStore} loadingData={loading} />
+      <UserJob type="store" loadsData={loaclStore} loadingData={loading} />
     </>
   );
 };

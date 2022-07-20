@@ -12,3 +12,5 @@ export const OLDAGE = "OLDAGE";
 export const AIRPORT = "AIRPORT";
 export const WORKER = "WORKER";
 export const STORE = "STORE";
+
+export const STATUS = "STATUS"

@@ -4,8 +4,23 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import Link from "next/link";
 import moment from "moment";
 import { CardButton } from "@components/Common";
+import { useDispatch } from "react-redux";
+import { UserStoreDelete, UserWorkerDelete } from "@store/UserListing/UserListingAction";
 
-const JobCard = ({ isWorkers, item }) => {
+const JobCard = ({ isWorkers, item ,type }) => {
+
+  const dispatch = useDispatch();
+  console.log("fdgfd" , type)
+
+  const handleDelete = (id , job) =>{
+    if(job === "store"){
+        dispatch(UserStoreDelete(id))
+    }
+    else{
+      dispatch(UserWorkerDelete(id))
+    }
+  }
+
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[300px] lg:min-w-[240px] mx-4 max-w-[350px]">
       <div className="flex flex-col px-4 py-4">
@@ -40,7 +55,18 @@ const JobCard = ({ isWorkers, item }) => {
           </div>
         </div>
         {/* button */}
-       <div> <CardButton /></div>
+        <div
+            className={`flex my-4  justify-end`}
+            onClick={() => {
+             handleDelete(item._id , type) 
+            }}
+          >
+            <button
+              className={`text-white bg-red-600 px-4  rounded-2xl shadow-lg  font-bold py-2 hover:text-blue-600`}
+            >
+              Delete
+            </button>
+          </div>
       </div>
     </div>
   );

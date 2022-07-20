@@ -4,7 +4,12 @@ import { FaDollarSign, FaPhoneAlt } from "react-icons/fa";
 import moment from "moment";
 import Link from "next/link";
 import { CardButton } from "@components/Common";
+import { useDispatch } from "react-redux";
+import { UserRoomDelete } from "@store/UserListing/UserListingAction";
 const RentCard = ({ item }) => {
+    
+  const dispatch = useDispatch();
+
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[350px] lg:min-w-[400px] max-w-[420px] mx-2 hover:translate-y-[-4px] transition ease-in-out">
       <div className="rounded-md text-center w-[40%] text-xl font-semibold text-indigo-700 bg-green-100">
@@ -56,7 +61,18 @@ const RentCard = ({ item }) => {
                 <span>{item.price}</span>
               </div>
             </div>
-            <CardButton />
+            <div
+          className={`flex my-4 justify-end`}
+          onClick={() => {
+            dispatch(UserRoomDelete(item._id));
+          }}
+        >
+          <button
+            className={`text-white bg-red-600 px-4  rounded-2xl shadow-lg  font-bold py-2 hover:text-blue-600`}
+          >
+            Delete
+          </button>
+        </div>
           </div>
         </div>
       </div>

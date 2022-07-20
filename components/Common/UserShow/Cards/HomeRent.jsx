@@ -6,7 +6,13 @@ import Link from "next/link";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { CardButton } from "@components/Common";
-const HomeRent = ({ item }) => {
+import { useDispatch } from "react-redux";
+import { UserhomeDelete } from "@store/UserListing/UserListingAction";
+const HomeRent = ({ item , isRooms }) => {
+
+  const dispatch = useDispatch();
+
+
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[350px] lg:min-w-[400px] max-w-[420px] mx-2 hover:translate-y-[-4px] transition ease-in-out">
       <div className="rounded-md text-center w-[40%] text-xl font-semibold text-indigo-700 bg-green-100">
@@ -65,7 +71,18 @@ const HomeRent = ({ item }) => {
                 <span>{item.price}</span>
               </div>
             </div>
-            <CardButton />
+            <div
+          className={`flex my-4   justify-end`}
+          onClick={() => {
+            dispatch(UserhomeDelete(item._id));
+          }}
+        >
+          <button
+            className={`text-white bg-red-600 px-4  rounded-2xl shadow-lg  font-bold py-2 hover:text-blue-600`}
+          >
+            Delete
+          </button>
+        </div>
           </div>
         </div>
       </div>

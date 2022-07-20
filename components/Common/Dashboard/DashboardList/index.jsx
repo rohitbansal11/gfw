@@ -20,16 +20,16 @@ const DashboardList = ({ items }) => {
     setData(selector?.listing);
   }, [selector]);
   return (
-    <section class="text-gray-600 body-font">
-      <div class="container px-5 py-24 mx-10">
-        <div class="flex flex-wrap">
+    <section className="text-gray-600 body-font">
+      <div className="container px-5 py-24 mx-10">
+        <div className="flex flex-wrap">
           {/* ///////////  Sekelton*/}
           {loading && Object.keys(data).length == 0 && (
-            <div class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400">
-              <div class="flex flex-col animate-pulse mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
-                <div class="  bg-gray-300 leading-relaxed text-bold text-lg  border-2 rounded-full px-8 py-8 h-10"></div>
+            <div className="xl:w-[500px] my-10 md:w-1/3 py-4 sm:ml-10 md:ml-10 bg-indigo-600 w-5/6  rounded-2xl hover:bg-green-400">
+              <div className="flex flex-col animate-pulse mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
+                <div className="  bg-gray-300 leading-relaxed text-bold text-lg  border-2 rounded-full px-8 py-8 h-10"></div>
                 <div className="w-56 bg-gray-300 h-7 mt-4"></div>
-                <div class="  bg-gray-300 leading-relaxed text-bold text-lg  border-2 rounded-full px-5 py-5 h-5 mt-4"></div>
+                <div className="  bg-gray-300 leading-relaxed text-bold text-lg  border-2 rounded-full px-5 py-5 h-5 mt-4"></div>
               </div>
             </div>
           )}
@@ -37,13 +37,13 @@ const DashboardList = ({ items }) => {
           {/* ///////////  No listing Found*/}
 
           {!loading && Object.keys(data).length == 0 && (
-            <div class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400">
-              <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
+            <div className="xl:w-[500px] my-10 md:w-1/3 py-4 sm:ml-10 md:ml-10 bg-indigo-600 w-5/6  rounded-2xl hover:bg-green-400">
+              <div className="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
                 <Icon color="white" height={40} icon="fa-solid:truck-loading" />
-                <h2 class="text-4xl md:text-4xl lg:text-5xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
+                <h2 className="text-4xl md:text-4xl lg:text-5xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
                   No Listing
                 </h2>
-                <div class="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
+                <div className="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
                   0
                 </div>
               </div>
@@ -56,21 +56,21 @@ const DashboardList = ({ items }) => {
 
               {data?.loads > 0 && (
                 <div
-                  class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
+                  className="xl:max-w-[500px] my-10 md:max-w-[400px] py-4 sm:ml-10 md:ml-10 bg-indigo-600 w-5/6  rounded-2xl hover:bg-green-400"
                   onClick={() => {
                     router.push("/my-listing/user-loads");
                   }}
                 >
-                  <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
+                  <div className="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
                     <Icon
                       color="white"
                       height={40}
                       icon="fa-solid:truck-loading"
                     />
-                    <h2 class="text-4xl md:text-3xl  pt-3 mb-6 text-white font-extrabold title-font mb-4">
+                    <h2 className="text-[22px] md:text-3xl   pt-3 mb-6 text-white font-extrabold title-font mb-4">
                       Loads
                     </h2>
-                    <div class="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
+                    <div className="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
                       {data?.loads}
                     </div>
                   </div>
@@ -81,21 +81,21 @@ const DashboardList = ({ items }) => {
 
               {data?.emergency > 0 && (
                 <div
-                  class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
+                  className="xl:max-w-[500px] my-10 md:max-w-[400px] py-4 sm:ml-10 md:ml-10 bg-indigo-600 w-5/6  rounded-2xl hover:bg-green-400"
                   onClick={() => {
                     router.push("/my-listing/user-emergency");
                   }}
                 >
-                  <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
+                  <div className="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
                     <Icon
                       color="white"
                       height={40}
                       icon="fa6-solid:truck-arrow-right"
                     />
-                    <h2 class="text-2xl md:text-2xl  pt-3 mb-6 text-white font-extrabold title-font mb-4">
+                    <h2 className="text-[22px] md:text-3xl  pt-3 mb-6 text-white font-extrabold title-font mb-4">
                       Emergency Loads
                     </h2>
-                    <div class="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
+                    <div className="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
                       {data?.emergency}
                     </div>
                   </div>
@@ -106,21 +106,21 @@ const DashboardList = ({ items }) => {
 
               {data?.truck > 0 && (
                 <div
-                  class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
+                  className="xl:max-w-[500px] my-10 md:max-w-[400px] md:max-w-[400px] py-4 sm:ml-10 md:ml-10 bg-indigo-600 w-5/6  rounded-2xl hover:bg-green-400"
                   onClick={() => {
                     router.push("/my-listing/user-truck");
                   }}
                 >
-                  <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
+                  <div className="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
                     <Icon
                       color="white"
                       height={40}
                       icon="fa6-solid:truck-arrow-right"
                     />
-                    <h2 class="text-4xl md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
+                    <h2 className="text-[22px] md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
                       Truck Sale
                     </h2>
-                    <div class="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
+                    <div className="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
                       {data?.truck}
                     </div>
                   </div>
@@ -131,21 +131,21 @@ const DashboardList = ({ items }) => {
 
               {data?.truckpart > 0 && (
                 <div
-                  class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
+                  className="xl:max-w-[500px] my-10 md:max-w-[400px] py-4 sm:ml-10 md:ml-10 bg-indigo-600 w-5/6  rounded-2xl hover:bg-green-400"
                   onClick={() => {
                     router.push("/my-listing/user-truckpart");
                   }}
                 >
-                  <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
+                  <div className="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
                     <Icon
                       color="white"
                       height={40}
                       icon="fa6-solid:truck-arrow-right"
                     />
-                    <h2 class="text-3xl md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
+                    <h2 className="text-[22px] md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
                       Truck Parts Sale
                     </h2>
-                    <div class="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
+                    <div className="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
                       {data?.truckpart}
                     </div>
                   </div>
@@ -156,17 +156,17 @@ const DashboardList = ({ items }) => {
 
               {data?.car > 0 && (
                 <div
-                  class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
+                  className="xl:max-w-[500px] my-10 md:max-w-[400px] py-4 sm:ml-10 md:ml-10 bg-indigo-600 w-5/6  rounded-2xl hover:bg-green-400"
                   onClick={() => {
                     router.push("/my-listing/user-car");
                   }}
                 >
-                  <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
+                  <div className="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
                     <Icon color="white" height={40} icon="bxs:car" />
-                    <h2 class="text-3xl md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
+                    <h2 className="text-[22px] md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
                       Car Sale
                     </h2>
-                    <div class="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
+                    <div className="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
                       {data?.car}
                     </div>
                   </div>
@@ -177,17 +177,17 @@ const DashboardList = ({ items }) => {
 
               {data?.school > 0 && (
                 <div
-                  class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
+                  className="xl:max-w-[500px] my-10 md:max-w-[400px] py-4 sm:ml-10 md:ml-10 bg-indigo-600 w-5/6  rounded-2xl hover:bg-green-400"
                   onClick={() => {
                     router.push("/my-listing/user-school");
                   }}
                 >
-                  <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
+                  <div className="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
                     <Icon color="white" height={40} icon="bxs:car" />
-                    <h2 class="text-3xl md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
+                    <h2 className="text-[22px] md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
                       School Ride
                     </h2>
-                    <div class="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
+                    <div className="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
                       {data?.school}
                     </div>
                   </div>
@@ -197,17 +197,17 @@ const DashboardList = ({ items }) => {
               {/* ///////////    Oldage Ride */}
               {data?.oldage > 0 && (
                 <div
-                  class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
+                  className="xl:max-w-[500px] my-10 md:max-w-[400px] py-4 sm:ml-10 md:ml-10 bg-indigo-600 w-5/6  rounded-2xl hover:bg-green-400"
                   onClick={() => {
                     router.push("/my-listing/user-oldage");
                   }}
                 >
-                  <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
+                  <div className="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
                     <Icon color="white" height={40} icon="bxs:car" />
-                    <h2 class="text-3xl md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
+                    <h2 className="text-[22px] md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
                       Oldage Ride
                     </h2>
-                    <div class="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
+                    <div className="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
                       {data?.oldage}
                     </div>
                   </div>
@@ -218,17 +218,17 @@ const DashboardList = ({ items }) => {
 
               {data?.airport > 0 && (
                 <div
-                  class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
+                  className="xl:max-w-[500px] my-10 md:max-w-[400px] py-4 sm:ml-10 md:ml-10 bg-indigo-600 w-5/6  rounded-2xl hover:bg-green-400"
                   onClick={() => {
                     router.push("/my-listing/user-airport");
                   }}
                 >
-                  <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
+                  <div className="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
                     <Icon color="white" height={40} icon="bxs:car" />
-                    <h2 class="text-3xl md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
+                    <h2 className="text-[22px] md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
                       Airport Ride
                     </h2>
-                    <div class="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
+                    <div className="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
                       {data?.airport}
                     </div>
                   </div>
@@ -239,17 +239,17 @@ const DashboardList = ({ items }) => {
 
               {data?.store > 0 && (
                 <div
-                  class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
+                  className="xl:max-w-[500px] my-10 md:max-w-[400px] py-4 sm:ml-10 md:ml-10 bg-indigo-600 w-5/6  rounded-2xl hover:bg-green-400"
                   onClick={() => {
                     router.push("/my-listing/user-localstore");
                   }}
                 >
-                  <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
+                  <div className="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
                     <Icon color="white" height={40} icon="fa-solid:suitcase" />
-                    <h2 class="text-3xl md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
+                    <h2 className="text-[22px] md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
                       local Stores
                     </h2>
-                    <div class="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
+                    <div className="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
                       {data?.store}
                     </div>
                   </div>
@@ -259,17 +259,17 @@ const DashboardList = ({ items }) => {
               {/* ///////////   local Workers */}
               {data?.worker > 0 && (
                 <div
-                  class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
+                  className="xl:max-w-[500px] my-10 md:max-w-[400px] py-4 sm:ml-10 md:ml-10 bg-indigo-600 w-5/6  rounded-2xl hover:bg-green-400"
                   onClick={() => {
                     router.push("/my-listing/user-localworker");
                   }}
                 >
-                  <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
+                  <div className="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
                     <Icon color="white" height={40} icon="fa-solid:suitcase" />
-                    <h2 class="text-3xl md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
+                    <h2 className="text-[22px] md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
                       local Workers
                     </h2>
-                    <div class="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
+                    <div className="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
                       {data?.worker}
                     </div>
                   </div>
@@ -279,17 +279,17 @@ const DashboardList = ({ items }) => {
               {/* ///////////   Home Rent */}
               {data?.house > 0 && (
                 <div
-                  class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
+                  className="xl:max-w-[500px] my-10 md:max-w-[400px] py-4 sm:ml-10 md:ml-10 bg-indigo-600 w-5/6  rounded-2xl hover:bg-green-400"
                   onClick={() => {
                     router.push("/my-listing/user-home");
                   }}
                 >
-                  <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
+                  <div className="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
                     <Icon color="white" height={40} icon="ri:hotel-line" />
-                    <h2 class="text-3xl md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
+                    <h2 className="text-[22px] md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
                       Home Rent
                     </h2>
-                    <div class="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
+                    <div className="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
                       {data?.house}
                     </div>
                   </div>
@@ -300,17 +300,17 @@ const DashboardList = ({ items }) => {
 
               {data?.room > 0 && (
                 <div
-                  class="xl:w-[500px] my-10 md:w-1/3 p-4 sm:ml-10 md:ml-10 bg-indigo-600 sm:w-1/2  rounded-2xl hover:bg-green-400"
+                  className="xl:max-w-[500px] my-10 md:max-w-[400px] py-4 sm:ml-10 md:ml-10 bg-indigo-600 w-5/6  rounded-2xl hover:bg-green-400"
                   onClick={() => {
                     router.push("/my-listing/user-room");
                   }}
                 >
-                  <div class="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
+                  <div className="flex flex-col mt-2 mb-0 px-10 cursor-pointer md:px-2 md:py-4 items-center">
                     <Icon color="white" height={40} icon="ri:hotel-line" />
-                    <h2 class="text-3xl md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
+                    <h2 className="text-[22px] md:text-3xl pt-3 mb-6 text-white font-extrabold title-font mb-4">
                       Room Rent
                     </h2>
-                    <div class="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
+                    <div className="leading-relaxed text-bold text-lg bg-white border-2 rounded-full px-3.5 py-1">
                       {data?.room}
                     </div>
                   </div>

@@ -12,11 +12,22 @@ import {
 import { useDispatch } from "react-redux";
 
 const RideCard = ({ item, type }) => {
+
+  console.log("bgbgbg" , type)
+
   const dispatch = useDispatch();
+  
   const handleDelete = (id, ride) => {
     if (ride == "school") {
       dispatch(UserSchoolDelete(id));
     }
+    else if (ride == "oldage") {
+      dispatch(UserOldageDelete(id));
+    }
+    else if (ride == "airport") {
+      dispatch(UserAirportDelete(id));
+    }
+    
   };
   return (
     <div className="flex bg-white shadow-xl rounded-lg min-w-[300px] lg:min-w-[220px] mx-6">

@@ -18,7 +18,7 @@ const TruckParts = ({ loadsData, isParts, loadingData }) => {
       <PrimaryHeading
         primary="primary"
         secondary="secondary"
-        text={isParts ? " Truck Part Listing" : " Truck Part Listing"}
+        text={isParts ? " Truck Part Listing" : " Truck Listing"}
         textCenter
       />
 

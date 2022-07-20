@@ -6,7 +6,7 @@ import JobCard from "./Cards/JobCard";
 import { ModalSimple } from "@components/Common";
 import { NoDataFound, CardLoading } from "@components/Common/index";
 
-const Job = ({ loadsData, isWorkers, loadingData }) => {
+const Job = ({ loadsData,type, isWorkers, loadingData }) => {
   const [loads, setLoads] = useState([]);
 
   useEffect(() => {
@@ -18,7 +18,12 @@ const Job = ({ loadsData, isWorkers, loadingData }) => {
       <PrimaryHeading
         primary="primary"
         secondary="secondary"
-        text={isWorkers ? "Local Worker Listing" : "Local Store Listing"}
+        text={
+          type == "store"
+            ? "Local Store Listing"
+            : "Local Worker Listing"
+      
+        }
         textCenter
       />
 
@@ -29,7 +34,7 @@ const Job = ({ loadsData, isWorkers, loadingData }) => {
       {loadsData?.length > 0 && !loadingData && (
         <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
           {loads.map((item) => (
-            <JobCard isWorkers={isWorkers} item={item} />
+            <JobCard type={type} item={item}/>
           ))}
         </div>
       )}

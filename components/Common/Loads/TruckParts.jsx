@@ -7,7 +7,7 @@ import LoadImgPartCard from "./Cards/LoadImgPartCard";
 import { ModalSimple } from "@components/Common";
 import { NoDataFound, CardLoading } from "@components/Common/index";
 
-const TruckParts = ({ loadsData, isParts, loadingData }) => {
+const TruckParts = ({ loadsData, isParts,type, loadingData }) => {
   const [loads, setLoads] = useState([]);
 
   useEffect(() => {

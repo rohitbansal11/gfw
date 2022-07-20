@@ -1,4 +1,5 @@
 import {
+  STATUS,
   LOADING,
   LOADINGFALSE,
   LOADS,
@@ -17,6 +18,7 @@ import {
 
 const initialValue = {
   loading: false,
+  status:[],
   loads: [],
   emergency: [],
   truck: [],
@@ -43,6 +45,12 @@ export const UserListingReducer = (state = initialValue, action) => {
       return {
         ...state,
         loading: false,
+      };
+      case STATUS:
+      return {
+        ...state,
+        loading: false,
+        status: payload,
       };
     case LOADS:
       return {

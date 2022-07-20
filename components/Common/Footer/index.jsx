@@ -93,7 +93,7 @@ const Footer = ({ links, more }) => {
               </li>
             </ul>
           </div>
-          <div className="w-[100%] mt-4 md:w-[50%] md:mt-0 lg:w-[23%] ">
+          <div className="w-[100%] mt-4 md:w-[50%] md:mt-0 lg:w-[22%] ">
             <div className="mb-2 text-xl font-semibold">Auxillary Links</div>
             <ul className="flex flex-col gap-1">
               <li className="mb-1 border-b-2 border-white hover:border-black max-w-fit">
