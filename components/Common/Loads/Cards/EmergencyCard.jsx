@@ -30,13 +30,13 @@ const EmergencyCard = ({ item }) => {
         {/* weight & type */}
         <div className="flex flex-col mt-2">
           <div className="flex  gap-2">
-            <span className="font-medium">Weight:</span>{" "}
+            <span className="font-medium">Weight:</span>
             <span>
               {item?.weight}/{item?.weight_type}
             </span>
           </div>
           <div className="flex  gap-2">
-            <span className="font-medium mr-4">Type:</span>{" "}
+            <span className="font-medium mr-4">Type:</span>
             <div>{item?.type}</div>
           </div>
         </div>
