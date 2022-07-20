@@ -18,7 +18,7 @@ const EmergencyLoads = ({ loadsData, loadingData }) => {
       {loadsData?.length == 0 && !loadingData && <NoDataFound />}
       {loadsData?.length > 0 && !loadingData && (
         <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
-          {loads.map((item) => (
+          {loadsData.map((item) => (
             <EmergencyCard item={item} />
           ))}
         </div>
