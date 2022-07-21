@@ -7,10 +7,15 @@ import RentCard from "./Cards/RentCard";
 import RideCard from "./Cards/RideCard";
 import { ModalSimple } from "@components/Common";
 import { NoDataFound, CardLoading } from "@components/Common/index";
-
+import { useSelector } from "react-redux";
 const Ride = ({ loadsData, type, loadingData }) => {
   const [loads, setLoads] = useState([]);
+  const [role, setRole] = useState("");
 
+  const selector = useSelector((pre) => pre?.alldata);
+  useEffect(() => {
+    setRole(selector.token.role);
+  }, [selector]);
   useEffect(() => {
     setLoads(loadsData);
   }, [loadsData]);
@@ -92,7 +97,7 @@ const Ride = ({ loadsData, type, loadingData }) => {
       {loadsData?.length > 0 && !loadingData && (
         <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
           {loads.map((item) => (
-            <RideCard type={type} item={item} />
+            <RideCard type={type} item={item} role={role} />
           ))}
         </div>
       )}

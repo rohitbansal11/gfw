@@ -7,6 +7,7 @@ import {
   RENT_ROOMS_SUCCESS,
   RENT_ROOMS_FAILURE,
 } from "./sell-or-rent-types";
+import Swal from "sweetalert2";
 
 export const sellhouseListing = (payload) => async (dispatch, getState) => {
   dispatch({
@@ -27,12 +28,24 @@ export const sellhouseListing = (payload) => async (dispatch, getState) => {
       type: SELL_HOUSE_SUCCESS,
       payload: payload,
     });
+    Swal.fire({
+      title: "House For Sale Add  Success",
+      icon: "success",
+      text: "House For Sale  Add  Success",
+    });
     window.location.href = "/";
   } catch (error) {
     console.error({ error });
     dispatch({
       type: SELL_HOUSE_FAILURE,
       payload: { error: error.message }, // error
+    });
+    Swal.fire({
+      title: "Error!",
+      icon: "success",
+      text:
+        error.response?.data?.error?.message || error.response?.data?.message,
+      icon: "error",
     });
   }
 };
@@ -55,12 +68,24 @@ export const rentroomsListing = (payload) => async (dispatch, getState) => {
       type: RENT_ROOMS_SUCCESS,
       payload: payload,
     });
+    Swal.fire({
+      title: "Room Add  Success",
+      icon: "success",
+      text: "Room  Add  Success",
+    });
     window.location.href = "/";
   } catch (error) {
     console.error({ error });
     dispatch({
       type: RENT_ROOMS_FAILURE,
       payload: { error: error.message }, // error
+    });
+    Swal.fire({
+      title: "Error!",
+      icon: "success",
+      text:
+        error.response?.data?.error?.message || error.response?.data?.message,
+      icon: "error",
     });
   }
 };

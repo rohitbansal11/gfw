@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Section, Container, PrimaryHeading } from "@components/Common";
 import LoadCard from "./Cards/LoadCard";
 import { ModalLoadSimple } from "@components/Common";
 import { NoDataFound, CardLoading } from "@components/Common/index";
-
+import { useSelector } from "react-redux";
 const Loads = ({ loads, loadingData }) => {
+  const [role, setRole] = useState("");
+
+  const selector = useSelector((pre) => pre?.alldata);
+  useEffect(() => {
+    setRole(selector.token.role);
+  }, [selector]);
   return (
     <Section>
       <PrimaryHeading
@@ -22,7 +28,7 @@ const Loads = ({ loads, loadingData }) => {
       {loads?.length > 0 && !loadingData && (
         <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
           {loads.map((item) => (
-            <LoadCard item={item} />
+            <LoadCard item={item} role={role} />
           ))}
         </div>
       )}

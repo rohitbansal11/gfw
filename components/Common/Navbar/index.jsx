@@ -31,6 +31,8 @@ import {
 import { useRouter } from "next/router";
 import Noty from "./NotificationIcon";
 
+import { LogoutActionUsre } from "@store/user-store/userActions";
+
 const Navbar = ({
   links,
   loginHref,
@@ -183,6 +185,7 @@ const Navbar = ({
               <button
                 onClick={() => {
                   dispatch(LogoutAction());
+                  dispatch(LogoutActionUsre());
                 }}
                 className="flex font-semibold justify-center items-center text-zinc-100 bg-indigo-700 hover:bg-indigo-500 px-4 py-3 rounded-lg border-4 border-indigo-700 hover:border-indigo-500 w-[160px] h-[40px] transition ease-in-out"
               >
@@ -350,6 +353,7 @@ const Navbar = ({
               <button
                 onClick={() => {
                   dispatch(LogoutAction());
+                  dispatch(LogoutActionUsre());
                 }}
                 className="flex font-medium justify-center items-center text-zinc-100 bg-indigo-700 hover:bg-indigo-500 px-4 py-3 rounded-lg border-4 md:text-[14px] lg:text-md border-indigo-700 hover:border-indigo-500 w-[160px] h-[40px] transition ease-in-out"
               >

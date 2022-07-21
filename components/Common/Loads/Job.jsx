@@ -1,14 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Section, PrimaryHeading } from "@components/Common";
-import { useState } from "react";
+
 import Link from "next/link";
 import JobCard from "./Cards/JobCard";
 import { ModalSimple } from "@components/Common";
 import { NoDataFound, CardLoading } from "@components/Common/index";
-
+import { useSelector } from "react-redux";
 const Job = ({ loadsData, isWorkers, loadingData }) => {
   const [loads, setLoads] = useState([]);
+  const [role, setRole] = useState("");
 
+  const selector = useSelector((pre) => pre?.alldata);
+  useEffect(() => {
+    setRole(selector.token.role);
+  }, [selector]);
   useEffect(() => {
     setLoads(loadsData);
   }, [loadsData]);
@@ -72,7 +77,7 @@ const Job = ({ loadsData, isWorkers, loadingData }) => {
       {loadsData?.length > 0 && !loadingData && (
         <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
           {loads.map((item) => (
-            <JobCard isWorkers={isWorkers} item={item} />
+            <JobCard isWorkers={isWorkers} item={item} role={role} />
           ))}
         </div>
       )}

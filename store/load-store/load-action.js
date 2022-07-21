@@ -1,6 +1,6 @@
 import axios from "@utils/axios";
 import { LOAD_REQUEST, LOAD_SUCCESS, LOAD_FAILURE } from "./load-types";
-
+import Swal from "sweetalert2";
 export const LoadListing = (payload) => async (dispatch, getState) => {
   dispatch({
     type: LOAD_REQUEST,
@@ -21,6 +21,11 @@ export const LoadListing = (payload) => async (dispatch, getState) => {
       type: LOAD_SUCCESS,
       payload: res,
     });
+    Swal.fire({
+      title: "Load Add  Success",
+      icon: "success",
+      text: "Load Add  Success",
+    });
 
     window.location.href = "/";
   } catch (error) {
@@ -28,6 +33,13 @@ export const LoadListing = (payload) => async (dispatch, getState) => {
     dispatch({
       type: LOAD_FAILURE,
       payload: { error: error.message }, // error
+    });
+    Swal.fire({
+      title: "Error!",
+      icon: "success",
+      text:
+        error.response?.data?.error?.message || error.response?.data?.message,
+      icon: "error",
     });
   }
 };

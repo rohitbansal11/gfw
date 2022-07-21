@@ -7,10 +7,15 @@ import RentCard from "./Cards/RentCard";
 import HomeRent from "./Cards/HomeRent";
 import { ModalSimple } from "@components/Common";
 import { NoDataFound, CardLoading } from "@components/Common/index";
-
+import { useSelector } from "react-redux";
 const TruckParts = ({ loadsData, loadingData, isRooms }) => {
   const [loads, setLoads] = useState([]);
+  const [role, setRole] = useState("");
 
+  const selector = useSelector((pre) => pre?.alldata);
+  useEffect(() => {
+    setRole(selector.token.role);
+  }, [selector]);
   useEffect(() => {
     setLoads(loadsData);
   }, [loadsData]);
@@ -74,13 +79,13 @@ const TruckParts = ({ loadsData, loadingData, isRooms }) => {
           {isRooms ? (
             <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
               {loads.map((item) => (
-                <RentCard isRooms={isRooms} item={item} />
+                <RentCard isRooms={isRooms} item={item} role={role} />
               ))}
             </div>
           ) : (
             <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
               {loads.map((item) => (
-                <HomeRent isRooms={isRooms} item={item} />
+                <HomeRent isRooms={isRooms} item={item} role={role} />
               ))}
             </div>
           )}

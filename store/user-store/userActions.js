@@ -4,6 +4,7 @@ import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
   NAV_HIDE,
+  LOGOUT,
 } from "./userTypes";
 import Swal from "sweetalert2";
 
@@ -21,8 +22,6 @@ export const LogInuser = (payload) => async (dispatch, getState) => {
   });
   try {
     const res = await axios.post("/auth/login", payload, config);
-    console.log({ res });
-    // console.log(res.data.token)
     if (res.data.token) {
       localStorage.setItem(`token`, `Bearer ${res.data.token}`);
       dispatch({
@@ -33,15 +32,21 @@ export const LogInuser = (payload) => async (dispatch, getState) => {
         title: "Log In Success",
         icon: "success",
         text: "Log In Success",
-      }).then((result) => {
-        window.location.href = "/";
       });
+      window.location.href = "/";
     }
   } catch (err) {
-    console.error({ err });
+    console.error(err?.response?.data?.massage);
+
     dispatch({
       type: USER_LOGIN_FAILED,
       payload: err.message,
+    });
+
+    Swal.fire({
+      title: "Error",
+      icon: "error",
+      text: err?.response?.data?.massage,
     });
   }
 };
@@ -62,16 +67,31 @@ export const signUpUser = (payload) => async (dispatch, getState) => {
     }
   } catch (err) {
     console.error(err.response?.data?.massage);
-    Swal.fire({
-      title: "Error!",
-      icon: "success",
-      text: err.response?.data?.massage,
-      //html: err.response?.data || `<p>${err.response?.data?.massage} </P>`,
-      icon: "error",
-    });
+
+    if (err.response?.data?.massage) {
+      Swal.fire({
+        title: "Error!",
+        icon: "success",
+        text: err.response?.data?.massage,
+        icon: "error",
+      });
+    } else {
+      Swal.fire({
+        title: "Error!",
+        icon: "success",
+        html: err.response?.data,
+        icon: "error",
+      });
+    }
   }
 };
 
 export const Navhide = (data) => async (dispatch) => {
   dispatch({ type: NAV_HIDE, payload: data });
+};
+
+export const LogoutActionUsre = () => (dispatch) => {
+  dispatch({
+    type: LOGOUT,
+  });
 };

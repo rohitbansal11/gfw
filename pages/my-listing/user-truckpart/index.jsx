@@ -15,7 +15,8 @@ const TruckPage = () => {
   }, []);
 
   useEffect(() => {
-    setTruck(selector?.truck);
+    setTruck(selector?.truckpart);
+
     setLoading(selector?.loading);
   }, [selector]);
   return (

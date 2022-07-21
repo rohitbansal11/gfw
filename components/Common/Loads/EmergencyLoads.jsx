@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Section, Container, PrimaryHeading } from "@components/Common";
 import EmergencyCard from "./Cards/EmergencyCard";
 import { NoDataFound, CardLoading } from "@components/Common/index";
-
+import { useSelector } from "react-redux";
 const EmergencyLoads = ({ loadsData, loadingData }) => {
+  const [role, setRole] = useState("");
+
+  const selector = useSelector((pre) => pre?.alldata);
+  useEffect(() => {
+    setRole(selector.token.role);
+  }, [selector]);
   return (
     <Section>
       <PrimaryHeading
@@ -19,7 +25,7 @@ const EmergencyLoads = ({ loadsData, loadingData }) => {
       {loadsData?.length > 0 && !loadingData && (
         <div className="flex flex-wrap justify-around gap-8 bg-indigo-100 py-[60px]">
           {loadsData.map((item) => (
-            <EmergencyCard item={item} />
+            <EmergencyCard item={item} role={role} />
           ))}
         </div>
       )}

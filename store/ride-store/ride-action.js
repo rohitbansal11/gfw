@@ -10,6 +10,7 @@ import {
   RIDE_AIRPORT_SUCCESS,
   RIDE_AIRPORT_FAILURE,
 } from "./ride-types";
+import Swal from "sweetalert2";
 
 export const RideSchoolListing = (payload) => async (dispatch, getState) => {
   dispatch({
@@ -31,6 +32,11 @@ export const RideSchoolListing = (payload) => async (dispatch, getState) => {
       type: RIDE_SCHOOL_SUCCESS,
       payload: payload,
     });
+    Swal.fire({
+      title: "School Ride Add  Success",
+      icon: "success",
+      text: "School Ride Add  Success",
+    });
     window.location.href = "/";
   } catch (error) {
     console.log({ error });
@@ -38,6 +44,21 @@ export const RideSchoolListing = (payload) => async (dispatch, getState) => {
       type: RIDE_SCHOOL_FAILURE,
       payload: { error: error.message }, // error
     });
+    if (error.response?.data?.massage) {
+      Swal.fire({
+        title: "Error!",
+        icon: "success",
+        text: error.response?.data?.massage,
+        icon: "error",
+      });
+    } else {
+      Swal.fire({
+        title: "Error!",
+        icon: "success",
+        html: error?.response?.data,
+        icon: "error",
+      });
+    }
   }
 };
 export const RideOldAgeListing = (payload) => async (dispatch, getState) => {
@@ -58,12 +79,25 @@ export const RideOldAgeListing = (payload) => async (dispatch, getState) => {
       type: RIDE_OLDAGE_SUCCESS,
       payload: payload,
     });
+
+    Swal.fire({
+      title: "Old Age Ride Add  Success",
+      icon: "success",
+      text: "Old Age Ride Add  Success",
+    });
     window.location.href = "/";
   } catch (error) {
     console.error({ error });
     dispatch({
       type: RIDE_OLDAGE_FAILURE,
       payload: { error: error.message }, // error
+    });
+    Swal.fire({
+      title: "Error!",
+      icon: "success",
+      text:
+        error.response?.data?.error?.message || error.response?.data?.message,
+      icon: "error",
     });
   }
 };
@@ -86,12 +120,24 @@ export const RideAirportListing = (payload) => async (dispatch, getState) => {
       type: RIDE_AIRPORT_SUCCESS,
       payload: payload,
     });
+    Swal.fire({
+      title: "Airport Ride Add  Success",
+      icon: "success",
+      text: "Airport Ride Add  Success",
+    });
     window.location.href = "/";
   } catch (error) {
     console.error({ error });
     dispatch({
       type: RIDE_AIRPORT_FAILURE,
       payload: { error: error.message }, // error
+    });
+    Swal.fire({
+      title: "Error!",
+      icon: "success",
+      text:
+        error.response?.data?.error?.message || error.response?.data?.message,
+      icon: "error",
     });
   }
 };

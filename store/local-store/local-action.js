@@ -7,7 +7,7 @@ import {
   LOCALWORKERS_SUCCESS,
   LOCALWORKERS_FAILURE,
 } from "./local-types";
-
+import Swal from "sweetalert2";
 export const LocalStoreListing = (payload) => async (dispatch, getState) => {
   dispatch({
     type: LOCALSTORE_REQUEST,
@@ -28,13 +28,25 @@ export const LocalStoreListing = (payload) => async (dispatch, getState) => {
       type: LOCALSTORE_SUCCESS,
       payload: payload,
     });
-
+    Swal.fire({
+      title: "Local Store Add  Success",
+      icon: "success",
+      text: "Local Store Add  Success",
+    });
     window.location.href = "/";
   } catch (error) {
     console.error({ error });
     dispatch({
       type: LOCALSTORE_FAILURE,
       payload: { error: error.message }, // error
+    });
+
+    Swal.fire({
+      title: "Error!",
+      icon: "success",
+      text:
+        error.response?.data?.error?.message || error.response?.data?.message,
+      icon: "error",
     });
   }
 };
@@ -59,12 +71,24 @@ export const LocalWorkersListing = (payload) => async (dispatch, getState) => {
       type: LOCALWORKERS_SUCCESS,
       payload: payload,
     });
+    Swal.fire({
+      title: "Local Worker Add  Success",
+      icon: "success",
+      text: "Local Worker Add  Success",
+    });
     window.location.href = "/";
   } catch (error) {
     console.error({ error });
     dispatch({
       type: LOCALWORKERS_FAILURE,
       payload: { error: error.message }, // error
+    });
+    Swal.fire({
+      title: "Error!",
+      icon: "success",
+      text:
+        error.response?.data?.error?.message || error.response?.data?.message,
+      icon: "error",
     });
   }
 };

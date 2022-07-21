@@ -7,6 +7,7 @@ import {
   SELL_TRUCK_PARTS_REQUEST,
   SELL_TRUCK_PARTS_SUCCESS,
 } from "./sell-truck-types";
+import Swal from "sweetalert2";
 
 import axiosApi from "axios";
 
@@ -50,12 +51,24 @@ export const addSellTruckListing =
         type: SELL_TRUCK_SUCCESS,
         payload: payload,
       });
+      Swal.fire({
+        title: "Truck Add  Success",
+        icon: "success",
+        text: "Truck  Add  Success",
+      });
       window.location.href = "/";
     } catch (error) {
       console.log(error);
       dispatch({
         type: SELL_TRUCK_FAILURE,
         payload: { error: error.message }, // error
+      });
+      Swal.fire({
+        title: "Error!",
+        icon: "success",
+        text:
+          error.response?.data?.error?.message || error.response?.data?.message,
+        icon: "error",
       });
     }
   };
@@ -76,12 +89,24 @@ export const addSellTruckpartsListing = (payload) => async (dispatch) => {
       type: SELL_TRUCK_PARTS_SUCCESS,
       payload: payload,
     });
+    Swal.fire({
+      title: "Truck Part Add  Success",
+      icon: "success",
+      text: "Truck Part  Add  Success",
+    });
     window.location.href = "/";
   } catch (error) {
     console.error({ error });
     dispatch({
       type: SELL_TRUCK_PARTS_FAILURE,
       payload: { error: error.message }, // error
+    });
+    Swal.fire({
+      title: "Error!",
+      icon: "success",
+      text:
+        error.response?.data?.error?.message || error.response?.data?.message,
+      icon: "error",
     });
   }
 };

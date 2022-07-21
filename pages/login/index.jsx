@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { TextInput } from "@components/Common";
 import axios from "@utils/axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LogInuser } from "@store/user-store/userActions";
 import { CheckTokenTwo } from "@store/AllDataMain/AllDataaction";
 
@@ -15,7 +15,9 @@ const Login = () => {
 
   const [token, setToken] = useState();
   const dispatch = useDispatch();
+  const selector = useSelector((pre) => pre?.user);
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     // console.log(e.target.name, e.target.value)
@@ -47,6 +49,10 @@ const Login = () => {
       dispatch(CheckTokenTwo());
     }
   }, []);
+
+  useEffect(() => {
+    setLoading(selector?.loading);
+  }, [selector]);
 
   const { email, password } = formData;
 
@@ -85,10 +91,11 @@ const Login = () => {
               handleShowPassword={handleShowPassword}
             />
             <button
+              disabled={loading}
               type="submit"
               className="py-2 w-full bg-indigo-700 text-white font-semibold tracking-wide text-center rounded-lg shadow-lg mt-12 hover:drop-shadow-md"
             >
-              Login
+              {loading ? "Loading ....." : "Login"}
             </button>
           </form>
         </div>
